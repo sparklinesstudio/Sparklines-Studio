@@ -81,7 +81,7 @@ export function ContactSection() {
                       href="tel:8001520236"
                       className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors"
                     >
-                      +91 8001520236
+                      +91 8101520236
                     </a>
                   </div>
                 </div>
