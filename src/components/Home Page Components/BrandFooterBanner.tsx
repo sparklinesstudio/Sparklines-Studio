@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export function BrandFooterBanner() {
@@ -111,20 +112,15 @@ export function BrandFooterBanner() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col items-center justify-between gap-6 border-b border-zinc-100 pb-8 md:flex-row">
           {/* Brand mark */}
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-900 text-white">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-3.5 w-3.5 text-[#f95721]"
-              >
-                <polyline points="3 17 9 11 13 15 21 7" />
-                <polyline points="17 7 21 7 21 11" />
-              </svg>
+          <div className="flex items-center gap-2.5">
+            <div className="relative flex h-7 w-7 items-center justify-center rounded-full overflow-hidden bg-black shadow-sm">
+              <Image
+                src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
+                alt="Sparklines Studio Logo"
+                fill
+                sizes="28px"
+                className="object-cover"
+              />
             </div>
             <span className="text-sm font-semibold tracking-tight text-zinc-900">
               Sparklines Studio

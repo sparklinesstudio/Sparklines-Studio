@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -39,24 +40,20 @@ export function HeaderNavigation() {
           href="/"
           className="flex items-center gap-2 sm:gap-2.5 rounded-full py-1 pr-2 text-zinc-900 transition-transform active:scale-95 group"
         >
-          {/* Glassy logo badge */}
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-white shadow-[0_2px_8px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 group-hover:bg-[#f95721] group-hover:shadow-orange-500/25">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-4 w-4 text-white"
-            >
-              <polyline points="3 17 9 11 13 15 21 7" />
-              <polyline points="17 7 21 7 21 11" />
-            </svg>
-            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full" />
+          {/* Circular brand mark logo */}
+          <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full overflow-hidden bg-black shadow-[0_2px_8px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-black/10 transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
+              alt="Sparklines Studio Logo"
+              fill
+              sizes="36px"
+              className="object-cover"
+              priority
+            />
+            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full z-10 pointer-events-none" />
           </div>
           <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-950">
-            Sparklines<span className="text-zinc-500 font-normal ml-0.5 hidden xs:inline">Studio</span>
+            Sparklines Studio<span className="text-zinc-500 font-normal ml-0.5 hidden xs:inline">Studio</span>
           </span>
         </Link>
 
