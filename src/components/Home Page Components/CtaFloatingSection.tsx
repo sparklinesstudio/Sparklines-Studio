@@ -12,7 +12,7 @@ export function CtaFloatingSection() {
       {/* Background Cloud Image */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://img.magnific.com/free-photo/smoky-watercolor-cloud-background_1409-1733.jpg?semt=ais_hybrid&w=740&q=80"
+          src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790461624/smoky-watercolor-cloud-background.jpg"
           alt="Cloud background"
           className="h-full w-full object-cover object-center filter saturate-110"
         />
