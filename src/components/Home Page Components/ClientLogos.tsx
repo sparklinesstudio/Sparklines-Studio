@@ -17,9 +17,9 @@ export function ClientLogos() {
   const logos: LogoItem[] = [
     {
       id: "dreamson",
-      name: "Pep Copp Logo",
-      src: "https://www.pepcopp.co.in/assets/timer.png",
-      href: "https://www.pepcopp.co.in/",
+      name: "Dreams On Interiors",
+      src: "https://dreamsoninteriors.in/images/logo.png",
+      href: "https://dreamsoninteriors.in",
     },
     {
       id: "oraanj",
@@ -53,14 +53,14 @@ export function ClientLogos() {
   };
 
   return (
-    <section className="border-y border-zinc-100 bg-white py-14 sm:py-20 overflow-hidden">
+    <section className="border-y border-zinc-100 bg-white py-10 sm:py-14 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-10 sm:mb-14">
+        <p className="text-center text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-8 sm:mb-10">
           Trusted by fast-growing startups and industry innovators
         </p>
 
         {/* Brand Logos Row */}
-        <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-20">
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
           {logos.map((logo, idx) => {
             const hasError = Boolean(imageErrors[logo.id]);
             const showFallback = Boolean(hasError || (!logo.src && logo.isTextFallback));
@@ -68,12 +68,12 @@ export function ClientLogos() {
             return (
               <motion.div
                 key={logo.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.08 }}
-                className="group flex items-center justify-center transition-all duration-300"
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                whileHover={{ scale: 1.05 }}
+                className="group flex items-center justify-center cursor-pointer"
               >
                 {logo.href && logo.href !== "#" ? (
                   <a
@@ -104,11 +104,11 @@ function renderLogoContent(
   onError: (id: string) => void
 ) {
   if (showFallback || !logo.src) {
-    // Stylized typography brand mark fallback
+    // Stylized typography brand mark fallback with B&W to full color hover
     return (
-      <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-200/60 shadow-xs group-hover:border-orange-300 group-hover:bg-white transition-all">
-        <div className="h-3 w-3 rounded-full bg-[#f95721]" />
-        <span className="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 group-hover:text-[#f95721] transition-colors">
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-200/60 bg-zinc-50/50 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:border-orange-300 group-hover:bg-white group-hover:shadow-xs transition-all duration-300">
+        <div className="h-2 w-2 rounded-full bg-zinc-400 group-hover:bg-[#f95721] transition-colors" />
+        <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-600 group-hover:text-zinc-900 transition-colors">
           {logo.name}
         </span>
       </div>
@@ -116,13 +116,13 @@ function renderLogoContent(
   }
 
   return (
-    <div className="relative flex items-center justify-center h-12 sm:h-16 md:h-18 px-2 transition-transform duration-300">
+    <div className="relative flex items-center justify-center h-9 sm:h-11 md:h-12 px-2 transition-all duration-300">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={logo.src}
         alt={logo.name}
         onError={() => onError(logo.id)}
-        className="h-10 sm:h-14 md:h-16 w-auto max-w-[190px] sm:max-w-[240px] object-contain transition-all duration-300 opacity-80 group-hover:opacity-100 group-hover:drop-shadow-md"
+        className="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[180px] object-contain transition-all duration-300 filter grayscale contrast-75 opacity-50 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100"
         loading="lazy"
       />
     </div>
