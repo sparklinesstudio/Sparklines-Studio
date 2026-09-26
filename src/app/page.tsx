@@ -24,7 +24,7 @@ export default function Home() {
         <HeroSection />
 
         {/* Trusted Client / Brand Logos */}
-        <ClientLogos />
+        {/* <ClientLogos /> */}
 
         {/* About Agency & Key Metrics */}
         <AboutSection />
