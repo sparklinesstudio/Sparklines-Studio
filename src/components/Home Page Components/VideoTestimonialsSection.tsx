@@ -82,23 +82,25 @@ export function VideoTestimonialsSection() {
             </p>
           </div>
 
-          {/* Navigation Arrows matching reference design */}
+          {/* Navigation Arrows matching navbar crystal glass style */}
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <button
               type="button"
               onClick={handlePrev}
               aria-label="Previous testimonial"
-              className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-orange-300 text-orange-600 transition-all duration-200 hover:bg-orange-500 hover:text-white hover:border-orange-500 active:scale-95 cursor-pointer shadow-xs"
+              className="relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-zinc-950/95 text-white border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 cursor-pointer group overflow-hidden"
             >
-              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 group-hover:-translate-x-0.5" />
             </button>
             <button
               type="button"
               onClick={handleNext}
               aria-label="Next testimonial"
-              className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-orange-300 text-orange-600 transition-all duration-200 hover:bg-orange-500 hover:text-white hover:border-orange-500 active:scale-95 cursor-pointer shadow-xs"
+              className="relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-zinc-950/95 text-white border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 cursor-pointer group overflow-hidden"
             >
-              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-200 group-hover:translate-x-0.5" />
             </button>
           </div>
         </div>

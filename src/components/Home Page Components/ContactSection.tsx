@@ -109,9 +109,10 @@ export function ContactSection() {
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 text-xs font-semibold text-[#f95721] hover:underline"
+                    className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-6 py-2.5 mt-6 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden cursor-pointer"
                   >
-                    Send another message
+                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                    <span>Send another message</span>
                   </button>
                 </div>
               ) : (
@@ -178,14 +179,15 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#f95721] py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:bg-[#ea4b16] hover:shadow-xl hover:shadow-orange-500/30 active:scale-[0.99] disabled:opacity-70 cursor-pointer"
+                    className="relative w-full inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950/95 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 disabled:opacity-70 cursor-pointer group overflow-hidden"
                   >
+                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
                     {loading ? (
                       <span className="inline-block animate-spin">⟳</span>
                     ) : (
                       <>
                         <span>Submit Inquiry</span>
-                        <Send className="h-4 w-4" />
+                        <Send className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </>
                     )}
                   </button>

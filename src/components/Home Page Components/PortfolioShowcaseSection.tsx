@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 // =========================================
 // 1. DATA
@@ -206,12 +207,15 @@ const DesignPartnerSection = () => {
                 entire digital investment.
               </p>
 
-              {/* CTA Button in Brand Orange with Neo-brutalist Shadow */}
+              {/* CTA Button matching Navbar Crystal Glass Pill */}
               <div className="pt-2">
-                <Link href="#contact" className="inline-block">
-                  <button className="bg-[#F95721] border-2 border-black rounded-xl px-7 sm:px-8 py-3.5 sm:py-4 text-white font-semibold text-sm sm:text-base shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all cursor-pointer">
-                    Explore Studio Web Design
-                  </button>
+                <Link
+                  href="#contact"
+                  className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3.5 text-sm sm:text-base font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+                >
+                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                  <span>Explore Studio Web Design</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </div>
