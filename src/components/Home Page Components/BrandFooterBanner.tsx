@@ -69,7 +69,7 @@ export function BrandFooterBanner() {
   const socialLinks = [
     { name: "Twitter / X", href: "https://x.com" },
     { name: "LinkedIn", href: "https://linkedin.com" },
-    { name: "Instagram", href: "https://instagram.com" },
+    { name: "Instagram", href: "https://www.instagram.com/sparklinesstudio" },
     { name: "GitHub", href: "https://github.com" },
     { name: "Dribbble", href: "https://dribbble.com" },
   ];
@@ -141,15 +141,6 @@ export function BrandFooterBanner() {
                 )}
               </button>
 
-              {/* Direct Phone Call Button */}
-              <a
-                href="tel:9641861932"
-                className="inline-flex items-center gap-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-200/90 px-4 py-3.5 text-xs sm:text-sm font-medium text-zinc-800 hover:text-zinc-950 transition-all duration-200 active:scale-95 cursor-pointer shadow-xs"
-                title="Call +91 9641861932"
-              >
-                <Phone className="h-4 w-4 text-[#f95721]" />
-                <span>9641861932</span>
-              </a>
             </div>
           </div>
 
