@@ -4,6 +4,7 @@ import {
   ClientLogos,
   AboutSection,
   OrangeBanner,
+  VideoTestimonialsSection,
   FeatureTabsSection,
   ExpertiseBento,
   TestimonialsSection,
@@ -29,8 +30,11 @@ export default function Home() {
         {/* About Agency & Key Metrics */}
         <AboutSection />
 
-        {/* 12 Years Industry Orange Banner */}
+        {/* Full-width Video Explainer Banner */}
         <OrangeBanner />
+
+        {/* Video Testimonials Section ("Sparklines in the spotlight") */}
+        <VideoTestimonialsSection />
 
         {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
         <FeatureTabsSection />

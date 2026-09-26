@@ -3,6 +3,7 @@ export { HeroSection } from "./HeroSection";
 export { ClientLogos } from "./ClientLogos";
 export { AboutSection } from "./AboutSection";
 export { OrangeBanner, VideoBanner } from "./OrangeBanner";
+export { VideoTestimonialsSection } from "./VideoTestimonialsSection";
 export { FeatureTabsSection } from "./FeatureTabsSection";
 export { ExpertiseBento } from "./ExpertiseBento";
 export { TestimonialsSection } from "./TestimonialsSection";
