@@ -2,216 +2,23 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ArrowUpRight } from "lucide-react";
+import { Sparkles, ArrowUpRight, Layers, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 // =========================================================================
-// 1. BRAND TOOL ICONS (ACCURATE SVG ICONS)
+// 1. TOOL DEFINITIONS & LOGO ASSETS
 // =========================================================================
 
-function PhotoshopIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#001e36] border border-[#00c8ff]/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-[#31a8ff]">Ps</span>
-    </div>
-  );
+interface ToolItem {
+  name: string;
+  logo: string;
 }
-
-function IllustratorIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#330000] border border-[#ff9a00]/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-[#ff9a00]">Ai</span>
-    </div>
-  );
-}
-
-function LightroomIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#001e36] border border-[#31a8ff]/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-[#31a8ff]">Lr</span>
-    </div>
-  );
-}
-
-function PremiereIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#00005b] border border-[#ea77ff]/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-[#ea77ff]">Pr</span>
-    </div>
-  );
-}
-
-function FigmaIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-black border border-white/20 shadow-md">
-      <svg viewBox="0 0 38 57" className="h-5 w-5 sm:h-6 sm:w-6" fill="none">
-        <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1ABCFE" />
-        <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#0ACF83" />
-        <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" fill="#FF7262" />
-        <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#F24E1E" />
-        <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#A259FF" />
-      </svg>
-    </div>
-  );
-}
-
-function AfterEffectsIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#00005b] border border-[#9999ff]/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-[#9999ff]">Ae</span>
-    </div>
-  );
-}
-
-function DaVinciIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#18181b] border border-white/20 shadow-md">
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none">
-        <circle cx="8" cy="8" r="4" fill="#EF4444" />
-        <circle cx="16" cy="8" r="4" fill="#3B82F6" />
-        <circle cx="12" cy="16" r="4" fill="#F59E0B" />
-      </svg>
-    </div>
-  );
-}
-
-// CODING TOOLS
-function ReactIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#0f172a] border border-[#00d8ff]/30 shadow-md">
-      <svg viewBox="-11.5 -10.23174 23 20.46348" className="h-5 w-5 sm:h-6 sm:w-6" fill="none">
-        <circle cx="0" cy="0" r="2.05" fill="#00d8ff" />
-        <g stroke="#00d8ff" strokeWidth="1" fill="none">
-          <ellipse rx="11" ry="4.2" />
-          <ellipse rx="11" ry="4.2" transform="rotate(60)" />
-          <ellipse rx="11" ry="4.2" transform="rotate(120)" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function NextjsIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-black border border-white/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-white tracking-tighter">N</span>
-    </div>
-  );
-}
-
-function TypeScriptIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#3178c6] border border-white/20 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-white">TS</span>
-    </div>
-  );
-}
-
-function TailwindIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#0b1120] border border-[#38bdf8]/30 shadow-md">
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 fill-[#38bdf8]">
-        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" />
-      </svg>
-    </div>
-  );
-}
-
-function NodeIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#052e16] border border-[#22c55e]/30 shadow-md">
-      <svg viewBox="0 0 32 32" className="h-5 w-5 sm:h-6 sm:w-6 fill-[#22c55e]">
-        <path d="M16 2.5l11.5 6.6v13.8L16 29.5 4.5 22.9V9.1L16 2.5z" />
-      </svg>
-    </div>
-  );
-}
-
-function PostgresIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#1e293b] border border-[#38bdf8]/30 shadow-md">
-      <span className="font-sans font-bold text-xs sm:text-sm text-[#38bdf8]">SQL</span>
-    </div>
-  );
-}
-
-function FramerMotionIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-black border border-white/20 shadow-md">
-      <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5 fill-white">
-        <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z" />
-      </svg>
-    </div>
-  );
-}
-
-// SEO & ADS TOOLS
-function SemrushIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#ff642d] border border-white/30 shadow-md">
-      <span className="font-sans font-black text-xs sm:text-sm text-white tracking-tight">SEM</span>
-    </div>
-  );
-}
-
-function AhrefsIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#0052cc] border border-white/30 shadow-md">
-      <span className="font-sans font-black text-sm sm:text-base text-white">a</span>
-    </div>
-  );
-}
-
-function GoogleAdsIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white border border-zinc-200 shadow-md">
-      <div className="flex items-center gap-0.5">
-        <div className="h-4 w-2 rounded-full bg-[#4285F4] transform -rotate-12" />
-        <div className="h-5 w-2 rounded-full bg-[#FBBC05] transform rotate-12" />
-        <div className="h-2 w-2 rounded-full bg-[#34A853]" />
-      </div>
-    </div>
-  );
-}
-
-function MetaAdsIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#0081fb] border border-white/30 shadow-md">
-      <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6 fill-white">
-        <path d="M12 4.332c-3.15 0-5.83 1.96-7.39 4.888C3.12 11.96 2 15.02 2 17.668c0 2.21 1.79 4 4 4 2.22 0 4.19-1.22 5.25-3.04 1.06 1.82 3.03 3.04 5.25 3.04 2.21 0 4-1.79 4-4 0-2.65-1.12-5.71-2.61-8.448C17.83 6.292 15.15 4.332 12 4.332zm-4.75 14.5c-1.24 0-2.25-1.01-2.25-2.25 0-1.89.84-4.28 2.05-6.52 1.15-2.12 2.65-3.56 4.2-3.56.59 0 1.14.21 1.6.59-1.39 2.2-3.23 6.55-5.6 11.74zm9.5 0c-2.37-5.19-4.21-9.54-5.6-11.74.46-.38 1.01-.59 1.6-.59 1.55 0 3.05 1.44 4.2 3.56 1.21 2.24 2.05 4.63 2.05 6.52 0 1.24-1.01 2.25-2.25 2.25z" />
-      </svg>
-    </div>
-  );
-}
-
-function GA4Icon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-[#f59e0b] border border-white/30 shadow-md">
-      <div className="flex items-end gap-1 h-5">
-        <div className="w-1.5 h-2 bg-white rounded-t" />
-        <div className="w-1.5 h-3.5 bg-white rounded-t" />
-        <div className="w-1.5 h-5 bg-white rounded-t" />
-      </div>
-    </div>
-  );
-}
-
-function SearchConsoleIcon() {
-  return (
-    <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white border border-zinc-200 shadow-md">
-      <span className="font-sans font-black text-xs sm:text-sm text-[#4285F4]">GSC</span>
-    </div>
-  );
-}
-
-// =========================================================================
-// 2. LAYER CONFIGURATIONS
-// =========================================================================
 
 interface LayerData {
   id: "creative" | "coding" | "growth";
   title: string;
   tagline: string;
+  summary: string;
   description: string;
   bulletColor: string;
   plateBg: string;
@@ -220,86 +27,178 @@ interface LayerData {
   plateLabel: string;
   labelColor: string;
   dotColor: string;
-  icons: React.FC[];
+  tileBg: string;
+  tools: ToolItem[];
 }
 
 const LAYERS: LayerData[] = [
   {
     id: "creative",
     title: "Creative & Post-Production Suite",
-    tagline: "ONE PLATFORM, THREE LAYERS — BUILT FOR PRESTIGE & PERFORMANCE",
+    tagline: "LAYER 01 — DIGITAL DESIGN & MOTION",
+    summary:
+      "Enterprise design and visual production pipeline powered by Adobe Photoshop, Lightroom, Illustrator, and After Effects for cinematic brand aesthetics.",
     description:
-      "Enterprise design and visual production pipeline powered by Adobe Creative Cloud (Photoshop, Lightroom, Illustrator, Premiere Pro, After Effects), Figma design systems, and DaVinci cinema color grading.",
+      "We craft high-fidelity visual identities, luxury photo editing, motion graphics, and vector design systems. From editorial retouching in Lightroom to vector typography in Illustrator and dynamic video reels in After Effects, our creative pipeline delivers prestige quality.",
     bulletColor: "bg-zinc-950",
     plateBg: "bg-[#16161a]",
     plateBorder: "border-zinc-700/60",
-    plateShadow: "shadow-[0_25px_60px_-15px_rgba(0,0,0,0.65)]",
+    plateShadow: "shadow-[0_35px_80px_-15px_rgba(0,0,0,0.7)]",
     plateLabel: "Creative & Design Suite",
     labelColor: "text-zinc-300",
-    dotColor: "rgba(255, 255, 255, 0.12)",
-    icons: [
-      PhotoshopIcon,
-      IllustratorIcon,
-      LightroomIcon,
-      PremiereIcon,
-      FigmaIcon,
-      AfterEffectsIcon,
-      DaVinciIcon,
+    dotColor: "rgba(255, 255, 255, 0.16)",
+    tileBg: "bg-zinc-900/90 border-zinc-700/60 shadow-lg",
+    tools: [
+      {
+        name: "Photoshop",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/960px-Adobe_Photoshop_CC_icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
+      {
+        name: "Illustrator",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/1280px-Adobe_Illustrator_CC_icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
+      {
+        name: "Lightroom",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg/960px-Adobe_Photoshop_Lightroom_CC_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
+      {
+        name: "After Effects",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/1280px-Adobe_After_Effects_CC_icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
     ],
   },
   {
     id: "coding",
     title: "Modern Engineering & Architecture",
-    tagline: "NEXT-GEN FULL STACK ARCHITECTURE",
+    tagline: "LAYER 02 — NEXT-GEN FULL STACK",
+    summary:
+      "Modern full-stack applications engineered with React, Next.js, Vue, Python, and Ruby on Rails for ultra-fast, scalable digital products.",
     description:
-      "High-velocity web development powered by React, Next.js Turbopack, TypeScript, Tailwind CSS, PostgreSQL, and Framer Motion micro-interactions engineered for sub-second load times.",
+      "We build resilient digital infrastructure with modern JavaScript frameworks and robust backend services. By leveraging Next.js Turbopack, React, Vue, Python APIs, and Ruby services, our software scales effortlessly with zero latency under high traffic.",
     bulletColor: "bg-[#2563eb]",
     plateBg: "bg-gradient-to-br from-[#2563eb] to-[#1d4ed8]",
     plateBorder: "border-blue-400/40",
-    plateShadow: "shadow-[0_25px_60px_-15px_rgba(37,99,235,0.45)]",
-    plateLabel: "Engineering & Frontend",
+    plateShadow: "shadow-[0_30px_70px_-15px_rgba(37,99,235,0.45)]",
+    plateLabel: "Modern Engineering & Code",
     labelColor: "text-blue-100",
-    dotColor: "rgba(255, 255, 255, 0.18)",
-    icons: [
-      ReactIcon,
-      NextjsIcon,
-      TypeScriptIcon,
-      TailwindIcon,
-      NodeIcon,
-      PostgresIcon,
-      FramerMotionIcon,
+    dotColor: "rgba(255, 255, 255, 0.22)",
+    tileBg: "bg-white/95 border-white/40 shadow-lg",
+    tools: [
+      {
+        name: "React",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/960px-React-icon.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20220125121207",
+      },
+      {
+        name: "Next.js",
+        logo: "https://images.icon-icons.com/2389/PNG/512/next_js_logo_icon_145038.png",
+      },
+      {
+        name: "Vue.js",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/330px-Vue.js_Logo_2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
+      {
+        name: "Python",
+        logo: "https://images.icon-icons.com/2699/PNG/512/python_logo_icon_168886.png",
+      },
+      {
+        name: "Ruby",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1280px-Ruby_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
     ],
   },
   {
     id: "growth",
     title: "SEO, Performance Ads & Analytics",
-    tagline: "DATA & GROWTH ENGINE",
+    tagline: "LAYER 03 — DATA & CLIENT ACQUISITION",
+    summary:
+      "Precision client acquisition pipeline powered by SEMrush, Ahrefs, Google Ads, Meta Ads, and AI conversational search optimization.",
     description:
-      "Precision client acquisition infrastructure leveraging SEMrush, Ahrefs, Google Ads, Meta Ads Manager, Google Analytics 4, and Search Console to capture high-intent inquiries and scale revenue.",
+      "We orchestrate hyper-targeted multi-channel acquisition campaigns. By pairing competitor intelligence from SEMrush and Ahrefs with high-intent Google Search Ads, targeted Meta portfolio campaigns, and ChatGPT AI search visibility, we capture serious, high-budget client inquiries.",
     bulletColor: "bg-zinc-400",
     plateBg: "bg-white",
     plateBorder: "border-zinc-200/90",
     plateShadow: "shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)]",
-    plateLabel: "Data, Ads & Context",
+    plateLabel: "SEO, Ads & AI Growth",
     labelColor: "text-zinc-700",
     dotColor: "rgba(0, 0, 0, 0.08)",
-    icons: [
-      SemrushIcon,
-      AhrefsIcon,
-      GoogleAdsIcon,
-      MetaAdsIcon,
-      GA4Icon,
-      SearchConsoleIcon,
+    tileBg: "bg-white border-zinc-200/80 shadow-md",
+    tools: [
+      {
+        name: "SEMrush",
+        logo: "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/semrush-zme8l9vhze0enwovmg83p.png/semrush-j4srj3ovt2sagrna6kcqb.png?_a=DATAiZAAZAA0",
+      },
+      {
+        name: "Ahrefs",
+        logo: "https://www.pngall.com/wp-content/uploads/16/Ahrefs-Logo-PNG-Pic.png",
+      },
+      {
+        name: "Google Ads",
+        logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-ads-icon.png",
+      },
+      {
+        name: "Meta Ads",
+        logo: "https://pngimg.com/uploads/meta/meta_PNG5.png",
+      },
+      {
+        name: "ChatGPT AI",
+        logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/960px-ChatGPT-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
     ],
   },
 ];
 
 // =========================================================================
-// 3. MAIN TECH STACK COMPONENT
+// 2. MAIN COMPONENT: TechStackSection
 // =========================================================================
 
 export function TechStackSection() {
   const [activeLayer, setActiveLayer] = useState<"creative" | "coding" | "growth">("creative");
+
+  // Cycle to next card when tapping the top plate or clicking next
+  const layerIds: ("creative" | "coding" | "growth")[] = ["creative", "coding", "growth"];
+  const cycleNextLayer = () => {
+    const currentIndex = layerIds.indexOf(activeLayer);
+    const nextIndex = (currentIndex + 1) % layerIds.length;
+    setActiveLayer(layerIds[nextIndex]);
+  };
+
+  // Compute 3D elevation and stacking index so active card is always on TOP
+  const getLayerStackConfig = (layerId: "creative" | "coding" | "growth") => {
+    if (activeLayer === layerId) {
+      // Top layer: elevated and on top
+      return {
+        translateZ: 150,
+        zIndex: 30,
+        scale: 1.03,
+        opacity: 1,
+      };
+    }
+
+    // Determine secondary and tertiary order relative to active layer
+    const activeIdx = layerIds.indexOf(activeLayer);
+    const thisIdx = layerIds.indexOf(layerId);
+    const diff = (thisIdx - activeIdx + 3) % 3;
+
+    if (diff === 1) {
+      // Middle card
+      return {
+        translateZ: 75,
+        zIndex: 20,
+        scale: 0.98,
+        opacity: 0.92,
+      };
+    } else {
+      // Bottom card
+      return {
+        translateZ: 0,
+        zIndex: 10,
+        scale: 0.94,
+        opacity: 0.82,
+      };
+    }
+  };
+
+  const currentActiveLayerData = LAYERS.find((l) => l.id === activeLayer)!;
 
   return (
     <section
@@ -307,12 +206,12 @@ export function TechStackSection() {
       className="relative bg-[#FAFAFC] py-20 sm:py-28 lg:py-36 border-b border-zinc-200/80 overflow-hidden"
     >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        {/* Top Header Row Matching Uploaded Reference */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16 lg:mb-24">
+        {/* Top Header Row Matching Reference Mockup */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-14 lg:mb-20">
           {/* Main Title on Left */}
           <div className="lg:col-span-6">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.12]">
-              The production stack, <br />
+              The marketing stack, <br />
               <span className="font-editorial italic font-normal text-zinc-800">
                 modernized
               </span>
@@ -322,9 +221,9 @@ export function TechStackSection() {
           {/* Descriptive Intro on Right */}
           <div className="lg:col-span-6 lg:pt-2">
             <p className="text-base sm:text-lg text-zinc-600 font-sans leading-relaxed">
-              We replace fragmented freelancers and outdated processes with unified
-              creative suites, modern component architecture, and high-precision ad pipelines
-              engineered to drive qualified high-ticket clients.
+              We replace fragmented workflows and generic templates with integrated
+              creative post-production, modern coding architectures, and high-intent acquisition engines
+              engineered for luxury studios.
             </p>
           </div>
         </div>
@@ -333,9 +232,18 @@ export function TechStackSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT COLUMN: 3D ISOMETRIC STACK GRAPHIC */}
-          <div className="lg:col-span-7 relative flex items-center justify-center py-6 sm:py-12 select-none">
+          <div className="lg:col-span-7 relative flex flex-col items-center justify-center py-6 sm:py-10 select-none">
             {/* Ambient Background Radial Glow */}
             <div className="pointer-events-none absolute -inset-4 sm:-inset-10 bg-radial from-blue-100/40 via-transparent to-transparent blur-3xl opacity-60" />
+
+            {/* Click-to-cycle Hint Pill */}
+            <div className="mb-6 flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-zinc-600 border border-zinc-200/80 shadow-sm cursor-pointer hover:bg-white transition-colors"
+              onClick={cycleNextLayer}
+            >
+              <Layers className="h-3.5 w-3.5 text-[#f95721]" />
+              <span>Click any card to bring to top</span>
+              <ChevronRight className="h-3 w-3 text-zinc-400" />
+            </div>
 
             {/* Isometric 3D Stage Container */}
             <div
@@ -353,157 +261,87 @@ export function TechStackSection() {
                   transform: "rotateX(58deg) rotateZ(-38deg) rotateY(0deg)",
                 }}
               >
-                {/* -------------------------------------------------------- */}
-                {/* LAYER 3: BOTTOM PLATE (SEO, Ads & Context - Stone White) */}
-                {/* -------------------------------------------------------- */}
-                <motion.div
-                  onClick={() => setActiveLayer("growth")}
-                  animate={{
-                    translateZ: activeLayer === "growth" ? 30 : 0,
-                    scale: activeLayer === "growth" ? 1.04 : 1,
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={`absolute inset-0 rounded-[28px] sm:rounded-[36px] bg-white border border-zinc-200/90 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.12)] p-4 sm:p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:shadow-2xl`}
-                  style={{
-                    transform: "translateZ(0px)",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Surface Dot Matrix Pattern */}
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-[28px] sm:rounded-[36px] opacity-60"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px)",
-                      backgroundSize: "16px 16px",
-                    }}
-                  />
+                {LAYERS.map((layer) => {
+                  const stackConfig = getLayerStackConfig(layer.id);
+                  const isTop = activeLayer === layer.id;
 
-                  {/* Surface App Icon Badges Grid */}
-                  <div className="relative z-10 grid grid-cols-4 gap-2.5 sm:gap-3 max-w-[80%] pt-1">
-                    <SemrushIcon />
-                    <AhrefsIcon />
-                    <GoogleAdsIcon />
-                    <MetaAdsIcon />
-                    <GA4Icon />
-                    <SearchConsoleIcon />
-                  </div>
+                  return (
+                    <motion.div
+                      key={layer.id}
+                      onClick={() => setActiveLayer(layer.id)}
+                      animate={{
+                        translateZ: stackConfig.translateZ,
+                        scale: stackConfig.scale,
+                        opacity: stackConfig.opacity,
+                      }}
+                      transition={{
+                        duration: 0.55,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className={`absolute inset-0 rounded-[28px] sm:rounded-[36px] ${layer.plateBg} ${layer.plateBorder} border ${layer.plateShadow} p-5 sm:p-7 flex flex-col justify-between cursor-pointer transition-shadow duration-300 hover:shadow-2xl`}
+                      style={{
+                        zIndex: stackConfig.zIndex,
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      {/* Surface Dot Matrix Pattern */}
+                      <div
+                        className="pointer-events-none absolute inset-0 rounded-[28px] sm:rounded-[36px]"
+                        style={{
+                          backgroundImage: `radial-gradient(${layer.dotColor} 1.2px, transparent 1.2px)`,
+                          backgroundSize: "16px 16px",
+                        }}
+                      />
 
-                  {/* Front Edge Label */}
-                  <div className="relative z-10 flex justify-end items-end pt-3 sm:pt-4">
-                    <span className="text-xs sm:text-sm font-semibold tracking-wide text-zinc-700">
-                      SEO & Analytics Engine
-                    </span>
-                  </div>
-                </motion.div>
+                      {/* Active Indicator Top Edge Light */}
+                      {isTop && (
+                        <div className="pointer-events-none absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                      )}
 
-                {/* -------------------------------------------------------- */}
-                {/* LAYER 2: MIDDLE PLATE (Coding & Engineering - Blue)     */}
-                {/* -------------------------------------------------------- */}
-                <motion.div
-                  onClick={() => setActiveLayer("coding")}
-                  animate={{
-                    translateZ:
-                      activeLayer === "coding"
-                        ? 100
-                        : activeLayer === "growth"
-                        ? 60
-                        : 70,
-                    scale: activeLayer === "coding" ? 1.04 : 1,
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={`absolute inset-0 rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] border border-blue-400/40 shadow-[0_30px_70px_-15px_rgba(37,99,235,0.45)] p-4 sm:p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:shadow-2xl`}
-                  style={{
-                    transform: "translateZ(70px)",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Surface Dot Matrix Pattern */}
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-[28px] sm:rounded-[36px] opacity-40"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px)",
-                      backgroundSize: "16px 16px",
-                    }}
-                  />
+                      {/* Surface App Icon Badges Grid (Exact Logos Provided by User) */}
+                      <div className="relative z-10 grid grid-cols-4 gap-2.5 sm:gap-3.5 max-w-[85%] pt-1">
+                        {layer.tools.map((tool) => (
+                          <div
+                            key={tool.name}
+                            title={tool.name}
+                            className={`flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center rounded-xl sm:rounded-2xl ${
+                              layer.id === "creative"
+                                ? "bg-zinc-900/90 border border-zinc-700/80 shadow-md p-2"
+                                : "bg-white/95 border border-white/60 shadow-md p-2"
+                            } transition-transform duration-200 hover:scale-110`}
+                          >
+                            <img
+                              src={tool.logo}
+                              alt={tool.name}
+                              className="h-full w-full object-contain"
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                      </div>
 
-                  {/* Surface App Icon Badges Grid */}
-                  <div className="relative z-10 grid grid-cols-4 gap-2.5 sm:gap-3 max-w-[80%] pt-1">
-                    <ReactIcon />
-                    <NextjsIcon />
-                    <TypeScriptIcon />
-                    <TailwindIcon />
-                    <NodeIcon />
-                    <PostgresIcon />
-                    <FramerMotionIcon />
-                  </div>
-
-                  {/* Front Edge Label */}
-                  <div className="relative z-10 flex justify-end items-end pt-3 sm:pt-4">
-                    <span className="text-xs sm:text-sm font-semibold tracking-wide text-blue-100">
-                      Engineering & Frontend
-                    </span>
-                  </div>
-                </motion.div>
-
-                {/* -------------------------------------------------------- */}
-                {/* LAYER 1: TOP PLATE (Creative Suite - Dark Graphite)     */}
-                {/* -------------------------------------------------------- */}
-                <motion.div
-                  onClick={() => setActiveLayer("creative")}
-                  animate={{
-                    translateZ: activeLayer === "creative" ? 170 : 140,
-                    scale: activeLayer === "creative" ? 1.04 : 1,
-                  }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={`absolute inset-0 rounded-[28px] sm:rounded-[36px] bg-[#16161a] border border-zinc-700/60 shadow-[0_35px_80px_-15px_rgba(0,0,0,0.7)] p-4 sm:p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:shadow-2xl`}
-                  style={{
-                    transform: "translateZ(140px)",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Surface Dot Matrix Pattern */}
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-[28px] sm:rounded-[36px] opacity-40"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px)",
-                      backgroundSize: "16px 16px",
-                    }}
-                  />
-
-                  {/* Surface App Icon Badges Grid */}
-                  <div className="relative z-10 grid grid-cols-4 gap-2.5 sm:gap-3 max-w-[80%] pt-1">
-                    <PhotoshopIcon />
-                    <IllustratorIcon />
-                    <LightroomIcon />
-                    <PremiereIcon />
-                    <FigmaIcon />
-                    <AfterEffectsIcon />
-                    <DaVinciIcon />
-                  </div>
-
-                  {/* Front Edge Label */}
-                  <div className="relative z-10 flex justify-end items-end pt-3 sm:pt-4">
-                    <span className="text-xs sm:text-sm font-semibold tracking-wide text-zinc-300">
-                      Creative & Design Suite
-                    </span>
-                  </div>
-                </motion.div>
+                      {/* Front Edge Label */}
+                      <div className="relative z-10 flex justify-end items-end pt-3 sm:pt-4">
+                        <span className={`text-xs sm:text-sm font-semibold tracking-wide ${layer.labelColor}`}>
+                          {layer.plateLabel}
+                        </span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: 3-TIER LAYER BREAKDOWN */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-10 lg:pl-4">
+          {/* RIGHT COLUMN: DYNAMIC CONTENT BASED ON TOP ACTIVE LAYER */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-8 lg:pl-4">
             {/* Monospace Eyebrow Tagline */}
             <div className="text-[11px] sm:text-xs font-mono font-bold tracking-widest text-zinc-500 uppercase">
               ONE PLATFORM, THREE LAYERS — BUILT FOR PERFORMANCE & PRESTIGE
             </div>
 
             {/* List of 3 Layers with Interactive Selection */}
-            <div className="space-y-8 sm:space-y-10">
+            <div className="space-y-6 sm:space-y-8">
               {LAYERS.map((layer) => {
                 const isActive = activeLayer === layer.id;
 
@@ -511,30 +349,66 @@ export function TechStackSection() {
                   <div
                     key={layer.id}
                     onClick={() => setActiveLayer(layer.id)}
-                    className={`group cursor-pointer transition-all duration-300 p-4 -mx-4 rounded-2xl ${
-                      isActive ? "bg-white/80 shadow-sm border border-zinc-200/80" : "hover:bg-zinc-100/60"
+                    className={`group cursor-pointer transition-all duration-300 p-5 -mx-4 rounded-2xl ${
+                      isActive
+                        ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200/90 ring-1 ring-zinc-950/5"
+                        : "hover:bg-zinc-100/70 opacity-75 hover:opacity-100"
                     }`}
                   >
                     {/* Item Title with Colored Square Bullet */}
-                    <div className="flex items-center gap-3.5 mb-2.5">
+                    <div className="flex items-center gap-3.5 mb-2">
                       <div
                         className={`h-2.5 w-2.5 rounded-sm ${layer.bulletColor} transition-transform duration-300 ${
                           isActive ? "scale-125" : "group-hover:scale-110"
                         }`}
                       />
                       <h3
-                        className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
-                          isActive ? "text-zinc-950 font-editorial" : "text-zinc-800 group-hover:text-zinc-950 font-editorial"
+                        className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors font-editorial ${
+                          isActive ? "text-zinc-950" : "text-zinc-700 group-hover:text-zinc-950"
                         }`}
                       >
                         {layer.title}
                       </h3>
                     </div>
 
-                    {/* Item Description */}
-                    <p className="text-sm sm:text-[15px] leading-relaxed text-zinc-600 pl-6 font-sans">
-                      {layer.description}
-                    </p>
+                    {/* Active Layer Dynamic Narrative */}
+                    <AnimatePresence mode="wait">
+                      {isActive ? (
+                        <motion.div
+                          key="active-desc"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.35 }}
+                        >
+                          <p className="text-sm sm:text-[15px] leading-relaxed text-zinc-600 pl-6 font-sans mb-3.5">
+                            {layer.description}
+                          </p>
+
+                          {/* Active Tools Pill List */}
+                          <div className="flex flex-wrap gap-2 pl-6 pt-1">
+                            {layer.tools.map((tool) => (
+                              <span
+                                key={tool.name}
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-800 border border-zinc-200"
+                              >
+                                <img
+                                  src={tool.logo}
+                                  alt={tool.name}
+                                  className="h-3.5 w-3.5 object-contain"
+                                  loading="lazy"
+                                />
+                                {tool.name}
+                              </span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <p className="text-xs sm:text-sm text-zinc-500 pl-6 font-sans line-clamp-2">
+                          {layer.summary}
+                        </p>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
