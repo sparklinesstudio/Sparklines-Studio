@@ -167,7 +167,7 @@ export function ServicesGridSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-[4/3] cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-video cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               {/* Background Image */}
               <Image
