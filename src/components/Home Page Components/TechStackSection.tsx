@@ -105,12 +105,12 @@ const LAYERS: LayerData[] = [
   },
   {
     id: "growth",
-    title: "SEO, Performance Ads & Analytics",
-    tagline: "LAYER 03 — DATA & CLIENT ACQUISITION",
+    title: "SEO, Performance Ads & Frontier AI",
+    tagline: "LAYER 03 — DATA, ADS & GENERATIVE ENGINES",
     summary:
-      "Precision client acquisition pipeline powered by SEMrush, Ahrefs, Google Ads, Meta Ads, and AI conversational search optimization.",
+      "Precision client acquisition pipeline powered by SEMrush, Ahrefs, Google Ads, Meta Ads, and AI conversational search optimization across ChatGPT, Claude, Gemini, and Grok.",
     description:
-      "We orchestrate hyper-targeted multi-channel acquisition campaigns. By pairing competitor intelligence from SEMrush and Ahrefs with high-intent Google Search Ads, targeted Meta portfolio campaigns, and ChatGPT AI search visibility, we capture serious, high-budget client inquiries.",
+      "We orchestrate hyper-targeted multi-channel acquisition campaigns. By pairing competitor intelligence from SEMrush and Ahrefs with high-intent Google Search Ads, targeted Meta portfolio campaigns, and Generative Engine Optimization (GEO) across ChatGPT, Claude, Gemini, and Grok, we capture high-budget client inquiries.",
     bulletColor: "bg-zinc-400",
     plateBg: "bg-white",
     plateBorder: "border-zinc-200/90",
@@ -136,8 +136,20 @@ const LAYERS: LayerData[] = [
         logo: "https://pngimg.com/uploads/meta/meta_PNG5.png",
       },
       {
-        name: "ChatGPT AI",
+        name: "ChatGPT",
         logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/960px-ChatGPT-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
+      },
+      {
+        name: "Claude",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe_7n3WJOHmk5styrrW7rJe0cfs20bnm09DW_KUX8sr5C4hdE0R_weW--p&s=10",
+      },
+      {
+        name: "Gemini",
+        logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png",
+      },
+      {
+        name: "Grok",
+        logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/grok-icon.png",
       },
     ],
   },
