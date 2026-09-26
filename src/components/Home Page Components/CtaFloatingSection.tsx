@@ -1,135 +1,104 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles, Check, Heart, Shield } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export function CtaFloatingSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-28 sm:py-36">
-      {/* Background Soft Glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-[450px] w-full max-w-4xl rounded-full bg-gradient-to-tr from-amber-100/50 via-orange-100/30 to-rose-100/40 blur-3xl opacity-70" />
+    <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40 flex items-center justify-center">
+      {/* Background Cloud Image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="https://img.magnific.com/free-photo/smoky-watercolor-cloud-background_1409-1733.jpg?semt=ais_hybrid&w=740&q=80"
+          alt="Cloud background"
+          className="h-full w-full object-cover object-center filter saturate-110"
+        />
+        {/* Soft top and bottom fade overlay for seamless page integration */}
+        <div className="absolute inset-x-0 top-0 h-20 sm:h-28 bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Floating Creative Stickers / Badges matching the image */}
-
-        {/* Floating Item 1: Top-Left Avatar Card */}
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        {/* Top Centered Brand Emblem Badge */}
         <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          className="pointer-events-none absolute -top-8 left-8 sm:left-16 hidden md:flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white/95 p-1.5 pr-4 shadow-lg backdrop-blur-sm"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-6 sm:mb-8"
         >
-          <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-xs font-bold text-white">
-            ★
-          </div>
-          <span className="text-xs font-semibold text-zinc-800">Top 1% Engineering</span>
-        </motion.div>
-
-        {/* Floating Item 2: Top-Right Image Badge */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="pointer-events-none absolute -top-4 right-8 sm:right-20 hidden md:flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-lg backdrop-blur-sm"
-        >
-          <div className="h-10 w-10 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center">
-            <Heart className="h-5 w-5 text-[#f95721]" />
-          </div>
-          <div>
-            <p className="text-xs font-bold text-zinc-900">5-Star Client Rating</p>
-            <p className="text-[10px] text-zinc-500">Clutch & G2 Verified</p>
-          </div>
-        </motion.div>
-
-        {/* Floating Item 3: Middle-Left Wireframe Badge */}
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="pointer-events-none absolute top-1/2 left-4 sm:left-12 hidden lg:flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white/95 p-3 shadow-md"
-        >
-          <div className="h-9 w-9 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-700">
-            <Shield className="h-4 w-4 text-emerald-600" />
-          </div>
-          <div className="space-y-0.5">
-            <p className="text-[11px] font-bold text-zinc-900">Enterprise Ready</p>
-            <p className="text-[9px] text-zinc-400">SOC-2 & GDPR Clean</p>
-          </div>
-        </motion.div>
-
-        {/* Floating Item 4: Bottom-Left Artistic Card (Floral art card matching mockup) */}
-        <motion.div
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-          className="pointer-events-none absolute bottom-4 left-10 sm:left-24 hidden md:block rounded-2xl border border-orange-200/80 bg-gradient-to-br from-amber-50 to-orange-100/60 p-3 shadow-md w-32"
-        >
-          <div className="aspect-[4/3] rounded-lg bg-gradient-to-tr from-amber-400 via-rose-400 to-orange-400 p-2 flex items-center justify-center shadow-xs">
-            <Sparkles className="h-6 w-6 text-white" />
-          </div>
-          <p className="mt-2 text-center text-[10px] font-semibold text-zinc-800">
-            Bespoke Craft
-          </p>
-        </motion.div>
-
-        {/* Floating Item 5: Bottom-Right Mini UI Card */}
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          className="pointer-events-none absolute bottom-2 right-10 sm:right-24 hidden md:block rounded-2xl border border-zinc-200 bg-white p-3 shadow-lg w-36"
-        >
-          <div className="flex items-center justify-between text-[10px] font-bold text-zinc-800">
-            <span>Sprint Card</span>
-            <span className="text-emerald-600">On Track</span>
-          </div>
-          <div className="mt-2 space-y-1">
-            <div className="h-1.5 w-full rounded bg-zinc-100 overflow-hidden">
-              <div className="h-full w-4/5 bg-[#f95721]" />
+          <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-[22px] bg-white/90 p-2 shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-white/80 backdrop-blur-md transition-transform duration-300 hover:scale-105">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
+              <Image
+                src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
+                alt="Sparklines Studio Emblem"
+                fill
+                sizes="56px"
+                className="object-cover"
+                priority
+              />
             </div>
-            <p className="text-[8px] text-zinc-400 text-right">80% completed</p>
+            {/* Top specular glaze line */}
+            <span className="absolute top-0 inset-x-3 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none" />
           </div>
         </motion.div>
 
-        {/* Center Main Call to Action Content */}
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl sm:leading-tight"
-          >
-            Ready to take your product to the next level?
-          </motion.h2>
+        {/* Main Editorial Headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.14]"
+        >
+          Your service business, <br />
+          <span className="font-editorial italic font-normal text-zinc-800">
+            on one screen.
+          </span>
+        </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto mt-6 max-w-xl text-base text-zinc-600 sm:text-lg"
-          >
-            Whether launching a ground-breaking new startup or modernizing an existing flagship
-            platform, we’re here to help you ship faster and better.
-          </motion.p>
+        {/* Subtitle Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-lg text-zinc-600 max-w-2xl mx-auto font-sans leading-relaxed"
+        >
+          Leads, bespoke websites, video production, and client acquisition—all connected in
+          Sparklines Studio and visible in your Cockpit. Built to scale your design firm with predictable growth.
+        </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <Link
-              href="#contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+        {/* CTA Button Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3"
+        >
+          <Link href="#contact" className="w-full sm:w-auto">
+            <button
+              type="button"
+              className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-zinc-950/95 px-8 py-4 text-xs sm:text-sm font-semibold text-white shadow-[0_8px_25px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_10px_30px_rgba(249,87,33,0.38)] active:scale-95 group overflow-hidden cursor-pointer"
             >
               <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-              <span>Schedule a Discovery Call</span>
+              <span>Start your project</span>
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </motion.div>
-        </div>
+            </button>
+          </Link>
+
+          {/* Micro-copy Reassurance */}
+          <p className="text-[11px] sm:text-xs text-zinc-500 font-sans tracking-wide">
+            14-day consultation guarantee • Cancel anytime • Zero risk
+          </p>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+export default CtaFloatingSection;

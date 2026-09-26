@@ -53,11 +53,11 @@ export default function Home() {
         {/* Expertise Bento Grid */}
         {/* <ExpertiseBento />  */}
 
-        {/* Floating Creative CTA */}
-        <CtaFloatingSection />
-
         {/* Interactive Contact Form & Studio Details */}
         <ContactSection />
+
+        {/* Cloud CTA Section (At the last just before the footer) */}
+        <CtaFloatingSection />
       </main>
 
       {/* Scenic Wildflower Meadow Banner & Footer Links */}
