@@ -4,12 +4,11 @@ import {
   ClientLogos,
   AboutSection,
   OrangeBanner,
-  VideoTestimonialsSection,
+  TestimonialsSection,
   ServicesGridSection,
   PortfolioShowcaseSection,
   FeatureTabsSection,
   ExpertiseBento,
-  TestimonialsSection,
   CtaFloatingSection,
   ContactSection,
   BrandFooterBanner,
@@ -35,8 +34,8 @@ export default function Home() {
         {/* Full-width Video Explainer Banner */}
         <OrangeBanner />
 
-        {/* Video Testimonials Section ("Our Client Testimonials") */}
-        <VideoTestimonialsSection />
+        {/* Client Testimonials / Social Proof Slider */}
+        <TestimonialsSection />
 
         {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) */}
         <ServicesGridSection />
@@ -49,9 +48,6 @@ export default function Home() {
 
         {/* Expertise Bento Grid */}
         <ExpertiseBento />
-
-        {/* Praise From The Trenches / Testimonials */}
-        <TestimonialsSection />
 
         {/* Floating Creative CTA */}
         <CtaFloatingSection />

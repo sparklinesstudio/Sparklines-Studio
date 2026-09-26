@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 // =========================================================================
@@ -84,7 +83,7 @@ const testimonials = [
 ];
 
 // =========================================================================
-// MAIN COMPONENT: TestimonialsSection (Social Proof)
+// MAIN COMPONENT: TestimonialsSection (SocialProofSection)
 // =========================================================================
 
 export function TestimonialsSection() {
@@ -162,15 +161,11 @@ export function TestimonialsSection() {
               <div className="flex items-center justify-between mt-auto gap-2">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                   {testimonial.avatar ? (
-                    <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-blue-50 shrink-0">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        fill
-                        sizes="48px"
-                        className="object-cover"
-                      />
-                    </div>
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-blue-50 shrink-0"
+                    />
                   ) : (
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center border-2 border-blue-50 shrink-0 text-sm md:text-base">
                       {testimonial.initials}
@@ -201,3 +196,5 @@ export function TestimonialsSection() {
     </section>
   );
 }
+
+export default TestimonialsSection;
