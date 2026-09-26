@@ -2,7 +2,7 @@ export { HeaderNavigation } from "./HeaderNavigation";
 export { HeroSection } from "./HeroSection";
 export { ClientLogos } from "./ClientLogos";
 export { AboutSection } from "./AboutSection";
-export { OrangeBanner } from "./OrangeBanner";
+export { OrangeBanner, VideoBanner } from "./OrangeBanner";
 export { FeatureTabsSection } from "./FeatureTabsSection";
 export { ExpertiseBento } from "./ExpertiseBento";
 export { TestimonialsSection } from "./TestimonialsSection";

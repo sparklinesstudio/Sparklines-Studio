@@ -11,7 +11,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="relative bg-white py-20 lg:py-28 scroll-mt-24">
+    <section id="about" className="relative bg-white py-20 lg:py-12 scroll-mt-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <div className="flex items-center gap-2 mb-8">
