@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
 export interface TextTestimonial {
   id: string;
@@ -163,18 +163,22 @@ export function MarketingSocialProofSection() {
             ))}
           </div>
 
-          {/* Heading in Playfair Display serif matching screenshot */}
+          {/* Headline matching hero typography with bold sans and un-bold italic accent */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mx-auto max-w-2xl text-3xl font-normal tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-editorial leading-tight sm:leading-snug"
+            className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-sans leading-tight sm:leading-snug"
           >
-            Join hundreds of high-growth brands dominating their market
+            Join hundreds of{" "}
+            <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+              high-growth brands
+            </span>{" "}
+            dominating their market
           </motion.h2>
 
-          {/* Centered Black Pill CTA Button */}
+          {/* Unified Primary CTA Button (Matching Navbar Signature Style) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -184,9 +188,11 @@ export function MarketingSocialProofSection() {
           >
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-zinc-800 hover:shadow-lg active:scale-95 cursor-pointer"
+              className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3 sm:px-8 sm:py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_8px_24px_rgba(249,87,33,0.38)] hover:-translate-y-0.5 active:scale-95 group overflow-hidden cursor-pointer"
             >
-              Get Started
+              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+              <span>Get Started</span>
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>
         </div>
@@ -272,8 +278,11 @@ export function MarketingSocialProofSection() {
               <span className="text-xs font-semibold uppercase tracking-widest text-[#f95721]">
                 Verified Client Feedback
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 font-editorial mt-1">
-                Words from our partners
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 font-sans mt-1">
+                Words from our{" "}
+                <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+                  partners
+                </span>
               </h3>
             </div>
 

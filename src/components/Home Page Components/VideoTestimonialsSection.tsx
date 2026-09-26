@@ -72,10 +72,13 @@ export function VideoTestimonialsSection() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#f95721] mb-2 block">
               Client Stories & Impact
             </span>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl font-editorial">
-              Our Client Testimonials
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl font-sans">
+              Our Client{" "}
+              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+                Testimonials
+              </span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-xl">
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-xl font-sans font-medium">
               Hear directly from the founders and marketing leaders who scale and transform their
               brands with Sparklines Studio.
             </p>
