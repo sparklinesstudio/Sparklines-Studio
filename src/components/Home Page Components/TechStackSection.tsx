@@ -222,7 +222,7 @@ export function TechStackSection() {
 
             {/* Isometric 3D Stage Container */}
             <div
-              className="relative w-full max-w-[440px] sm:max-w-[480px] h-[260px] xs:h-[280px] sm:h-[320px] md:h-[350px] flex items-center justify-center"
+              className="relative w-full max-w-[480px] sm:max-w-[540px] lg:max-w-[580px] h-[290px] xs:h-[320px] sm:h-[360px] md:h-[390px] flex items-center justify-center"
               style={{
                 perspective: "1100px",
                 perspectiveOrigin: "50% 30%",
@@ -230,7 +230,7 @@ export function TechStackSection() {
             >
               {/* STACKED 3D PLATES CONTAINER */}
               <div
-                className="relative w-[240px] xs:w-[270px] sm:w-[330px] md:w-[360px] h-[170px] xs:h-[190px] sm:h-[220px] md:h-[240px] transition-transform duration-700 ease-out"
+                className="relative w-[270px] xs:w-[310px] sm:w-[370px] md:w-[410px] lg:w-[430px] h-[190px] xs:h-[220px] sm:h-[250px] md:h-[275px] lg:h-[285px] transition-transform duration-700 ease-out"
                 style={{
                   transformStyle: "preserve-3d",
                   transform: "rotateX(58deg) rotateZ(-38deg) rotateY(0deg)",
@@ -253,7 +253,7 @@ export function TechStackSection() {
                         duration: 0.5,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      className={`absolute inset-0 rounded-[22px] xs:rounded-[26px] sm:rounded-[32px] ${layer.plateBg} ${layer.plateBorder} border ${layer.plateShadow} p-3.5 xs:p-4 sm:p-6 flex flex-col justify-between cursor-pointer transition-shadow duration-300 hover:shadow-2xl`}
+                      className={`absolute inset-0 rounded-[24px] xs:rounded-[28px] sm:rounded-[36px] ${layer.plateBg} ${layer.plateBorder} border ${layer.plateShadow} p-4 xs:p-5 sm:p-7 flex flex-col justify-between cursor-pointer transition-shadow duration-300 hover:shadow-2xl`}
                       style={{
                         zIndex: stackConfig.zIndex,
                         transformStyle: "preserve-3d",
@@ -261,7 +261,7 @@ export function TechStackSection() {
                     >
                       {/* Surface Dot Matrix Pattern */}
                       <div
-                        className="pointer-events-none absolute inset-0 rounded-[22px] xs:rounded-[26px] sm:rounded-[32px]"
+                        className="pointer-events-none absolute inset-0 rounded-[24px] xs:rounded-[28px] sm:rounded-[36px]"
                         style={{
                           backgroundImage: `radial-gradient(${layer.dotColor} 1.2px, transparent 1.2px)`,
                           backgroundSize: "14px 14px",
@@ -270,19 +270,19 @@ export function TechStackSection() {
 
                       {/* Active Indicator Top Edge Light */}
                       {isTop && (
-                        <div className="pointer-events-none absolute inset-x-6 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                        <div className="pointer-events-none absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
                       )}
 
-                      {/* Surface App Icon Badges Grid */}
-                      <div className="relative z-10 grid grid-cols-4 gap-2 xs:gap-2.5 sm:gap-3 max-w-[90%] pt-0.5">
+                      {/* Surface App Icon Badges Grid (Enlarged Cards for Logos) */}
+                      <div className="relative z-10 grid grid-cols-4 gap-2.5 xs:gap-3 sm:gap-3.5 max-w-[90%] pt-0.5">
                         {layer.tools.map((tool) => (
                           <div
                             key={tool.name}
                             title={tool.name}
-                            className={`flex h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg xs:rounded-xl sm:rounded-2xl ${
+                            className={`flex h-11 w-11 xs:h-12 xs:w-12 sm:h-14 sm:w-14 lg:h-15 lg:w-15 items-center justify-center rounded-xl xs:rounded-2xl sm:rounded-[20px] ${
                               layer.id === "creative"
-                                ? "bg-zinc-900/90 border border-zinc-700/80 shadow-md p-1.5 xs:p-2"
-                                : "bg-white/95 border border-white/60 shadow-md p-1.5 xs:p-2"
+                                ? "bg-zinc-900/90 border border-zinc-700/80 shadow-md p-2 sm:p-2.5"
+                                : "bg-white/95 border border-white/60 shadow-md p-2 sm:p-2.5"
                             } transition-transform duration-200 hover:scale-110`}
                           >
                             <img
@@ -297,7 +297,7 @@ export function TechStackSection() {
 
                       {/* Front Edge Label */}
                       <div className="relative z-10 flex justify-end items-end pt-2 sm:pt-3">
-                        <span className={`text-[10px] xs:text-xs sm:text-sm font-semibold tracking-wide ${layer.labelColor}`}>
+                        <span className={`text-[11px] xs:text-xs sm:text-sm font-semibold tracking-wide ${layer.labelColor}`}>
                           {layer.plateLabel}
                         </span>
                       </div>
