@@ -75,17 +75,15 @@ export function AboutSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="group relative aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-100 shadow-xl">
+            <div className="group relative aspect-[4/5] w-full max-w-[520px] lg:max-w-none overflow-hidden rounded-3xl bg-zinc-100">
               <Image
                 src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790454553/founder-image.jpg"
                 alt="Sparklines Studio Founder"
                 fill
-                sizes="(max-width: 1024px) 100vw, 440px"
+                sizes="(max-width: 1024px) 100vw, 520px"
                 className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 priority
               />
-              {/* Subtle top reflection */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             </div>
           </motion.div>
         </div>
