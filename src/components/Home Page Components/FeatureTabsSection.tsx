@@ -92,7 +92,7 @@ export function FeatureTabsSection() {
   const currentFeature = features.find((f) => f.id === activeTab) || features[0];
 
   return (
-    <section id="features" className="relative bg-zinc-50/60 py-24 sm:py-32">
+    <section id="services" className="relative bg-zinc-50/60 py-24 sm:py-32 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl">

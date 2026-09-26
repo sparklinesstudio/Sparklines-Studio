@@ -1,28 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export function HeaderNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
-    { label: "Services", href: "#features" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Testimonials", href: "#testimonials" },
+    { label: "Works", href: "#works" },
+    { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-zinc-200/60 transition-all">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900 text-white shadow-sm transition-transform duration-300 group-hover:scale-105">
+    <div className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <header
+        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 ${
+          scrolled ? "iphone-glass-scrolled" : "iphone-glass"
+        }`}
+      >
+        {/* iPhone Specular Glass Highlight Ribbon on top edge */}
+        <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none rounded-full" />
+
+        {/* Brand Mark (Logo) */}
+        <Link
+          href="/"
+          className="flex items-center gap-2 sm:gap-2.5 rounded-full py-1 pr-2 text-zinc-900 transition-transform active:scale-95 group"
+        >
+          {/* Glassy logo badge */}
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-zinc-950 text-white shadow-[0_2px_8px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 group-hover:bg-[#f95721] group-hover:shadow-orange-500/25">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -30,85 +48,92 @@ export function HeaderNavigation() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-4 w-4 text-[#f95721]"
+              className="h-4 w-4 text-white"
             >
               <polyline points="3 17 9 11 13 15 21 7" />
               <polyline points="17 7 21 7 21 11" />
             </svg>
+            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full" />
           </div>
-          <span className="text-lg font-semibold tracking-tight text-zinc-900">
-            Sparklines<span className="text-zinc-500 font-normal ml-1">Studio</span>
+          <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-950">
+            Sparklines<span className="text-zinc-500 font-normal ml-0.5 hidden xs:inline">Studio</span>
           </span>
         </Link>
 
-        {/* Center Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
+        {/* Center Pill Navigation Links: About, Works, Services, Contact */}
+        <nav className="hidden md:flex items-center gap-1 rounded-full ios-segment p-1">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="relative transition-colors hover:text-zinc-950 py-1"
+              className="ios-segment-pill rounded-full px-4 py-1.5 text-xs font-semibold text-zinc-600 active:scale-95"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Right CTA */}
-        <div className="hidden sm:flex items-center gap-4">
+        {/* Right CTA Button (iPhone Crystal / Dynamic Island Glass Pill) */}
+        <div className="flex items-center gap-2">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-2.5 text-xs font-semibold tracking-wide text-white transition-all duration-200 hover:bg-zinc-800 hover:shadow-md hover:shadow-zinc-900/10 active:scale-95"
+            className="relative inline-flex items-center gap-1.5 rounded-full bg-zinc-950/95 px-4 py-2 sm:px-5 sm:py-2 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
           >
-            <span>Get in touch</span>
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+            <span>Let's Talk</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex md:hidden h-8 w-8 items-center justify-center rounded-full bg-white/80 border border-white/60 shadow-xs text-zinc-800 hover:bg-white active:scale-95 transition-all"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
         </div>
 
-        {/* Mobile menu trigger */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex md:hidden p-2 text-zinc-700 hover:text-zinc-900 rounded-lg hover:bg-zinc-100 transition-colors"
-          aria-label="Toggle Navigation Menu"
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-zinc-200 bg-white px-6 py-6 md:hidden"
-          >
-            <nav className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-700 hover:text-zinc-950"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="pt-2">
-                <Link
-                  href="#contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-zinc-900 py-3 text-sm font-semibold text-white"
-                >
-                  Get in touch
-                </Link>
+        {/* Mobile Dropdown Menu (iPhone Frosted Glass Card) */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.96 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              className="absolute top-full inset-x-0 mt-3 rounded-3xl iphone-glass-scrolled p-5 shadow-2xl md:hidden"
+            >
+              <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none rounded-full" />
+              <div className="flex flex-col space-y-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between rounded-2xl px-4 py-2.5 text-sm font-semibold text-zinc-800 hover:bg-white/80 active:bg-white/95 transition-colors"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-zinc-400">→</span>
+                  </Link>
+                ))}
+                <div className="pt-2 border-t border-black/5">
+                  <Link
+                    href="#contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="relative flex w-full items-center justify-center gap-2 rounded-full bg-[#f95721] py-3 text-xs font-bold text-white shadow-lg shadow-orange-500/25 active:scale-95 transition-all overflow-hidden"
+                  >
+                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+                    <span>Start a Project</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
               </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </div>
   );
 }

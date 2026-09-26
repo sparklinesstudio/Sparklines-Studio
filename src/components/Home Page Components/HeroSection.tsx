@@ -6,7 +6,7 @@ import { ArrowRight, Sparkles, TrendingUp, Smartphone, Layers, CheckCircle2 } fr
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden pt-12 pb-24 lg:pt-16 lg:pb-32 bg-white">
+    <section id="hero" className="relative overflow-hidden pt-28 pb-24 sm:pt-36 lg:pt-40 lg:pb-32 bg-white">
       {/* Background Soft Glows */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">
         <div className="h-[460px] w-full max-w-5xl bg-gradient-to-b from-sky-100/60 via-blue-50/30 to-transparent blur-3xl opacity-80" />
@@ -14,7 +14,7 @@ export function HeroSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Content */}
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           {/* Pill Badge */}
           <motion.div
             initial={{ opacity: 0, y: -12 }}
@@ -76,10 +76,11 @@ export function HeroSection() {
 
         {/* Floating Device / Project Showcase Ribbon */}
         <motion.div
+          id="works"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4, ease: "easeOut" }}
-          className="mt-16 sm:mt-20 overflow-hidden py-4"
+          className="mt-16 sm:mt-20 overflow-hidden py-4 scroll-mt-28"
         >
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 items-center justify-center">
             {/* Card 1: Mobile App Preview */}

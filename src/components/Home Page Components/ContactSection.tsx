@@ -18,7 +18,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative bg-white py-24 sm:py-32 border-t border-zinc-200/60">
+    <section id="contact" className="relative bg-white py-24 sm:py-32 border-t border-zinc-200/60 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Heading and Contact Information */}
