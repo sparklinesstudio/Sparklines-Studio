@@ -6,6 +6,7 @@ import {
   OrangeBanner,
   TestimonialsSection,
   ServicesGridSection,
+  TechStackSection,
   PortfolioShowcaseSection,
   FeatureTabsSection,
   ExpertiseBento,
@@ -40,14 +41,17 @@ export default function Home() {
         {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) */}
         <ServicesGridSection />
 
-        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
+        {/* 3-Tier Modern Production & Technology Stack (Photoshop/Creative, React/Next.js, SEMrush/Ads) */}
+        <TechStackSection />
+
+        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid)
         <PortfolioShowcaseSection />
 
         {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
-        <FeatureTabsSection />
+        {/* <FeatureTabsSection /> */}
 
         {/* Expertise Bento Grid */}
-        <ExpertiseBento />
+        {/* <ExpertiseBento />  */}
 
         {/* Floating Creative CTA */}
         <CtaFloatingSection />
