@@ -1,0 +1,11 @@
+export { HeaderNavigation } from "./HeaderNavigation";
+export { HeroSection } from "./HeroSection";
+export { ClientLogos } from "./ClientLogos";
+export { AboutSection } from "./AboutSection";
+export { OrangeBanner } from "./OrangeBanner";
+export { FeatureTabsSection } from "./FeatureTabsSection";
+export { ExpertiseBento } from "./ExpertiseBento";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { CtaFloatingSection } from "./CtaFloatingSection";
+export { ContactSection } from "./ContactSection";
+export { BrandFooterBanner } from "./BrandFooterBanner";

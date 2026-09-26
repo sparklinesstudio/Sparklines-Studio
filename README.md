@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sparklines Studio ⚡
 
-## Getting Started
+A high-performance digital product and design agency website built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion**.
 
-First, run the development server:
+---
 
+## 🚀 Getting Started
+
+Ensure you have [Node.js](https://nodejs.org) (v20+) and [pnpm](https://pnpm.io) installed.
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Run the Development Server
+```bash
+pnpm dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Production Build
+```bash
+pnpm build
+pnpm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Project & Component Structure
 
-To learn more about Next.js, take a look at the following resources:
+All homepage sections have been modularized under `src/components/Home Page Components/`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── globals.css                       # Modern light theme with editorial serif, orange accents & glassmorphism
+│   ├── layout.tsx                        # Root layout with Geist & Playfair Display fonts, SEO metadata
+│   └── page.tsx                          # Assembles all Home Page Components
+├── components/
+│   ├── Home Page Components/             # Modular section components matching design mockup
+│   │   ├── HeaderNavigation.tsx          # Sticky navigation with brand logo, links, and CTA pill
+│   │   ├── HeroSection.tsx               # Headline, editorial styling, orange CTA, and floating device showcase
+│   │   ├── ClientLogos.tsx               # Trusted partner logos (FeedHive, MONSTER, Spotify, etc.)
+│   │   ├── AboutSection.tsx              # About statement, 2-column narrative, and 4 key metric counters
+│   │   ├── OrangeBanner.tsx              # Luminous orange 12-year anniversary experience banner
+│   │   ├── FeatureTabsSection.tsx        # Interactive on-demand capabilities & live animated sparklines chart
+│   │   ├── ExpertiseBento.tsx            # 6-card bento grid with senior team & architecture guarantees
+│   │   ├── TestimonialsSection.tsx       # 3-part testimonial layout with founder portrait & 95% ROI card
+│   │   ├── CtaFloatingSection.tsx        # Pre-CTA with floating creative badges & discovery call button
+│   │   ├── ContactSection.tsx            # Direct contact details & interactive form
+│   │   ├── BrandFooterBanner.tsx         # Scenic wildflower meadow banner with giant typography & footer links
+│   │   └── index.ts                      # Barrel export file
+│   └── ui/                               # Reusable atomic UI components (Button, Logo, etc.)
+├── config/
+│   └── site.ts                           # Brand details, site navigation, and social links
+└── lib/
+    └── utils.ts                          # cn helper (clsx + tailwind-merge)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🎨 Design Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Typography**: Combined sans-serif (Geist) for clean UI and editorial serif (Playfair Display) for italic accents.
+- **Color Palette**: Minimalist crisp background with vibrant digital orange (`#f95721`) accents and warm gradients.
+- **Animations**: Silky smooth enter animations, staggered reveals, floating cards (`framer-motion`), and interactive tabs.
+- **Performance**: 100/100 Core Web Vitals ready, Next.js static prerendering, and Turbopack support.
