@@ -12,9 +12,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --font-serif: var(--font-playfair);
+  --font-display: var(--font-playfair);
+  --font-playfair: var(--font-playfair);
   --color-accent-orange: #f95721;
   --color-accent-orange-hover: #ea4b16;
   --color-accent-orange-light: #fff5ed;
@@ -27,13 +28,15 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-.font-editorial {
-  font-family: var(--font-serif), Georgia, serif;
+.font-editorial,
+.font-display,
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 ::selection {
@@ -43,27 +46,27 @@ body {
 
 /* iPhone / iOS Liquid Frosted Glass Specular Styling */
 .iphone-glass {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.90);
   box-shadow: 
-    0 12px 32px -4px rgba(0, 0, 0, 0.07),
-    0 2px 6px 0 rgba(0, 0, 0, 0.03),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+    0 12px 32px -4px rgba(0, 0, 0, 0.08),
+    0 2px 8px 0 rgba(0, 0, 0, 0.03),
+    inset 0 1.5px 1px 0 #ffffff,
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 .iphone-glass-scrolled {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid #ffffff;
   box-shadow: 
-    0 16px 38px -4px rgba(0, 0, 0, 0.09),
+    0 16px 40px -4px rgba(0, 0, 0, 0.11),
     0 4px 10px 0 rgba(0, 0, 0, 0.04),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+    inset 0 1.5px 1.5px 0 #ffffff,
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 /* iPhone segmented control button */

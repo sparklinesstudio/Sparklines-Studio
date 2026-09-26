@@ -1,9 +1,10 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Add any new image URLs here; they are automatically looped into the continuous carousel!
 export const heroShowcasePosts: string[] = [
@@ -18,15 +19,59 @@ export const heroShowcasePosts: string[] = [
 ];
 
 export function HeroSection() {
-  // Duplicate array so it loops smoothly from 0% to -50% without any jump
-  const loopImages = [...heroShowcasePosts, ...heroShowcasePosts];
-  // Calculate dynamic animation duration based on image count so speed is consistently smooth
-  const carouselDuration = Math.max(heroShowcasePosts.length * 3.8, 24);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Duplicate images for a seamless loop
+  const loopImages = [
+    ...heroShowcasePosts,
+    ...heroShowcasePosts,
+    ...heroShowcasePosts,
+  ];
+
+  // Dynamic animation duration based on image count so speed is consistently smooth
+  const carouselDuration = Math.max(heroShowcasePosts.length * 4.5, 30);
+
+  // Dynamic upward curve computation: cards bend upwards towards left and right ends
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const updateCurves = () => {
+      if (!containerRef.current) return;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const centerX = containerRect.left + containerRect.width / 2;
+      const halfWidth = containerRect.width / 2;
+
+      cardRefs.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+
+        // Calculate normalized distance from screen center (-1 to +1)
+        const cardCenter = rect.left + rect.width / 2;
+        const dist = (cardCenter - centerX) / (halfWidth || 1);
+
+        // Parabolic upward curve (smile shape):
+        // Center: dist = 0 -> curveY = 0px
+        // Left & right ends: dist = ±1 -> curveY ≈ -42px (curved upwards!)
+        const curveY = Math.pow(dist, 2) * -42;
+        // Tangent rotation along the upward curve
+        const rotate = Math.max(-6, Math.min(6, dist * 4.5));
+
+        card.style.setProperty("--curve-y", `${curveY}px`);
+        card.style.setProperty("--curve-rotate", `${rotate}deg`);
+      });
+
+      animationFrameId = requestAnimationFrame(updateCurves);
+    };
+
+    animationFrameId = requestAnimationFrame(updateCurves);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
 
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pt-28 pb-20 sm:pt-36 lg:pt-40 lg:pb-28 bg-gradient-to-b from-blue-400 via-gray-50 via-38% to-white"
+      className="relative overflow-hidden pt-24 pb-8 sm:pt-32 sm:pb-10 lg:pt-36 lg:pb-12 bg-gradient-to-b from-blue-400 via-gray-50 via-38% to-white"
     >
       {/* Ambient Top Glow Layer */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-96 -z-10 bg-radial from-white/40 via-transparent to-transparent opacity-80" />
@@ -39,7 +84,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-white/80 px-4 py-1.5 text-xs font-medium text-orange-950 shadow-sm backdrop-blur-md"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-white/90 px-4 py-1.5 text-xs font-medium text-orange-950 shadow-sm backdrop-blur-md"
           >
             <span className="flex h-2 w-2 rounded-full bg-[#f95721] animate-pulse" />
             <span className="text-zinc-800 font-semibold">
@@ -70,7 +115,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="mt-6 max-w-xl text-base text-zinc-700 sm:text-lg leading-relaxed font-medium"
+            className="mt-5 max-w-xl text-base text-zinc-700 sm:text-lg leading-relaxed font-medium"
           >
             We partner with visionary founders and scaling brands to craft intuitive websites,
             scalable web applications, and unforgettable digital experiences.
@@ -81,7 +126,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8"
+            className="mt-6 sm:mt-7"
           >
             <Link
               href="#contact"
@@ -94,82 +139,60 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Endless Non-Stop Carousel with Inward Curve */}
+      {/* Endless Non-Stop Carousel with Inward Upward Curve */}
       <motion.div
         id="works"
-        initial={{ opacity: 0, y: 40 }}
+        ref={containerRef}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.45, ease: "easeOut" }}
-        className="relative mt-16 sm:mt-24 w-full overflow-hidden scroll-mt-28"
+        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        className="relative mt-6 sm:mt-8 w-full overflow-hidden scroll-mt-28 pt-10 pb-4"
       >
-        {/* Inward Curve 3D Perspective Stage */}
-        <div
-          className="relative mx-auto w-full py-6 [perspective:1400px]"
-          style={{
-            perspectiveOrigin: "center top",
-          }}
-        >
-          {/* Subtle Left & Right Soft Edge Fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-36 bg-gradient-to-r from-white via-white/80 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-36 bg-gradient-to-l from-white via-white/80 to-transparent" />
+        {/* Subtle Left & Right Soft Edge Fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent" />
 
-          {/* Curved Stage with Cylindrical Inward Tilt */}
-          <div
-            className="[transform-style:preserve-3d] transition-transform duration-700"
-            style={{
-              transform: "rotateX(7deg) scale(0.985)",
+        {/* Continuous Marquee Track */}
+        <div className="group/track relative flex w-full">
+          <motion.div
+            className="flex w-max items-center gap-5 sm:gap-6 py-4 group-hover/track:[animation-play-state:paused]"
+            animate={{ x: ["0%", "-33.333%"] }}
+            transition={{
+              ease: "linear",
+              duration: carouselDuration,
+              repeat: Infinity,
             }}
           >
-            {/* Infinite Non-Stop Sliding Track */}
-            <motion.div
-              className="flex w-max items-center gap-5 sm:gap-7"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                ease: "linear",
-                duration: carouselDuration,
-                repeat: Infinity,
-              }}
-            >
-              {loopImages.map((src, index) => (
-                <div
-                  key={`${src}-${index}`}
-                  className="group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-2.5 shadow-[0_12px_36px_rgba(0,0,0,0.07)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_45px_rgba(249,87,33,0.15)] hover:border-orange-300"
-                  style={{
-                    transform: "translateZ(0)",
-                  }}
-                >
-                  {/* Aspect-Ratio Card for Post Artwork */}
-                  <div className="relative h-[280px] w-[210px] sm:h-[370px] sm:w-[275px] md:h-[410px] md:w-[305px] overflow-hidden rounded-2xl bg-zinc-100">
-                    <Image
-                      src={src}
-                      alt={`Sparklines Studio creative work #${(index % heroShowcasePosts.length) + 1}`}
-                      fill
-                      sizes="(max-width: 640px) 210px, (max-width: 768px) 275px, 305px"
-                      priority={index < 4}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-
-                    {/* Subtle Glassmorphic Sheen on Hover */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                    {/* Badge on Hover */}
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <span className="rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-zinc-900 shadow-sm backdrop-blur-md">
-                        Project #{(index % heroShowcasePosts.length) + 1}
-                      </span>
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#f95721] text-white shadow-sm">
-                        <ArrowRight className="h-3 w-3" />
-                      </span>
-                    </div>
-                  </div>
+            {loopImages.map((src, index) => (
+              <div
+                key={`${src}-${index}`}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+                className="group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.06)] transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-2 hover:shadow-[0_22px_45px_rgba(0,0,0,0.12)] hover:border-orange-300 will-change-transform"
+                style={{
+                  transform:
+                    "translateY(var(--curve-y, 0px)) rotate(var(--curve-rotate, 0deg))",
+                }}
+              >
+                {/* Artwork Container without separate image scale or hover badges */}
+                <div className="relative h-[270px] w-[205px] sm:h-[350px] sm:w-[265px] md:h-[390px] md:w-[295px] overflow-hidden rounded-2xl bg-zinc-100">
+                  <Image
+                    src={src}
+                    alt={`Sparklines Studio creative work #${(index % heroShowcasePosts.length) + 1}`}
+                    fill
+                    sizes="(max-width: 640px) 205px, (max-width: 768px) 265px, 295px"
+                    priority={index < 4}
+                    className="object-cover"
+                  />
                 </div>
-              ))}
-            </motion.div>
-          </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Inward Arch Bottom Glow / Silhouette curve */}
-        <div className="pointer-events-none mx-auto -mt-6 h-8 max-w-4xl rounded-[100%] bg-gradient-to-b from-orange-500/10 to-transparent blur-xl" />
+        {/* Upward Arc Ambient Silhouette Line echoing the curve */}
+        <div className="pointer-events-none mx-auto -mt-2 h-10 max-w-5xl rounded-[100%] border-b border-orange-500/10 opacity-70" />
       </motion.div>
     </section>
   );
