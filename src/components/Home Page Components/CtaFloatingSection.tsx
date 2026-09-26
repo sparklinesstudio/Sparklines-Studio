@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles, Check, Heart, Shield } from "lucide-react";
+import { ArrowRight, Sparkles, Check, Heart, Shield } from "lucide-react";
 
 export function CtaFloatingSection() {
   return (
@@ -96,12 +96,9 @@ export function CtaFloatingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl sm:leading-tight font-sans"
+            className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl sm:leading-tight"
           >
-            Ready to take your product to the{" "}
-            <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-              next level?
-            </span>
+            Ready to take your product to the next level?
           </motion.h2>
 
           <motion.p
@@ -109,7 +106,7 @@ export function CtaFloatingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto mt-6 max-w-xl text-base text-zinc-600 sm:text-lg font-sans font-medium"
+            className="mx-auto mt-6 max-w-xl text-base text-zinc-600 sm:text-lg"
           >
             Whether launching a ground-breaking new startup or modernizing an existing flagship
             platform, we’re here to help you ship faster and better.
@@ -124,11 +121,10 @@ export function CtaFloatingSection() {
           >
             <Link
               href="#contact"
-              className="group relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3 sm:px-8 sm:py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_8px_24px_rgba(249,87,33,0.38)] hover:-translate-y-0.5 active:scale-95 overflow-hidden cursor-pointer"
+              className="inline-flex items-center gap-2.5 rounded-full bg-[#f95721] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all duration-300 hover:bg-[#ea4b16] hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
             >
-              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
               <span>Schedule a Discovery Call</span>
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
         </div>

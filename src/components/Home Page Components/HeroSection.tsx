@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 // Add any new image URLs here; they are automatically looped into the continuous carousel!
 export const heroShowcasePosts: string[] = [
@@ -121,7 +121,7 @@ export function HeroSection() {
             scalable web applications, and unforgettable digital experiences.
           </motion.p>
 
-          {/* Unified Primary CTA Button (Matching Navbar Signature Style) */}
+          {/* Primary Orange CTA Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -130,11 +130,10 @@ export function HeroSection() {
           >
             <Link
               href="#contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3 sm:px-8 sm:py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_8px_24px_rgba(249,87,33,0.38)] hover:-translate-y-0.5 active:scale-95 group overflow-hidden"
+              className="group relative inline-flex items-center gap-2.5 rounded-full bg-[#f95721] px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-orange-500/25 transition-all duration-300 hover:bg-[#ea4b16] hover:shadow-2xl hover:shadow-orange-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
             >
-              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
               <span>Let's work together</span>
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>

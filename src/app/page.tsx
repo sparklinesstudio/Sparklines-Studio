@@ -5,7 +5,7 @@ import {
   AboutSection,
   OrangeBanner,
   VideoTestimonialsSection,
-  MarketingSocialProofSection,
+  PortfolioShowcaseSection,
   FeatureTabsSection,
   ExpertiseBento,
   TestimonialsSection,
@@ -26,7 +26,7 @@ export default function Home() {
         <HeroSection />
 
         {/* Trusted Client / Brand Logos */}
-        <ClientLogos />
+        {/* <ClientLogos /> */}
 
         {/* About Agency & Key Metrics */}
         <AboutSection />
@@ -37,8 +37,8 @@ export default function Home() {
         {/* Video Testimonials Section ("Our Client Testimonials") */}
         <VideoTestimonialsSection />
 
-        {/* Marketing Social Proof: Floating Avatars + 3 Orange Metric Cards + Blurred Sides Review Carousel */}
-        <MarketingSocialProofSection />
+        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
+        <PortfolioShowcaseSection />
 
         {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
         <FeatureTabsSection />

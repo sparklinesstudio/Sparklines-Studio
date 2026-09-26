@@ -122,11 +122,11 @@ export function HeaderNavigation() {
                   <Link
                     href="#contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="relative flex w-full items-center justify-center gap-2 rounded-full bg-zinc-950/95 py-3 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 transition-all overflow-hidden group"
+                    className="relative flex w-full items-center justify-center gap-2 rounded-full bg-[#f95721] py-3 text-xs font-bold text-white shadow-lg shadow-orange-500/25 active:scale-95 transition-all overflow-hidden"
                   >
-                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-                    <span>Let's Talk</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+                    <span>Start a Project</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

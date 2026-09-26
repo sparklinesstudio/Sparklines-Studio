@@ -52,8 +52,12 @@ export function ClientLogos() {
   };
 
   return (
-    <section className="border-y border-zinc-100 bg-white py-8 sm:py-12 overflow-hidden font-sans">
+    <section className="border-y border-zinc-100 bg-white py-10 sm:py-14 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-8 sm:mb-10">
+          Trusted by fast-growing startups and industry innovators
+        </p>
+
         {/* Brand Logos Row with Black & White Filter and Full Color on Hover */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
           {logos.map((logo, idx) => {
@@ -102,7 +106,7 @@ function renderLogoContent(
     return (
       <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/50 shadow-xs grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-300">
         <div className="h-2.5 w-2.5 rounded-full bg-[#f95721]" />
-        <span className="text-sm sm:text-base font-bold font-sans tracking-tight text-zinc-800 group-hover:text-[#f95721] transition-colors">
+        <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-800 group-hover:text-[#f95721] transition-colors">
           {logo.name}
         </span>
       </div>

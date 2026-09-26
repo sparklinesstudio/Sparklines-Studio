@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 
 export interface VideoTestimonial {
@@ -17,7 +18,7 @@ export function VideoTestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeModalVideo, setActiveModalVideo] = useState<VideoTestimonial | null>(null);
 
-  // Reliable dummy posters for studio broadcast / founder interview cards
+  // Easily customize the video URL and poster image for each testimonial here!
   const testimonials: VideoTestimonial[] = [
     {
       id: "testimonial-1",
@@ -25,7 +26,7 @@ export function VideoTestimonialsSection() {
       clientRole: "Founder & CEO",
       company: "Veloce Technologies",
       posterUrl:
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80",
       videoUrl:
         "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     },
@@ -35,7 +36,7 @@ export function VideoTestimonialsSection() {
       clientRole: "Chief Technology Officer",
       company: "Aura Creative",
       posterUrl:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=80",
       videoUrl:
         "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     },
@@ -45,7 +46,7 @@ export function VideoTestimonialsSection() {
       clientRole: "Head of Product Design",
       company: "Lumina Labs",
       posterUrl:
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=80",
       videoUrl:
         "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     },
@@ -66,25 +67,22 @@ export function VideoTestimonialsSection() {
   return (
     <section className="relative bg-white py-16 sm:py-24 border-b border-zinc-100 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Professional Title on Left, Circular Arrows on Right */}
+        {/* Section Header: Professional Meaningful Title on Left, Circular Arrows on Right */}
         <div className="flex items-end justify-between gap-4 mb-8 sm:mb-12">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-[#f95721] mb-2 block">
               Client Stories & Impact
             </span>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl font-sans">
-              Our Client{" "}
-              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-                Testimonials
-              </span>
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl font-editorial">
+              Our Client Testimonials
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-xl font-sans font-medium">
-              Hear directly from the founders and marketing leaders who scale and transform their
-              brands with Sparklines Studio.
+            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-xl">
+              Hear directly from the founders and engineering leads who build, scale, and transform
+              their digital products with Sparklines Studio.
             </p>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows matching reference design */}
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <button
               type="button"
@@ -128,22 +126,23 @@ export function VideoTestimonialsSection() {
                       : "w-[88vw] sm:w-[680px] md:w-[780px] opacity-80 scale-[0.98]"
                   }`}
                 >
-                  {/* Clean Poster Card: purely the poster picture and centered play button */}
+                  {/* Clean Poster Card: purely the poster image and a centered play button */}
                   <div
                     onClick={() => handleOpenVideo(item)}
-                    className="group relative aspect-[16/10] sm:aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-900 shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-orange-300"
+                    className="group relative aspect-[16/10] sm:aspect-[16/9] w-full cursor-pointer overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-950 shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-orange-300"
                   >
-                    {/* Dummy Poster Image with fallback */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    {/* High-Resolution Poster Image */}
+                    <Image
                       src={item.posterUrl}
                       alt={`Testimonial poster - ${item.clientName}`}
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 640px) 88vw, (max-width: 1024px) 680px, 780px"
+                      priority={idx === 0}
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
 
-                    {/* Subtle Cinematic Vignette for Depth */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 transition-opacity duration-300 group-hover:opacity-80" />
+                    {/* Subtle Cinematic Shading for Depth */}
+                    <div className="pointer-events-none absolute inset-0 bg-black/20 transition-opacity duration-300 group-hover:bg-black/15" />
 
                     {/* Central Play Button matching reference image */}
                     <div className="absolute inset-0 flex items-center justify-center">
