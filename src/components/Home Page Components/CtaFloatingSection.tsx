@@ -8,20 +8,23 @@ import { ArrowUpRight } from "lucide-react";
 
 export function CtaFloatingSection() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32 lg:py-40 flex items-center justify-center">
-      {/* Background Cloud Image */}
-      <div className="absolute inset-0 -z-10">
+    <section
+      className="relative isolate overflow-hidden py-24 sm:py-32 lg:py-40 flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://res.cloudinary.com/vt5gqi1c/image/upload/v1790461624/smoky-watercolor-cloud-background.jpg')",
+      }}
+    >
+      {/* Absolute Full Bleed Image Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790461624/smoky-watercolor-cloud-background.jpg"
-          alt="Cloud background"
-          className="h-full w-full object-cover object-center filter saturate-110"
+          alt="Smoky Watercolor Cloud Background"
+          className="h-full w-full object-cover object-center"
         />
-        {/* Soft top and bottom fade overlay for seamless page integration */}
-        <div className="absolute inset-x-0 top-0 h-20 sm:h-28 bg-gradient-to-b from-white via-white/40 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
       </div>
 
-      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         {/* Top Centered Brand Emblem Badge */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -30,7 +33,7 @@ export function CtaFloatingSection() {
           transition={{ duration: 0.5 }}
           className="flex justify-center mb-6 sm:mb-8"
         >
-          <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-[22px] bg-white/90 p-2 shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-white/80 backdrop-blur-md transition-transform duration-300 hover:scale-105">
+          <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-[22px] bg-white/95 p-2 shadow-[0_12px_30px_rgba(0,0,0,0.1)] border border-white/80 backdrop-blur-md transition-transform duration-300 hover:scale-105">
             <div className="relative h-full w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
               <Image
                 src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
@@ -66,7 +69,7 @@ export function CtaFloatingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-lg text-zinc-600 max-w-2xl mx-auto font-sans leading-relaxed"
+          className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-lg text-zinc-700 max-w-2xl mx-auto font-sans leading-relaxed"
         >
           Leads, bespoke websites, video production, and client acquisition—all connected in
           Sparklines Studio and visible in your Cockpit. Built to scale your design firm with predictable growth.
@@ -92,7 +95,7 @@ export function CtaFloatingSection() {
           </Link>
 
           {/* Micro-copy Reassurance */}
-          <p className="text-[11px] sm:text-xs text-zinc-500 font-sans tracking-wide">
+          <p className="text-[11px] sm:text-xs text-zinc-600 font-sans tracking-wide">
             14-day consultation guarantee • Cancel anytime • Zero risk
           </p>
         </motion.div>
