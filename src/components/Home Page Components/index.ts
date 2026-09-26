@@ -10,4 +10,5 @@ export { ExpertiseBento } from "./ExpertiseBento";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { CtaFloatingSection } from "./CtaFloatingSection";
 export { ContactSection } from "./ContactSection";
+export { ServicesGridSection } from "./ServicesGridSection";
 export { BrandFooterBanner } from "./BrandFooterBanner";

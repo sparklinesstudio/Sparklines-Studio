@@ -5,6 +5,7 @@ import {
   AboutSection,
   OrangeBanner,
   VideoTestimonialsSection,
+  ServicesGridSection,
   PortfolioShowcaseSection,
   FeatureTabsSection,
   ExpertiseBento,
@@ -36,6 +37,9 @@ export default function Home() {
 
         {/* Video Testimonials Section ("Our Client Testimonials") */}
         <VideoTestimonialsSection />
+
+        {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) */}
+        <ServicesGridSection />
 
         {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
         <PortfolioShowcaseSection />
