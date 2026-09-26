@@ -8,14 +8,14 @@ import { ArrowUpRight } from "lucide-react";
 
 // Add any new image URLs here; they are automatically looped into the continuous carousel!
 export const heroShowcasePosts: string[] = [
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
-  "https://i.pinimg.com/736x/ca/b0/3c/cab03c121d96f013bde500c5df8e2278.jpg",
+  "https://i.pinimg.com/736x/20/4f/2b/204f2bad9d4e2652f5bb09b70d95d506.jpg",
+  "https://i.pinimg.com/736x/05/f4/ad/05f4adff1006437e991eec1583280756.jpg",
+  "https://i.pinimg.com/736x/dd/2c/fe/dd2cfe716a89c80033557bc639cb62bc.jpg",
+  "https://i.pinimg.com/1200x/5c/af/ce/5cafce949cf39a1142b07159e49d526a.jpg",
+  "https://i.pinimg.com/1200x/f2/9c/18/f29c185315c686d1aec81a932c0de607.jpg",
+  "https://i.pinimg.com/736x/5e/79/03/5e7903c05db68c4ca299ca030b558846.jpg",
+  "https://i.pinimg.com/1200x/07/8e/32/078e32e188a4629a61f35f508a066f24.jpg",
+  "https://i.pinimg.com/736x/b9/2e/6f/b92e6fa249e98df9344148ba555a29db.jpg",
 ];
 
 export function HeroSection() {

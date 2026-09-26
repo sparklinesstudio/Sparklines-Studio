@@ -55,10 +55,10 @@ export function ContactSection() {
                 <div>
                   <p className="text-[11px] text-zinc-400 font-medium">Direct Email</p>
                   <a
-                    href="mailto:hello@sparklines.studio"
-                    className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors"
+                    href="mailto:sparklinestudio.agency@gmail.com"
+                    className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors break-all"
                   >
-                    hello@sparklines.studio
+                    sparklinestudio.agency@gmail.com
                   </a>
                 </div>
               </div>
@@ -69,7 +69,21 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="text-[11px] text-zinc-400 font-medium">Direct Line</p>
-                  <p className="font-semibold text-zinc-900">+1 (415) 890-3420</p>
+                  <div className="flex flex-col sm:flex-row sm:gap-3">
+                    <a
+                      href="tel:9641861932"
+                      className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors"
+                    >
+                      +91 9641861932
+                    </a>
+                    <span className="hidden sm:inline text-zinc-300">•</span>
+                    <a
+                      href="tel:8001520236"
+                      className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors"
+                    >
+                      +91 8001520236
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -80,7 +94,7 @@ export function ContactSection() {
                 <div>
                   <p className="text-[11px] text-zinc-400 font-medium">Headquarters</p>
                   <p className="font-semibold text-zinc-900">
-                    San Francisco, CA • Distributed Worldwide
+                    Kolkata, West Bengal, India
                   </p>
                 </div>
               </div>

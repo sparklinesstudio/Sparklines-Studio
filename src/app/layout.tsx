@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     "UI/UX Design",
     "Product Engineering",
   ],
+  icons: {
+    icon: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
+    shortcut: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
+    apple: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
+  },
   openGraph: {
     title: "Sparklines Studio — Building High-Impact Digital Products",
     description:

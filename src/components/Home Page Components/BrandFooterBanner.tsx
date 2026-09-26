@@ -10,7 +10,7 @@ import {
   Copy,
   Check,
   Mail,
-  Sparkles,
+  Phone,
 } from "lucide-react";
 
 export function BrandFooterBanner() {
@@ -20,7 +20,7 @@ export function BrandFooterBanner() {
   const [subscribed, setSubscribed] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("hello@sparklines.studio");
+    navigator.clipboard.writeText("sparklinestudio.agency@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -50,17 +50,17 @@ export function BrandFooterBanner() {
 
   const company = [
     { label: "About Sparklines", href: "#about" },
-    { label: "Our Creative Stack", href: "#features" },
+    { label: "Our Creative Stack", href: "#tech-stack" },
     { label: "Client Showcase", href: "#work" },
     { label: "Wall of Love", href: "#testimonials" },
-    { label: "Careers", href: "#contact", badge: "Hiring" },
+    { label: "Careers", href: "#contact" },
     { label: "Contact Us", href: "#contact" },
   ];
 
   const resources = [
     { label: "Agency ROI Calculator", href: "#contact" },
-    { label: "Modern Stack Blueprint", href: "#features" },
-    { label: "SEO Performance Checklist", href: "#features" },
+    { label: "Modern Stack Blueprint", href: "#tech-stack" },
+    { label: "SEO Performance Checklist", href: "#tech-stack" },
     { label: "Brand Guidelines & Press Kit", href: "#about" },
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
@@ -96,17 +96,6 @@ export function BrandFooterBanner() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 sm:pb-20 border-b border-zinc-200/80 items-start">
           {/* Left Hero Statement & Direct Actions */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Live Client Capacity Status Badge */}
-            <div className="inline-flex items-center gap-2.5 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 text-xs text-emerald-800 mb-6 shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span className="font-medium tracking-wide">
-                Booking Open for Q4 & 2026 — 2 spots open
-              </span>
-            </div>
-
             {/* Editorial Heading */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.15]">
               Let&apos;s build something <br />
@@ -142,7 +131,7 @@ export function BrandFooterBanner() {
                 title="Click to copy email address"
               >
                 <Mail className="h-4 w-4 text-[#f95721]" />
-                <span>hello@sparklines.studio</span>
+                <span>sparklinestudio.agency@gmail.com</span>
                 {copied ? (
                   <span className="inline-flex items-center gap-1 text-emerald-600 text-xs ml-1 font-semibold">
                     <Check className="h-3.5 w-3.5" /> Copied
@@ -151,19 +140,24 @@ export function BrandFooterBanner() {
                   <Copy className="h-3.5 w-3.5 text-zinc-400 hover:text-zinc-700 ml-1" />
                 )}
               </button>
+
+              {/* Direct Phone Call Button */}
+              <a
+                href="tel:9641861932"
+                className="inline-flex items-center gap-2 rounded-full bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-200/90 px-4 py-3.5 text-xs sm:text-sm font-medium text-zinc-800 hover:text-zinc-950 transition-all duration-200 active:scale-95 cursor-pointer shadow-xs"
+                title="Call +91 9641861932"
+              >
+                <Phone className="h-4 w-4 text-[#f95721]" />
+                <span>9641861932</span>
+              </a>
             </div>
           </div>
 
           {/* Right Newsletter & Quarterly Briefing Card */}
           <div className="lg:col-span-5 w-full">
             <div className="relative rounded-2xl bg-zinc-50 border border-zinc-200/90 p-6 sm:p-8 shadow-xs overflow-hidden">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#f95721]">
-                <Sparkles className="h-4 w-4" />
-                <span>The Studio Dispatch</span>
-              </div>
-
-              <h3 className="mt-2 text-lg sm:text-xl font-bold text-zinc-950 tracking-tight">
-                Insights for ambitious scale-ups
+              <h3 className="text-lg sm:text-xl font-bold text-zinc-950 tracking-tight">
+                The Studio Dispatch
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-zinc-600 leading-relaxed">
                 Bi-weekly playbooks on modern design engineering, high-converting video, and paid media ROI. No spam, ever.
@@ -244,24 +238,19 @@ export function BrandFooterBanner() {
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm">
               {company.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2">
+                <li key={idx}>
                   <Link
                     href={item.href}
                     className="text-zinc-600 hover:text-[#f95721] transition-colors duration-200"
                   >
                     {item.label}
                   </Link>
-                  {item.badge && (
-                    <span className="rounded-full bg-orange-50 border border-orange-200/80 px-2 py-0.5 text-[10px] font-semibold text-[#f95721]">
-                      {item.badge}
-                    </span>
-                  )}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Resources & Trust */}
+          {/* Column 3: Resources */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-900 mb-4">
               Resources
@@ -280,24 +269,48 @@ export function BrandFooterBanner() {
             </ul>
           </div>
 
-          {/* Column 4: Global Studios & Connect */}
+          {/* Column 4: Kolkata HQ & Contact */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-900 mb-4">
               Studios & Connect
             </h4>
             <div className="space-y-4 text-xs sm:text-sm text-zinc-600">
               <div>
-                <p className="font-medium text-zinc-900">Bangalore HQ</p>
-                <p className="text-zinc-500 text-xs">Indiranagar, Bangalore, India</p>
+                <p className="font-semibold text-zinc-900">Kolkata HQ</p>
+                <p className="text-zinc-500 text-xs">Kolkata, West Bengal, India</p>
               </div>
+
               <div>
-                <p className="font-medium text-zinc-900">Studio Hours</p>
-                <p className="text-zinc-500 text-xs">Mon – Fri · 9:00 AM – 7:00 PM IST</p>
+                <p className="font-semibold text-zinc-900">Direct Phone</p>
+                <div className="flex flex-col gap-1 mt-1 text-xs sm:text-sm">
+                  <a
+                    href="tel:9641861932"
+                    className="text-zinc-600 hover:text-[#f95721] transition-colors font-medium"
+                  >
+                    +91 9641861932
+                  </a>
+                  <a
+                    href="tel:8001520236"
+                    className="text-zinc-600 hover:text-[#f95721] transition-colors font-medium"
+                  >
+                    +91 8001520236
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <p className="font-semibold text-zinc-900">Email Inquiries</p>
+                <a
+                  href="mailto:sparklinestudio.agency@gmail.com"
+                  className="text-zinc-600 hover:text-[#f95721] transition-colors text-xs break-all"
+                >
+                  sparklinestudio.agency@gmail.com
+                </a>
               </div>
 
               {/* Social Channels List */}
-              <div className="pt-2">
-                <p className="font-medium text-zinc-900 mb-2.5">Follow Us</p>
+              <div className="pt-1">
+                <p className="font-semibold text-zinc-900 mb-2">Follow Us</p>
                 <div className="flex flex-wrap gap-2">
                   {socialLinks.map((social) => (
                     <a
@@ -348,15 +361,9 @@ export function BrandFooterBanner() {
                 Sparklines Studio Inc.
               </span>
               <span className="hidden sm:inline text-zinc-500 ml-2">
-                — Built for ambitious brands.
+                — Kolkata, India
               </span>
             </div>
-          </div>
-
-          {/* Operational Status */}
-          <div className="flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/80 px-3 py-1 text-emerald-800 font-medium">
-            <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
-            <span>All systems operational · 99.98% uptime</span>
           </div>
 
           {/* Copyright & Scroll To Top */}

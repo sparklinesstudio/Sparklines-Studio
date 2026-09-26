@@ -168,7 +168,7 @@ export function TechStackSection() {
   const getLayerStackConfig = (layerId: "creative" | "coding" | "growth") => {
     if (activeLayer === layerId) {
       return {
-        translateZ: 130,
+        translateZ: 100,
         zIndex: 30,
         scale: 1.02,
         opacity: 1,
@@ -181,7 +181,7 @@ export function TechStackSection() {
 
     if (diff === 1) {
       return {
-        translateZ: 65,
+        translateZ: 50,
         zIndex: 20,
         scale: 0.98,
         opacity: 0.92,
@@ -202,8 +202,8 @@ export function TechStackSection() {
       className="relative bg-[#FAFAFC] py-14 sm:py-20 lg:py-24 border-b border-zinc-200/80 overflow-hidden"
     >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        {/* Top Header Row Matching Reference Mockup */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-start mb-10 sm:mb-14">
+        {/* Top Header Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-start mb-8 sm:mb-12">
           {/* Main Title on Left */}
           <div className="lg:col-span-6">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.14]">
@@ -224,28 +224,56 @@ export function TechStackSection() {
           </div>
         </div>
 
+        {/* Mobile / Tablet Quick Layer Switcher */}
+        <div className="flex sm:hidden items-center justify-center gap-1.5 p-1 bg-zinc-200/70 rounded-full mb-6 max-w-sm mx-auto">
+          {LAYERS.map((layer) => {
+            const isActive = activeLayer === layer.id;
+            const shortName =
+              layer.id === "creative"
+                ? "Creative"
+                : layer.id === "coding"
+                ? "Coding"
+                : "Growth & AI";
+
+            return (
+              <button
+                key={layer.id}
+                type="button"
+                onClick={() => setActiveLayer(layer.id)}
+                className={`flex-1 py-1.5 px-2.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  isActive
+                    ? "bg-white text-zinc-950 shadow-sm"
+                    : "text-zinc-600 hover:text-zinc-900"
+                }`}
+              >
+                {shortName}
+              </button>
+            );
+          })}
+        </div>
+
         {/* 2-Column Main Section: 3D Stack Graphic (Left) + Breakdown (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* LEFT COLUMN: 3D ISOMETRIC STACK GRAPHIC */}
-          <div className="lg:col-span-7 relative flex items-center justify-center select-none overflow-hidden sm:overflow-visible">
+          {/* LEFT COLUMN: FULLY RESPONSIVE 3D ISOMETRIC STACK GRAPHIC */}
+          <div className="lg:col-span-7 relative flex items-center justify-center select-none py-4 sm:py-6">
             {/* Ambient Background Radial Glow */}
             <div className="pointer-events-none absolute -inset-4 bg-radial from-blue-100/30 via-transparent to-transparent blur-3xl opacity-50" />
 
             {/* Isometric 3D Stage Container */}
             <div
-              className="relative w-full max-w-[480px] sm:max-w-[540px] lg:max-w-[580px] h-[290px] xs:h-[320px] sm:h-[360px] md:h-[390px] flex items-center justify-center"
+              className="relative w-full max-w-[340px] sm:max-w-[440px] md:max-w-[480px] lg:max-w-[520px] h-[250px] sm:h-[320px] md:h-[350px] lg:h-[380px] flex items-center justify-center"
               style={{
-                perspective: "1100px",
-                perspectiveOrigin: "50% 30%",
+                perspective: "1000px",
+                perspectiveOrigin: "50% 35%",
               }}
             >
-              {/* STACKED 3D PLATES CONTAINER */}
+              {/* STACKED 3D PLATES CONTAINER with responsive tilt */}
               <div
-                className="relative w-[270px] xs:w-[310px] sm:w-[370px] md:w-[410px] lg:w-[430px] h-[190px] xs:h-[220px] sm:h-[250px] md:h-[275px] lg:h-[285px] transition-transform duration-700 ease-out"
+                className="relative w-[240px] sm:w-[320px] md:w-[360px] lg:w-[400px] h-[165px] sm:h-[220px] md:h-[245px] lg:h-[265px] transition-transform duration-700 ease-out"
                 style={{
                   transformStyle: "preserve-3d",
-                  transform: "rotateX(58deg) rotateZ(-38deg) rotateY(0deg)",
+                  transform: "rotateX(52deg) rotateZ(-32deg) rotateY(0deg)",
                 }}
               >
                 {LAYERS.map((layer) => {
@@ -265,7 +293,7 @@ export function TechStackSection() {
                         duration: 0.5,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      className={`absolute inset-0 rounded-[24px] xs:rounded-[28px] sm:rounded-[36px] ${layer.plateBg} ${layer.plateBorder} border ${layer.plateShadow} p-4 xs:p-5 sm:p-7 flex flex-col justify-between cursor-pointer transition-shadow duration-300 hover:shadow-2xl`}
+                      className={`absolute inset-0 rounded-2xl sm:rounded-3xl ${layer.plateBg} ${layer.plateBorder} border ${layer.plateShadow} p-3 sm:p-5 md:p-6 flex flex-col justify-between cursor-pointer transition-shadow duration-300 hover:shadow-2xl`}
                       style={{
                         zIndex: stackConfig.zIndex,
                         transformStyle: "preserve-3d",
@@ -273,7 +301,7 @@ export function TechStackSection() {
                     >
                       {/* Surface Dot Matrix Pattern */}
                       <div
-                        className="pointer-events-none absolute inset-0 rounded-[24px] xs:rounded-[28px] sm:rounded-[36px]"
+                        className="pointer-events-none absolute inset-0 rounded-2xl sm:rounded-3xl"
                         style={{
                           backgroundImage: `radial-gradient(${layer.dotColor} 1.2px, transparent 1.2px)`,
                           backgroundSize: "14px 14px",
@@ -282,19 +310,19 @@ export function TechStackSection() {
 
                       {/* Active Indicator Top Edge Light */}
                       {isTop && (
-                        <div className="pointer-events-none absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                        <div className="pointer-events-none absolute inset-x-6 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
                       )}
 
-                      {/* Surface App Icon Badges Grid (Enlarged Cards for Logos) */}
-                      <div className="relative z-10 grid grid-cols-4 gap-2.5 xs:gap-3 sm:gap-3.5 max-w-[90%] pt-0.5">
+                      {/* Surface App Icon Badges Grid (Fully Responsive on All Screens) */}
+                      <div className="relative z-10 grid grid-cols-4 gap-1.5 sm:gap-2.5 md:gap-3 max-w-full pt-0.5">
                         {layer.tools.map((tool) => (
                           <div
                             key={tool.name}
                             title={tool.name}
-                            className={`flex h-11 w-11 xs:h-12 xs:w-12 sm:h-14 sm:w-14 lg:h-15 lg:w-15 items-center justify-center rounded-xl xs:rounded-2xl sm:rounded-[20px] ${
+                            className={`flex h-8 w-8 sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-13 lg:w-13 items-center justify-center rounded-lg sm:rounded-xl md:rounded-2xl ${
                               layer.id === "creative"
-                                ? "bg-zinc-900/90 border border-zinc-700/80 shadow-md p-2 sm:p-2.5"
-                                : "bg-white/95 border border-white/60 shadow-md p-2 sm:p-2.5"
+                                ? "bg-zinc-900/90 border border-zinc-700/80 shadow-sm p-1.5 sm:p-2"
+                                : "bg-white/95 border border-white/60 shadow-sm p-1.5 sm:p-2"
                             } transition-transform duration-200 hover:scale-110`}
                           >
                             <img
@@ -308,8 +336,8 @@ export function TechStackSection() {
                       </div>
 
                       {/* Front Edge Label */}
-                      <div className="relative z-10 flex justify-end items-end pt-2 sm:pt-3">
-                        <span className={`text-[11px] xs:text-xs sm:text-sm font-semibold tracking-wide ${layer.labelColor}`}>
+                      <div className="relative z-10 flex justify-end items-end pt-1 sm:pt-2">
+                        <span className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide ${layer.labelColor}`}>
                           {layer.plateLabel}
                         </span>
                       </div>
@@ -321,14 +349,14 @@ export function TechStackSection() {
           </div>
 
           {/* RIGHT COLUMN: DYNAMIC CONTENT BASED ON TOP ACTIVE LAYER */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-6 lg:pl-2">
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-5 lg:pl-2">
             {/* Monospace Eyebrow Tagline */}
             <div className="text-[11px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
               ONE PLATFORM, THREE LAYERS — BUILT FOR PERFORMANCE & PRESTIGE
             </div>
 
             {/* List of 3 Layers with Interactive Selection */}
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-3 sm:space-y-4">
               {LAYERS.map((layer) => {
                 const isActive = activeLayer === layer.id;
 
@@ -336,10 +364,10 @@ export function TechStackSection() {
                   <div
                     key={layer.id}
                     onClick={() => setActiveLayer(layer.id)}
-                    className={`group cursor-pointer transition-all duration-300 p-4 sm:p-5 -mx-3 sm:-mx-4 rounded-xl sm:rounded-2xl ${
+                    className={`group cursor-pointer transition-all duration-300 p-4 sm:p-5 rounded-2xl ${
                       isActive
-                        ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-zinc-200/90 ring-1 ring-zinc-950/5"
-                        : "hover:bg-zinc-100/60 opacity-75 hover:opacity-100"
+                        ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-zinc-200/90 ring-1 ring-zinc-950/5"
+                        : "hover:bg-zinc-100/60 opacity-80 hover:opacity-100 border border-transparent"
                     }`}
                   >
                     {/* Item Title with Colored Square Bullet */}
@@ -350,7 +378,7 @@ export function TechStackSection() {
                         }`}
                       />
                       <h3
-                        className={`text-lg sm:text-xl font-bold tracking-tight transition-colors font-editorial ${
+                        className={`text-base sm:text-lg lg:text-xl font-bold tracking-tight transition-colors font-editorial ${
                           isActive ? "text-zinc-950" : "text-zinc-700 group-hover:text-zinc-950"
                         }`}
                       >
@@ -402,12 +430,12 @@ export function TechStackSection() {
             </div>
 
             {/* Discuss Scope Action Button */}
-            <div className="pt-1 pl-1">
+            <div className="pt-2">
               <Link
                 href="#contact"
                 className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
               >
-                <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+                <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
                 <span>Explore Full Capabilities</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
