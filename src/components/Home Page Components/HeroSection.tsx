@@ -9,7 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 // Add any new image URLs here; they are automatically looped into the continuous carousel!
 export const heroShowcasePosts: string[] = [
   "https://i.pinimg.com/736x/20/4f/2b/204f2bad9d4e2652f5bb09b70d95d506.jpg",
-  "https://i.pinimg.com/736x/05/f4/ad/05f4adff1006437e991eec1583280756.jpg",
+  "https://i.pinimg.com/736x/6b/b7/93/6bb793b3d44ded26b6f65a08afbb6603.jpg",
   "https://i.pinimg.com/736x/dd/2c/fe/dd2cfe716a89c80033557bc639cb62bc.jpg",
   "https://i.pinimg.com/1200x/5c/af/ce/5cafce949cf39a1142b07159e49d526a.jpg",
   "https://i.pinimg.com/1200x/f2/9c/18/f29c185315c686d1aec81a932c0de607.jpg",
@@ -130,7 +130,7 @@ export function HeroSection() {
           >
             <Link
               href="#contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+              className="relative inline-flex items-center gap-2 rounded-full bg-[#f95721] px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
             >
               <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
               <span>Let's work together</span>

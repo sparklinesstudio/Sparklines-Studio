@@ -281,10 +281,10 @@ export function BrandFooterBanner() {
                     +91 9641861932
                   </a>
                   <a
-                    href="tel:8001520236"
+                    href="tel:8101520236"
                     className="text-zinc-600 hover:text-[#f95721] transition-colors font-medium"
                   >
-                    +91 8001520236
+                    +91 8101520236
                   </a>
                 </div>
               </div>
