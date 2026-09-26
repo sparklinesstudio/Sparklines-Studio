@@ -8,18 +8,18 @@ interface LogoItem {
   name: string;
   src?: string;
   href?: string;
-  isTextFallback?: boolean;
 }
 
 export function ClientLogos() {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
+  // Exactly preserving user's updated client logos
   const logos: LogoItem[] = [
     {
-      id: "dreamson",
-      name: "Dreams On Interiors",
-      src: "https://dreamsoninteriors.in/images/logo.png",
-      href: "https://dreamsoninteriors.in",
+      id: "pepcopp",
+      name: "Pep Copp",
+      src: "https://www.pepcopp.co.in/images/logo-pepcopp.png",
+      href: "https://www.pepcopp.co.in/",
     },
     {
       id: "oraanj",
@@ -28,11 +28,10 @@ export function ClientLogos() {
       href: "https://www.oraanj-interiors.co.uk",
     },
     {
-      id: "lumba",
-      name: "Lumba World",
-      src: "https://www.lumbaworld.com/images/logo.png",
-      href: "https://www.lumbaworld.com/",
-      isTextFallback: true,
+      id: "smaaash",
+      name: "Smaaash Entertainment",
+      src: "https://smaaash-entertainment.in/assets/img/newsmaaashlogotwo.png.jpg",
+      href: "https://smaaash-entertainment.in/",
     },
     {
       id: "meta-arch",
@@ -59,11 +58,10 @@ export function ClientLogos() {
           Trusted by fast-growing startups and industry innovators
         </p>
 
-        {/* Brand Logos Row */}
+        {/* Brand Logos Row with Black & White Filter and Full Color on Hover */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
           {logos.map((logo, idx) => {
             const hasError = Boolean(imageErrors[logo.id]);
-            const showFallback = Boolean(hasError || (!logo.src && logo.isTextFallback));
 
             return (
               <motion.div
@@ -73,7 +71,7 @@ export function ClientLogos() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
                 whileHover={{ scale: 1.05 }}
-                className="group flex items-center justify-center cursor-pointer"
+                className="group flex items-center justify-center transition-all duration-300"
               >
                 {logo.href && logo.href !== "#" ? (
                   <a
@@ -82,11 +80,11 @@ export function ClientLogos() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center outline-none"
                   >
-                    {renderLogoContent(logo, showFallback, handleImageError)}
+                    {renderLogoContent(logo, hasError, handleImageError)}
                   </a>
                 ) : (
                   <div className="flex items-center justify-center">
-                    {renderLogoContent(logo, showFallback, handleImageError)}
+                    {renderLogoContent(logo, hasError, handleImageError)}
                   </div>
                 )}
               </motion.div>
@@ -100,15 +98,15 @@ export function ClientLogos() {
 
 function renderLogoContent(
   logo: LogoItem,
-  showFallback: boolean,
+  hasError: boolean,
   onError: (id: string) => void
 ) {
-  if (showFallback || !logo.src) {
-    // Stylized typography brand mark fallback with B&W to full color hover
+  if (hasError || !logo.src) {
+    // Stylized typography brand mark fallback with grayscale-to-color hover
     return (
-      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-200/60 bg-zinc-50/50 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:border-orange-300 group-hover:bg-white group-hover:shadow-xs transition-all duration-300">
-        <div className="h-2 w-2 rounded-full bg-zinc-400 group-hover:bg-[#f95721] transition-colors" />
-        <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-600 group-hover:text-zinc-900 transition-colors">
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/50 shadow-xs grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-300">
+        <div className="h-2.5 w-2.5 rounded-full bg-[#f95721]" />
+        <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-800 group-hover:text-[#f95721] transition-colors">
           {logo.name}
         </span>
       </div>
@@ -116,13 +114,13 @@ function renderLogoContent(
   }
 
   return (
-    <div className="relative flex items-center justify-center h-9 sm:h-11 md:h-12 px-2 transition-all duration-300">
+    <div className="relative flex items-center justify-center h-8 sm:h-10 md:h-11 px-2">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={logo.src}
         alt={logo.name}
         onError={() => onError(logo.id)}
-        className="h-7 sm:h-9 md:h-10 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[180px] object-contain transition-all duration-300 filter grayscale contrast-75 opacity-50 group-hover:grayscale-0 group-hover:contrast-100 group-hover:opacity-100"
+        className="h-7 sm:h-8 md:h-9 max-h-10 w-auto max-w-[130px] sm:max-w-[160px] object-contain transition-all duration-300 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:drop-shadow-sm"
         loading="lazy"
       />
     </div>
