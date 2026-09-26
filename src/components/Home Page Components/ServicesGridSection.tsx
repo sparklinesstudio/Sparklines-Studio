@@ -134,7 +134,7 @@ export function ServicesGridSection() {
     >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-10 sm:mb-14 lg:mb-16">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 sm:gap-6 mb-10 sm:mb-14 lg:mb-16">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-editorial">
               Crafted for Growth & Authority
