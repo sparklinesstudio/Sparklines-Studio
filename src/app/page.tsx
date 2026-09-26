@@ -5,6 +5,7 @@ import {
   AboutSection,
   OrangeBanner,
   VideoTestimonialsSection,
+  MarketingSocialProofSection,
   FeatureTabsSection,
   ExpertiseBento,
   TestimonialsSection,
@@ -33,8 +34,11 @@ export default function Home() {
         {/* Full-width Video Explainer Banner */}
         <OrangeBanner />
 
-        {/* Video Testimonials Section ("Sparklines in the spotlight") */}
+        {/* Video Testimonials Section ("Our Client Testimonials") */}
         <VideoTestimonialsSection />
+
+        {/* Marketing Social Proof: Floating Avatars + 3 Orange Metric Cards + Blurred Sides Review Carousel */}
+        <MarketingSocialProofSection />
 
         {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
         <FeatureTabsSection />
