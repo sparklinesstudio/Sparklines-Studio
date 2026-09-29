@@ -11,5 +11,7 @@ export { TestimonialsSection } from "./TestimonialsSection";
 export { CtaFloatingSection } from "./CtaFloatingSection";
 export { ContactSection } from "./ContactSection";
 export { ServicesGridSection } from "./ServicesGridSection";
+export { VideoShowcaseSection } from "./VideoShowcaseSection";
 export { TechStackSection } from "./TechStackSection";
 export { BrandFooterBanner } from "./BrandFooterBanner";
+

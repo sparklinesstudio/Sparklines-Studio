@@ -6,6 +6,7 @@ import {
   OrangeBanner,
   TestimonialsSection,
   ServicesGridSection,
+  VideoShowcaseSection,
   TechStackSection,
   PortfolioShowcaseSection,
   FeatureTabsSection,
@@ -38,14 +39,17 @@ export default function Home() {
         {/* Client Testimonials / Social Proof Slider */}
         <TestimonialsSection />
 
-        {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) */}
+        {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) - Crafted for Growth & Authority */}
         <ServicesGridSection />
+
+        {/* Infinite Curved Video Showcase Section with Smoky Orange Effects */}
+        <VideoShowcaseSection />
 
         {/* 3-Tier Modern Production & Technology Stack (Photoshop/Creative, React/Next.js, SEMrush/Ads) */}
         <TechStackSection />
 
-        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid)
-        <PortfolioShowcaseSection />
+        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
+        {/* <PortfolioShowcaseSection /> */}
 
         {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
         {/* <FeatureTabsSection /> */}
