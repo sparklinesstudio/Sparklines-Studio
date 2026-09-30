@@ -43,7 +43,7 @@ export default function Home() {
         {/* 3x2 High-Impact Capabilities Grid (Video Production, PPC, Social, SEO, Web Design, Branding) - Crafted for Growth & Authority */}
         <ServicesGridSection />
 
-        {/* Infinite Curved Video Showcase Section with Smoky Orange Effects */}
+        {/* Infinite Straight-Path Video Showcase Section - Our Work in Motion */}
         <VideoShowcaseSection />
 
         {/* Websites We Have Built Showcase Carousel (Mac Browser Mockups & Interactive Lightbox) */}

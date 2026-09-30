@@ -64,11 +64,9 @@ const DOUBLED_VIDEOS = [...VIDEO_WORKS, ...VIDEO_WORKS];
 
 export function VideoShowcaseSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Track if section is in viewport to freeze RAF and CSS animation when offscreen
+  // Track if section is in viewport to freeze CSS marquee when offscreen
   const [isSectionVisible, setIsSectionVisible] = useState(true);
 
   // Hover state: pauses the infinite carousel and plays hovered video
@@ -76,7 +74,7 @@ export function VideoShowcaseSection() {
 
   // -----------------------------------------------------------------------
   // SECTION VISIBILITY OBSERVER
-  // Idles all animation calculations and pauses playback when user scrolls away
+  // Pauses CSS animation and idle video playback when user scrolls away
   // -----------------------------------------------------------------------
   useEffect(() => {
     const section = sectionRef.current;
@@ -153,65 +151,6 @@ export function VideoShowcaseSection() {
     };
   }, [isSectionVisible]);
 
-  // -----------------------------------------------------------------------
-  // 3D SMILE CURVE RUNWAY PHYSICS (Zero Layout Thrashing & High Performance)
-  // Batched Reads -> Batched Writes avoids 18 forced synchronous reflows/frame.
-  // Idles completely when section is offscreen or paused.
-  // -----------------------------------------------------------------------
-  useEffect(() => {
-    if (!isSectionVisible || isPaused) return;
-
-    let animationFrameId: number;
-
-    const updateCurves = () => {
-      animationFrameId = requestAnimationFrame(updateCurves);
-
-      const container = containerRef.current;
-      if (!container) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const centerX = containerRect.left + containerRect.width / 2;
-      const halfWidth = containerRect.width / 2 || 1;
-      const winWidth = window.innerWidth;
-
-      // Pass 1: BATCHED READS (zero DOM writes in this loop)
-      const transforms: { card: HTMLDivElement; transform: string }[] = [];
-
-      for (let i = 0; i < cardRefs.current.length; i++) {
-        const card = cardRefs.current[i];
-        if (!card) continue;
-
-        const rect = card.getBoundingClientRect();
-        // Skip cards far outside the viewport to maximize frame rate
-        if (rect.right < -120 || rect.left > winWidth + 120) continue;
-
-        const cardCenter = rect.left + rect.width / 2;
-        const dist = (cardCenter - centerX) / halfWidth;
-
-        // Exact smile curve math preserved:
-        // Center: dist = 0 -> curveY = 0px
-        // Wings: dist = ±1.0 -> curveY ≈ -70px, rotateZ ≈ ±7.5deg, rotateY ≈ ∓8.5deg
-        const absDist = Math.abs(dist);
-        const curveY = Math.pow(absDist, 1.4) * -70;
-        const rotateZ = Math.max(-8, Math.min(8, dist * 7.5));
-        const rotateY = Math.max(-9, Math.min(9, -dist * 8.5));
-
-        transforms.push({
-          card,
-          transform: `translate3d(0, ${curveY}px, 0) rotateZ(${rotateZ}deg) rotateY(${rotateY}deg)`,
-        });
-      }
-
-      // Pass 2: BATCHED WRITES (zero layout recalculations during writes)
-      for (let i = 0; i < transforms.length; i++) {
-        transforms[i].card.style.transform = transforms[i].transform;
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(updateCurves);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isSectionVisible, isPaused]);
-
   // Hover handlers: pause carousel and ensure hovered video is playing
   const handleMouseEnter = useCallback((index: number) => {
     setIsPaused(true);
@@ -280,14 +219,10 @@ export function VideoShowcaseSection() {
       </div>
 
       {/* ============================================================== */}
-      {/* SHOWCASE STAGE: 3D CURVED INFINITE CAROUSEL RUNWAY              */}
-      {/* Preserves original curvy layout without orange smoky overlay   */}
+      {/* SHOWCASE STAGE: STRAIGHT INFINITE CAROUSEL RUNWAY              */}
       {/* ============================================================== */}
-      <div
-        className="relative w-full overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16"
-        style={{ perspective: "1400px" }}
-      >
-        {/* Clean, Lightweight Edge Fades (No heavy blurs, zero orange smoky effect) */}
+      <div className="relative w-full overflow-hidden py-4 sm:py-6">
+        {/* Clean, Lightweight Edge Fades */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-white via-white/80 to-transparent select-none" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent select-none" />
 
@@ -295,7 +230,7 @@ export function VideoShowcaseSection() {
         {/* INFINITE RUNNING CAROUSEL TRACK                                */}
         {/* Hardware-accelerated CSS marquee with hover pause              */}
         {/* ============================================================== */}
-        <div ref={containerRef} className="group/track relative flex w-full">
+        <div className="group/track relative flex w-full">
           <div
             className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
             style={{
@@ -306,10 +241,7 @@ export function VideoShowcaseSection() {
             {DOUBLED_VIDEOS.map((video, index) => (
               <div
                 key={`video-card-${video.id}-${index}`}
-                ref={(el) => {
-                  cardRefs.current[index] = el;
-                }}
-                className="flex-shrink-0 cursor-pointer will-change-transform"
+                className="flex-shrink-0 cursor-pointer"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
