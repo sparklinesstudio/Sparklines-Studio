@@ -118,7 +118,7 @@ export function HeroSection() {
     <section
       id="hero"
       aria-label="Sparklines Studio Showcase"
-      className="relative overflow-hidden pt-14 pb-8 sm:pt-18 sm:pb-12 lg:pt-40 lg:pb-14 bg-gradient-to-b from-blue-500 via-gray-50 via-30% to-white transition-colors duration-1000"
+      className="relative overflow-hidden pt-28 pb-8 sm:pt-18 sm:pb-12 lg:pt-40 lg:pb-14 bg-gradient-to-b from-blue-500 via-gray-50 via-30% to-white transition-colors duration-1000"
     >
       {/* Ambient Top Glow Layer */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10 bg-gradient-to-b from-blue-500/80 via-gray-50/30 to-transparent blur-3xl" />
