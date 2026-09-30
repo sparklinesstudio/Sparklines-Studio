@@ -13,5 +13,6 @@ export { ContactSection } from "./ContactSection";
 export { ServicesGridSection } from "./ServicesGridSection";
 export { VideoShowcaseSection } from "./VideoShowcaseSection";
 export { TechStackSection } from "./TechStackSection";
+export { WebsiteCarouselSection } from "./WebsiteCarouselSection";
 export { BrandFooterBanner } from "./BrandFooterBanner";
 

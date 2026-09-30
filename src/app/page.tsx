@@ -8,6 +8,7 @@ import {
   ServicesGridSection,
   VideoShowcaseSection,
   TechStackSection,
+  WebsiteCarouselSection,
   PortfolioShowcaseSection,
   FeatureTabsSection,
   ExpertiseBento,
@@ -45,8 +46,13 @@ export default function Home() {
         {/* Infinite Curved Video Showcase Section with Smoky Orange Effects */}
         <VideoShowcaseSection />
 
+        {/* Websites We Have Built Showcase Carousel (Mac Browser Mockups & Interactive Lightbox) */}
+        <WebsiteCarouselSection />
+
         {/* 3-Tier Modern Production & Technology Stack (Photoshop/Creative, React/Next.js, SEMrush/Ads) */}
         <TechStackSection />
+
+
 
         {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
         {/* <PortfolioShowcaseSection /> */}

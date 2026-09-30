@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 // ============================================================================
 // SHOWCASE ASSETS (NON-DUPLICATED: EXACT 8 POSTS AND 4 WEBSITES)
@@ -118,10 +118,10 @@ export function HeroSection() {
     <section
       id="hero"
       aria-label="Sparklines Studio Showcase"
-      className="relative overflow-hidden pt-14 pb-8 sm:pt-18 sm:pb-12 lg:pt-20 lg:pb-14 bg-gradient-to-b from-[#6ba3e8]/25 via-blue-50/35 via-35% to-white transition-colors duration-1000"
+      className="relative overflow-hidden pt-14 pb-8 sm:pt-18 sm:pb-12 lg:pt-40 lg:pb-14 bg-gradient-to-b from-blue-500 via-gray-50 via-30% to-white transition-colors duration-1000"
     >
       {/* Ambient Top Glow Layer */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10 bg-gradient-to-b from-[#6ba3e8]/30 via-sky-100/20 to-transparent blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10 bg-gradient-to-b from-blue-500/80 via-gray-50/30 to-transparent blur-3xl" />
 
       {/* Subtle Studio Blueprint Grid Paper Pattern */}
       <div
@@ -151,11 +151,11 @@ export function HeroSection() {
                   shouldReduceMotion
                     ? { opacity: 0 }
                     : {
-                        opacity: 0,
-                        y: -14,
-                        filter: "blur(8px)",
-                        transition: { duration: 0.45, ease: EASE_OUT_STRONG },
-                      }
+                      opacity: 0,
+                      y: -14,
+                      filter: "blur(8px)",
+                      transition: { duration: 0.45, ease: EASE_OUT_STRONG },
+                    }
                 }
                 transition={{ duration: 0.55, ease: EASE_OUT_STRONG }}
                 className="flex flex-col items-center"
@@ -220,49 +220,48 @@ export function HeroSection() {
                   shouldReduceMotion
                     ? { opacity: 0 }
                     : {
-                        opacity: 0,
-                        y: -14,
-                        filter: "blur(8px)",
-                        transition: { duration: 0.45, ease: EASE_OUT_STRONG },
-                      }
+                      opacity: 0,
+                      y: -14,
+                      filter: "blur(8px)",
+                      transition: { duration: 0.45, ease: EASE_OUT_STRONG },
+                    }
                 }
                 transition={{ duration: 0.55, ease: EASE_OUT_STRONG }}
                 className="flex flex-col items-center"
               >
-                {/* Pill Badge */}
+                {/* Pill Badge matching Stage 1 styling */}
                 <motion.div
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: EASE_OUT_STRONG }}
-                  className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-orange-300/80 bg-white/95 px-3.5 py-1 text-xs font-semibold text-orange-950 shadow-xs backdrop-blur-md ring-2 ring-orange-500/10"
+                  className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-orange-950 shadow-xs backdrop-blur-md"
                 >
-                  <Sparkles className="h-3.5 w-3.5 text-[#f95721] animate-spin" style={{ animationDuration: "9s" }} />
-                  <span className="text-zinc-900 font-bold">Featured Website Productions</span>
-                  <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-[#f95721]">
-                    4 Bespoke Builds
+                  <span className="flex h-2 w-2 rounded-full bg-[#f95721] animate-pulse" />
+                  <span className="text-zinc-800 font-semibold tracking-tight">
+                    Featured Website Productions • 4 Bespoke Builds
                   </span>
                 </motion.div>
 
-                {/* Headline */}
+                {/* Headline with font and color matching Stage 1 */}
                 <h1 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1]">
                   Need A Cool{" "}
                   <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                     Website?
                   </span>
                   <br />
-                  <span className="text-[#f95721] font-editorial italic font-normal">
+                  <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                     We&apos;ve Got
                   </span>{" "}
                   You Covered
                 </h1>
 
-                {/* Subtext */}
+                {/* Subtext matching Stage 1 */}
                 <p className="mt-2.5 max-w-xl text-sm sm:text-base text-zinc-600 leading-normal font-medium">
                   From bespoke architectural portfolios to luxury brand flagships, we engineer
                   captivating, high-converting digital homes.
                 </p>
 
-                {/* Single Primary CTA Button */}
+                {/* CTA Button matching font, color, and hover effects of Stage 1 */}
                 <div className="mt-4 sm:mt-5">
                   <motion.div
                     whileHover={{ scale: 1.025, y: -2 }}
@@ -271,9 +270,9 @@ export function HeroSection() {
                   >
                     <Link
                       href="#contact"
-                      className="relative inline-flex items-center gap-2 rounded-full bg-[#f95721] px-7 py-3 text-sm font-semibold text-white shadow-[0_6px_22px_rgba(249,87,33,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)] border border-orange-400/40 transition-colors duration-300 hover:bg-[#ea4b16] group overflow-hidden"
+                      className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-colors duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_22px_rgba(249,87,33,0.35)] group overflow-hidden"
                     >
-                      <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                      <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
                       <span>Get Your Custom Website</span>
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>

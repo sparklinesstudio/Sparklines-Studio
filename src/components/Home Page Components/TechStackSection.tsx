@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -312,10 +312,10 @@ export function TechStackSection() {
         </div>
 
         {/* 2-Column Main Section: 3D Stack Graphic (Left) + Breakdown (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* LEFT COLUMN: FULLY RESPONSIVE 3D ISOMETRIC STACK GRAPHIC */}
-          <div className="lg:col-span-7 relative flex items-center justify-center select-none py-6 sm:py-8">
+          <div className="lg:col-span-7 relative flex items-center justify-center select-none py-6 sm:py-8 sticky top-24">
             {/* Ambient Dynamic Background Glow */}
             <div
               className={`pointer-events-none absolute -inset-6 bg-gradient-to-r ${
@@ -456,8 +456,7 @@ export function TechStackSection() {
           </div>
 
           {/* RIGHT COLUMN: DYNAMIC CONTENT BASED ON TOP ACTIVE LAYER */}
-          {/* Note: As requested, tool logos are removed from this right column */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-5 lg:pl-2">
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-5 lg:pl-2 min-h-[460px]">
             {/* Monospace Eyebrow Tagline */}
             <div className="text-[11px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
               ONE PLATFORM, THREE LAYERS — BUILT FOR PERFORMANCE & PRESTIGE
@@ -496,37 +495,32 @@ export function TechStackSection() {
                       </h3>
                     </div>
 
-                    {/* Active Layer Dynamic Narrative (Clean text, NO logos on the right) */}
-                    <AnimatePresence mode="wait">
-                      {isActive ? (
-                        <motion.div
-                          key="active-desc"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <p className="text-xs sm:text-sm leading-relaxed text-zinc-600 pl-5.5 font-sans">
-                            {layer.description}
-                          </p>
-                        </motion.div>
-                      ) : (
-                        <p className="text-xs text-zinc-500 pl-5.5 font-sans line-clamp-2">
-                          {layer.summary}
-                        </p>
-                      )}
-                    </AnimatePresence>
+                    {/* Dynamic Narrative without height:0 unmount collapse (prevents whole-page jitter) */}
+                    <div className="pl-5.5 overflow-hidden">
+                      <p
+                        className={`text-xs sm:text-sm font-sans leading-relaxed transition-colors duration-200 ${
+                          isActive
+                            ? "text-zinc-600"
+                            : "text-zinc-500 line-clamp-2"
+                        }`}
+                      >
+                        {isActive ? layer.description : layer.summary}
+                      </p>
+                    </div>
 
-                    {/* 5-Second Visual Progress Indicator under Active Card (Uninterrupted by hover) */}
-                    {isActive && (
-                      <motion.div
-                        key={`timer-${activeLayer}`}
-                        initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: 5, ease: "linear" }}
-                        className="h-[2px] bg-[#f95721] rounded-full mt-3.5"
-                      />
-                    )}
+                    {/* 5-Second Visual Progress Indicator under Active Card */}
+                    {/* Pre-allocated 2px track height prevents margin/height popping */}
+                    <div className="h-[2px] w-full bg-transparent rounded-full mt-3 overflow-hidden">
+                      {isActive && (
+                        <motion.div
+                          key={`timer-${activeLayer}`}
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 5, ease: "linear" }}
+                          className="h-full bg-[#f95721] rounded-full"
+                        />
+                      )}
+                    </div>
                   </div>
                 );
               })}

@@ -6,6 +6,7 @@ import Link from "next/link";
 
 // =========================================================================
 // 1. VIDEO SHOWCASE ASSETS
+// Transcoded to universal H.264 MP4 for 100% mobile (iOS & Android) playback
 // =========================================================================
 
 interface VideoItem {
@@ -24,7 +25,8 @@ const VIDEO_WORKS: VideoItem[] = [
   },
   {
     id: "vid-3",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714352/IMG_5738.MOV.mov",
+    // Converted to universal H.264 MP4 to support Android and iOS mobile playback
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto/v1790714352/IMG_5738.MOV.mp4",
   },
   {
     id: "vid-4",
@@ -48,11 +50,12 @@ const VIDEO_WORKS: VideoItem[] = [
   },
   {
     id: "vid-9",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714249/IMG_5657.MOV.mov",
+    // Converted to universal H.264 MP4 to support Android and iOS mobile playback
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto/v1790714249/IMG_5657.MOV.mp4",
   },
 ];
 
-// Duplicate once for infinite loop (18 total items spanning >5000px, cutting video decoding in half)
+// Duplicate once for seamless infinite loop (18 total items spanning runway)
 const DOUBLED_VIDEOS = [...VIDEO_WORKS, ...VIDEO_WORKS];
 
 // =========================================================================
@@ -60,25 +63,59 @@ const DOUBLED_VIDEOS = [...VIDEO_WORKS, ...VIDEO_WORKS];
 // =========================================================================
 
 export function VideoShowcaseSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  // Track if section is in viewport to freeze RAF and CSS animation when offscreen
+  const [isSectionVisible, setIsSectionVisible] = useState(true);
 
   // Hover state: pauses the infinite carousel and plays hovered video
   const [isPaused, setIsPaused] = useState(false);
 
   // -----------------------------------------------------------------------
-  // PERFORMANCE FIX: IntersectionObserver for videos
-  // Only decode/play videos that are currently inside or near viewport.
-  // Pauses offscreen videos, drastically freeing GPU & eliminating lag.
+  // SECTION VISIBILITY OBSERVER
+  // Idles all animation calculations and pauses playback when user scrolls away
   // -----------------------------------------------------------------------
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSectionVisible(entry.isIntersecting);
+      },
+      { root: null, rootMargin: "200px 0px 200px 0px", threshold: 0 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  // -----------------------------------------------------------------------
+  // MOBILE AUTOPLAY & INTERSECTION PLAYBACK
+  // - Enforces video.muted = true at DOM level to bypass iOS/Safari autoplay blocks
+  // - Listens for first touch/interaction to unlock autoplay in low-power modes
+  // - Only plays videos currently visible on screen to save mobile hardware decoders
+  // -----------------------------------------------------------------------
+  useEffect(() => {
+    // Force muted property directly onto HTMLMediaElement instances (crucial for iOS Safari)
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.muted = true;
+        video.defaultMuted = true;
+      }
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target as HTMLVideoElement;
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
+          if (entry.isIntersecting && isSectionVisible) {
+            video.play().catch(() => {
+              // Autoplay policy fallback: will resume on first touch
+            });
           } else {
             video.pause();
           }
@@ -86,54 +123,72 @@ export function VideoShowcaseSection() {
       },
       {
         root: null,
-        rootMargin: "150px 0px 150px 0px",
-        threshold: 0.05,
+        rootMargin: "80px 80px 80px 80px",
+        threshold: 0.1,
       }
     );
 
     videoRefs.current.forEach((video) => {
-      if (video) {
-        observer.observe(video);
-      }
+      if (video) observer.observe(video);
     });
+
+    // Mobile fallback: unlock videos on first user interaction (touch/scroll)
+    const handleFirstInteraction = () => {
+      videoRefs.current.forEach((video) => {
+        if (video && video.paused) {
+          video.play().catch(() => { });
+        }
+      });
+      window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("click", handleFirstInteraction);
+    };
+
+    window.addEventListener("touchstart", handleFirstInteraction, { passive: true, once: true });
+    window.addEventListener("click", handleFirstInteraction, { passive: true, once: true });
 
     return () => {
       observer.disconnect();
+      window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("click", handleFirstInteraction);
     };
-  }, []);
+  }, [isSectionVisible]);
 
   // -----------------------------------------------------------------------
-  // 3D SMILE CURVE RUNWAY PHYSICS (Throttled & Optimized)
-  // Only updates visible cards and idles when paused on hover for 0% CPU waste.
+  // 3D SMILE CURVE RUNWAY PHYSICS (Zero Layout Thrashing & High Performance)
+  // Batched Reads -> Batched Writes avoids 18 forced synchronous reflows/frame.
+  // Idles completely when section is offscreen or paused.
   // -----------------------------------------------------------------------
   useEffect(() => {
+    if (!isSectionVisible || isPaused) return;
+
     let animationFrameId: number;
 
     const updateCurves = () => {
       animationFrameId = requestAnimationFrame(updateCurves);
-
-      // If user is hovering over a video, keep current curve positions and don't re-measure
-      if (isPaused) return;
 
       const container = containerRef.current;
       if (!container) return;
 
       const containerRect = container.getBoundingClientRect();
       const centerX = containerRect.left + containerRect.width / 2;
-      const halfWidth = containerRect.width / 2;
+      const halfWidth = containerRect.width / 2 || 1;
       const winWidth = window.innerWidth;
 
-      cardRefs.current.forEach((card) => {
-        if (!card) return;
-        const rect = card.getBoundingClientRect();
+      // Pass 1: BATCHED READS (zero DOM writes in this loop)
+      const transforms: { card: HTMLDivElement; transform: string }[] = [];
 
-        // Skip calculations for cards far offscreen
-        if (rect.right < -150 || rect.left > winWidth + 150) return;
+      for (let i = 0; i < cardRefs.current.length; i++) {
+        const card = cardRefs.current[i];
+        if (!card) continue;
+
+        const rect = card.getBoundingClientRect();
+        // Skip cards far outside the viewport to maximize frame rate
+        if (rect.right < -120 || rect.left > winWidth + 120) continue;
 
         const cardCenter = rect.left + rect.width / 2;
-        const dist = (cardCenter - centerX) / (halfWidth || 1);
+        const dist = (cardCenter - centerX) / halfWidth;
 
-        // Smile curve math:
+        // Exact smile curve math preserved:
         // Center: dist = 0 -> curveY = 0px
         // Wings: dist = ±1.0 -> curveY ≈ -70px, rotateZ ≈ ±7.5deg, rotateY ≈ ∓8.5deg
         const absDist = Math.abs(dist);
@@ -141,20 +196,28 @@ export function VideoShowcaseSection() {
         const rotateZ = Math.max(-8, Math.min(8, dist * 7.5));
         const rotateY = Math.max(-9, Math.min(9, -dist * 8.5));
 
-        card.style.transform = `translate3d(0, ${curveY}px, 0) rotateZ(${rotateZ}deg) rotateY(${rotateY}deg)`;
-      });
+        transforms.push({
+          card,
+          transform: `translate3d(0, ${curveY}px, 0) rotateZ(${rotateZ}deg) rotateY(${rotateY}deg)`,
+        });
+      }
+
+      // Pass 2: BATCHED WRITES (zero layout recalculations during writes)
+      for (let i = 0; i < transforms.length; i++) {
+        transforms[i].card.style.transform = transforms[i].transform;
+      }
     };
 
     animationFrameId = requestAnimationFrame(updateCurves);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
+  }, [isSectionVisible, isPaused]);
 
   // Hover handlers: pause carousel and ensure hovered video is playing
   const handleMouseEnter = useCallback((index: number) => {
     setIsPaused(true);
     const video = videoRefs.current[index];
     if (video) {
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   }, []);
 
@@ -164,6 +227,7 @@ export function VideoShowcaseSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="video-showcase"
       aria-label="Studio Video Works Showcase"
       className="relative overflow-hidden bg-white text-zinc-950 py-16 sm:py-24 lg:py-28 border-y border-zinc-200/80"
@@ -188,7 +252,7 @@ export function VideoShowcaseSection() {
           <div className="max-w-2xl">
             {/* Main Headline */}
             <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-editorial leading-[1.08]">
-              Stories Engineered in{" "}
+              Our Work in{" "}
               <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                 Motion
               </span>
@@ -217,57 +281,15 @@ export function VideoShowcaseSection() {
 
       {/* ============================================================== */}
       {/* SHOWCASE STAGE: 3D CURVED INFINITE CAROUSEL RUNWAY              */}
+      {/* Preserves original curvy layout without orange smoky overlay   */}
       {/* ============================================================== */}
       <div
         className="relative w-full overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16"
         style={{ perspective: "1400px" }}
       >
-        {/* ============================================================== */}
-        {/* BLURRY, SPREAD-OUT & BLENDED ORANGE SMOKE (LEFT & RIGHT)       */}
-        {/* No straight lines — organic diffused radial smoke clouds       */}
-        {/* ============================================================== */}
-
-        {/* LEFT ORANGE SMOKE: Organic, blurry, spreaded out */}
-        <div className="pointer-events-none absolute inset-y-0 -left-12 sm:-left-20 z-20 w-[300px] sm:w-[480px] md:w-[600px] select-none">
-          {/* Large soft diffuse orange smoke cloud */}
-          <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-[280px] sm:w-[380px] h-[460px] rounded-full bg-[#f95721]/22 blur-[85px] sm:blur-[105px]" />
-          {/* Secondary upper amber smoke plume */}
-          <div className="absolute top-1/6 -left-6 w-[220px] sm:w-[320px] h-[320px] rounded-full bg-orange-400/18 blur-[75px] sm:blur-[95px]" />
-          {/* Tertiary lower warm glow */}
-          <div className="absolute bottom-1/6 -left-8 w-[240px] sm:w-[340px] h-[340px] rounded-full bg-[#ea580c]/18 blur-[85px] sm:blur-[105px]" />
-          {/* Central soft ember mist */}
-          <div className="absolute top-1/2 -translate-y-1/2 -left-14 w-[180px] sm:w-[260px] h-[260px] rounded-full bg-[#f95721]/30 blur-[60px] sm:blur-[75px]" />
-          {/* Seamless organic edge blend to white (No hard lines) */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 95% 80% at 0% 50%, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 35%, transparent 80%)",
-              mixBlendMode: "screen",
-            }}
-          />
-        </div>
-
-        {/* RIGHT ORANGE SMOKE: Organic, blurry, spreaded out */}
-        <div className="pointer-events-none absolute inset-y-0 -right-12 sm:-right-20 z-20 w-[300px] sm:w-[480px] md:w-[600px] select-none">
-          {/* Large soft diffuse orange smoke cloud */}
-          <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-[280px] sm:w-[380px] h-[460px] rounded-full bg-[#f95721]/22 blur-[85px] sm:blur-[105px]" />
-          {/* Secondary upper amber smoke plume */}
-          <div className="absolute top-1/6 -right-6 w-[220px] sm:w-[320px] h-[320px] rounded-full bg-orange-400/18 blur-[75px] sm:blur-[95px]" />
-          {/* Tertiary lower warm glow */}
-          <div className="absolute bottom-1/6 -right-8 w-[240px] sm:w-[340px] h-[340px] rounded-full bg-[#ea580c]/18 blur-[85px] sm:blur-[105px]" />
-          {/* Central soft ember mist */}
-          <div className="absolute top-1/2 -translate-y-1/2 -right-14 w-[180px] sm:w-[260px] h-[260px] rounded-full bg-[#f95721]/30 blur-[60px] sm:blur-[75px]" />
-          {/* Seamless organic edge blend to white (No hard lines) */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 95% 80% at 100% 50%, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 35%, transparent 80%)",
-              mixBlendMode: "screen",
-            }}
-          />
-        </div>
+        {/* Clean, Lightweight Edge Fades (No heavy blurs, zero orange smoky effect) */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-white via-white/80 to-transparent select-none" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent select-none" />
 
         {/* ============================================================== */}
         {/* INFINITE RUNNING CAROUSEL TRACK                                */}
@@ -277,8 +299,8 @@ export function VideoShowcaseSection() {
           <div
             className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
             style={{
-              animation: "infiniteVideoScroll 45s linear infinite",
-              animationPlayState: isPaused ? "paused" : "running",
+              animation: "infiniteVideoScroll 32s linear infinite",
+              animationPlayState: !isSectionVisible ? "paused" : isPaused ? "paused" : "running",
             }}
           >
             {DOUBLED_VIDEOS.map((video, index) => (
@@ -291,12 +313,7 @@ export function VideoShowcaseSection() {
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                {/* 
-                  Pure Edge-to-Edge Video Card:
-                  - NO border padding (p-0)
-                  - NO text above or over the video
-                  - Autoplays smoothly, stops and plays on hover
-                */}
+                {/* Pure Edge-to-Edge Video Card */}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-[#f95721] hover:shadow-[0_20px_45px_rgba(249,87,33,0.3)] hover:scale-[1.025]">
                   <div className="relative h-[380px] w-[215px] sm:h-[450px] sm:w-[255px] md:h-[500px] md:w-[285px] overflow-hidden bg-black">
                     <video
@@ -307,13 +324,12 @@ export function VideoShowcaseSection() {
                       loop
                       muted
                       playsInline
+                      webkit-playsinline="true"
                       preload="metadata"
+                      src={video.src}
                       className="h-full w-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
                     >
-                      <source
-                        src={video.src}
-                        type={video.src.endsWith(".mov") ? "video/quicktime" : "video/mp4"}
-                      />
+                      <source src={video.src} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -338,3 +354,4 @@ export function VideoShowcaseSection() {
     </section>
   );
 }
+
