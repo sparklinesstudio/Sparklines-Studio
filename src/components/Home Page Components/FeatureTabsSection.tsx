@@ -9,7 +9,6 @@ import {
   RefreshCw,
   Users2,
   CheckCircle2,
-  ArrowRight,
   ShieldCheck,
   Activity,
   Cpu,
@@ -88,8 +87,6 @@ export function FeatureTabsSection() {
       ],
     },
   ];
-
-  const currentFeature = features.find((f) => f.id === activeTab) || features[0];
 
   return (
     <section id="services" className="relative bg-zinc-50/60 py-24 sm:py-32 scroll-mt-24">

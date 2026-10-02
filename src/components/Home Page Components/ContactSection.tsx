@@ -2,19 +2,133 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, ChevronDown, AlertCircle } from "lucide-react";
+
+const STUDIO_SERVICES = [
+  "Video Production",
+  "Pay-per-click Advertising (PPC)",
+  "Social Media Marketing",
+  "Search Engine Optimization (SEO)",
+  "Website Design & Development",
+  "Branding & Visual Identity",
+  "Full Growth Retainer / Custom Scope",
+];
 
 export function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    number: "",
+    website: "",
+    service: STUDIO_SERVICES[0],
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      // 1. Try submitting via the Next.js API route first
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          number: "",
+          website: "",
+          service: STUDIO_SERVICES[0],
+          message: "",
+        });
+      } else {
+        // Fallback: direct Web3Forms client-side call if API route has issue
+        const directKey =
+          process.env.NEXT_PUBLIC_FORM_ACCESS_KEY ||
+          "1cbfea18-60e8-44fe-b580-5d84c46310b2";
+
+        const directRes = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: directKey,
+            name: formData.name,
+            phone: formData.number,
+            website: formData.website || "Not provided",
+            service: formData.service,
+            message: formData.message || `Interest in ${formData.service}`,
+            subject: `New Lead: ${formData.name} - ${formData.service}`,
+          }),
+        });
+
+        const directData = await directRes.json();
+        if (directData.success) {
+          setSubmitted(true);
+        } else {
+          setErrorMessage(
+            data.message || directData.message || "Failed to submit. Please contact us directly."
+          );
+        }
+      }
+    } catch (err: unknown) {
+      console.error("Form submit error:", err);
+      // Fallback try
+      try {
+        const directKey =
+          process.env.NEXT_PUBLIC_FORM_ACCESS_KEY ||
+          "1cbfea18-60e8-44fe-b580-5d84c46310b2";
+
+        const directRes = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: directKey,
+            name: formData.name,
+            phone: formData.number,
+            website: formData.website || "Not provided",
+            service: formData.service,
+            message: formData.message || `Interest in ${formData.service}`,
+            subject: `New Lead: ${formData.name} - ${formData.service}`,
+          }),
+        });
+        const directData = await directRes.json();
+        if (directData.success) {
+          setSubmitted(true);
+          return;
+        }
+      } catch {
+        // ignore
+      }
+      setErrorMessage("Something went wrong while sending your request. Please call or email us directly.");
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 800);
+    }
   };
 
   return (
@@ -32,7 +146,7 @@ export function ContactSection() {
             >
               Ready to grow your business?{" "}
               <span className="font-editorial italic font-normal text-zinc-800">
-                Let's get started
+                Let&apos;s get started
               </span>
             </motion.h2>
 
@@ -43,8 +157,8 @@ export function ContactSection() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mt-6 text-base text-zinc-600 leading-relaxed"
             >
-              Have a project in mind, need emergency engineering support, or looking to augment
-              your current team? Drop us a note and we'll reply within 24 hours.
+              Have a project in mind, need high-converting creative, or looking to scale your brand?
+              Fill out the form and our senior partners will respond within 24 hours.
             </motion.p>
 
             <div className="mt-10 space-y-5 border-t border-zinc-100 pt-8">
@@ -78,7 +192,7 @@ export function ContactSection() {
                     </a>
                     <span className="hidden sm:inline text-zinc-300">•</span>
                     <a
-                      href="tel:8001520236"
+                      href="tel:8101520236"
                       className="font-semibold text-zinc-900 hover:text-[#f95721] transition-colors"
                     >
                       +91 8101520236
@@ -112,13 +226,13 @@ export function ContactSection() {
             >
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-4 animate-bounce">
                     <CheckCircle2 className="h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold text-zinc-900">Message Received!</h3>
                   <p className="mt-2 max-w-sm text-sm text-zinc-600">
                     Thank you for reaching out to Sparklines Studio. A senior partner will review
-                    your brief and respond within one business day.
+                    your project details and contact you within one business day.
                   </p>
                   <button
                     type="button"
@@ -126,66 +240,115 @@ export function ContactSection() {
                     className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-6 py-2.5 mt-6 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden cursor-pointer"
                   >
                     <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-                    <span>Send another message</span>
+                    <span>Send another inquiry</span>
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {errorMessage && (
+                    <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm">
+                      <AlertCircle className="h-4 w-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
+                  {/* Name and Number in 2 Columns */}
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <div className="space-y-1.5">
                       <label
-                        htmlFor="first-name"
-                        className="text-xs font-semibold text-zinc-700"
+                        htmlFor="form-name"
+                        className="text-xs font-semibold text-zinc-700 flex items-center justify-between"
                       >
-                        First Name
+                        <span>Name <span className="text-[#f95721]">*</span></span>
                       </label>
                       <input
-                        id="first-name"
+                        id="form-name"
+                        name="name"
                         type="text"
                         required
-                        placeholder="Sarah"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
                         className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-[#f95721] focus:outline-none focus:ring-2 focus:ring-[#f95721]/20 transition-all"
                       />
                     </div>
+
                     <div className="space-y-1.5">
                       <label
-                        htmlFor="last-name"
-                        className="text-xs font-semibold text-zinc-700"
+                        htmlFor="form-number"
+                        className="text-xs font-semibold text-zinc-700 flex items-center justify-between"
                       >
-                        Last Name
+                        <span>Number / WhatsApp <span className="text-[#f95721]">*</span></span>
                       </label>
                       <input
-                        id="last-name"
-                        type="text"
+                        id="form-number"
+                        name="number"
+                        type="tel"
                         required
-                        placeholder="Jenkins"
+                        value={formData.number}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
                         className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-[#f95721] focus:outline-none focus:ring-2 focus:ring-[#f95721]/20 transition-all"
                       />
                     </div>
                   </div>
 
+                  {/* Website */}
                   <div className="space-y-1.5">
-                    <label htmlFor="email" className="text-xs font-semibold text-zinc-700">
-                      Work Email
+                    <label htmlFor="form-website" className="text-xs font-semibold text-zinc-700 flex items-center justify-between">
+                      <span>Website / Social URL</span>
+                      <span className="text-[11px] text-zinc-400 font-normal">Optional</span>
                     </label>
                     <input
-                      id="email"
-                      type="email"
-                      required
-                      placeholder="sarah@company.com"
+                      id="form-website"
+                      name="website"
+                      type="text"
+                      value={formData.website}
+                      onChange={handleChange}
+                      placeholder="https://yourbrand.com or @instagram"
                       className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-[#f95721] focus:outline-none focus:ring-2 focus:ring-[#f95721]/20 transition-all"
                     />
                   </div>
 
+                  {/* Service Dropdown */}
                   <div className="space-y-1.5">
-                    <label htmlFor="message" className="text-xs font-semibold text-zinc-700">
-                      Project Details & Scope
+                    <label htmlFor="form-service" className="text-xs font-semibold text-zinc-700">
+                      Service Required <span className="text-[#f95721]">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="form-service"
+                        name="service"
+                        required
+                        value={formData.service}
+                        onChange={handleChange}
+                        className="w-full appearance-none rounded-xl border border-zinc-300 bg-white px-4 py-3 pr-10 text-sm text-zinc-900 focus:border-[#f95721] focus:outline-none focus:ring-2 focus:ring-[#f95721]/20 transition-all cursor-pointer font-medium"
+                      >
+                        {STUDIO_SERVICES.map((srv) => (
+                          <option key={srv} value={srv}>
+                            {srv}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-zinc-500">
+                        <ChevronDown className="h-4 w-4" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project Details / Scope Note */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="form-message" className="text-xs font-semibold text-zinc-700 flex items-center justify-between">
+                      <span>Project Details</span>
+                      <span className="text-[11px] text-zinc-400 font-normal">Optional</span>
                     </label>
                     <textarea
-                      id="message"
-                      rows={4}
-                      required
-                      placeholder="Tell us about your project, goals, timeline, and budget..."
+                      id="form-message"
+                      name="message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Brief overview of goals, timeline, or current challenges..."
                       className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-[#f95721] focus:outline-none focus:ring-2 focus:ring-[#f95721]/20 transition-all"
                     />
                   </div>
@@ -197,7 +360,7 @@ export function ContactSection() {
                   >
                     <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
                     {loading ? (
-                      <span className="inline-block animate-spin">⟳</span>
+                      <span className="inline-block animate-spin text-base">⟳</span>
                     ) : (
                       <>
                         <span>Submit Inquiry</span>

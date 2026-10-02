@@ -24,11 +24,12 @@ export function OrangeBanner() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_1920,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg"
         className="w-full h-auto object-cover block"
       >
         <source
-          src="https://res.cloudinary.com/vt5gqi1c/video/upload/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4"
+          src="https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.

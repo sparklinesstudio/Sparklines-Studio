@@ -49,7 +49,7 @@ export function AboutSection() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-sm sm:text-base leading-relaxed text-zinc-600"
               >
-                Great products aren't just built on code—they're shaped by clear positioning and
+                Great products aren&apos;t just built on code—they&apos;re shaped by clear positioning and
                 thoughtful design. We focus on the details that build trust and convert visitors into
                 long-term clients.
               </motion.p>

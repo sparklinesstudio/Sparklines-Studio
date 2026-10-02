@@ -10,7 +10,6 @@ import {
   Copy,
   Check,
   Mail,
-  Phone,
 } from "lucide-react";
 
 export function BrandFooterBanner() {
@@ -50,9 +49,9 @@ export function BrandFooterBanner() {
 
   const company = [
     { label: "About Sparklines", href: "#about" },
-    { label: "Our Creative Stack", href: "#tech-stack" },
-    { label: "Client Showcase", href: "#work" },
-    { label: "Wall of Love", href: "#testimonials" },
+    { label: "Our Creative Stack", href: "/#tech-stack" },
+    { label: "Client Showcase", href: "/work" },
+    { label: "Wall of Love", href: "/#testimonials" },
     { label: "Careers", href: "#contact" },
     { label: "Contact Us", href: "#contact" },
   ];

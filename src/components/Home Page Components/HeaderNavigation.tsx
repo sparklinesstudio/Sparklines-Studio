@@ -19,42 +19,31 @@ export function HeaderNavigation() {
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Works", href: "#works" },
-    { label: "Services", href: "#services" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Works", href: "/work" },
+    { label: "Services", href: "/#services-grid" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
     <div className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
       <header
-        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 ${
-          scrolled ? "iphone-glass-scrolled" : "iphone-glass"
-        }`}
+        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 bg-white border border-zinc-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.08)]`}
       >
-        {/* iPhone Specular Glass Highlight Ribbon on top edge */}
-        <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none rounded-full" />
-
-        {/* Brand Mark (Logo) */}
+        {/* Brand Mark (Logo) - prominent and enlarged */}
         <Link
           href="/"
-          className="flex items-center gap-2 sm:gap-2.5 rounded-full py-1 pr-2 text-zinc-900 transition-transform active:scale-95 group"
+          className="flex items-center py-0.5 transition-transform active:scale-95 group"
         >
-          {/* Circular brand mark logo */}
-          <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full overflow-hidden bg-black shadow-[0_2px_8px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-black/10 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-10 sm:h-12 w-36 sm:w-84 flex items-center overflow-hidden">
             <Image
-              src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
-              alt="Sparklines Studio Logo"
+              src="/logo.png"
+              alt="Sparklines Studio"
               fill
-              sizes="36px"
-              className="object-cover"
+              className="object-contain scale-[2.2] origin-left"
               priority
             />
-            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-full z-10 pointer-events-none" />
           </div>
-          <span className="text-sm sm:text-base font-bold tracking-tight text-zinc-950">
-            Sparklines Studio<span className="text-zinc-500 font-normal ml-0.5 hidden xs:inline">Studio</span>
-          </span>
         </Link>
 
         {/* Center Pill Navigation Links: About, Works, Services, Contact */}
@@ -77,7 +66,7 @@ export function HeaderNavigation() {
             className="relative inline-flex items-center gap-1.5 rounded-full bg-zinc-950/95 px-4 py-2 sm:px-5 sm:py-2 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
           >
             <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-            <span>Let's Talk</span>
+            <span>Let&apos;s Talk</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
 
@@ -100,7 +89,7 @@ export function HeaderNavigation() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.96 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="absolute top-full inset-x-0 mt-3 rounded-3xl iphone-glass-scrolled p-5 shadow-2xl md:hidden"
+              className="absolute top-full inset-x-0 mt-3 rounded-3xl bg-white border border-zinc-200/90 p-5 shadow-2xl md:hidden"
             >
               <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none rounded-full" />
               <div className="flex flex-col space-y-2">

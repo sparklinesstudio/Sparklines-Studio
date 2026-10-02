@@ -1,57 +1,74 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 // =========================================================================
 // 1. VIDEO SHOWCASE ASSETS
-// Transcoded to universal H.264 MP4 for 100% mobile (iOS & Android) playback
+// Optimized with Cloudinary on-the-fly streaming & poster frame caching
 // =========================================================================
 
 interface VideoItem {
   id: string;
   src: string;
+  poster: string;
 }
 
 const VIDEO_WORKS: VideoItem[] = [
   {
     id: "vid-1",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
   },
   {
     id: "vid-2",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
   },
   {
     id: "vid-3",
-    // Converted to universal H.264 MP4 to support Android and iOS mobile playback
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto/v1790714352/IMG_5738.MOV.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
   },
   {
     id: "vid-4",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714705/Video-36346.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
   },
   {
     id: "vid-5",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714315/lv_0_20260930014015.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
   },
   {
     id: "vid-6",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
   },
   {
     id: "vid-7",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714269/lv_0_20260930013757.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
   },
   {
     id: "vid-8",
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
   },
   {
     id: "vid-9",
-    // Converted to universal H.264 MP4 to support Android and iOS mobile playback
-    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto/v1790714249/IMG_5657.MOV.mp4",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
+    poster:
+      "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
   },
 ];
 
@@ -69,9 +86,6 @@ export function VideoShowcaseSection() {
   // Track if section is in viewport to freeze CSS marquee when offscreen
   const [isSectionVisible, setIsSectionVisible] = useState(true);
 
-  // Hover state: pauses the infinite carousel and plays hovered video
-  const [isPaused, setIsPaused] = useState(false);
-
   // -----------------------------------------------------------------------
   // SECTION VISIBILITY OBSERVER
   // Pauses CSS animation and idle video playback when user scrolls away
@@ -84,7 +98,7 @@ export function VideoShowcaseSection() {
       ([entry]) => {
         setIsSectionVisible(entry.isIntersecting);
       },
-      { root: null, rootMargin: "200px 0px 200px 0px", threshold: 0 }
+      { root: null, rootMargin: "250px 0px 250px 0px", threshold: 0 }
     );
 
     observer.observe(section);
@@ -95,7 +109,7 @@ export function VideoShowcaseSection() {
   // MOBILE AUTOPLAY & INTERSECTION PLAYBACK
   // - Enforces video.muted = true at DOM level to bypass iOS/Safari autoplay blocks
   // - Listens for first touch/interaction to unlock autoplay in low-power modes
-  // - Only plays videos currently visible on screen to save mobile hardware decoders
+  // - Only plays videos currently visible on screen to save hardware decoders
   // -----------------------------------------------------------------------
   useEffect(() => {
     // Force muted property directly onto HTMLMediaElement instances (crucial for iOS Safari)
@@ -112,7 +126,7 @@ export function VideoShowcaseSection() {
           const video = entry.target as HTMLVideoElement;
           if (entry.isIntersecting && isSectionVisible) {
             video.play().catch(() => {
-              // Autoplay policy fallback: will resume on first touch
+              // Autoplay policy fallback
             });
           } else {
             video.pause();
@@ -121,8 +135,8 @@ export function VideoShowcaseSection() {
       },
       {
         root: null,
-        rootMargin: "80px 80px 80px 80px",
-        threshold: 0.1,
+        rootMargin: "100px 100px 100px 100px",
+        threshold: 0.05,
       }
     );
 
@@ -134,15 +148,21 @@ export function VideoShowcaseSection() {
     const handleFirstInteraction = () => {
       videoRefs.current.forEach((video) => {
         if (video && video.paused) {
-          video.play().catch(() => { });
+          video.play().catch(() => {});
         }
       });
       window.removeEventListener("touchstart", handleFirstInteraction);
       window.removeEventListener("click", handleFirstInteraction);
     };
 
-    window.addEventListener("touchstart", handleFirstInteraction, { passive: true, once: true });
-    window.addEventListener("click", handleFirstInteraction, { passive: true, once: true });
+    window.addEventListener("touchstart", handleFirstInteraction, {
+      passive: true,
+      once: true,
+    });
+    window.addEventListener("click", handleFirstInteraction, {
+      passive: true,
+      once: true,
+    });
 
     return () => {
       observer.disconnect();
@@ -151,25 +171,12 @@ export function VideoShowcaseSection() {
     };
   }, [isSectionVisible]);
 
-  // Hover handlers: pause carousel and ensure hovered video is playing
-  const handleMouseEnter = useCallback((index: number) => {
-    setIsPaused(true);
-    const video = videoRefs.current[index];
-    if (video) {
-      video.play().catch(() => { });
-    }
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsPaused(false);
-  }, []);
-
   return (
     <section
       ref={sectionRef}
       id="video-showcase"
       aria-label="Studio Video Works Showcase"
-      className="relative overflow-hidden bg-white text-zinc-950 py-16 sm:py-24 lg:py-28 border-y border-zinc-200/80"
+      className="relative overflow-hidden bg-white text-zinc-950 py-16 sm:py-24 lg:py-28 border-t border-zinc-200/80"
     >
       {/* Subtle Studio Blueprint Grid Pattern for Clean Canvas */}
       <div
@@ -228,22 +235,20 @@ export function VideoShowcaseSection() {
 
         {/* ============================================================== */}
         {/* INFINITE RUNNING CAROUSEL TRACK                                */}
-        {/* Hardware-accelerated CSS marquee with hover pause              */}
+        {/* Does NOT stop on hover (continuous smooth movement)           */}
         {/* ============================================================== */}
         <div className="group/track relative flex w-full">
           <div
             className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
             style={{
               animation: "infiniteVideoScroll 32s linear infinite",
-              animationPlayState: !isSectionVisible ? "paused" : isPaused ? "paused" : "running",
+              animationPlayState: !isSectionVisible ? "paused" : "running",
             }}
           >
             {DOUBLED_VIDEOS.map((video, index) => (
               <div
                 key={`video-card-${video.id}-${index}`}
-                className="flex-shrink-0 cursor-pointer"
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
+                className="flex-shrink-0 cursor-pointer will-change-transform"
               >
                 {/* Pure Edge-to-Edge Video Card */}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-[#f95721] hover:shadow-[0_20px_45px_rgba(249,87,33,0.3)] hover:scale-[1.025]">
@@ -258,6 +263,7 @@ export function VideoShowcaseSection() {
                       playsInline
                       webkit-playsinline="true"
                       preload="metadata"
+                      poster={video.poster}
                       src={video.src}
                       className="h-full w-full object-cover block transition-transform duration-500 group-hover:scale-[1.02]"
                     >
@@ -272,7 +278,7 @@ export function VideoShowcaseSection() {
         </div>
       </div>
 
-      {/* Global CSS keyframe for silky smooth 120fps infinite scrolling */}
+      {/* Global CSS keyframe for silky smooth infinite scrolling */}
       <style jsx>{`
         @keyframes infiniteVideoScroll {
           0% {
@@ -286,4 +292,3 @@ export function VideoShowcaseSection() {
     </section>
   );
 }
-

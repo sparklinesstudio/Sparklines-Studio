@@ -154,7 +154,7 @@ export function TestimonialsSection() {
               }}
             >
               <p className="text-slate-600 leading-relaxed mb-4 md:mb-8 text-sm md:text-base overflow-y-auto font-sans">
-                "{testimonial.text}"
+                &ldquo;{testimonial.text}&rdquo;
               </p>
 
               {/* Bottom Content Layout */}

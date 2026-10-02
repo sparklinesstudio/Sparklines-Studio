@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
+import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -42,11 +43,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} h-full antialiased scroll-smooth`}
+      className={`${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
+        <LenisSmoothScroll />
         {children}
       </body>
     </html>
   );
 }
+

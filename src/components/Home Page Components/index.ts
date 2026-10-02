@@ -15,4 +15,7 @@ export { VideoShowcaseSection } from "./VideoShowcaseSection";
 export { TechStackSection } from "./TechStackSection";
 export { WebsiteCarouselSection } from "./WebsiteCarouselSection";
 export { BrandFooterBanner } from "./BrandFooterBanner";
-
+export { ServicesMarqueeSection } from "./ServicesMarqueeSection";
+export { TrustFactorsMarqueeSection } from "./TrustFactorsMarqueeSection";
+export { CaseStudySection } from "./CaseStudySection";
+export { SocialShowcaseDiagonalSection } from "./SocialShowcaseDiagonalSection";

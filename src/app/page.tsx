@@ -1,17 +1,17 @@
 import {
   HeaderNavigation,
   HeroSection,
-  ClientLogos,
   AboutSection,
   OrangeBanner,
   TestimonialsSection,
   ServicesGridSection,
   VideoShowcaseSection,
-  TechStackSection,
+  ServicesMarqueeSection,
   WebsiteCarouselSection,
-  PortfolioShowcaseSection,
-  FeatureTabsSection,
-  ExpertiseBento,
+  TrustFactorsMarqueeSection,
+  CaseStudySection,
+  SocialShowcaseDiagonalSection,
+  TechStackSection,
   CtaFloatingSection,
   ContactSection,
   BrandFooterBanner,
@@ -28,9 +28,6 @@ export default function Home() {
         {/* Hero Section with Floating Device Showcase */}
         <HeroSection />
 
-        {/* Trusted Client / Brand Logos */}
-        {/* <ClientLogos /> */}
-
         {/* About Agency & Key Metrics */}
         <AboutSection />
 
@@ -46,22 +43,23 @@ export default function Home() {
         {/* Infinite Straight-Path Video Showcase Section - Our Work in Motion */}
         <VideoShowcaseSection />
 
+        {/* Blue Infinite Scroll Marquee Featuring All Services Provided (Directly Below Video Carousel) */}
+        <ServicesMarqueeSection />
+
         {/* Websites We Have Built Showcase Carousel (Mac Browser Mockups & Interactive Lightbox) */}
         <WebsiteCarouselSection />
 
+        {/* Trust Factors Infinite Scroll Marquee (Directly Below Website Carousel) */}
+        <TrustFactorsMarqueeSection />
+
+        {/* White Theme with Blue Accent Case Study Section (Featuring Flagship Brand with Image on Left & Text on Right) */}
+        <CaseStudySection />
+
+        {/* Diagonal Moving Image Marquee Featuring Hero Social Posts (Directly Below Case Study Section) */}
+        <SocialShowcaseDiagonalSection />
+
         {/* 3-Tier Modern Production & Technology Stack (Photoshop/Creative, React/Next.js, SEMrush/Ads) */}
         <TechStackSection />
-
-
-
-        {/* Luxury Portfolio Growth Tool & Showcase (Scroll Runway, Orange Statement, Project Grid) */}
-        {/* <PortfolioShowcaseSection /> */}
-
-        {/* On-Demand Capabilities & Interactive Sparklines Monitor */}
-        {/* <FeatureTabsSection /> */}
-
-        {/* Expertise Bento Grid */}
-        {/* <ExpertiseBento />  */}
 
         {/* Interactive Contact Form & Studio Details */}
         <ContactSection />
