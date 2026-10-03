@@ -1,4 +1,32 @@
 @import "tailwindcss";
+ 
+@font-face {
+  font-family: "Le Jour Serif";
+  src: local("Le Jour Serif"),
+       local("Le Jour"),
+       local("LeJourSerif"),
+       url("/fonts/LeJourSerif.woff2") format("woff2"),
+       url("/fonts/LeJourSerif.woff") format("woff"),
+       url("/fonts/LeJourSerif.otf") format("opentype"),
+       url("/fonts/LeJourSerif.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Le Jour Serif";
+  src: local("Le Jour Serif Italic"),
+       local("Le Jour Italic"),
+       local("LeJourSerif-Italic"),
+       url("/fonts/LeJourSerif-Italic.woff2") format("woff2"),
+       url("/fonts/LeJourSerif-Italic.woff") format("woff"),
+       url("/fonts/LeJourSerif-Italic.otf") format("opentype"),
+       url("/fonts/LeJourSerif-Italic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   --background: #ffffff;
@@ -13,9 +41,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-serif: var(--font-playfair);
-  --font-display: var(--font-playfair);
-  --font-playfair: var(--font-playfair);
+  --font-serif: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  --font-display: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  --font-playfair: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  --font-editorial: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  --font-accent: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
   --color-accent-orange: #f95721;
   --color-accent-orange-hover: #ea4b16;
   --color-accent-orange-light: #fff5ed;
@@ -35,8 +65,9 @@ body {
 
 .font-editorial,
 .font-display,
-.font-playfair {
-  font-family: var(--font-playfair), Georgia, serif;
+.font-playfair,
+.font-accent {
+  font-family: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
 }
 
 ::selection {

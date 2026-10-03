@@ -68,7 +68,6 @@ export function WebsiteCarouselSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Carousel interactive controls
-  const [isPaused, setIsPaused] = useState(false);
   const [isSectionVisible, setIsSectionVisible] = useState(true);
 
   // Lightbox / modal preview state
@@ -170,22 +169,18 @@ export function WebsiteCarouselSection() {
       {/* SHOWCASE STAGE: SEAMLESS INFINITE WEBSITE RUNWAY               */}
       {/* Pure Edge-to-Edge Website Cards (No text or overlays on card)  */}
       {/* ============================================================== */}
-      <div
-        className="relative w-full overflow-hidden py-4 select-none"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <div className="relative w-full overflow-hidden py-4 select-none">
         {/* Clean edge gradient masks for seamless viewport transition */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-white via-white/80 to-transparent select-none" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent select-none" />
 
-        {/* Running Marquee Track */}
-        <div ref={containerRef} className="group/track relative flex w-full">
+        {/* Running Marquee Track - Continuous motion, does not pause or react on hover */}
+        <div ref={containerRef} className="relative flex w-full">
           <div
             className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
             style={{
               animation: "infiniteWebsitesScroll 34s linear infinite",
-              animationPlayState: !isSectionVisible ? "paused" : isPaused ? "paused" : "running",
+              animationPlayState: !isSectionVisible ? "paused" : "running",
             }}
           >
             {DOUBLED_WEBSITES.map((site, index) => (
@@ -196,18 +191,17 @@ export function WebsiteCarouselSection() {
               >
                 {/* 
                   Pure Edge-to-Edge Website Card:
-                  - NO border padding
-                  - NO text or icons over/under the card
-                  - Ultra-crisp high-res WebP website capture
+                  - Smooth, continuous scrolling
+                  - Does not react or scale on hover
                 */}
-                <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-[#f95721] hover:shadow-[0_20px_45px_rgba(249,87,33,0.3)] hover:scale-[1.025]">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
                   <div className="relative h-[220px] w-[350px] sm:h-[300px] sm:w-[480px] md:h-[360px] md:w-[580px] lg:h-[400px] lg:w-[640px] overflow-hidden bg-black">
                     <Image
                       src={site.image}
                       alt={site.title}
                       fill
                       sizes="(max-width: 640px) 350px, (max-width: 1024px) 480px, 640px"
-                      className="object-cover object-top block transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="object-cover object-top block"
                       loading="lazy"
                     />
                   </div>

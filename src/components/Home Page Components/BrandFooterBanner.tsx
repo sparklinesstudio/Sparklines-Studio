@@ -69,8 +69,6 @@ export function BrandFooterBanner() {
     { name: "Twitter / X", href: "https://x.com" },
     { name: "LinkedIn", href: "https://linkedin.com" },
     { name: "Instagram", href: "https://www.instagram.com/sparklinesstudio" },
-    { name: "GitHub", href: "https://github.com" },
-    { name: "Dribbble", href: "https://dribbble.com" },
   ];
 
   const metrics = [

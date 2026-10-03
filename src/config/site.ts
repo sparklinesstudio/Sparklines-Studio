@@ -22,8 +22,6 @@ export const siteConfig: SiteConfig = {
   ],
   socialLinks: [
     { label: "Twitter / X", href: "https://twitter.com" },
-    { label: "GitHub", href: "https://github.com" },
     { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Dribbble", href: "https://dribbble.com" },
   ],
 };

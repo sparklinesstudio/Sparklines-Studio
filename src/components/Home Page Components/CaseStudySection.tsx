@@ -156,22 +156,6 @@ export function CaseStudySection() {
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-
-                {/* Floating Bottom Card Tag */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 flex items-center justify-between rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 border border-white/80 shadow-md">
-                  <div>
-                    <p className="text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-                      Architectural Portfolio
-                    </p>
-                    <p className="text-xs sm:text-sm font-bold text-zinc-900">
-                      Contekst Studio
-                    </p>
-                  </div>
-                  <span className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 border border-emerald-200/70">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Live Project
-                  </span>
-                </div>
               </div>
             </motion.div>
 
