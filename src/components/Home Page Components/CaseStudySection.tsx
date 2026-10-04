@@ -60,10 +60,10 @@ export function CaseStudySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 sm:leading-tight"
+                className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-zinc-950 sm:leading-tight font-sans"
               >
                 Crafting digital flagships that refuse to{" "}
-                <span className="font-editorial italic font-normal text-zinc-800">
+                <span className="font-editorial font-normal text-zinc-800">
                   blend in.
                 </span>
               </motion.h2>

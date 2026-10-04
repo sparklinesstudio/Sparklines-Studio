@@ -360,7 +360,7 @@ export function TechStackSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-start mb-10 sm:mb-14">
           {/* Main Title on Left */}
           <div className="lg:col-span-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.12]">
               The marketing stack, <br />
               <span className="font-editorial italic font-normal text-blue-600">
                 modernized
@@ -649,7 +649,7 @@ export function TechStackSection() {
                           }`}
                         />
                         <h3
-                          className={`text-base sm:text-lg lg:text-xl font-bold tracking-tight transition-colors font-editorial ${
+                          className={`text-base sm:text-lg lg:text-xl font-bold tracking-tight transition-colors font-editorial italic ${
                             isActive ? "text-zinc-950" : "text-zinc-700 group-hover:text-zinc-950"
                           }`}
                         >

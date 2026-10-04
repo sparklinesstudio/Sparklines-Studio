@@ -28,6 +28,28 @@
   font-display: swap;
 }
 
+/* Ogg Serif Family (Regular & Italic) */
+@font-face {
+  font-family: "Ogg";
+  src: local("Ogg"),
+       local("Ogg Roman"),
+       local("Ogg-Roman"),
+       local("Ogg Regular"),
+       local("Ogg-Regular");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ogg";
+  src: local("Ogg Italic"),
+       local("Ogg-Italic");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #09090b;
@@ -40,12 +62,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-serif: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
-  --font-display: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
-  --font-playfair: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
-  --font-editorial: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
-  --font-accent: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  --font-helvetica: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-ogg: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-serif: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-display: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-playfair: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-editorial: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-accent: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
   --color-accent-orange: #f95721;
   --color-accent-orange-hover: #ea4b16;
   --color-accent-orange-light: #fff5ed;
@@ -59,15 +82,24 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  letter-spacing: -0.012em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+.font-ogg,
 .font-editorial,
 .font-display,
 .font-playfair,
 .font-accent {
-  font-family: "Le Jour Serif", "Le Jour", var(--font-playfair), Georgia, serif;
+  font-family: "Ogg", "Le Jour Serif", "Le Jour", var(--font-playfair), "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+.font-helvetica,
+.font-sans {
+  font-family: "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 ::selection {

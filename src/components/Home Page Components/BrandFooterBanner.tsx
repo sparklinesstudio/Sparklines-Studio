@@ -94,9 +94,9 @@ export function BrandFooterBanner() {
           {/* Left Hero Statement & Direct Actions */}
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* Editorial Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.15]">
               Let&apos;s build something <br />
-              <span className="font-editorial italic font-normal text-zinc-800">
+              <span className="font-editorial font-normal text-zinc-800">
                 extraordinary together.
               </span>
             </h2>
@@ -325,7 +325,7 @@ export function BrandFooterBanner() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-editorial italic font-normal tracking-tight text-zinc-950/[0.04] hover:text-zinc-950/[0.08] transition-colors duration-700 text-center text-[12vw] leading-none pointer-events-none"
+            className="font-editorial font-normal tracking-tight text-zinc-950/[0.04] hover:text-zinc-950/[0.08] transition-colors duration-700 text-center text-[12vw] leading-none pointer-events-none"
           >
             Sparklines Studio
           </motion.h1>

@@ -142,10 +142,10 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl sm:leading-tight"
+              className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl sm:leading-tight font-sans"
             >
               Ready to grow your business?{" "}
-              <span className="font-editorial italic font-normal text-zinc-800">
+              <span className="font-editorial font-normal text-zinc-800">
                 Let&apos;s get started
               </span>
             </motion.h2>

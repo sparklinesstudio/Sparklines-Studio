@@ -32,10 +32,10 @@ export function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl lg:text-4xl sm:leading-snug"
+              className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl lg:text-4xl sm:leading-snug font-sans"
             >
               We craft high-performing websites and digital experiences for brands that refuse to{" "}
-              <span className="font-editorial italic font-normal text-zinc-800">
+              <span className="font-editorial font-normal text-zinc-800">
                 blend in.
               </span>
             </motion.h2>

@@ -144,7 +144,7 @@ export function SocialShowcaseDiagonalSection() {
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-center space-y-6 sm:space-y-7">
             
             {/* Giant Punchy Headline with Blue Accent */}
-            <h2 className="text-3xl sm:text-5xl lg:text-5xl xl:text-[56px] font-black uppercase tracking-tight text-zinc-950 font-sans leading-[1.05]">
+            <h2 className="text-3xl sm:text-5xl lg:text-5xl xl:text-[56px] font-semibold uppercase tracking-tight text-zinc-950 font-sans leading-[1.05]">
               Social Media <br className="hidden sm:inline" />
               Marketing —{" "}
               <span className="text-blue-600 font-editorial italic font-normal tracking-normal lowercase block sm:inline">

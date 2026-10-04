@@ -62,10 +62,10 @@ export function CtaFloatingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 font-editorial leading-[1.12]"
+              className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.12]"
             >
               Your service business, <br />
-              <span className="font-editorial text-zinc-950">
+              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                 on one screen.
               </span>
             </motion.h2>

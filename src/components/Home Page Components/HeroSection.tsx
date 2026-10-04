@@ -174,7 +174,7 @@ export function HeroSection() {
                 </motion.div>
 
                 {/* Headline */}
-                <h1 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1]">
+                <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1] font-sans">
                   Building High-Impact{" "}
                   <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                     Digital
@@ -243,7 +243,7 @@ export function HeroSection() {
                 </motion.div>
 
                 {/* Headline with font and color matching Stage 1 */}
-                <h1 className="text-3xl font-extrabold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1]">
+                <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1] font-sans">
                   Need A Cool{" "}
                   <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
                     Website?

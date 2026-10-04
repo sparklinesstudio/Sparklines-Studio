@@ -136,8 +136,11 @@ export function ServicesGridSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 sm:gap-6 mb-10 sm:mb-14 lg:mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-editorial">
-              Crafted for Growth & Authority
+            <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl font-sans leading-[1.08]">
+              Crafted for Growth &{" "}
+              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+                Authority
+              </span>
             </h2>
             <p className="mt-3.5 text-base sm:text-lg text-zinc-600 leading-relaxed font-normal">
               High-impact digital services designed to command prestige,

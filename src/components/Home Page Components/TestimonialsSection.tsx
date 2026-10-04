@@ -96,8 +96,8 @@ export function TestimonialsSection() {
     >
       {/* Header Section */}
       <div className="text-center w-full max-w-4xl mx-auto px-4 mb-10 md:mb-14">
-        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-editorial font-bold text-slate-900 mb-4 tracking-tight leading-[1.12]">
-          <span className="text-blue-700 italic font-normal">Social proof?</span> Here.
+        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-editorial italic text-slate-900 mb-4 tracking-tight leading-[1.12]">
+          <span className="font-sans font-semibold font-normal text-blue-700">Social proof?</span> Here.
         </h3>
         <p className="text-slate-600 text-sm sm:text-base md:text-lg mb-8 max-w-2xl mx-auto font-sans leading-relaxed">
           Trusted by independent interior designers, luxury studios, and architectural firms.
