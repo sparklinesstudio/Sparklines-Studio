@@ -118,7 +118,7 @@ export function TestimonialsSection() {
           </Link>
 
           {/* Secondary: Light Crystal Glass Pill */}
-          <a href="mailto:hello@sparklines.studio" className="w-full sm:w-auto">
+          <a href="mailto:sparklinestudio.agency@gmail.com" className="w-full sm:w-auto">
             <button
               type="button"
               className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs sm:text-sm font-semibold text-zinc-900 shadow-[0_4px_16px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] border border-zinc-200/90 transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-[0_6px_20px_rgba(0,0,0,0.18)] active:scale-95 group overflow-hidden cursor-pointer"

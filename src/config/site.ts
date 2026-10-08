@@ -3,6 +3,7 @@ export interface SiteConfig {
   tagline: string;
   description: string;
   url: string;
+  email: string;
   navItems: { label: string; href: string }[];
   socialLinks: { label: string; href: string }[];
 }
@@ -13,6 +14,7 @@ export const siteConfig: SiteConfig = {
   description:
     "Sparklines Studio is a creative digital agency specializing in bespoke web applications, interactive experiences, brand identities, and high-performance engineering.",
   url: "https://sparklines.studio",
+  email: "sparklinestudio.agency@gmail.com",
   navItems: [
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
