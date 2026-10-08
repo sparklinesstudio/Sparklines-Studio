@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from "framer-motion";
 
 // =========================================================================
 // 1. DATA: WEBSITES WE HAVE BUILT
@@ -65,10 +65,36 @@ const DOUBLED_WEBSITES = [...WEBSITES_DATA, ...WEBSITES_DATA];
 
 export function WebsiteCarouselSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
 
   // Carousel interactive controls
   const [isSectionVisible, setIsSectionVisible] = useState(true);
+
+  // Drag and smooth animation motion values
+  const x = useMotionValue(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useAnimationFrame((_, delta) => {
+    if (isDragging) return;
+    if (!isSectionVisible) return;
+    if (!trackRef.current) return;
+
+    const halfWidth = trackRef.current.scrollWidth / 2;
+    if (halfWidth <= 0) return;
+
+    const speed = isHovered ? 20 : 50;
+    let newX = x.get() - (speed * delta) / 1000;
+
+    if (newX <= -halfWidth) {
+      newX += halfWidth;
+    } else if (newX > 0) {
+      newX -= halfWidth;
+    }
+
+    x.set(newX);
+  });
 
   // Lightbox / modal preview state
   const [selectedWebsite, setSelectedWebsite] = useState<WebsiteItem | null>(null);
@@ -174,28 +200,51 @@ export function WebsiteCarouselSection() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-white via-white/80 to-transparent select-none" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent select-none" />
 
-        {/* Running Marquee Track - Continuous motion, does not pause or react on hover */}
-        <div ref={containerRef} className="relative flex w-full">
-          <div
-            className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
-            style={{
-              animation: "infiniteWebsitesScroll 34s linear infinite",
-              animationPlayState: !isSectionVisible ? "paused" : "running",
+        {/* Running Marquee Track - Auto scrolls and supports interactive manual dragging */}
+        <div className="relative flex w-full overflow-hidden">
+          <motion.div
+            ref={trackRef}
+            style={{ x }}
+            drag="x"
+            dragConstraints={{ left: -100000, right: 100000 }}
+            dragElastic={0}
+            onDragStart={() => {
+              setIsDragging(true);
+              isDraggingRef.current = true;
             }}
+            onDragEnd={() => {
+              setIsDragging(false);
+              setTimeout(() => {
+                isDraggingRef.current = false;
+              }, 80);
+              if (trackRef.current) {
+                const halfWidth = trackRef.current.scrollWidth / 2;
+                let cur = x.get();
+                while (cur <= -halfWidth) cur += halfWidth;
+                while (cur > 0) cur -= halfWidth;
+                x.set(cur);
+              }
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform cursor-grab active:cursor-grabbing select-none"
           >
             {DOUBLED_WEBSITES.map((site, index) => (
               <div
                 key={`website-card-${site.id}-${index}`}
-                className="flex-shrink-0 cursor-pointer will-change-transform"
-                onClick={() => setSelectedWebsite(site)}
+                className="flex-shrink-0 cursor-grab active:cursor-grabbing will-change-transform"
+                onClick={() => {
+                  if (isDraggingRef.current) return;
+                  setSelectedWebsite(site);
+                }}
               >
                 {/* 
                   Pure Edge-to-Edge Website Card:
                   - Smooth, continuous scrolling
-                  - Does not react or scale on hover
+                  - Interactive drag support
                 */}
-                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
-                  <div className="relative h-[220px] w-[350px] sm:h-[300px] sm:w-[480px] md:h-[360px] md:w-[580px] lg:h-[400px] lg:w-[640px] overflow-hidden bg-black">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)] pointer-events-auto">
+                  <div className="relative h-[220px] w-[350px] sm:h-[300px] sm:w-[480px] md:h-[360px] md:w-[580px] lg:h-[400px] lg:w-[640px] overflow-hidden bg-black pointer-events-none">
                     <Image
                       src={site.image}
                       alt={site.title}
@@ -208,7 +257,7 @@ export function WebsiteCarouselSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -296,18 +345,6 @@ export function WebsiteCarouselSection() {
           </div>
         )}
       </AnimatePresence>
-
-      {/* Global Infinite Scrolling Animation Keyframes */}
-      <style jsx>{`
-        @keyframes infiniteWebsitesScroll {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

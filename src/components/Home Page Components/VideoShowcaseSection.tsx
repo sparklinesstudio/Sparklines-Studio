@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 // =========================================================================
 // 1. VIDEO SHOWCASE ASSETS
@@ -81,10 +82,36 @@ const DOUBLED_VIDEOS = [...VIDEO_WORKS, ...VIDEO_WORKS];
 
 export function VideoShowcaseSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Track if section is in viewport to freeze CSS marquee when offscreen
+  // Track if section is in viewport to freeze animation when offscreen
   const [isSectionVisible, setIsSectionVisible] = useState(true);
+
+  // Drag and smooth animation motion values
+  const x = useMotionValue(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useAnimationFrame((_, delta) => {
+    if (isDragging) return;
+    if (!isSectionVisible) return;
+    if (!trackRef.current) return;
+
+    const halfWidth = trackRef.current.scrollWidth / 2;
+    if (halfWidth <= 0) return;
+
+    const speed = isHovered ? 25 : 55;
+    let newX = x.get() - (speed * delta) / 1000;
+
+    if (newX <= -halfWidth) {
+      newX += halfWidth;
+    } else if (newX > 0) {
+      newX -= halfWidth;
+    }
+
+    x.set(newX);
+  });
 
   // -----------------------------------------------------------------------
   // SECTION VISIBILITY OBSERVER
@@ -234,25 +261,38 @@ export function VideoShowcaseSection() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-white via-white/80 to-transparent select-none" />
 
         {/* ============================================================== */}
-        {/* INFINITE RUNNING CAROUSEL TRACK                                */}
-        {/* Does NOT stop on hover (continuous smooth movement)           */}
+        {/* INFINITE RUNNING & DRAGGABLE CAROUSEL TRACK                    */}
         {/* ============================================================== */}
-        <div className="group/track relative flex w-full">
-          <div
-            className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform"
-            style={{
-              animation: "infiniteVideoScroll 32s linear infinite",
-              animationPlayState: !isSectionVisible ? "paused" : "running",
+        <div className="relative flex w-full overflow-hidden">
+          <motion.div
+            ref={trackRef}
+            style={{ x }}
+            drag="x"
+            dragConstraints={{ left: -100000, right: 100000 }}
+            dragElastic={0}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={() => {
+              setIsDragging(false);
+              if (trackRef.current) {
+                const halfWidth = trackRef.current.scrollWidth / 2;
+                let cur = x.get();
+                while (cur <= -halfWidth) cur += halfWidth;
+                while (cur > 0) cur -= halfWidth;
+                x.set(cur);
+              }
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="flex w-max items-center gap-5 sm:gap-7 py-4 will-change-transform cursor-grab active:cursor-grabbing select-none"
           >
             {DOUBLED_VIDEOS.map((video, index) => (
               <div
                 key={`video-card-${video.id}-${index}`}
-                className="flex-shrink-0 cursor-pointer will-change-transform"
+                className="flex-shrink-0 cursor-grab active:cursor-grabbing will-change-transform"
               >
                 {/* Pure Edge-to-Edge Video Card */}
                 <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-200/90 bg-black shadow-[0_12px_32px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-[#f95721] hover:shadow-[0_20px_45px_rgba(249,87,33,0.3)] hover:scale-[1.025]">
-                  <div className="relative h-[380px] w-[215px] sm:h-[450px] sm:w-[255px] md:h-[500px] md:w-[285px] overflow-hidden bg-black">
+                  <div className="relative h-[380px] w-[215px] sm:h-[450px] sm:w-[255px] md:h-[500px] md:w-[285px] overflow-hidden bg-black pointer-events-none">
                     <video
                       ref={(el) => {
                         videoRefs.current[index] = el;
@@ -274,21 +314,9 @@ export function VideoShowcaseSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Global CSS keyframe for silky smooth infinite scrolling */}
-      <style jsx>{`
-        @keyframes infiniteVideoScroll {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

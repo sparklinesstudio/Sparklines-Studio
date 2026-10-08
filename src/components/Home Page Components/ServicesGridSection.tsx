@@ -32,7 +32,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "video-production",
     titleFirst: "Video",
     titleSecond: "Production",
-    href: "#contact",
+    href: "/services/video-production",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790451083/video-production-bg.jpg",
     titleFirstColor: "text-white",
@@ -47,7 +47,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "ppc-advertising",
     titleFirst: "Pay-per-click",
     titleSecond: "advertising",
-    href: "#contact",
+    href: "/services/ppc-advertising",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790451181/pay-per-click-bg.jpg",
     titleFirstColor: "text-white",
@@ -62,7 +62,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "social-media",
     titleFirst: "Social Media",
     titleSecond: "Marketing",
-    href: "#contact",
+    href: "/services/social-media",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790451192/social-media-marketing-bg.jpg",
     titleFirstColor: "text-white",
@@ -79,7 +79,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "seo",
     titleFirst: "Search engine",
     titleSecond: "optimization",
-    href: "#contact",
+    href: "/services/seo",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790451362/seo-bg.jpg",
     titleFirstColor: "text-white",
@@ -94,7 +94,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "web-design",
     titleFirst: "Website",
     titleSecond: "Design",
-    href: "#contact",
+    href: "/services/web-design",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790452239/website-design-bg.jpg",
     titleFirstColor: "text-white",
@@ -109,7 +109,7 @@ const SERVICES_DATA: ServiceCardItem[] = [
     id: "branding",
     titleFirst: "Branding",
     titleSecond: "Identity",
-    href: "#contact",
+    href: "/services/branding",
     bgImage:
       "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790452239/branding-bg.jpg",
     titleFirstColor: "text-white",
@@ -170,64 +170,65 @@ export function ServicesGridSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-video cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
-              {/* Background Image */}
-              <Image
-                src={service.bgImage}
-                alt={`${service.titleFirst} ${service.titleSecond}`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+              <Link
+                href={service.href}
+                className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-video cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 block"
+              >
+                {/* Background Image */}
+                <Image
+                  src={service.bgImage}
+                  alt={`${service.titleFirst} ${service.titleSecond}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
 
-              {/* Left-side gradient overlay for text readability */}
-              <div
-                className={`pointer-events-none absolute inset-0 ${service.overlayClass}`}
-              />
+                {/* Left-side gradient overlay for text readability */}
+                <div
+                  className={`pointer-events-none absolute inset-0 ${service.overlayClass}`}
+                />
 
-              {/* Bottom gradient vignette for extra depth */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                {/* Bottom gradient vignette for extra depth */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-              {/* Content: Title top-left, Button bottom-left */}
-              <div className="relative z-10 flex flex-col justify-between h-full p-5 sm:p-7 lg:p-8">
-                {/* Title */}
-                <div>
-                  <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-[1.18]">
-                    <span
-                      className={`block font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${service.titleFirstColor}`}
-                    >
-                      {service.titleFirst}
-                    </span>
-                    <span
-                      className={`block font-medium mt-0.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)] ${service.titleSecondColor}`}
-                    >
-                      {service.titleSecond}
-                    </span>
-                  </h3>
-                </div>
+                {/* Content: Title top-left, Button bottom-left */}
+                <div className="relative z-10 flex flex-col justify-between h-full p-5 sm:p-7 lg:p-8">
+                  {/* Title */}
+                  <div>
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold tracking-tight leading-[1.18]">
+                      <span
+                        className={`block font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${service.titleFirstColor}`}
+                      >
+                        {service.titleFirst}
+                      </span>
+                      <span
+                        className={`block font-medium mt-0.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)] ${service.titleSecondColor}`}
+                      >
+                        {service.titleSecond}
+                      </span>
+                    </h3>
+                  </div>
 
-                {/* LEARN MORE button */}
-                <div>
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center gap-2.5 group/btn"
-                  >
-                    <div
-                      className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full ${service.btnCircleBg} shadow-md transition-transform duration-300 group-hover:scale-110`}
-                    >
-                      <ArrowUpRight
-                        className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${service.btnCircleTextColor} transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5`}
-                      />
+                  {/* LEARN MORE indicator */}
+                  <div>
+                    <div className="inline-flex items-center gap-2.5 group/btn">
+                      <div
+                        className={`flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full ${service.btnCircleBg} shadow-md transition-transform duration-300 group-hover:scale-110`}
+                      >
+                        <ArrowUpRight
+                          className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${service.btnCircleTextColor} transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5`}
+                        />
+                      </div>
+                      <span
+                        className={`text-[11px] sm:text-xs font-bold tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] ${service.btnTextColor}`}
+                      >
+                        EXPLORE PRACTICE
+                      </span>
                     </div>
-                    <span
-                      className={`text-[11px] sm:text-xs font-bold tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] ${service.btnTextColor}`}
-                    >
-                      LEARN MORE
-                    </span>
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

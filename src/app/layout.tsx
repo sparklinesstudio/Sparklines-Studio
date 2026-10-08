@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Arimo } from "next/font/google";
 import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
+import { Curtains } from "@/components/ui/curtains";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -53,6 +54,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
         <LenisSmoothScroll />
+        <Curtains color="#3b82f6" accentColor="#60a5fa" />
         {children}
       </body>
     </html>

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -89,6 +89,30 @@ const testimonials = [
 export function TestimonialsSection() {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
+  const x = useMotionValue(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useAnimationFrame((_, delta) => {
+    if (isDragging) return;
+    if (!trackRef.current) return;
+
+    const halfWidth = trackRef.current.scrollWidth / 2;
+    if (halfWidth <= 0) return;
+
+    const speed = isHovered ? 20 : 45;
+    let newX = x.get() - (speed * delta) / 1000;
+
+    if (newX <= -halfWidth) {
+      newX += halfWidth;
+    } else if (newX > 0) {
+      newX -= halfWidth;
+    }
+
+    x.set(newX);
+  });
+
   return (
     <section
       id="testimonials"
@@ -131,18 +155,28 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Infinite Slider Section */}
-      <div className="relative w-full flex items-center">
+      {/* Infinite Slider Section with Auto-Scroll & Manual Drag */}
+      <div className="relative w-full flex items-center overflow-hidden">
         <motion.div
-          className="flex gap-4 sm:gap-6 md:gap-8 w-max px-4 py-8 items-center cursor-grab active:cursor-grabbing"
-          animate={{
-            x: ["0%", "-50%"],
+          ref={trackRef}
+          style={{ x }}
+          drag="x"
+          dragConstraints={{ left: -100000, right: 100000 }}
+          dragElastic={0}
+          onDragStart={() => setIsDragging(true)}
+          onDragEnd={() => {
+            setIsDragging(false);
+            if (trackRef.current) {
+              const halfWidth = trackRef.current.scrollWidth / 2;
+              let cur = x.get();
+              while (cur <= -halfWidth) cur += halfWidth;
+              while (cur > 0) cur -= halfWidth;
+              x.set(cur);
+            }
           }}
-          transition={{
-            ease: "linear",
-            duration: 55,
-            repeat: Infinity,
-          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="flex gap-4 sm:gap-6 md:gap-8 w-max px-4 py-8 items-center cursor-grab active:cursor-grabbing select-none"
         >
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
