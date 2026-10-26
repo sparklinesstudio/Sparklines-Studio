@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // =========================================================================
 // TESTIMONIALS DATA
@@ -127,31 +128,28 @@ export function TestimonialsSection() {
           Trusted by independent interior designers, luxury studios, and architectural firms.
         </p>
 
-        {/* Buttons Styled in Current Website's Signature Style */}
+        {/* Buttons Styled with SpecularButton */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full px-4 sm:px-0">
-          {/* Primary: Crystal Glass Pill */}
-          <Link href="#contact" className="w-full sm:w-auto">
-            <button
-              type="button"
-              className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden cursor-pointer"
-            >
-              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-              <span>Book a Call</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </Link>
+          {/* Primary Specular Button */}
+          <Button
+            href="#contact"
+            size="md"
+            className="w-full sm:w-auto group"
+          >
+            <span>Book a Call</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Button>
 
-          {/* Secondary: Light Crystal Glass Pill */}
-          <a href="mailto:sparklinestudio.agency@gmail.com" className="w-full sm:w-auto">
-            <button
-              type="button"
-              className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-xs sm:text-sm font-semibold text-zinc-900 shadow-[0_4px_16px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] border border-zinc-200/90 transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-[0_6px_20px_rgba(0,0,0,0.18)] active:scale-95 group overflow-hidden cursor-pointer"
-            >
-              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
-              <span>Email Us Directly</span>
-              <ArrowUpRight className="h-3.5 w-3.5 text-zinc-500 transition-transform duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </a>
+          {/* Secondary Light Specular Button */}
+          <Button
+            href="mailto:sparklinestudio.agency@gmail.com"
+            variant="secondary"
+            size="md"
+            className="w-full sm:w-auto group"
+          >
+            <span>Email Us Directly</span>
+            <ArrowUpRight className="h-3.5 w-3.5 text-zinc-500 transition-transform duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Button>
         </div>
       </div>
 

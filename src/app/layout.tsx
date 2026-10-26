@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     "UI/UX Design",
     "Product Engineering",
   ],
+  verification: {
+    google: "vpcDQaDSpnn8vkuiYG0fpCmrPS7jHMWJmuDdZWOPnRs",
+  },
   icons: {
     icon: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
     shortcut: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
@@ -50,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${arimo.variable} h-full antialiased`}
+      className={`${playfair.variable} ${arimo.variable} min-h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
         <LenisSmoothScroll />

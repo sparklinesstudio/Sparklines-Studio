@@ -12,6 +12,7 @@ import {
   Zap,
   ShieldCheck,
 } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { SERVICES_CATALOG, ServiceDetail } from "@/data/servicesData";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
@@ -115,24 +116,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
               {/* Action Buttons */}
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                <Link href="#contact" className="w-full sm:w-auto">
-                  <button
-                    type="button"
-                    className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:bg-[#f95721] hover:shadow-[0_6px_24px_rgba(249,87,33,0.4)] active:scale-95 group overflow-hidden cursor-pointer"
-                  >
-                    <span>Discuss This Scope</span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                </Link>
+                <Button
+                  href="#contact"
+                  size="lg"
+                  className="w-full sm:w-auto group"
+                >
+                  <span>Discuss This Scope</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
 
-                <Link href="#case-studies" className="w-full sm:w-auto">
-                  <button
-                    type="button"
-                    className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white/95 px-7 py-3.5 text-sm font-semibold text-zinc-900 shadow-sm border border-white/40 transition-all duration-300 hover:bg-white hover:shadow-md active:scale-95 cursor-pointer"
-                  >
-                    <span>View Proven Case Studies</span>
-                  </button>
-                </Link>
+                <Button
+                  href="#case-studies"
+                  variant="secondary"
+                  size="lg"
+                  className="w-full sm:w-auto group"
+                >
+                  <span>View Proven Case Studies</span>
+                </Button>
               </div>
             </div>
 

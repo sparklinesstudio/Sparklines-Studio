@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, TrendingUp, CheckCircle2, ShieldAlert, Target } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { PortfolioItem } from "@/data/portfolioData";
 
 interface PortfolioModalProps {
@@ -202,14 +203,15 @@ export function PortfolioModal({ project, onClose }: PortfolioModalProps) {
               </div>
 
               {/* Get In Touch Button (Smooth scrolls to contact form) */}
-              <Link
+              <Button
                 href="#contact"
+                size="md"
                 onClick={onClose}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 px-8 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.18)] transition-all duration-300 hover:bg-[#f95721] hover:shadow-[0_6px_22px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+                className="w-full sm:w-auto group"
               >
                 <span>Get In Touch</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+              </Button>
             </div>
           </div>
         </motion.div>

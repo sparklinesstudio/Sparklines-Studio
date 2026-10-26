@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import Link from "next/link";
+import { useRef, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // ============================================================================
-// SHOWCASE ASSETS (NON-DUPLICATED: EXACT 8 POSTS AND 4 WEBSITES)
+// SHOWCASE ASSETS (NON-DUPLICATED: EXACT 8 POSTS)
 // ============================================================================
 
 export const heroShowcasePosts: string[] = [
@@ -21,70 +21,28 @@ export const heroShowcasePosts: string[] = [
   "https://i.pinimg.com/736x/b9/2e/6f/b92e6fa249e98df9344148ba555a29db.jpg",
 ];
 
-export const websiteShowcaseProjects = [
-  {
-    id: "oraanj",
-    title: "Oraanj Interiors Design",
-    category: "Architecture & Interior Studio",
-    url: "oraanj-interiors.com",
-    src: "https://res.cloudinary.com/dbwrnwa3l/image/upload/f_auto,q_60,c_limit,w_1200/v1788801541/Oraanj_Interiors_Design_bd8exo.png",
-  },
-  {
-    id: "contekst",
-    title: "Contekst",
-    category: "Modern Architecture & Living",
-    url: "contekst.design",
-    src: "https://res.cloudinary.com/dbwrnwa3l/image/upload/f_auto,q_60,c_limit,w_1200/v1788801506/Contekst_o2pipv.png",
-  },
-  {
-    id: "luxoria",
-    title: "Luxoria",
-    category: "Luxury Living & Interior Concept",
-    url: "luxoria.design",
-    src: "https://res.cloudinary.com/dbwrnwa3l/image/upload/f_auto,q_60,c_limit,w_1200/v1788801474/Luxoria_1_caa7j2.png",
-  },
-  {
-    id: "maison-moghadam",
-    title: "Maison Moghadam",
-    category: "Haute Horlogerie & High Jewellery",
-    url: "maisonmoghadam.com",
-    src: "https://res.cloudinary.com/dbwrnwa3l/image/upload/f_auto,q_60,c_limit,w_1200/v1788801500/MaisonMoghadam_vs9nx6.png",
-  },
-];
-
-type StudioHeroMode = "CREATIVE" | "WEBSITES";
+// Duplicated for seamless infinite marquee loop
+const infiniteHeroPosts = [...heroShowcasePosts, ...heroShowcasePosts];
 
 // Custom easing from Emil Kowalski standards (animations.dev)
 const EASE_OUT_STRONG = [0.23, 1, 0.32, 1] as const;
 
 export function HeroSection() {
-  const [mode, setMode] = useState<StudioHeroMode>("CREATIVE");
   const shouldReduceMotion = useReducedMotion();
 
   // Container refs for upward smile curve calculation
-  const creativeContainerRef = useRef<HTMLDivElement>(null);
-  const websiteContainerRef = useRef<HTMLDivElement>(null);
-  const creativeCardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const websiteCardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Pacing: 14 seconds for the 8 posts to pass once; 10 seconds for the 4 websites
-  const creativeDuration = 14;
-  const websiteDuration = 10;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Robust upward smile curve computation that never terminates or drops frames
   useEffect(() => {
     let animationFrameId: number;
 
     const updateCurves = () => {
-      // Always reschedule first so the loop never dies across state transitions
       animationFrameId = requestAnimationFrame(updateCurves);
 
-      const activeContainer =
-        mode === "CREATIVE"
-          ? creativeContainerRef.current
-          : websiteContainerRef.current;
-      const activeCards =
-        mode === "CREATIVE" ? creativeCardRefs.current : websiteCardRefs.current;
+      const activeContainer = containerRef.current;
+      const activeCards = cardRefs.current;
 
       if (!activeContainer) return;
       const containerRect = activeContainer.getBoundingClientRect();
@@ -112,13 +70,13 @@ export function HeroSection() {
 
     animationFrameId = requestAnimationFrame(updateCurves);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [mode]);
+  }, []);
 
   return (
     <section
       id="hero"
       aria-label="Sparklines Studio Showcase"
-      className="relative overflow-hidden pt-28 pb-8 sm:pt-18 sm:pb-12 lg:pt-40 lg:pb-14 bg-gradient-to-b from-blue-500 via-gray-50 via-30% to-white transition-colors duration-1000"
+      className="relative overflow-hidden pt-32 pb-8 sm:pt-36 sm:pb-12 lg:pt-44 lg:pb-14 bg-gradient-to-b from-blue-500 via-gray-50 via-30% to-white transition-colors duration-1000"
     >
       {/* Ambient Top Glow Layer */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[400px] -z-10 bg-gradient-to-b from-blue-500/80 via-gray-50/30 to-transparent blur-3xl" />
@@ -139,153 +97,48 @@ export function HeroSection() {
         {/* ============================================================== */}
         {/* TOP CONTENT: COMPACT STUDIO HEADLINE & CALL TO ACTION          */}
         {/* ============================================================== */}
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center min-h-[155px] sm:min-h-[175px] justify-center">
-          <AnimatePresence mode="wait">
-            {mode === "CREATIVE" ? (
-              // STAGE 1: Brand & Creative Identity (Shown while the 8 posts pass once)
-              <motion.div
-                key="creative-headline"
-                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={
-                  shouldReduceMotion
-                    ? { opacity: 0 }
-                    : {
-                      opacity: 0,
-                      y: -14,
-                      filter: "blur(8px)",
-                      transition: { duration: 0.45, ease: EASE_OUT_STRONG },
-                    }
-                }
-                transition={{ duration: 0.55, ease: EASE_OUT_STRONG }}
-                className="flex flex-col items-center"
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center justify-center">
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.55, ease: EASE_OUT_STRONG }}
+            className="flex flex-col items-center"
+          >
+            {/* Headline */}
+            <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1] font-sans">
+              Scaling Brands With{" "}
+              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+                Marketing
+              </span>
+              <br />& Cinematic{" "}
+              <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
+                Video Production
+              </span>
+            </h1>
+
+            {/* Subtext */}
+            <p className="mt-2.5 max-w-xl text-sm sm:text-base text-zinc-600 leading-normal font-medium">
+              We partner with visionary founders and ambitious brands to craft high-converting campaigns,
+              cinematic commercial videos, and performance strategies that scale revenue.
+            </p>
+
+            {/* Primary CTA Button (Specular Button) */}
+            <div className="mt-4 sm:mt-5">
+              <Button
+                href="#contact"
+                size="lg"
+                className="group"
               >
-                {/* Pill Badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: EASE_OUT_STRONG }}
-                  className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-orange-950 shadow-xs backdrop-blur-md"
-                >
-                  <span className="flex h-2 w-2 rounded-full bg-[#f95721] animate-pulse" />
-                  <span className="text-zinc-800 font-semibold tracking-tight">
-                    Ranked Top Digital Product Agency • 2026
-                  </span>
-                </motion.div>
-
-                {/* Headline */}
-                <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1] font-sans">
-                  Building High-Impact{" "}
-                  <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-                    Digital
-                  </span>
-                  <br />
-                  <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-                    Products
-                  </span>{" "}
-                  for your brand
-                </h1>
-
-                {/* Subtext */}
-                <p className="mt-2.5 max-w-xl text-sm sm:text-base text-zinc-600 leading-normal font-medium">
-                  We partner with visionary founders and scaling brands to craft intuitive websites,
-                  scalable web applications, and unforgettable digital experiences.
-                </p>
-
-                {/* Primary CTA Button */}
-                <div className="mt-4 sm:mt-5">
-                  <motion.div
-                    whileHover={{ scale: 1.025, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.16, ease: EASE_OUT_STRONG }}
-                  >
-                    <Link
-                      href="#contact"
-                      className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-colors duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_22px_rgba(249,87,33,0.35)] group overflow-hidden"
-                    >
-                      <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-                      <span>Let&apos;s work together</span>
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ) : (
-              // STAGE 2: Website Productions Showcase (Shown automatically after all 8 posts pass)
-              <motion.div
-                key="website-headline"
-                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={
-                  shouldReduceMotion
-                    ? { opacity: 0 }
-                    : {
-                      opacity: 0,
-                      y: -14,
-                      filter: "blur(8px)",
-                      transition: { duration: 0.45, ease: EASE_OUT_STRONG },
-                    }
-                }
-                transition={{ duration: 0.55, ease: EASE_OUT_STRONG }}
-                className="flex flex-col items-center"
-              >
-                {/* Pill Badge matching Stage 1 styling */}
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: EASE_OUT_STRONG }}
-                  className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-orange-200/80 bg-white/90 px-3.5 py-1 text-xs font-medium text-orange-950 shadow-xs backdrop-blur-md"
-                >
-                  <span className="flex h-2 w-2 rounded-full bg-[#f95721] animate-pulse" />
-                  <span className="text-zinc-800 font-semibold tracking-tight">
-                    Featured Website Productions • 4 Bespoke Builds
-                  </span>
-                </motion.div>
-
-                {/* Headline with font and color matching Stage 1 */}
-                <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl sm:leading-[1.1] font-sans">
-                  Need A Cool{" "}
-                  <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-                    Website?
-                  </span>
-                  <br />
-                  <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-                    We&apos;ve Got
-                  </span>{" "}
-                  You Covered
-                </h1>
-
-                {/* Subtext matching Stage 1 */}
-                <p className="mt-2.5 max-w-xl text-sm sm:text-base text-zinc-600 leading-normal font-medium">
-                  From bespoke architectural portfolios to luxury brand flagships, we engineer
-                  captivating, high-converting digital homes.
-                </p>
-
-                {/* CTA Button matching font, color, and hover effects of Stage 1 */}
-                <div className="mt-4 sm:mt-5">
-                  <motion.div
-                    whileHover={{ scale: 1.025, y: -2 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.16, ease: EASE_OUT_STRONG }}
-                  >
-                    <Link
-                      href="#contact"
-                      className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-colors duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_22px_rgba(249,87,33,0.35)] group overflow-hidden"
-                    >
-                      <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-                      <span>Get Your Custom Website</span>
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </motion.div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <span>Let&apos;s work together</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </div>
 
       {/* ============================================================== */}
-      {/* SHOWCASE STAGE: 3D CURVED SMILE CAROUSEL RUNWAY                */}
+      {/* SHOWCASE STAGE: 3D CURVED SMILE INFINITE CAROUSEL RUNWAY       */}
       {/* ============================================================== */}
       <div
         className="relative mt-4 sm:mt-6 w-full overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-12"
@@ -295,133 +148,50 @@ export function HeroSection() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-14 sm:w-32 bg-gradient-to-r from-white via-white/85 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-14 sm:w-32 bg-gradient-to-l from-white via-white/85 to-transparent" />
 
-        <AnimatePresence mode="wait">
-          {mode === "CREATIVE" ? (
-            // ============================================================
-            // 1. CREATIVE POSTS: NOT INFINITE — PASSES EXACTLY ONCE
-            // Exactly 8 items. Slides from right to left until all 8 posts
-            // pass across the screen, then onAnimationComplete triggers the website!
-            // ============================================================
-            <motion.div
-              key="stage-creative"
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{
-                opacity: 0,
-                x: -80,
-                filter: "blur(6px)",
-                transition: { duration: 0.65, ease: EASE_OUT_STRONG },
-              }}
-              transition={{ duration: 0.65, ease: EASE_OUT_STRONG }}
-              className="relative w-full"
-            >
+        <div
+          ref={containerRef}
+          className="group/track relative flex w-full"
+        >
+          <motion.div
+            className="flex w-max items-center gap-6 sm:gap-8 py-4 will-change-transform"
+            animate={
+              shouldReduceMotion
+                ? { x: 0 }
+                : {
+                    x: ["0%", "-50%"],
+                  }
+            }
+            transition={{
+              ease: "linear",
+              duration: 28,
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
+          >
+            {infiniteHeroPosts.map((src, index) => (
               <div
-                ref={creativeContainerRef}
-                className="group/track relative flex w-full"
+                key={`hero-post-${index}`}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+                className="flex-shrink-0 cursor-pointer will-change-transform"
               >
-                <motion.div
-                  className="flex w-max items-center gap-6 sm:gap-8 py-4 will-change-transform"
-                  initial={{ x: "0%" }}
-                  animate={{ x: "-86%" }}
-                  transition={{
-                    ease: "linear",
-                    duration: creativeDuration,
-                  }}
-                  onAnimationComplete={() => {
-                    // All 8 posts have completed their single pass!
-                    // Seamlessly transition into the website showcase.
-                    setMode("WEBSITES");
-                  }}
-                >
-                  {heroShowcasePosts.map((src, index) => (
-                    <div
-                      key={`creative-post-${index}`}
-                      ref={(el) => {
-                        creativeCardRefs.current[index] = el;
-                      }}
-                      className="flex-shrink-0 cursor-pointer will-change-transform"
-                    >
-                      <div className="group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:scale-105 hover:-translate-y-2 hover:shadow-[0_22px_45px_rgba(0,0,0,0.12)] hover:border-orange-300 transition-transform duration-250 ease-out">
-                        <div className="relative h-[270px] w-[205px] sm:h-[350px] sm:w-[265px] md:h-[390px] md:w-[295px] overflow-hidden rounded-2xl bg-zinc-100">
-                          <Image
-                            src={src}
-                            alt={`Creative work #${index + 1}`}
-                            fill
-                            sizes="(max-width: 640px) 205px, (max-width: 768px) 265px, 295px"
-                            priority={index < 4}
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
+                <div className="group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.06)] hover:scale-105 hover:-translate-y-2 hover:shadow-[0_22px_45px_rgba(0,0,0,0.12)] hover:border-orange-300 transition-transform duration-250 ease-out">
+                  <div className="relative h-[270px] w-[205px] sm:h-[350px] sm:w-[265px] md:h-[390px] md:w-[295px] overflow-hidden rounded-2xl bg-zinc-100">
+                    <Image
+                      src={src}
+                      alt={`Creative work #${(index % heroShowcasePosts.length) + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 205px, (max-width: 768px) 265px, 295px"
+                      priority={index < 4}
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ) : (
-            // ============================================================
-            // 2. FEATURED WEBSITES: PASSES EXACTLY ONCE
-            // Clean viewports: NO dots, NO hover text or dark overlays.
-            // ============================================================
-            <motion.div
-              key="stage-websites"
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{
-                opacity: 0,
-                x: -80,
-                filter: "blur(6px)",
-                transition: { duration: 0.65, ease: EASE_OUT_STRONG },
-              }}
-              transition={{ duration: 0.65, ease: EASE_OUT_STRONG }}
-              className="relative w-full"
-            >
-              <div
-                ref={websiteContainerRef}
-                className="group/track relative flex w-full"
-              >
-                <motion.div
-                  className="flex w-max items-center gap-6 sm:gap-8 py-4 will-change-transform"
-                  initial={{ x: "0%" }}
-                  animate={{ x: "-76%" }}
-                  transition={{
-                    ease: "linear",
-                    duration: websiteDuration,
-                  }}
-                  onAnimationComplete={() => {
-                    // All 4 websites have completed their pass!
-                    // Transition back to the creative posts.
-                    setMode("CREATIVE");
-                  }}
-                >
-                  {websiteShowcaseProjects.map((project, index) => (
-                    <div
-                      key={`website-item-${project.id}`}
-                      ref={(el) => {
-                        websiteCardRefs.current[index] = el;
-                      }}
-                      className="flex-shrink-0 cursor-pointer will-change-transform"
-                    >
-                      <div className="group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-2.5 shadow-[0_14px_38px_rgba(0,0,0,0.08)] hover:scale-105 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(0,0,0,0.15)] hover:border-orange-300 transition-transform duration-250 ease-out">
-                        {/* Pure Clean Website Showcase Card (No 3 dots, No hover text overlay) */}
-                        <div className="w-[290px] sm:w-[390px] md:w-[450px] h-[195px] sm:h-[260px] md:h-[295px] overflow-hidden rounded-2xl relative bg-zinc-100">
-                          <Image
-                            src={project.src}
-                            alt={project.title}
-                            fill
-                            sizes="(max-width: 640px) 290px, (max-width: 768px) 390px, 450px"
-                            priority={index < 3}
-                            className="object-cover object-top"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Distinct Ambient Silhouette Line Echoing the Upward Smile Curve */}
         <div className="pointer-events-none mx-auto -mt-1 h-12 max-w-5xl rounded-[100%] border-b-2 border-orange-500/20 opacity-80" />

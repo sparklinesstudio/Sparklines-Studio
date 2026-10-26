@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export function CtaFloatingSection() {
   return (
@@ -91,16 +92,14 @@ export function CtaFloatingSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mt-7 sm:mt-8 flex flex-col items-center justify-center gap-3 w-full sm:w-auto"
             >
-              <Link href="#contact" className="w-full sm:w-auto">
-                <button
-                  type="button"
-                  className="relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-zinc-950/95 px-8 py-3.5 sm:px-9 sm:py-4 text-xs sm:text-sm font-semibold text-white shadow-[0_8px_25px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_10px_30px_rgba(249,87,33,0.38)] active:scale-95 group overflow-hidden cursor-pointer"
-                >
-                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
-                  <span>Start your trial</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </Link>
+              <Button
+                href="#contact"
+                size="lg"
+                className="w-full sm:w-auto group"
+              >
+                <span>Start your trial</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
 
               {/* Reassurance text */}
               <p className="text-[11px] sm:text-xs text-zinc-500 font-sans tracking-wide">

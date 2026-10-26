@@ -11,6 +11,7 @@ import {
   Check,
   Mail,
 } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export function BrandFooterBanner() {
   const currentYear = new Date().getFullYear();
@@ -109,16 +110,14 @@ export function BrandFooterBanner() {
 
             {/* Action Buttons Row */}
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              <Link href="#contact">
-                <button
-                  type="button"
-                  className="relative inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_8px_25px_rgba(0,0,0,0.18),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_10px_30px_rgba(249,87,33,0.38)] active:scale-95 group overflow-hidden cursor-pointer"
-                >
-                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
-                  <span>Start your project</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </Link>
+              <Button
+                href="#contact"
+                size="md"
+                className="group"
+              >
+                <span>Start your project</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
 
               {/* Direct Email One-Click Copy Pill */}
               <button

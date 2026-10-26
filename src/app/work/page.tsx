@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { TestimonialsSection } from "@/components/Home Page Components/TestimonialsSection";
 import { ContactSection } from "@/components/Home Page Components/ContactSection";
@@ -94,13 +95,14 @@ export default function WorkPage() {
                   <span className="font-mono text-[11px] text-blue-600 font-semibold group-hover:text-blue-400">03</span>
                   <span>Video Productions</span>
                 </a>
-                <Link
+                <Button
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-zinc-950 px-4.5 py-1.5 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-blue-600 active:scale-95 group ml-1 font-sans"
+                  size="sm"
+                  className="ml-1 group"
                 >
                   <span>Start Project</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
+                </Button>
               </motion.div>
             </div>
 
