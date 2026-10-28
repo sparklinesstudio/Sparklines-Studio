@@ -23,7 +23,9 @@ import { HOUSE_OF_KOLAM_SLIDES, KolamSlide } from "@/data/houseOfKolamData";
 
 /**
  * Slide component that displays a static first frame until the user
- * actually scrolls down to the section, then triggers the animated GIF.
+ * scrolls down to the section, then triggers the animated GIF.
+ * Disconnects the observer immediately on first intersection to prevent
+ * layout thrashing, unmounting loops, or scroll traps.
  */
 function KolamSlideItem({
   slide,
@@ -35,8 +37,7 @@ function KolamSlideItem({
   onClick: () => void;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [gifSrc, setGifSrc] = useState<string | null>(null);
+  const [hasTriggered, setHasTriggered] = useState(false);
 
   useEffect(() => {
     if (!slide.isAnimated) return;
@@ -44,25 +45,26 @@ function KolamSlideItem({
     const el = containerRef.current;
     if (!el) return;
 
+    // Trigger animated GIF once when scrolled into view
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // When user reaches this section, start the GIF from frame 1
-            setIsPlaying(true);
-            setGifSrc(`${slide.url}?play=${Date.now()}`);
-          }
-        });
+        const entry = entries[0];
+        if (entry && entry.isIntersecting) {
+          setHasTriggered(true);
+          // CRITICAL: Disconnect observer immediately so it NEVER re-triggers,
+          // never unmounts, and never interrupts smooth scrolling!
+          observer.disconnect();
+        }
       },
       {
-        rootMargin: "0px 0px -40px 0px",
-        threshold: 0.15,
+        rootMargin: "300px 0px 300px 0px",
+        threshold: 0.01,
       }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [slide.isAnimated, slide.url]);
+  }, [slide.isAnimated]);
 
   // Static first frame for animated GIFs before user scrolls to them
   const staticFrame = slide.isAnimated
@@ -71,10 +73,9 @@ function KolamSlideItem({
         .replace(".gif", ".png")
     : slide.url;
 
+  // Seamless switch to clean, cached GIF URL without cache-busting timestamp
   const currentSrc = slide.isAnimated
-    ? isPlaying && gifSrc
-      ? gifSrc
-      : staticFrame
+    ? (hasTriggered ? slide.url : staticFrame)
     : slide.url;
 
   return (
@@ -82,22 +83,20 @@ function KolamSlideItem({
       ref={containerRef}
       id={`image-${slide.id}`}
       onClick={onClick}
-      className="relative w-full aspect-[16/9] overflow-hidden bg-transparent cursor-pointer select-none rounded-none"
+      className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-100 cursor-pointer select-none rounded-none"
       title="Click for Full Screen"
     >
       <Image
-        key={slide.isAnimated ? (isPlaying ? gifSrc : "static") : undefined}
         src={currentSrc}
-        alt={`House of Kolam — Slide ${slide.id}`}
+        alt={`House of Kolam : Slide ${slide.id}`}
         width={1920}
         height={1080}
         unoptimized={true}
-        priority={index < 2}
-        loading={index < 2 ? "eager" : "lazy"}
-        className="w-full h-auto block select-none rounded-none"
+        priority={index < 5}
+        loading={index < 5 ? "eager" : "lazy"}
+        className="w-full h-full object-cover block select-none rounded-none"
         style={{
           imageRendering: "auto",
-          WebkitBackfaceVisibility: "hidden",
         }}
       />
     </div>
@@ -312,7 +311,7 @@ export default function HouseOfKolamPage() {
                 transition={{ duration: 0.45, delay: 0.08 }}
                 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.08]"
               >
-                House of Kolam —{" "}
+                House of Kolam :{" "}
                 <span className="font-editorial italic font-normal text-zinc-800 tracking-normal">
                   Sacred Geometry & Identity
                 </span>
@@ -368,7 +367,7 @@ export default function HouseOfKolamPage() {
                   Explore Architecture
                 </span>
                 <span className="text-base font-semibold text-zinc-900 group-hover:text-amber-600 transition-colors line-clamp-1 font-sans">
-                  Oraanj Interior Design — High-Intent Architecture SEO
+                  Oraanj Interior Design : High-Intent Architecture SEO
                 </span>
               </Link>
 
@@ -381,7 +380,7 @@ export default function HouseOfKolamPage() {
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 text-amber-600" />
                 </span>
                 <span className="text-base font-semibold text-zinc-900 group-hover:text-amber-600 transition-colors line-clamp-1 font-sans">
-                  Luxoria Heritage — European Multilingual Search
+                  Luxoria Heritage : European Multilingual Search
                 </span>
               </Link>
             </div>
@@ -470,7 +469,7 @@ export default function HouseOfKolamPage() {
               >
                 <Image
                   src={HOUSE_OF_KOLAM_SLIDES[fullscreenIndex].url}
-                  alt={`House of Kolam — Slide ${fullscreenIndex + 1}`}
+                  alt={`House of Kolam : Slide ${fullscreenIndex + 1}`}
                   width={1920}
                   height={1080}
                   unoptimized={true}

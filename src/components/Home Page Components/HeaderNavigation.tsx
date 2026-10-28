@@ -178,16 +178,16 @@ export function HeaderNavigation() {
               </div>
 
               {/* Mobile CTA */}
-              <div className="pt-3 mt-3 border-t border-black/[0.08]">
+              <div className="pt-3 mt-3 border-t border-zinc-100">
                 <Link
                   href="/#contact"
-                  size="md"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full group"
+                  className="relative flex w-full items-center justify-center gap-2 rounded-full bg-zinc-950 py-3 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#f95721] active:scale-95 group overflow-hidden"
                 >
+                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                   <span>Start a Project</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Button>
+                </Link>
               </div>
             </motion.div>
           )}
