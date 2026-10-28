@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // =========================================================================
 // SERVICES DATA (3x2 GRID WITH CLOUDINARY BACKGROUND IMAGES)
@@ -149,14 +150,14 @@ export function ServicesGridSection() {
           </div>
 
           <div className="hidden md:block flex-shrink-0">
-            <Link
+            <Button
               href="#contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+              size="md"
+              className="group"
             >
-              <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
               <span>Discuss a Custom Scope</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </Button>
           </div>
         </div>
 

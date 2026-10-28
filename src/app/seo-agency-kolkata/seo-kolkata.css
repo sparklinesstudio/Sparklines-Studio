@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Sparklines Studio — Kolkata SEO Page Animations & Styles
+   ========================================================================== */
+
+/* Ambient Blue Glow Pulse in Hero & CTA */
+@keyframes pulseGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-35px, 20px) scale(1.15);
+    opacity: 1;
+  }
+}
+
+.ambient-glow-blue {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 68%);
+  animation: pulseGlow 11s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Faster Seamless Infinite Watermark Marquee */
+@keyframes watermarkMarqueeInfinite {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.watermark-marquee-wrap {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: watermarkMarqueeInfinite 18s linear infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Staggered Word Entrance on Hero Title */
+.hero-line-mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.04em;
+}
+
+.hero-word {
+  display: block;
+  opacity: 0;
+  transform: translateY(105%);
+  animation: heroReveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-word-1 {
+  animation-delay: 0.1s;
+}
+
+.hero-word-2 {
+  animation-delay: 0.24s;
+}
+
+.hero-word-3 {
+  animation-delay: 0.38s;
+}
+
+.hero-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroSubReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.hero-delay-2 {
+  animation-delay: 0.66s;
+}
+
+.hero-delay-3 {
+  animation-delay: 0.82s;
+}
+
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll-Triggered Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-75 {
+  transition-delay: 75ms;
+}
+
+.delay-150 {
+  transition-delay: 150ms;
+}
+
+.delay-225 {
+  transition-delay: 225ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-375 {
+  transition-delay: 375ms;
+}
+
+/* Discipline Cards Animated Blue Accent Bar & Lift */
+.discipline-card {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discipline-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #2563EB;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discipline-card.flagship-card::after {
+  transform: scaleX(1);
+}
+
+.discipline-card:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 16px 36px -12px rgba(11, 12, 16, 0.08);
+}
+
+.discipline-card:hover::after {
+  transform: scaleX(1);
+}
+
+.discipline-card .card-body {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discipline-card:hover .card-body {
+  transform: translateY(-4px);
+}
+
+.card-arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+}
+
+.discipline-card:hover .card-arrow,
+.hub-card:hover .card-arrow {
+  transform: translate(3px, -3px);
+  color: #2563EB;
+}
+
+/* Method Process Rows: Self-Drawing Horizontal Lines & Left Shift */
+.method-row {
+  position: relative;
+  transition: padding-left 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+}
+
+.method-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #232630;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.method-top-line {
+  width: 100%;
+  height: 1px;
+  background-color: #232630;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.method-top-line.is-visible,
+.method-row.is-visible .method-line {
+  transform: scaleX(1);
+}
+
+.method-row:hover {
+  padding-left: 1.25rem;
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.method-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #2563EB;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.method-row:hover .method-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Case Study Image Hover */
+.case-img-wrapper {
+  overflow: hidden;
+}
+
+.case-img {
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.case-img-wrapper:hover .case-img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Infinite Seamless Marquee Just Below Hero
+   ========================================================================== */
+@keyframes marqueeScrollInfinite {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeScrollInfinite 30s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle2, ChevronDown, AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 const STUDIO_SERVICES = [
   "Video Production",
@@ -234,14 +235,16 @@ export function ContactSection() {
                     Thank you for reaching out to Sparklines Studio. A senior partner will review
                     your project details and contact you within one business day.
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-6 py-2.5 mt-6 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden cursor-pointer"
-                  >
-                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-                    <span>Send another inquiry</span>
-                  </button>
+                  <div className="mt-6">
+                    <Button
+                      type="button"
+                      size="sm"
+                      onClick={() => setSubmitted(false)}
+                      className="group"
+                    >
+                      <span>Send another inquiry</span>
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -353,12 +356,12 @@ export function ContactSection() {
                     />
                   </div>
 
-                  <button
+                  <Button
                     type="submit"
                     disabled={loading}
-                    className="relative w-full inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950/95 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 disabled:opacity-70 cursor-pointer group overflow-hidden"
+                    size="md"
+                    className="w-full group"
                   >
-                    <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
                     {loading ? (
                       <span className="inline-block animate-spin text-base">⟳</span>
                     ) : (
@@ -367,7 +370,7 @@ export function ContactSection() {
                         <Send className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </>
                     )}
-                  </button>
+                  </Button>
                 </form>
               )}
             </motion.div>

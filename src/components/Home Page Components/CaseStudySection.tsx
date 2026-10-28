@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
 // =========================================================================
@@ -116,14 +117,14 @@ export function CaseStudySection() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
               >
-                <Link
+                <Button
                   href="/work"
-                  className="relative inline-flex items-center gap-2 rounded-full bg-zinc-950/95 px-7 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)] border border-white/15 transition-all duration-300 hover:bg-[#f95721] hover:border-[#f95721]/50 hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+                  size="md"
+                  className="group"
                 >
-                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
                   <span>View All Projects</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
+                </Button>
 
                 <a
                   href="https://www.contekst.be/"

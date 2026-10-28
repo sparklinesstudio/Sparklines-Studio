@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, CheckCircle2, Sparkles, Zap } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { SERVICES_CATALOG } from "@/data/servicesData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { ContactSection } from "@/components/Home Page Components/ContactSection";
@@ -50,15 +51,14 @@ export default function ServicesIndexPage() {
               </p>
 
               <div className="mt-8">
-                <Link href="#contact">
-                  <button
-                    type="button"
-                    className="relative inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 hover:bg-[#f95721] hover:shadow-[0_6px_24px_rgba(249,87,33,0.4)] active:scale-95 group overflow-hidden cursor-pointer"
-                  >
-                    <span>Start a Conversation</span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                </Link>
+                <Button
+                  href="#contact"
+                  size="lg"
+                  className="group"
+                >
+                  <span>Start a Conversation</span>
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
               </div>
             </div>
           </div>

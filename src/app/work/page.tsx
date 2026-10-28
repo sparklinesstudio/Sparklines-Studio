@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ArrowDown, Sparkles, Layers, Maximize2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { ContactSection } from "@/components/Home Page Components/ContactSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
@@ -121,12 +122,12 @@ export default function WorkPage() {
                   <span>Explore Portfolio ↓</span>
                   <ArrowDown className="h-3.5 w-3.5" />
                 </a>
-                <Link
+                <Button
                   href="#contact"
-                  className="inline-flex items-center gap-2 border border-zinc-300 hover:border-zinc-900 bg-white text-zinc-800 hover:text-zinc-950 px-6 sm:px-7 py-3 text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-xs"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-zinc-950 px-4.5 py-1.5 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-blue-600 active:scale-95 group ml-1 font-sans"
                 >
-                  <span>Start a Project</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
+                  <span>Start Project</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </motion.div>
             </div>

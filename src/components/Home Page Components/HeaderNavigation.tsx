@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export function HeaderNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,7 +49,7 @@ export function HeaderNavigation() {
   return (
     <div className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
       <header
-        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 bg-white ${
+        className={`pointer-events-auto relative flex w-full max-w-5xl items-center justify-between rounded-full px-5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 bg-[#E8E8EB] ${
           scrolled
             ? "border border-zinc-200/90 shadow-[0_12px_32px_rgba(0,0,0,0.08)] py-1.5 sm:py-2"
             : "border border-zinc-200/70 shadow-[0_6px_24px_rgba(0,0,0,0.05)]"
@@ -63,8 +64,8 @@ export function HeaderNavigation() {
           <Image
             src="/logo.png"
             alt="Sparklines Studio"
-            width={135}
-            height={40}
+            width={140}
+            height={42}
             className="h-6 sm:h-7 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
             priority
           />
@@ -100,14 +101,14 @@ export function HeaderNavigation() {
 
         {/* Right CTA Button (High-End Obsidian Glass Pill) */}
         <div className="flex items-center gap-2 sm:gap-2.5">
-          <Link
+          <Button
             href="/#contact"
-            className="relative inline-flex items-center gap-1.5 rounded-full bg-zinc-950 px-4 sm:px-5 py-2 text-xs font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.16)] transition-all duration-300 hover:bg-[#f95721] hover:shadow-[0_6px_20px_rgba(249,87,33,0.35)] active:scale-95 group overflow-hidden"
+            size="sm"
+            className="group"
           >
-            <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             <span>Let&apos;s Talk</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          </Button>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -177,16 +178,16 @@ export function HeaderNavigation() {
               </div>
 
               {/* Mobile CTA */}
-              <div className="pt-3 mt-3 border-t border-zinc-100">
+              <div className="pt-3 mt-3 border-t border-black/[0.08]">
                 <Link
                   href="/#contact"
+                  size="md"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="relative flex w-full items-center justify-center gap-2 rounded-full bg-zinc-950 py-3 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#f95721] active:scale-95 group overflow-hidden"
+                  className="w-full group"
                 >
-                  <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                   <span>Start a Project</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
+                </Button>
               </div>
             </motion.div>
           )}
