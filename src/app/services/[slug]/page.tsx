@@ -401,7 +401,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 {matchingCaseStudies.map((project) => (
                   <Link
                     key={project.id}
-                    href={`/work/${project.id}`}
+                    href={project.customHref || `/work/${project.id}`}
                     className="group flex flex-col rounded-3xl overflow-hidden border border-zinc-200/90 bg-white shadow-xs hover:shadow-xl hover:border-zinc-300 transition-all duration-300"
                   >
                     <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">

@@ -16,7 +16,7 @@ export function CaseStudyNav({ prevProject, nextProject }: CaseStudyNavProps) {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
-            href={`/work/${prevProject.id}`}
+            href={prevProject.customHref || `/work/${prevProject.id}`}
             className="group flex flex-col p-5 sm:p-6 rounded-2xl bg-white border border-zinc-200 transition-all duration-300 hover:border-zinc-400 hover:shadow-md"
           >
             <span className="text-xs font-mono uppercase text-zinc-400 mb-1 flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
@@ -29,7 +29,7 @@ export function CaseStudyNav({ prevProject, nextProject }: CaseStudyNavProps) {
           </Link>
 
           <Link
-            href={`/work/${nextProject.id}`}
+            href={nextProject.customHref || `/work/${nextProject.id}`}
             className="group flex flex-col items-start sm:items-end p-5 sm:p-6 rounded-2xl bg-white border border-zinc-200 transition-all duration-300 hover:border-zinc-400 hover:shadow-md text-left sm:text-right"
           >
             <span className="text-xs font-mono uppercase text-zinc-400 mb-1 flex items-center gap-1 group-hover:text-zinc-950 transition-colors">

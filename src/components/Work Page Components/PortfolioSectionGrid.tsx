@@ -131,7 +131,7 @@ export function PortfolioSectionGrid({
                 transition={{ duration: 0.45, delay: (index % 3) * 0.08 }}
               >
                 <Link
-                  href={`/work/${item.id}`}
+                  href={item.customHref || `/work/${item.id}`}
                   aria-label={item.title}
                   className="group relative block aspect-[16/10] w-full overflow-hidden rounded-3xl bg-zinc-900 border border-zinc-200/90 shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-zinc-400 hover:shadow-[0_24px_60px_-12px_rgba(37,99,235,0.22),0_12px_30px_-8px_rgba(234,88,12,0.18)] cursor-pointer"
                 >

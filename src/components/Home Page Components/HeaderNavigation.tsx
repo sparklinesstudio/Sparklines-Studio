@@ -48,10 +48,10 @@ export function HeaderNavigation() {
   return (
     <div className="fixed top-3 sm:top-5 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
       <header
-        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 bg-[#E8E8EB] ${
+        className={`pointer-events-auto relative flex w-full max-w-4xl items-center justify-between rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 bg-white ${
           scrolled
-            ? "border border-[#d2d2d6] shadow-[0_12px_32px_rgba(0,0,0,0.1)] py-1.5 sm:py-2"
-            : "border border-[#d8d8dc] shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
+            ? "border border-zinc-200/90 shadow-[0_12px_32px_rgba(0,0,0,0.08)] py-1.5 sm:py-2"
+            : "border border-zinc-200/70 shadow-[0_6px_24px_rgba(0,0,0,0.05)]"
         }`}
       >
         {/* Brand Mark (Logo) - Absolutely NO background, sits seamlessly on navbar */}
@@ -71,7 +71,7 @@ export function HeaderNavigation() {
         </Link>
 
         {/* Center Pill Navigation Links: About, Works, Services, Contact */}
-        <nav className="hidden md:flex items-center gap-1 rounded-full bg-black/[0.05] p-1 border border-black/[0.03]">
+        <nav className="hidden md:flex items-center gap-1 rounded-full bg-zinc-100 p-1 border border-zinc-200/60">
           {navLinks.map((link) => {
             const isActive =
               (link.href === "/work" && isWorksActive) ||
@@ -84,7 +84,7 @@ export function HeaderNavigation() {
                 className={`relative rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200 active:scale-95 ${
                   isActive
                     ? "bg-white text-zinc-950 shadow-xs"
-                    : "text-zinc-600 hover:text-zinc-950 hover:bg-black/[0.04]"
+                    : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/50"
                 }`}
               >
                 <span className="flex items-center gap-1.5">
@@ -113,7 +113,7 @@ export function HeaderNavigation() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex md:hidden h-8 w-8 items-center justify-center rounded-full bg-black/[0.05] hover:bg-black/[0.08] active:scale-95 text-zinc-800 transition-all"
+            className="inline-flex md:hidden h-8 w-8 items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 active:scale-95 text-zinc-800 transition-all border border-zinc-200/60"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -128,10 +128,10 @@ export function HeaderNavigation() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
               transition={{ type: "spring", damping: 26, stiffness: 360 }}
-              className="absolute top-full inset-x-0 mt-2.5 rounded-3xl bg-[#E8E8EB] border border-[#d2d2d6] p-5 shadow-2xl md:hidden overflow-hidden"
+              className="absolute top-full inset-x-0 mt-2.5 rounded-3xl bg-white border border-zinc-200 p-5 shadow-2xl md:hidden overflow-hidden"
             >
               {/* Mobile Header with brand logo without background */}
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-black/[0.08]">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-100">
                 <Image
                   src="/logo.png"
                   alt="Sparklines Studio"
@@ -159,7 +159,7 @@ export function HeaderNavigation() {
                       className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-colors ${
                         isActive
                           ? "bg-white text-zinc-950 font-bold shadow-xs"
-                          : "text-zinc-700 hover:bg-black/[0.04] active:bg-black/[0.07]"
+                          : "text-zinc-700 hover:bg-zinc-50 active:bg-zinc-100"
                       }`}
                     >
                       <span className="flex items-center gap-2">
@@ -177,7 +177,7 @@ export function HeaderNavigation() {
               </div>
 
               {/* Mobile CTA */}
-              <div className="pt-3 mt-3 border-t border-black/[0.08]">
+              <div className="pt-3 mt-3 border-t border-zinc-100">
                 <Link
                   href="/#contact"
                   onClick={() => setMobileMenuOpen(false)}

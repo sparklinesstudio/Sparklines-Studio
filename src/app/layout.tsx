@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Arimo } from "next/font/google";
+import { Playfair_Display, Arimo, Instrument_Serif } from "next/font/google";
 import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
 import { Curtains } from "@/components/ui/curtains";
 import "./globals.css";
@@ -13,6 +13,13 @@ const playfair = Playfair_Display({
 
 const arimo = Arimo({
   variable: "--font-arimo",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
@@ -50,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${arimo.variable} h-full antialiased`}
+      className={`${playfair.variable} ${arimo.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
         <LenisSmoothScroll />

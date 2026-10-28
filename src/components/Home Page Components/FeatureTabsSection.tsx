@@ -16,7 +16,7 @@ import {
 
 interface FeatureItem {
   id: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   checklist: string[];

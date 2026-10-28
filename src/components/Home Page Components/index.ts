@@ -19,3 +19,5 @@ export { ServicesMarqueeSection } from "./ServicesMarqueeSection";
 export { TrustFactorsMarqueeSection } from "./TrustFactorsMarqueeSection";
 export { CaseStudySection } from "./CaseStudySection";
 export { SocialShowcaseDiagonalSection } from "./SocialShowcaseDiagonalSection";
+export { CosmicOrbitGallerySection } from "./CosmicOrbitGallerySection";
+export { LiquidGlassShowcaseSection } from "./LiquidGlassShowcaseSection";
