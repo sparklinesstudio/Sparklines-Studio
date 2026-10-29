@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import Link from "next/link";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 // =========================================================================
@@ -242,12 +240,10 @@ export function VideoShowcaseSection() {
           {/* Action Button - Aligned at same height as heading */}
           <div className="hidden md:block flex-shrink-0">
             <Button
-              href="#contact"
+              href="/contact"
               size="md"
-              className="group"
             >
               <span>Discuss a Custom Scope</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </div>
         </div>
@@ -321,3 +317,5 @@ export function VideoShowcaseSection() {
     </section>
   );
 }
+
+export default VideoShowcaseSection;

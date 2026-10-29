@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
@@ -30,7 +29,7 @@ export function CaseStudySection() {
       <section
         id="case-study"
         aria-label="Featured Portfolio Case Study"
-        className="relative bg-white py-20 sm:py-28 lg:py-32 scroll-mt-12 border-t border-zinc-100"
+        className="relative bg-white py-16 sm:py-24 lg:py-28 scroll-mt-12 border-t border-zinc-100"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -38,14 +37,6 @@ export function CaseStudySection() {
             {/* LEFT COLUMN: EDITORIAL TEXT & DETAILS                    */}
             {/* ======================================================== */}
             <div className="lg:col-span-6 flex flex-col justify-between">
-              {/* Eyebrow Label */}
-              <div className="flex items-center gap-2 mb-6">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f95721]" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                  Featured Branding Portfolio // House of Kolam
-                </span>
-              </div>
-
               {/* Main Headline */}
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -102,7 +93,7 @@ export function CaseStudySection() {
                 </div>
               </motion.div>
 
-              {/* CTA Action Buttons */}
+              {/* CTA Action Buttons without arrows */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -113,24 +104,22 @@ export function CaseStudySection() {
                 <Button
                   href="/work/branding/house-of-kolam"
                   size="md"
-                  className="group"
                 >
                   <span>Explore House of Kolam</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
 
                 <Link
                   href="/work"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-600 hover:text-zinc-950 transition-colors py-2 px-3"
+                  className="inline-flex items-center text-xs sm:text-sm font-semibold text-zinc-600 hover:text-zinc-950 transition-colors py-2 px-3"
                 >
                   <span>View All Case Studies</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-zinc-400" />
                 </Link>
               </motion.div>
             </div>
 
             {/* ======================================================== */}
             {/* RIGHT COLUMN: HOUSE OF KOLAM BRANDING SHOWCASE IMAGE     */}
+            {/* Clean presentation without badges                         */}
             {/* ======================================================== */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -151,11 +140,6 @@ export function CaseStudySection() {
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-                {/* Floating Corner Pill */}
-                <div className="absolute bottom-4 left-4 z-10 rounded-full bg-white/90 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-wider text-zinc-900 border border-zinc-200/80 shadow-sm flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f95721]" />
-                  <span>2026 Brand Release</span>
-                </div>
               </Link>
             </motion.div>
           </div>
@@ -163,26 +147,26 @@ export function CaseStudySection() {
       </section>
 
       {/* ================================================================ */}
-      {/* MARQUEE BELOW CASE STUDY / PORTFOLIO SECTION                     */}
+      {/* STRAIGHT MARQUEE BELOW CASE STUDY / PORTFOLIO SECTION            */}
       {/* ================================================================ */}
-      <div className="relative w-full overflow-hidden bg-[#1849d6] text-white py-4 sm:py-5 select-none shadow-[0_4px_24px_rgba(24,73,214,0.25)]">
+      <div className="relative w-full overflow-hidden bg-[#1849d6] text-white py-3 sm:py-3.5 select-none shadow-[0_4px_24px_rgba(24,73,214,0.25)] border-y border-blue-400/30">
         {/* Edge fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 bg-gradient-to-r from-[#1849d6] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 bg-gradient-to-l from-[#1849d6] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 bg-gradient-to-r from-[#1849d6] to-transparent select-none" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 bg-gradient-to-l from-[#1849d6] to-transparent select-none" />
 
-        {/* Marquee track — Left to Right */}
-        <div className="flex w-max will-change-transform animate-casestudy-l-to-r">
+        {/* Marquee track — Left to Right with Hover Pause */}
+        <div className="group flex w-max will-change-transform animate-casestudy-l-to-r hover:[animation-play-state:paused]">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map(
             (item, idx) => (
               <div
-                key={`cs-marquee-${item}-${idx}`}
-                className="flex items-center gap-6 sm:gap-8 px-4 sm:px-6"
+                key={`cs-marquee-${idx}`}
+                className="flex items-center gap-4 sm:gap-6 px-3 sm:px-5 shrink-0"
               >
-                <span className="text-base sm:text-lg md:text-xl font-extrabold tracking-wider uppercase whitespace-nowrap text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+                <span className="text-xs sm:text-sm md:text-[15px] font-bold tracking-[0.16em] uppercase whitespace-nowrap text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)] font-sans">
                   {item}
                 </span>
-                <span className="text-blue-200 font-black text-xl sm:text-2xl px-2 select-none">
-                  *
+                <span className="text-blue-200 font-light text-base sm:text-lg select-none">
+                  ✦
                 </span>
               </div>
             )

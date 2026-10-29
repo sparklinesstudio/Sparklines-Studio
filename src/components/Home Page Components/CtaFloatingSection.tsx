@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function CtaFloatingSection() {
@@ -84,10 +83,9 @@ export function CtaFloatingSection() {
           <Button
             href="/contact"
             size="lg"
-            className="w-full sm:w-auto group shadow-xl"
+            className="w-full sm:w-auto shadow-xl"
           >
             <span>Request a Growth Audit</span>
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
 
           {/* Reassurance text */}

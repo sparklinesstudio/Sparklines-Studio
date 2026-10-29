@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUp, ArrowUpRight, Check } from "lucide-react";
+import { ArrowUp, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function BrandFooterBanner() {
@@ -131,10 +131,9 @@ export function BrandFooterBanner() {
                   <Button
                     type="submit"
                     size="md"
-                    className="w-full group"
+                    className="w-full"
                   >
                     <span>Sign Up</span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Button>
                 </form>
               )}

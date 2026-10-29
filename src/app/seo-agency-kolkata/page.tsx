@@ -20,6 +20,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Button } from "@/components/ui/Button";
 import "./seo-kolkata.css";
@@ -1381,6 +1382,9 @@ export default function SeoAgencyKolkataPage() {
       {/* ============================================================== */}
       {/* 13. SITE OFFICIAL BRAND FOOTER BANNER                           */}
       {/* ============================================================== */}
+      <CtaFloatingSection />
+
+      {/* Global Brand Footer */}
       <BrandFooterBanner />
 
       {/* ============================================================== */}

@@ -696,12 +696,10 @@ export function TechStackSection() {
             {/* Discuss Scope Action Button */}
             <div className="pt-2">
               <Button
-                href="#contact"
+                href="/services"
                 size="md"
-                className="group"
               >
                 <span>Explore Full Capabilities</span>
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </div>
           </div>

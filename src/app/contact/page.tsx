@@ -19,6 +19,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import "@/app/seo-agency-kolkata/seo-kolkata.css";
 
@@ -678,6 +679,9 @@ ${formData.message || `Inquiry regarding ${formData.service}`}
       </main>
 
       {/* Blue Theme Footer */}
+      <CtaFloatingSection />
+
+      {/* Global Brand Footer */}
       <BrandFooterBanner />
     </div>
   );

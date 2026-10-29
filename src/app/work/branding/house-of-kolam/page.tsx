@@ -17,7 +17,7 @@ import {
   Share2,
 } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
-import { ContactSection } from "@/components/Home Page Components/ContactSection";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { HOUSE_OF_KOLAM_SLIDES, KolamSlide } from "@/data/houseOfKolamData";
 
@@ -390,11 +390,9 @@ export default function HouseOfKolamPage() {
         
 
         {/* ============================================================== */}
-        {/* 4. CONTACT SECTION                                             */}
+        {/* 4. FULL-WIDTH MARKETING CTA                                    */}
         {/* ============================================================== */}
-        <div className="bg-white">
-          <ContactSection />
-        </div>
+        <CtaFloatingSection />
       </main>
 
       {/* Global Brand Footer Banner */}

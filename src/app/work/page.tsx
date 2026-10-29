@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
-import { ContactSection } from "@/components/Home Page Components/ContactSection";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Button } from "@/components/ui/Button";
 import { HOUSE_OF_KOLAM_IMAGES } from "@/data/houseOfKolamData";
@@ -58,6 +58,45 @@ const showcaseImages = [
 export default function WorkPage() {
   const [previewIdx, setPreviewIdx] = useState(0);
 
+  // Mobile Touch Swipe State
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 40;
+
+    if (distance > minSwipeDistance) {
+      // Swiped Left -> Next image
+      setPreviewIdx((prev) => (prev + 1) % showcaseImages.length);
+    } else if (distance < -minSwipeDistance) {
+      // Swiped Right -> Prev image
+      setPreviewIdx((prev) => (prev - 1 + showcaseImages.length) % showcaseImages.length);
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setPreviewIdx((prev) => (prev - 1 + showcaseImages.length) % showcaseImages.length);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setPreviewIdx((prev) => (prev + 1) % showcaseImages.length);
+  };
+
   return (
     <div className="bg-[#F7F6F2] text-[#0B0C10] selection:bg-blue-600 selection:text-white min-h-screen">
       {/* Site's Official Floating Header Navigation */}
@@ -65,19 +104,9 @@ export default function WorkPage() {
 
       <main>
         {/* ============================================================== */}
-        {/* 1. ATMOSPHERIC HERO SECTION (MATCHING SEO-AGENCY-KOLKATA)       */}
+        {/* 1. ATMOSPHERIC HERO SECTION                                    */}
         {/* ============================================================== */}
-        <header className="relative text-white border-b border-[#232630] overflow-hidden bg-[#090B10] pt-28 sm:pt-36 lg:pt-40 min-h-[78vh] flex flex-col justify-between">
-          {/* Left Vertical Edge Label */}
-          <div className="hidden xl:flex absolute left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-center items-center gap-2 text-[10px] font-mono tracking-[0.28em] text-zinc-500 uppercase select-none pointer-events-none z-20 whitespace-nowrap">
-            <span>EST. 2024 · PORTFOLIO ARCHIVE</span>
-          </div>
-
-          {/* Right Vertical Edge Label */}
-          <div className="hidden xl:flex absolute right-8 top-1/2 -translate-y-1/2 rotate-90 origin-center items-center gap-2 text-[10px] font-mono tracking-[0.28em] text-zinc-500 uppercase select-none pointer-events-none z-20 whitespace-nowrap">
-            <span>INDEX #001 · BRANDING · SEARCH · GROWTH</span>
-          </div>
-
+        <header className="relative text-white border-b border-[#232630] overflow-hidden bg-[#090B10] pt-28 sm:pt-36 lg:pt-40 min-h-[70vh] flex flex-col justify-between">
           {/* Background Image Overlay matching SEO page */}
           <div
             className="absolute inset-0 pointer-events-none opacity-30 z-0 bg-cover bg-center"
@@ -111,13 +140,7 @@ export default function WorkPage() {
           </div>
 
           {/* Hero Content Container */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-4 pb-16 sm:pb-22 lg:pb-24 w-full">
-            {/* Top Status Eyebrow */}
-            <div className="hero-fade-up flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.22em] text-zinc-400 mb-6 sm:mb-8">
-              <span className="w-2 h-2 bg-blue-600 inline-block shadow-sm shadow-blue-600/60" />
-              <span>SELECTED CASE ARCHIVE · VERIFIED WORK</span>
-            </div>
-
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-4 pb-16 sm:pb-20 w-full">
             {/* Monumental Stacked Headline: RECEIPTS. NOT PITCHES. */}
             <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[9.5rem] font-bold uppercase tracking-[-0.035em] leading-[0.88] mb-6 font-sans">
               <div className="hero-line-mask">
@@ -153,16 +176,15 @@ export default function WorkPage() {
                     baseColor="#1d4ed8"
                     className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-7 py-3.5 shadow-lg shadow-blue-600/30 group cursor-pointer"
                   >
-                    <span>EXPLORE WORK ↓</span>
+                    <span>EXPLORE WORK</span>
                   </Button>
                 </a>
 
                 <Link
-                  href="/#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-blue-500/60 text-white font-mono text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                  href="/contact"
+                  className="inline-flex items-center px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-blue-500/60 text-white font-mono text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer backdrop-blur-sm"
                 >
                   <span>START A PROJECT</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300" />
                 </Link>
               </div>
             </div>
@@ -170,20 +192,20 @@ export default function WorkPage() {
         </header>
 
         {/* ============================================================== */}
-        {/* 2. INFINITE SERVICE MARQUEE STRIP WITH BLUE STARS               */}
+        {/* 2. INFINITE SERVICE MARQUEE STRIP                               */}
         {/* ============================================================== */}
-        <div className="relative w-full overflow-hidden bg-[#F7F6F2] border-b border-[#D5D2C9] py-4 sm:py-5 select-none">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-36 bg-gradient-to-r from-[#F7F6F2] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-36 bg-gradient-to-l from-[#F7F6F2] to-transparent" />
+        <div className="relative w-full overflow-hidden bg-[#F7F6F2] border-b border-[#D5D2C9] py-3.5 sm:py-4 select-none">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-36 bg-gradient-to-r from-[#F7F6F2] to-transparent select-none" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-36 bg-gradient-to-l from-[#F7F6F2] to-transparent select-none" />
 
-          <div className="watermark-marquee-wrap">
+          <div className="watermark-marquee-wrap hover:[animation-play-state:paused]">
             <div className="flex shrink-0 items-center">
               {WORK_MARQUEE_ITEMS.map((item, idx) => (
                 <div
                   key={`marquee-item-1-${idx}`}
                   className="flex items-center gap-4 sm:gap-6 px-4 sm:px-6 shrink-0"
                 >
-                  <span className="text-sm sm:text-base font-semibold uppercase tracking-[0.14em] text-[#0B0C10] hover:text-blue-600 transition-colors whitespace-nowrap font-sans">
+                  <span className="text-xs sm:text-sm md:text-[15px] font-semibold uppercase tracking-[0.14em] text-[#0B0C10] hover:text-blue-600 transition-colors whitespace-nowrap font-sans">
                     {item}
                   </span>
                   <span className="text-blue-600 font-light text-base sm:text-lg select-none">
@@ -198,7 +220,7 @@ export default function WorkPage() {
                   key={`marquee-item-2-${idx}`}
                   className="flex items-center gap-4 sm:gap-6 px-4 sm:px-6 shrink-0"
                 >
-                  <span className="text-sm sm:text-base font-semibold uppercase tracking-[0.14em] text-[#0B0C10] hover:text-blue-600 transition-colors whitespace-nowrap font-sans">
+                  <span className="text-xs sm:text-sm md:text-[15px] font-semibold uppercase tracking-[0.14em] text-[#0B0C10] hover:text-blue-600 transition-colors whitespace-nowrap font-sans">
                     {item}
                   </span>
                   <span className="text-blue-600 font-light text-base sm:text-lg select-none">
@@ -211,220 +233,216 @@ export default function WorkPage() {
         </div>
 
         {/* ============================================================== */}
-        {/* 3. FULL-WIDTH ARCHITECTURAL PORTFOLIO EXHIBITION                */}
+        {/* 3. SLEEK ARCHITECTURAL PORTFOLIO CARD                          */}
+        {/* Clean, compact, non-bulky, with fully responsive mobile tap     */}
         {/* ============================================================== */}
         <section
           id="portfolio-archive"
-          className="w-full bg-[#F7F6F2] py-16 sm:py-24 border-b border-[#D5D2C9]"
+          className="w-full bg-[#F7F6F2] py-10 sm:py-16 border-b border-[#D5D2C9]"
         >
-          {/* Section Heading matching Kolkata page style */}
-          <div className="w-full px-6 sm:px-12 lg:px-16 mb-10 sm:mb-14">
-            <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.22em] text-zinc-500 mb-3">
-              <span className="w-2 h-2 bg-blue-600 inline-block shadow-sm shadow-blue-600/60" />
-              <span>01 / FLAGSHIP PORTFOLIO ARCHIVE</span>
-            </div>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-[#0B0C10] leading-[1.04] font-sans">
-              Sacred geometry.<br />
-              <span className="font-editorial italic font-normal text-blue-600">
-                Contemporary culinary identity.
-              </span>
-            </h2>
-          </div>
-
-          {/* Full-Width Architectural Showcase Card */}
+          {/* Main Portfolio Card Container */}
           <div className="w-full border-t border-b border-[#D5D2C9] bg-[#F7F6F2]">
             <div className="w-full grid grid-cols-1 lg:grid-cols-12">
-              {/* Left Column (Rich Editorial Breakdown & Strategic Scope) */}
-              <div className="lg:col-span-6 p-8 sm:p-12 lg:p-16 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2]">
-                {/* Discipline Metadata */}
-                <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 mb-4">
-                  <span>HOUSE OF KOLAM</span>
-                  <span className="text-blue-600">·</span>
-                  <span>BRANDING &amp; IDENTITY</span>
-                  <span className="text-blue-600">·</span>
-                  <span>2026 RELEASE</span>
-                </div>
-
-                {/* Monumental Headline in Signature Editorial Pairing */}
-                <Link href="/work/branding/house-of-kolam" className="group block mb-5">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-[-0.03em] text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans leading-[1.08]">
+              {/* Left Column: Streamlined Editorial & Scope */}
+              <div className="lg:col-span-6 p-6 sm:p-8 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2]">
+                {/* Headline in Signature Editorial Pairing */}
+                <Link href="/work/branding/house-of-kolam" className="group block mb-4">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans leading-[1.1]">
                     House of Kolam.<br />
-                    <span className="font-editorial italic font-normal text-blue-600 text-3xl sm:text-4xl lg:text-[44px]">
+                    <span className="font-editorial italic font-normal text-blue-600 text-2xl sm:text-3xl lg:text-4xl">
                       Sacred Geometry &amp; Heritage Identity
                     </span>
                   </h3>
                 </Link>
 
                 {/* Narrative Overview */}
-                <p className="text-xs sm:text-sm lg:text-[15px] leading-relaxed text-zinc-600 font-normal mb-6">
+                <p className="text-xs sm:text-sm leading-relaxed text-zinc-600 font-normal mb-5 max-w-xl">
                   A modern celebration of ancestral South Indian mathematical art. Engineered from a pure
                   geometric dot-grid matrix into an expansive visual identity spanning bespoke vernacular
                   typography, artisanal kraft and brass packaging, kinetic motion loops, and spatial dining architecture.
                 </p>
 
-                {/* Scope of Deliverables Breakdown (Eliminates all empty space!) */}
-                <div className="space-y-3.5 py-6 border-y border-[#D5D2C9] mb-6">
-                  <div className="flex items-start gap-3">
-                    <span className="text-blue-600 font-bold text-sm mt-0.5 select-none">✦</span>
-                    <div>
-                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B0C10]">
-                        Master Insignia &amp; Dot-Grid Geometry:
-                      </span>{" "}
-                      <span className="text-xs sm:text-sm text-zinc-600">
-                        100% vector pulli lattice alignment engineered for millimeter scalability across store signage and menus.
-                      </span>
-                    </div>
+                {/* Compact Highlights Grid (Sleek & Space-Efficient) */}
+                <div className="grid grid-cols-2 gap-2.5 py-4 border-y border-[#D5D2C9] mb-5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-600 font-bold text-xs">✦</span>
+                    <span className="text-xs font-semibold text-[#0B0C10]">Vector Dot-Grid Lattice</span>
                   </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="text-blue-600 font-bold text-sm mt-0.5 select-none">✦</span>
-                    <div>
-                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B0C10]">
-                        Packaging Ecosystem (12 SKUs):
-                      </span>{" "}
-                      <span className="text-xs sm:text-sm text-zinc-600">
-                        Custom spice pouches, estate tea tins, takeaway boxes, stickers, and gold-foil gift hampers.
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-600 font-bold text-xs">✦</span>
+                    <span className="text-xs font-semibold text-[#0B0C10]">12-SKU Packaging Architecture</span>
                   </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="text-blue-600 font-bold text-sm mt-0.5 select-none">✦</span>
-                    <div>
-                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B0C10]">
-                        Dining &amp; Spatial Collateral:
-                      </span>{" "}
-                      <span className="text-xs sm:text-sm text-zinc-600">
-                        Hardcover menus, beverage coasters, staff uniforms, and dimensional exterior brass signage.
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-600 font-bold text-xs">✦</span>
+                    <span className="text-xs font-semibold text-[#0B0C10]">Spatial Brass &amp; Dining Menus</span>
                   </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="text-blue-600 font-bold text-sm mt-0.5 select-none">✦</span>
-                    <div>
-                      <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B0C10]">
-                        Kinetic Motion Sequences:
-                      </span>{" "}
-                      <span className="text-xs sm:text-sm text-zinc-600">
-                        Simulated hand-drawn flour flow animations for interactive digital touchpoints and social motion.
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-blue-600 font-bold text-xs">✦</span>
+                    <span className="text-xs font-semibold text-[#0B0C10]">Kinetic Motion Loops</span>
                   </div>
                 </div>
 
-                {/* Clean Metric Numbers without badges */}
-                <div className="grid grid-cols-3 gap-4 pb-6 mb-6 border-b border-[#D5D2C9]">
+                {/* Compact Metrics Row */}
+                <div className="grid grid-cols-3 gap-3 pb-4 mb-5 border-b border-[#D5D2C9]">
                   <div>
-                    <div className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0B0C10] font-sans">
+                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B0C10] font-sans">
                       23<span className="text-blue-600 font-light">+</span>
                     </div>
-                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-zinc-500 mt-1">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
                       Master Boards
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0B0C10] font-sans">
+                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B0C10] font-sans">
                       35<span className="text-blue-600 font-light">+</span>
                     </div>
-                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-zinc-500 mt-1">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
                       Deliverables
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl sm:text-4xl font-bold tracking-tight text-blue-600 font-sans">
+                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-blue-600 font-sans">
                       100<span className="font-light">%</span>
                     </div>
-                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-zinc-500 mt-1">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
                       Vector Craft
                     </div>
                   </div>
                 </div>
 
-                {/* Primary Button matching site theme + Secondary Link */}
-                <div className="flex flex-wrap items-center gap-4 pt-1">
+                {/* Primary Action Button (Without Arrows) + Secondary Link */}
+                <div className="flex flex-wrap items-center gap-4">
                   <Link href="/work/branding/house-of-kolam">
                     <Button
                       size="md"
                       tint="#2563eb"
                       lineColor="#bfdbfe"
                       baseColor="#1d4ed8"
-                      className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-7 py-3.5 shadow-md shadow-blue-600/25 group cursor-pointer"
+                      className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-6 py-3 shadow-md shadow-blue-600/25 group cursor-pointer"
                     >
-                      <span>VIEW ALL 23 BOARDS →</span>
+                      <span>VIEW ALL 23 BOARDS</span>
                     </Button>
                   </Link>
 
                   <Link
                     href="/work/branding/house-of-kolam"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-700 hover:text-blue-600 transition-colors py-2"
+                    className="inline-flex items-center text-xs font-mono font-semibold uppercase tracking-wider text-zinc-700 hover:text-blue-600 transition-colors py-2"
                   >
                     <span>Open Fullscreen Gallery</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Right Column (Visual Gallery with Interactive Preview Thumbnails) */}
-              <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#F2F0E8]/40">
+              {/* Right Column: Interactive Visual Showcase with Touch Swipe & Tap Controls */}
+              <div className="lg:col-span-6 p-5 sm:p-7 lg:p-10 flex flex-col justify-between bg-[#F2F0E8]/40">
                 <div>
-                  {/* Top Bar for Visual Area */}
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#D5D2C9]/80 text-xs font-mono text-zinc-500">
-                    <span>BOARD {String(previewIdx + 1).padStart(2, "0")} OF 23 · {showcaseImages[previewIdx].title}</span>
+                  {/* Top Status Bar with Board Number */}
+                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#D5D2C9]/80 text-xs font-mono text-zinc-500">
+                    <span className="truncate pr-2">
+                      BOARD {String(previewIdx + 1).padStart(2, "0")} / 06 · {showcaseImages[previewIdx].title}
+                    </span>
                     <Link
                       href="/work/branding/house-of-kolam"
-                      className="text-blue-600 hover:text-blue-800 font-semibold tracking-wider uppercase inline-flex items-center gap-1 transition-colors"
+                      className="text-blue-600 hover:text-blue-800 font-semibold tracking-wider uppercase shrink-0 transition-colors"
                     >
                       <span>Full Screen</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
 
-                  {/* 16:9 Featured Board Preview */}
-                  <Link
-                    href="/work/branding/house-of-kolam"
-                    className="block relative aspect-[16/9] w-full overflow-hidden border border-[#D5D2C9] bg-zinc-100 group/img cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                  {/* Main Interactive Image Stage */}
+                  <div
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                    onClick={() => setPreviewIdx((prev) => (prev + 1) % showcaseImages.length)}
+                    className="group relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border border-[#D5D2C9] bg-zinc-100 cursor-pointer shadow-sm select-none"
+                    title="Click or tap to advance image"
                   >
                     <Image
                       src={showcaseImages[previewIdx].url}
                       alt={showcaseImages[previewIdx].title}
                       fill
                       priority
-                      className="object-cover object-center transition-transform duration-500 group-hover/img:scale-[1.02]"
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.01]"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <span className="text-xs font-mono text-white tracking-wider uppercase">
-                        {showcaseImages[previewIdx].title} · Click to open fullscreen
+
+                    {/* Left Previous Arrow Touch Button */}
+                    <button
+                      type="button"
+                      onClick={handlePrev}
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
+                      aria-label="Previous board"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+
+                    {/* Right Next Arrow Touch Button */}
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
+                      aria-label="Next board"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+
+                    {/* Bottom Title Pill */}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 pt-6 pointer-events-none flex items-center justify-between">
+                      <span className="text-[11px] sm:text-xs font-mono text-white tracking-wider uppercase truncate">
+                        {showcaseImages[previewIdx].title}
+                      </span>
+                      <span className="text-[10px] font-mono text-white/70 uppercase shrink-0 pl-2">
+                        Tap image or arrows to switch
                       </span>
                     </div>
-                  </Link>
+                  </div>
+
+                  {/* Indicator Dots for Easy Thumb Tap on Mobile */}
+                  <div className="flex items-center justify-center gap-2 pt-3">
+                    {showcaseImages.map((_, idx) => (
+                      <button
+                        key={`dot-${idx}`}
+                        type="button"
+                        onClick={() => setPreviewIdx(idx)}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          setPreviewIdx(idx);
+                        }}
+                        className={`h-2 transition-all duration-200 rounded-full cursor-pointer ${
+                          previewIdx === idx ? "w-6 bg-blue-600" : "w-2 bg-[#D5D2C9] hover:bg-zinc-400"
+                        }`}
+                        aria-label={`Jump to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
 
                 {/* Compact Thumbnail Selector Bar */}
-                <div className="pt-5 space-y-3">
-                  <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-                    <span>Interactive Preview Boards</span>
-                    <span>Click to switch</span>
-                  </div>
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                <div className="pt-3.5 space-y-2">
+                  <div className="grid grid-cols-6 gap-1.5 sm:gap-2">
                     {showcaseImages.map((img, idx) => (
                       <button
                         key={img.id}
                         type="button"
                         onClick={() => setPreviewIdx(idx)}
-                        className={`relative aspect-[16/9] w-full overflow-hidden border transition-all duration-200 cursor-pointer ${
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          setPreviewIdx(idx);
+                        }}
+                        className={`relative aspect-[16/10] w-full overflow-hidden border transition-all duration-200 cursor-pointer ${
                           previewIdx === idx
                             ? "border-blue-600 ring-2 ring-blue-600/40 opacity-100 scale-[1.02]"
                             : "border-[#D5D2C9] opacity-70 hover:opacity-100"
                         }`}
+                        title={img.title}
                       >
                         <Image
                           src={img.url}
                           alt={img.title}
                           fill
                           className="object-cover"
-                          sizes="120px"
+                          sizes="100px"
                         />
                       </button>
                     ))}
@@ -436,13 +454,10 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 4. METHODOLOGY & PHILOSOPHY SECTION (CLEAN EDITORIAL MANIFESTO) */}
+        {/* 4. METHODOLOGY & PHILOSOPHY SECTION                            */}
         {/* ============================================================== */}
-        <section className="w-full bg-[#F7F6F2] py-20 sm:py-28 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
+        <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 mb-4">
-              // METHODOLOGY &amp; PHILOSOPHY
-            </p>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] leading-tight text-[#0B0C10] mb-6 font-sans">
               Every case starts with a hypothesis.<br />
               <span className="font-editorial italic font-normal text-blue-600">
@@ -458,17 +473,10 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 5. DARK METRICS STRIP (ANIMATED STATS MATCHING KOLKATA PAGE)   */}
+        {/* 5. DARK METRICS STRIP                                          */}
         {/* ============================================================== */}
-        <section className="w-full bg-[#0B0C10] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-16 border-b border-[#232630]">
+        <section className="w-full bg-[#0B0C10] text-white py-14 sm:py-18 px-6 sm:px-12 lg:px-16 border-b border-[#232630]">
           <div className="w-full max-w-7xl mx-auto">
-            <div className="flex items-center gap-3 pb-8 mb-10 border-b border-[#232630]">
-              <span className="w-2 h-2 rounded-full bg-blue-600" />
-              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-400">
-                02 / VERIFIED PRODUCTION DELIVERABLES
-              </span>
-            </div>
-
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10">
               <div className="pr-6 lg:border-r border-[#232630]">
                 <div className="text-4xl sm:text-5xl font-medium tracking-tight text-white mb-2 font-sans">
@@ -512,12 +520,9 @@ export default function WorkPage() {
         {/* ============================================================== */}
         {/* 6. BOTTOM CALLOUT STRIP MATCHING SITE THEME                    */}
         {/* ============================================================== */}
-        <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
+        <section className="w-full bg-[#F7F6F2] py-14 sm:py-20 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 pb-8 border-b border-[#D5D2C9]">
             <div>
-              <p className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-500 mb-2">
-                // COMMENCE ENGAGEMENT
-              </p>
               <h3 className="text-3xl sm:text-5xl font-bold uppercase tracking-[-0.03em] text-[#0B0C10] font-sans">
                 Want to be{" "}
                 <span className="font-editorial italic font-normal text-blue-600 lowercase text-4xl sm:text-6xl">
@@ -527,7 +532,7 @@ export default function WorkPage() {
               </h3>
             </div>
 
-            <Link href="#contact">
+            <Link href="/contact">
               <Button
                 size="md"
                 tint="#2563eb"
@@ -535,21 +540,19 @@ export default function WorkPage() {
                 baseColor="#1d4ed8"
                 className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-8 py-4 shadow-lg shadow-blue-600/30 group cursor-pointer"
               >
-                <span>START A PROJECT →</span>
+                <span>START A PROJECT</span>
               </Button>
             </Link>
           </div>
         </section>
 
         {/* ============================================================== */}
-        {/* 7. CONTACT SECTION                                             */}
+        {/* 7. FULL-WIDTH MARKETING CTA (MATCHING HOME PAGE)               */}
         {/* ============================================================== */}
-        <div id="contact" className="bg-white">
-          <ContactSection />
-        </div>
+        <CtaFloatingSection />
       </main>
 
-      {/* Global Brand Footer Banner */}
+      {/* Global Brand Footer Banner (Same as Home Page) */}
       <BrandFooterBanner />
     </div>
   );

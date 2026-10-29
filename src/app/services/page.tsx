@@ -2,11 +2,11 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, CheckCircle2, Sparkles, Zap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SERVICES_CATALOG } from "@/data/servicesData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
-import { ContactSection } from "@/components/Home Page Components/ContactSection";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { TestimonialsSection } from "@/components/Home Page Components/TestimonialsSection";
 
@@ -30,15 +30,8 @@ export default function ServicesIndexPage() {
 
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 text-center">
             <div className="mx-auto max-w-4xl flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-md px-4 py-1.5 text-xs font-semibold text-white border border-white/25 shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-[#f95721] animate-pulse" />
-                <span className="tracking-wide uppercase font-mono text-[11px]">
-                  AGENCY CAPABILITIES
-                </span>
-              </div>
-
               <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl font-sans leading-[1.06]">
-                Crafted for Growth &{" "}
+                Crafted for Growth &amp;{" "}
                 <span className="font-editorial italic font-normal text-sky-200 tracking-normal">
                   Authority
                 </span>
@@ -52,12 +45,10 @@ export default function ServicesIndexPage() {
 
               <div className="mt-8">
                 <Button
-                  href="#contact"
+                  href="/contact"
                   size="lg"
-                  className="group"
                 >
                   <span>Start a Conversation</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
               </div>
             </div>
@@ -86,11 +77,6 @@ export default function ServicesIndexPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="text-[11px] font-mono font-semibold px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-zinc-900 border border-white/60">
-                        Practice 0{index + 1}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Card Body */}
@@ -107,7 +93,7 @@ export default function ServicesIndexPage() {
                       </p>
                     </div>
 
-                    {/* Stats pills */}
+                    {/* Stats */}
                     <div className="mt-6 pt-5 border-t border-zinc-100 flex items-center justify-between">
                       <div>
                         <span className="text-[10px] font-mono uppercase text-zinc-400 block">
@@ -117,9 +103,9 @@ export default function ServicesIndexPage() {
                           {service.stats[0].value}
                         </span>
                       </div>
-                      <div className="h-10 w-10 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-700 group-hover:bg-[#f95721] group-hover:text-white transition-colors">
-                        <ArrowUpRight className="h-5 w-5" />
-                      </div>
+                      <span className="text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold group-hover:text-[#f95721] transition-colors">
+                        Explore Practice
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -131,10 +117,11 @@ export default function ServicesIndexPage() {
         {/* Social Proof */}
         <TestimonialsSection />
 
-        {/* Contact Section */}
-        <ContactSection />
+        {/* Cloud CTA Section */}
+        <CtaFloatingSection />
       </main>
 
+      {/* Global Brand Footer Banner */}
       <BrandFooterBanner />
     </div>
   );

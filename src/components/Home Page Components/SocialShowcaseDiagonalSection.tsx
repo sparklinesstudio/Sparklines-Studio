@@ -180,12 +180,10 @@ export function SocialShowcaseDiagonalSection() {
             {/* Action CTA Button - Signature Universal Studio Button */}
             <div className="pt-2">
               <Button
-                href="#contact"
+                href="/work"
                 size="md"
-                className="group"
               >
                 <span>See Our Case Studies</span>
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </div>
 

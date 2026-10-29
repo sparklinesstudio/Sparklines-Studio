@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { TestimonialsSection } from "@/components/Home Page Components/TestimonialsSection";
-import { ContactSection } from "@/components/Home Page Components/ContactSection";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import {
   CaseStudyHero,
@@ -185,7 +185,7 @@ export default function BotanicaCommercialSpotPage() {
         {/* 9. TESTIMONIALS & CONTACT SECTIONS                               */}
         {/* ================================================================ */}
         <TestimonialsSection />
-        <ContactSection />
+        <CtaFloatingSection />
       </main>
 
       <BrandFooterBanner />

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FileText, Scale, ArrowLeft, ShieldCheck, Mail } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import "@/app/seo-agency-kolkata/seo-kolkata.css";
 
@@ -163,6 +164,9 @@ Direct: +91 9641861932`,
       </main>
 
       {/* Blue Theme Footer */}
+      <CtaFloatingSection />
+
+      {/* Global Brand Footer */}
       <BrandFooterBanner />
     </div>
   );

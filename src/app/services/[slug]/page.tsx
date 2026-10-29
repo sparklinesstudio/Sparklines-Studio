@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/Button";
 import { SERVICES_CATALOG, ServiceDetail } from "@/data/servicesData";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
-import { ContactSection } from "@/components/Home Page Components/ContactSection";
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { TestimonialsSection } from "@/components/Home Page Components/TestimonialsSection";
 
@@ -494,7 +494,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <TestimonialsSection />
 
         {/* Contact Form Section */}
-        <ContactSection />
+        <CtaFloatingSection />
       </main>
 
       {/* Footer */}

@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from "framer-motion";
 
@@ -159,7 +159,6 @@ export function WebsiteCarouselSection() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
         {/* ============================================================== */}
         {/* SECTION HEADER                                                 */}
-        {/* Button aligned at exact same height as the heading             */}
         {/* ============================================================== */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 sm:gap-6 mb-8 sm:mb-12">
           <div className="max-w-2xl">
@@ -178,15 +177,13 @@ export function WebsiteCarouselSection() {
             </p>
           </div>
 
-          {/* Action Button - Aligned at same height as heading */}
+          {/* Action Button - Aligned at same height as heading (Without arrow) */}
           <div className="hidden md:block flex-shrink-0">
             <Button
-              href="#contact"
+              href="/contact"
               size="md"
-              className="group"
             >
               <span>Discuss a Custom Scope</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </div>
         </div>

@@ -132,12 +132,11 @@ export function TestimonialsSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full px-4 sm:px-0">
           {/* Primary Specular Button */}
           <Button
-            href="#contact"
+            href="/contact"
             size="md"
-            className="w-full sm:w-auto group"
+            className="w-full sm:w-auto"
           >
             <span>Book a Call</span>
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
 
           {/* Secondary Light Specular Button */}
@@ -145,10 +144,9 @@ export function TestimonialsSection() {
             href="mailto:sparklinestudio.agency@gmail.com"
             variant="secondary"
             size="md"
-            className="w-full sm:w-auto group"
+            className="w-full sm:w-auto"
           >
             <span>Email Us Directly</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-zinc-500 transition-transform duration-200 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
         </div>
       </div>

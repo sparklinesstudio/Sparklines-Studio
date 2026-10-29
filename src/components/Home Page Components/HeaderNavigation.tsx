@@ -136,9 +136,8 @@ export function HeaderNavigation() {
 
           {/* Right CTA Button & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-2.5">
-            <Button href="/contact" size="sm" className="group">
+            <Button href="/contact" size="sm">
               <span>Let&apos;s Talk</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
 
             {/* Mobile Menu Toggle Button */}

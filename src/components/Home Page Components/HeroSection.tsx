@@ -3,7 +3,6 @@
 import { useRef, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 // ============================================================================
@@ -122,15 +121,13 @@ export function HeroSection() {
               cinematic commercial videos, and performance strategies that scale revenue.
             </p>
 
-            {/* Primary CTA Button (Specular Button) */}
+            {/* Primary CTA Button (Without arrow) */}
             <div className="mt-4 sm:mt-5">
               <Button
-                href="#contact"
+                href="/contact"
                 size="lg"
-                className="group"
               >
                 <span>Let&apos;s work together</span>
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </div>
           </motion.div>
@@ -199,3 +196,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+export default HeroSection;
