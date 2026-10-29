@@ -46,18 +46,6 @@ export function CtaFloatingSection() {
           </div>
         </motion.div>
 
-        {/* Eyebrow Pill */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-white/80 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-sky-950 shadow-xs backdrop-blur-md mb-5"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#f95721]" />
-          <span>Performance Marketing & Revenue Growth</span>
-        </motion.div>
-
         {/* Main Editorial Headline — About Marketing */}
         <motion.h2
           initial={{ opacity: 0, y: 18 }}

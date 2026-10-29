@@ -4,9 +4,7 @@ import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, CSSProper
 import { gsap } from 'gsap';
 
 const VIEW_W = 1200;
-const VIEW_H = 520;
 const CX = VIEW_W / 2;
-const CY = VIEW_H / 2;
 const EDGE_PAD = 6;
 const FADE_STEPS = 8;
 const MAX_FLING = 2600;
@@ -18,46 +16,46 @@ const smootherstep = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 const wrap = (v: number, length: number) => ((v % length) + length) % length;
 
-const circleRadius = (curviness: number, ribbonWidth: number) =>
-  Math.min(90 + Math.max(0, curviness) * 0.95, Math.max(20, CY - Math.max(0, ribbonWidth) / 2 - EDGE_PAD));
+const circleRadius = (curviness: number, ribbonWidth: number, cy: number) =>
+  Math.min(90 + Math.max(0, curviness) * 0.95, Math.max(20, cy - Math.max(0, ribbonWidth) / 2 - EDGE_PAD));
 
-const buildPath = (shape: string, curviness: number, ribbonWidth: number, mirrored = false) => {
+const buildPath = (shape: string, curviness: number, ribbonWidth: number, cy: number, mirrored = false) => {
   const c = Math.max(0, curviness);
-  const room = Math.max(20, CY - Math.max(0, ribbonWidth) / 2 - EDGE_PAD);
+  const room = Math.max(10, cy - Math.max(0, ribbonWidth) / 2 - EDGE_PAD);
   const flip = mirrored ? -1 : 1;
 
   switch (shape) {
     case 'circle': {
-      const r = circleRadius(curviness, ribbonWidth);
+      const r = circleRadius(curviness, ribbonWidth, cy);
       if (mirrored) {
         const rx = r * 1.22;
         const ry = r * 0.42;
-        return `M ${CX - rx} ${CY} A ${rx} ${ry} 0 1 1 ${CX + rx} ${CY} A ${rx} ${ry} 0 1 1 ${CX - rx} ${CY} Z`;
+        return `M ${CX - rx} ${cy} A ${rx} ${ry} 0 1 1 ${CX + rx} ${cy} A ${rx} ${ry} 0 1 1 ${CX - rx} ${cy} Z`;
       }
-      return `M ${CX - r} ${CY} A ${r} ${r} 0 1 1 ${CX + r} ${CY} A ${r} ${r} 0 1 1 ${CX - r} ${CY} Z`;
+      return `M ${CX - r} ${cy} A ${r} ${r} 0 1 1 ${CX + r} ${cy} A ${r} ${r} 0 1 1 ${CX - r} ${cy} Z`;
     }
     case 'infinity': {
       const r = 150 + c * 1.4;
       const h = Math.min(60 + c * 0.95, room);
       return [
-        `M ${CX} ${CY}`,
-        `C ${CX + r * 0.55} ${CY - h} ${CX + r} ${CY - h} ${CX + r} ${CY}`,
-        `C ${CX + r} ${CY + h} ${CX + r * 0.55} ${CY + h} ${CX} ${CY}`,
-        `C ${CX - r * 0.55} ${CY - h} ${CX - r} ${CY - h} ${CX - r} ${CY}`,
-        `C ${CX - r} ${CY + h} ${CX - r * 0.55} ${CY + h} ${CX} ${CY}`,
+        `M ${CX} ${cy}`,
+        `C ${CX + r * 0.55} ${cy - h} ${CX + r} ${cy - h} ${CX + r} ${cy}`,
+        `C ${CX + r} ${cy + h} ${CX + r * 0.55} ${cy + h} ${CX} ${cy}`,
+        `C ${CX - r * 0.55} ${cy - h} ${CX - r} ${cy - h} ${CX - r} ${cy}`,
+        `C ${CX - r} ${cy + h} ${CX - r * 0.55} ${cy + h} ${CX} ${cy}`,
         'Z'
       ].join(' ');
     }
     case 'arch': {
       const rise = Math.min(120 + c * 1.1, room * 2) * flip;
-      return `M 120 ${CY + rise / 2} Q ${CX} ${CY - rise * 1.5} ${VIEW_W - 120} ${CY + rise / 2}`;
+      return `M 120 ${cy + rise / 2} Q ${CX} ${cy - rise * 1.5} ${VIEW_W - 120} ${cy + rise / 2}`;
     }
     case 'line':
-      return `M -320 ${CY} L ${VIEW_W + 320} ${CY}`;
+      return `M -320 ${cy} L ${VIEW_W + 320} ${cy}`;
     case 'wave':
     default: {
-      const a = Math.min(c * 2.2, room * 2) * flip;
-      return `M -320 ${CY} Q -160 ${CY - a} 0 ${CY} T 320 ${CY} T 640 ${CY} T 960 ${CY} T 1280 ${CY} T ${VIEW_W + 320} ${CY}`;
+      const a = Math.min(c * 1.2, room * 0.9) * flip;
+      return `M -320 ${cy} Q -160 ${cy - a} 0 ${cy} T 320 ${cy} T 640 ${cy} T 960 ${cy} T 1280 ${cy} T ${VIEW_W + 320} ${cy}`;
     }
   }
 };
@@ -132,6 +130,7 @@ export interface TextLoopProps {
   scrollBoost?: number;
   outline?: boolean;
   outlineWidth?: number;
+  viewHeight?: number;
   className?: string;
   style?: CSSProperties;
 }
@@ -162,6 +161,7 @@ export const TextLoop = ({
   scrollBoost = 0,
   outline = false,
   outlineWidth = 1.5,
+  viewHeight = 200,
   className = '',
   style = {}
 }: TextLoopProps) => {
@@ -186,13 +186,16 @@ export const TextLoop = ({
   const shadowId = `${pathId}-shadow`;
   const underId = `${pathId}-under`;
 
+  const VIEW_H = viewHeight;
+  const CY = VIEW_H / 2;
+
   const custom = Boolean(path);
-  const d = useMemo(() => path || buildPath(shape, curviness, ribbonWidth), [path, shape, curviness, ribbonWidth]);
+  const d = useMemo(() => path || buildPath(shape, curviness, ribbonWidth, CY), [path, shape, curviness, ribbonWidth, CY]);
   const crossD = useMemo(() => {
     if (!cross) return '';
     if (path) return path;
-    return buildPath(shape, curviness, ribbonWidth, shape === 'wave' || shape === 'arch' || shape === 'circle');
-  }, [cross, path, shape, curviness, ribbonWidth]);
+    return buildPath(shape, curviness, ribbonWidth, CY, shape === 'wave' || shape === 'arch' || shape === 'circle');
+  }, [cross, path, shape, curviness, ribbonWidth, CY]);
   const fade = useMemo(() => buildFade(edgeFade), [edgeFade]);
   const fill = color || (ribbon ? '#ffffff' : 'currentColor');
 
@@ -291,7 +294,7 @@ export const TextLoop = ({
     const hover = { scale: 1 };
     const angle = (mainAngle * Math.PI) / 180;
     const circular = !custom && shape === 'circle';
-    const radius = circleRadius(curviness, ribbonWidth);
+    const radius = circleRadius(curviness, ribbonWidth, CY);
     const boosting = scrollBoost > 0 && !reduced;
 
     let fling = 0;
@@ -458,7 +461,8 @@ export const TextLoop = ({
     shape,
     mainAngle,
     curviness,
-    ribbonWidth
+    ribbonWidth,
+    CY
   ]);
 
   const loopText = unit.repeat(metrics.reps);
