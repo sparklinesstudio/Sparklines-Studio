@@ -59,7 +59,7 @@ export function HeaderNavigation() {
     { label: "About", href: "/#about" },
     { label: "Works", href: "/work" },
     { label: "Services", href: "/#services-grid" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Contact", href: "/contact" },
   ];
 
   const isWorksActive =
@@ -67,6 +67,8 @@ export function HeaderNavigation() {
     pathname.startsWith("/work/") ||
     pathname === "/works" ||
     pathname.startsWith("/works/");
+
+  const isContactActive = pathname === "/contact";
 
   return (
     <>
@@ -113,6 +115,7 @@ export function HeaderNavigation() {
             {navLinks.map((link) => {
               const isActive =
                 (link.href === "/work" && isWorksActive) ||
+                (link.href === "/contact" && isContactActive) ||
                 (link.href === "/" && pathname === "/");
 
               return (
@@ -133,7 +136,7 @@ export function HeaderNavigation() {
 
           {/* Right CTA Button & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-2.5">
-            <Button href="/#contact" size="sm" className="group">
+            <Button href="/contact" size="sm" className="group">
               <span>Let&apos;s Talk</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
@@ -225,6 +228,7 @@ export function HeaderNavigation() {
                 {navLinks.map((link, idx) => {
                   const isActive =
                     (link.href === "/work" && isWorksActive) ||
+                    (link.href === "/contact" && isContactActive) ||
                     (link.href === "/" && pathname === "/");
 
                   return (
@@ -271,7 +275,7 @@ export function HeaderNavigation() {
               {/* Drawer Footer Actions & Agency Contact */}
               <div className="space-y-4 pt-4 border-t border-zinc-100">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="relative flex w-full items-center justify-center gap-2 rounded-full bg-zinc-950 py-3.5 text-xs font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#f95721] active:scale-95 group overflow-hidden"
                 >

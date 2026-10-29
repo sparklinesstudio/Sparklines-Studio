@@ -14,7 +14,6 @@ import {
   SocialShowcaseDiagonalSection,
   TechStackSection,
   CtaFloatingSection,
-  ContactSection,
   BrandFooterBanner,
 } from "@/components/Home Page Components";
 
@@ -61,9 +60,6 @@ export default function Home() {
 
         {/* 3-Tier Modern Production & Technology Stack (Photoshop/Creative, React/Next.js, SEMrush/Ads) */}
         <TechStackSection />
-
-        {/* Interactive Contact Form & Studio Details */}
-        <ContactSection />
 
         {/* Cloud CTA Section (At the last just before the footer) */}
         <CtaFloatingSection />
