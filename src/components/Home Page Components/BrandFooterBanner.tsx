@@ -43,11 +43,8 @@ export function BrandFooterBanner() {
 
   return (
     <footer className="relative w-full bg-white text-zinc-600 overflow-hidden border-t border-zinc-200/90 selection:bg-orange-500/20 selection:text-orange-950">
-      {/* Top Subtle Warm Ambient Accent */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-300 to-transparent pointer-events-none" />
-
-      {/* Full Width Container */}
-      <div className="relative w-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-16 sm:pt-20 lg:pt-24 pb-8">
+      {/* Full-Width Footer Content Container */}
+      <div className="relative w-full px-5 sm:px-10 lg:px-16 xl:px-20 pt-16 sm:pt-20 lg:pt-24 pb-8">
         {/* 4 Editorial Columns Matching Reference Aesthetic */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14 pb-14 sm:pb-16 border-b border-zinc-200/80 items-start">
           {/* Column 1: Our Mission (4 cols on lg) */}
@@ -108,14 +105,14 @@ export function BrandFooterBanner() {
               Join the Inner Circle
             </h3>
             <p className="text-sm text-zinc-600 leading-relaxed mb-5">
-              Save hours of trial and error. Receive curated briefings on design
-              engineering, high-converting video, and search dominance.
+              Curated playbooks on design engineering, high-converting video,
+              and performance marketing delivered to your inbox.
             </p>
 
             {subscribed ? (
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center">
+              <div className="rounded-2xl bg-emerald-500/10 border border-emerald-500/30 p-4 text-center">
                 <p className="text-xs sm:text-sm font-medium text-emerald-800 flex items-center justify-center gap-2">
-                  <Check className="h-4 w-4 text-emerald-600" /> You&apos;re subscribed! Welcome to the dispatch.
+                  <Check className="h-4 w-4 text-emerald-600" /> You&apos;re subscribed! Welcome to the circle.
                 </p>
               </div>
             ) : (
@@ -126,11 +123,11 @@ export function BrandFooterBanner() {
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="Your email"
-                  className="w-full rounded-full bg-zinc-50 border border-zinc-300 px-5 py-3.5 text-sm text-zinc-900 placeholder-zinc-400 focus:bg-white focus:outline-none focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 transition-all shadow-inner"
+                  className="w-full rounded-full bg-zinc-50 border border-zinc-300 px-5 py-3.5 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 transition-all shadow-inner"
                 />
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-[#F2DE9C] hover:bg-[#ebd083] active:scale-98 text-zinc-950 font-bold uppercase tracking-wider text-xs py-3.5 transition-all shadow-md shadow-amber-900/10 cursor-pointer text-center"
+                  className="w-full rounded-full bg-[#F2DE9C] hover:bg-[#ebdc98] active:scale-98 text-zinc-950 font-bold uppercase tracking-wider text-xs py-3.5 transition-all shadow-md shadow-amber-900/10 cursor-pointer text-center"
                 >
                   SIGN UP
                 </button>
@@ -139,11 +136,26 @@ export function BrandFooterBanner() {
           </div>
         </div>
 
-        {/* Monumental Brand Typography Across Full Width — Scaled Proportional To NEVER Cut Out */}
-        <div className="w-full py-8 sm:py-12 lg:py-16 flex items-center justify-center select-none overflow-hidden">
-          <h1 className="font-editorial font-normal tracking-tight text-zinc-950 text-[clamp(2rem,7.8vw,9.5rem)] leading-none text-center select-none whitespace-nowrap pointer-events-none transition-colors duration-500">
-            Sparklines Studio
-          </h1>
+        {/* Monumental Brand Typography — SVG Scaled to 100% Full Width so It Never Cuts Out */}
+        <div className="w-full py-8 sm:py-12 lg:py-14 flex items-center justify-center select-none overflow-hidden">
+          <svg
+            viewBox="0 0 1200 135"
+            className="w-full h-auto max-h-[170px] pointer-events-none select-none"
+            preserveAspectRatio="xMidYMid meet"
+            aria-label="Sparklines Studio"
+            role="img"
+          >
+            <text
+              x="50%"
+              y="58%"
+              textAnchor="middle"
+              dominantBaseline="central"
+              className="font-editorial fill-zinc-950/[0.08] hover:fill-zinc-950/[0.14] transition-colors duration-500 font-normal tracking-tight"
+              style={{ fontSize: "116px" }}
+            >
+              Sparklines Studio
+            </text>
+          </svg>
         </div>
 
         {/* Bottom Utility Bar: Copyright & Back To Top */}
@@ -153,7 +165,7 @@ export function BrandFooterBanner() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200/80 border border-zinc-200 px-4 py-1.5 text-xs text-zinc-700 hover:text-zinc-950 transition-all cursor-pointer shadow-xs group"
+            className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200 border border-zinc-200 px-4 py-1.5 text-xs text-zinc-700 hover:text-zinc-950 transition-all cursor-pointer shadow-xs group"
             title="Scroll to top of page"
           >
             <span>Back to top</span>

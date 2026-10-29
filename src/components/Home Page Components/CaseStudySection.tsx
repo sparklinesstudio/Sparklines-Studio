@@ -7,26 +7,18 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
-// =========================================================================
-// DATA
-// =========================================================================
-
 const MARQUEE_ITEMS = [
-  "Brand Identity",
-  "Sacred Geometry",
-  "Vernacular Typography",
-  "Packaging Architecture",
-  "Kinetic Loops",
-  "Culinary Prestige",
   "Design That Converts",
+  "Strategy First",
   "Pixel-Perfect Execution",
+  "Data-Driven Results",
+  "Scalable Solutions",
+  "Brand Authority",
+  "Performance Marketing",
   "Creative Excellence",
-  "Cultural Authority",
+  "Full-Stack Delivery",
+  "Growth Focused",
 ];
-
-// =========================================================================
-// COMPONENT
-// =========================================================================
 
 export function CaseStudySection() {
   return (
@@ -37,12 +29,11 @@ export function CaseStudySection() {
       {/* ================================================================ */}
       <section
         id="case-study"
-        aria-label="Featured Portfolio"
+        aria-label="Featured Portfolio Case Study"
         className="relative bg-white py-20 sm:py-28 lg:py-32 scroll-mt-12 border-t border-zinc-100"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
             {/* ======================================================== */}
             {/* LEFT COLUMN: EDITORIAL TEXT & DETAILS                    */}
             {/* ======================================================== */}
@@ -50,8 +41,8 @@ export function CaseStudySection() {
               {/* Eyebrow Label */}
               <div className="flex items-center gap-2 mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#f95721]" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 font-mono">
-                  Featured Branding // House of Kolam
+                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                  Featured Branding Portfolio // House of Kolam
                 </span>
               </div>
 
@@ -69,7 +60,7 @@ export function CaseStudySection() {
                 </span>
               </motion.h2>
 
-              {/* Narrative Subtext */}
+              {/* Narrative Subtext — Mentioning House of Kolam Branding */}
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -77,11 +68,12 @@ export function CaseStudySection() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="mt-6 text-base sm:text-lg leading-relaxed text-zinc-600"
               >
-                Explore House of Kolam — an expansive branding and visual identity system
-                engineered from ancestral South Indian sacred geometry. From a mathematical
-                dot-grid matrix to bespoke vernacular typography, kinetic motion loops,
-                artisanal kraft spice packaging, and spatial dining brassware, crafted to
-                command cultural authority and culinary prestige.
+                Explore our flagship visual identity system for{" "}
+                <strong className="text-zinc-900 font-semibold">House of Kolam</strong>.
+                Rooted in ancestral South Indian dot-grid geometry, we engineered 23
+                master boards spanning bespoke vernacular typography, artisanal kraft
+                and brass packaging architecture, spatial dining collateral, and kinetic
+                motion loops tailored for modern luxury hospitality.
               </motion.p>
 
               {/* Key Impact Stats */}
@@ -90,30 +82,22 @@ export function CaseStudySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 border-t border-zinc-100 pt-6"
+                className="mt-8 grid grid-cols-2 gap-6 border-t border-zinc-100 pt-6"
               >
                 <div className="space-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-zinc-950 font-editorial">
-                    23
+                    23 Boards
                   </div>
-                  <p className="text-xs text-zinc-500 font-mono">
-                    Master Boards
+                  <p className="text-xs sm:text-sm text-zinc-500">
+                    Master Identity System & Design Direction
                   </p>
                 </div>
                 <div className="space-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-zinc-950 font-editorial">
-                    35+
+                    35+ Assets
                   </div>
-                  <p className="text-xs text-zinc-500 font-mono">
-                    Deliverables
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <div className="text-2xl sm:text-3xl font-bold text-blue-600 font-editorial">
-                    100%
-                  </div>
-                  <p className="text-xs text-zinc-500 font-mono">
-                    Vector Craft
+                  <p className="text-xs sm:text-sm text-zinc-500">
+                    Bespoke Packaging, Spatial & Print Deliverables
                   </p>
                 </div>
               </motion.div>
@@ -139,14 +123,14 @@ export function CaseStudySection() {
                   href="/work"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-600 hover:text-zinc-950 transition-colors py-2 px-3"
                 >
-                  <span>View All Work</span>
+                  <span>View All Case Studies</span>
                   <ArrowUpRight className="h-3.5 w-3.5 text-zinc-400" />
                 </Link>
               </motion.div>
             </div>
 
             {/* ======================================================== */}
-            {/* RIGHT COLUMN: PREMIUM SHOWCASE IMAGE                     */}
+            {/* RIGHT COLUMN: HOUSE OF KOLAM BRANDING SHOWCASE IMAGE     */}
             {/* ======================================================== */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -157,25 +141,23 @@ export function CaseStudySection() {
             >
               <Link
                 href="/work/branding/house-of-kolam"
-                className="group relative aspect-[16/11] sm:aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-3xl bg-zinc-100 border border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] block cursor-pointer"
+                className="group relative aspect-[16/11] sm:aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-3xl bg-zinc-100 border border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] block"
               >
                 <Image
                   src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1793186166/31b46d250283873.6a1bd914346e2_converted.png"
-                  alt="House of Kolam — Sacred Geometry Visual Identity & Culinary Branding"
+                  alt="House of Kolam — Flagship Branding & Visual Identity System"
                   fill
                   sizes="(max-width: 1024px) 100vw, 620px"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-zinc-950 shadow-lg backdrop-blur-xs">
-                    <span>View Brand Case Study (23 Boards)</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-[#f95721]" />
-                  </span>
+                {/* Floating Corner Pill */}
+                <div className="absolute bottom-4 left-4 z-10 rounded-full bg-white/90 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-wider text-zinc-900 border border-zinc-200/80 shadow-sm flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#f95721]" />
+                  <span>2026 Brand Release</span>
                 </div>
               </Link>
             </motion.div>
-
           </div>
         </div>
       </section>

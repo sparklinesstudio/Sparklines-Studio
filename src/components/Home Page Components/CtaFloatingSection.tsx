@@ -2,134 +2,110 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRight, TrendingUp, Sparkles, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function CtaFloatingSection() {
-  const marketingMetrics = [
-    { value: "$48M+", label: "Client Revenue Generated" },
-    { value: "3.8x", label: "Average Return on Ad Spend (ROAS)" },
-    { value: "+340%", label: "Qualified Pipeline Growth" },
-    { value: "14 Days", label: "Acquisition Launch Velocity" },
-  ];
-
   return (
-    <section className="relative w-full py-20 sm:py-28 lg:py-36 bg-gradient-to-b from-[#FBFBFA] via-[#F4F6F1] to-white border-t border-zinc-200/90 overflow-hidden">
-      {/* Subtle Background Blueprint Grid */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #000000 1px, transparent 1px),
-            linear-gradient(to bottom, #000000 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section className="relative w-full py-20 sm:py-28 lg:py-36 overflow-hidden border-t border-sky-100/60 isolate">
+      {/* Background Cloud Image Across Entire Full-Width Section */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+        <img
+          src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790461624/smoky-watercolor-cloud-background.jpg"
+          alt="Cloud Background"
+          className="h-full w-full object-cover object-center"
+        />
+        {/* Soft ambient overlay to ensure perfect contrast and readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-white/75 pointer-events-none" />
+      </div>
 
-      {/* Ambient Blue Highlight Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-blue-500/[0.06] rounded-full blur-[140px] pointer-events-none -z-10" />
+      {/* Centered Content */}
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 text-center flex flex-col items-center">
+        {/* Top Centered Brand Squircle Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-6 sm:mb-8"
+        >
+          <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2.5 shadow-[0_10px_25px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] border border-white/90 backdrop-blur-md transition-transform duration-300 hover:scale-105">
+            <div className="relative h-full w-full rounded-xl overflow-hidden bg-black flex items-center justify-center">
+              <Image
+                src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg"
+                alt="Sparklines Studio Emblem"
+                fill
+                sizes="64px"
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* Top subtle gloss line */}
+            <span className="absolute top-0 inset-x-2 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none" />
+          </div>
+        </motion.div>
 
-      {/* Full Width Inner Content */}
-      <div className="relative w-full px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto max-w-6xl flex flex-col items-center text-center">
-        {/* Marketing Eyebrow Badge */}
+        {/* Eyebrow Pill */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/95 px-4 py-1.5 text-xs font-mono uppercase tracking-[0.2em] text-blue-700 shadow-xs mb-6 sm:mb-8 backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-white/80 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-sky-950 shadow-xs backdrop-blur-md mb-5"
         >
-          <TrendingUp className="h-3.5 w-3.5 text-blue-600" />
-          <span>Performance Marketing & Category Dominance</span>
+          <span className="w-2 h-2 rounded-full bg-[#f95721]" />
+          <span>Performance Marketing & Revenue Growth</span>
         </motion.div>
 
-        {/* Main Editorial Headline */}
+        {/* Main Editorial Headline — About Marketing */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.12] max-w-4xl"
+          className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-950 font-sans leading-[1.12]"
         >
-          Stop burning ad spend. <br />
+          Scale your category with <br />
           <span className="font-editorial italic font-normal text-zinc-900 tracking-normal">
-            Scale with predictable ROI.
+            high-impact marketing.
           </span>
         </motion.h2>
 
-        {/* Subtitle Description */}
+        {/* Subtitle Description — Performance Marketing */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-5 text-base sm:text-lg lg:text-xl text-zinc-600 max-w-2xl mx-auto font-sans leading-relaxed"
+          className="mt-4 sm:mt-6 text-base sm:text-lg text-zinc-600 max-w-2xl mx-auto font-sans leading-relaxed"
         >
-          We architect full-funnel acquisition engines that dominate search,
-          convert paid traffic, and turn high-intent attention into signed
-          contracts. No vanity impressions — just verified commercial growth.
+          Algorithmic search dominance, high-converting paid media campaigns,
+          and cinema-grade commercial storytelling. We engineer marketing
+          ecosystems that convert high-intent interest into compounding enterprise revenue.
         </motion.p>
 
-        {/* 4 Proof Metrics Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 w-full max-w-4xl py-6 border-y border-zinc-200/80"
-        >
-          {marketingMetrics.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <span className="text-2xl sm:text-3xl font-bold font-editorial text-zinc-950 tracking-tight">
-                {item.value}
-              </span>
-              <span className="mt-1 text-xs text-zinc-500 font-sans">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTA Button Row */}
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-9 sm:mt-11 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          className="mt-8 flex flex-col items-center justify-center gap-3 w-full sm:w-auto"
         >
-          <Button href="/contact" size="lg" className="w-full sm:w-auto group">
-            <span>Book a Growth Strategy Call</span>
+          <Button
+            href="/contact"
+            size="lg"
+            className="w-full sm:w-auto group shadow-xl"
+          >
+            <span>Request a Growth Audit</span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
 
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 rounded-full bg-white hover:bg-zinc-100 border border-zinc-200 px-6 py-3.5 text-xs sm:text-sm font-semibold text-zinc-800 transition-colors shadow-xs"
-          >
-            <span>Explore All Work</span>
-            <ArrowUpRight className="h-3.5 w-3.5 text-zinc-400" />
-          </Link>
-        </motion.div>
-
-        {/* Reassurance text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-6 flex items-center justify-center gap-4 text-[11px] sm:text-xs text-zinc-500 font-mono"
-        >
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="h-3.5 w-3.5 text-blue-600" />
-            <span>Guaranteed Response &lt; 24h</span>
-          </span>
-          <span>·</span>
-          <span>NDA Protected</span>
-          <span>·</span>
-          <span>No Obligation Audit</span>
+          {/* Reassurance text */}
+          <p className="text-[11px] sm:text-xs text-zinc-500 font-sans tracking-wide">
+            Zero lock-in retainers · Tailored growth roadmap in 24 hours.
+          </p>
         </motion.div>
       </div>
     </section>
