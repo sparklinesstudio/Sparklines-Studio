@@ -9,6 +9,7 @@ import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatin
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Button } from "@/components/ui/Button";
 import { HOUSE_OF_KOLAM_IMAGES } from "@/data/houseOfKolamData";
+import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import "@/app/seo-agency-kolkata/seo-kolkata.css";
 
 const WORK_MARQUEE_ITEMS = [
@@ -54,6 +55,9 @@ const showcaseImages = [
     url: HOUSE_OF_KOLAM_IMAGES[7],
   },
 ];
+
+// Curated verified portfolio case studies excluding the flagship House of Kolam which is featured above
+const curatedProjects = PORTFOLIO_DATA.filter((p) => p.id !== "house-of-kolam").slice(0, 6);
 
 export default function WorkPage() {
   const [previewIdx, setPreviewIdx] = useState(0);
@@ -233,37 +237,42 @@ export default function WorkPage() {
         </div>
 
         {/* ============================================================== */}
-        {/* 3. SLEEK ARCHITECTURAL PORTFOLIO CARD                          */}
-        {/* Clean, compact, non-bulky, with fully responsive mobile tap     */}
+        {/* 3. FLAGSHIP HOUSE OF KOLAM ARCHITECTURAL SHOWCASE CARD          */}
+        {/* Flush top with zero gap or padding margin above the card       */}
         {/* ============================================================== */}
         <section
           id="portfolio-archive"
-          className="w-full bg-[#F7F6F2] py-10 sm:py-16 border-b border-[#D5D2C9]"
+          className="w-full bg-[#F7F6F2] border-b border-[#D5D2C9]"
         >
-          {/* Main Portfolio Card Container */}
-          <div className="w-full border-t border-b border-[#D5D2C9] bg-[#F7F6F2]">
+          {/* Main Full-Width Architectural Showcase Card */}
+          <div className="w-full bg-[#F7F6F2]">
             <div className="w-full grid grid-cols-1 lg:grid-cols-12">
               {/* Left Column: Streamlined Editorial & Scope */}
-              <div className="lg:col-span-6 p-6 sm:p-8 lg:p-12 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2]">
+              <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2]">
+                {/* Category metadata */}
+                <div className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 mb-3">
+                  Featured Flagship Case Study
+                </div>
+
                 {/* Headline in Signature Editorial Pairing */}
                 <Link href="/work/branding/house-of-kolam" className="group block mb-4">
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans leading-[1.1]">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-[-0.03em] text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans leading-[1.08]">
                     House of Kolam.<br />
-                    <span className="font-editorial italic font-normal text-blue-600 text-2xl sm:text-3xl lg:text-4xl">
+                    <span className="font-editorial italic font-normal text-blue-600 text-3xl sm:text-4xl lg:text-[42px]">
                       Sacred Geometry &amp; Heritage Identity
                     </span>
-                  </h3>
+                  </h2>
                 </Link>
 
                 {/* Narrative Overview */}
-                <p className="text-xs sm:text-sm leading-relaxed text-zinc-600 font-normal mb-5 max-w-xl">
+                <p className="text-xs sm:text-sm leading-relaxed text-zinc-600 font-normal mb-6 max-w-xl">
                   A modern celebration of ancestral South Indian mathematical art. Engineered from a pure
                   geometric dot-grid matrix into an expansive visual identity spanning bespoke vernacular
                   typography, artisanal kraft and brass packaging, kinetic motion loops, and spatial dining architecture.
                 </p>
 
-                {/* Compact Highlights Grid (Sleek & Space-Efficient) */}
-                <div className="grid grid-cols-2 gap-2.5 py-4 border-y border-[#D5D2C9] mb-5">
+                {/* Compact Highlights Grid */}
+                <div className="grid grid-cols-2 gap-3 py-5 border-y border-[#D5D2C9] mb-6">
                   <div className="flex items-center gap-2">
                     <span className="text-blue-600 font-bold text-xs">✦</span>
                     <span className="text-xs font-semibold text-[#0B0C10]">Vector Dot-Grid Lattice</span>
@@ -283,7 +292,7 @@ export default function WorkPage() {
                 </div>
 
                 {/* Compact Metrics Row */}
-                <div className="grid grid-cols-3 gap-3 pb-4 mb-5 border-b border-[#D5D2C9]">
+                <div className="grid grid-cols-3 gap-4 pb-5 mb-6 border-b border-[#D5D2C9]">
                   <div>
                     <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B0C10] font-sans">
                       23<span className="text-blue-600 font-light">+</span>
@@ -318,7 +327,7 @@ export default function WorkPage() {
                       tint="#2563eb"
                       lineColor="#bfdbfe"
                       baseColor="#1d4ed8"
-                      className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-6 py-3 shadow-md shadow-blue-600/25 group cursor-pointer"
+                      className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-7 py-3.5 shadow-md shadow-blue-600/25 group cursor-pointer"
                     >
                       <span>VIEW ALL 23 BOARDS</span>
                     </Button>
@@ -334,10 +343,10 @@ export default function WorkPage() {
               </div>
 
               {/* Right Column: Interactive Visual Showcase with Touch Swipe & Tap Controls */}
-              <div className="lg:col-span-6 p-5 sm:p-7 lg:p-10 flex flex-col justify-between bg-[#F2F0E8]/40">
+              <div className="lg:col-span-6 p-6 sm:p-8 lg:p-12 flex flex-col justify-between bg-[#F2F0E8]/40">
                 <div>
                   {/* Top Status Bar with Board Number */}
-                  <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#D5D2C9]/80 text-xs font-mono text-zinc-500">
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#D5D2C9]/80 text-xs font-mono text-zinc-500">
                     <span className="truncate pr-2">
                       BOARD {String(previewIdx + 1).padStart(2, "0")} / 06 · {showcaseImages[previewIdx].title}
                     </span>
@@ -355,7 +364,7 @@ export default function WorkPage() {
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
                     onClick={() => setPreviewIdx((prev) => (prev + 1) % showcaseImages.length)}
-                    className="group relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden border border-[#D5D2C9] bg-zinc-100 cursor-pointer shadow-sm select-none"
+                    className="group relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#D5D2C9] bg-zinc-100 cursor-pointer shadow-sm select-none"
                     title="Click or tap to advance image"
                   >
                     <Image
@@ -371,7 +380,7 @@ export default function WorkPage() {
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
                       aria-label="Previous board"
                     >
                       <ChevronLeft className="h-5 w-5" />
@@ -381,14 +390,14 @@ export default function WorkPage() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-black/65 hover:bg-black/85 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-transform active:scale-95 cursor-pointer shadow-md"
                       aria-label="Next board"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
 
                     {/* Bottom Title Pill */}
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 pt-6 pointer-events-none flex items-center justify-between">
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3.5 pt-6 pointer-events-none flex items-center justify-between">
                       <span className="text-[11px] sm:text-xs font-mono text-white tracking-wider uppercase truncate">
                         {showcaseImages[previewIdx].title}
                       </span>
@@ -419,8 +428,8 @@ export default function WorkPage() {
                 </div>
 
                 {/* Compact Thumbnail Selector Bar */}
-                <div className="pt-3.5 space-y-2">
-                  <div className="grid grid-cols-6 gap-1.5 sm:gap-2">
+                <div className="pt-4 space-y-2">
+                  <div className="grid grid-cols-6 gap-2">
                     {showcaseImages.map((img, idx) => (
                       <button
                         key={img.id}
@@ -430,9 +439,9 @@ export default function WorkPage() {
                           e.preventDefault();
                           setPreviewIdx(idx);
                         }}
-                        className={`relative aspect-[16/10] w-full overflow-hidden border transition-all duration-200 cursor-pointer ${
+                        className={`relative aspect-[16/10] w-full overflow-hidden rounded-lg border transition-all duration-200 cursor-pointer ${
                           previewIdx === idx
-                            ? "border-blue-600 ring-2 ring-blue-600/40 opacity-100 scale-[1.02]"
+                            ? "border-blue-600 ring-2 ring-blue-600/40 opacity-100 scale-[1.03]"
                             : "border-[#D5D2C9] opacity-70 hover:opacity-100"
                         }`}
                         title={img.title}
@@ -454,7 +463,88 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 4. METHODOLOGY & PHILOSOPHY SECTION                            */}
+        {/* 4. SELECTED CLIENT PORTFOLIO CARDS GRID                         */}
+        {/* Rich, diverse, beautifully structured case studies archive     */}
+        {/* ============================================================== */}
+        <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Header */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 sm:mb-14 pb-6 border-b border-[#D5D2C9]">
+              <div>
+                <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0B0C10] font-sans">
+                  Selected Client Archive
+                </h2>
+                <p className="text-xs sm:text-sm text-zinc-600 font-normal mt-2 max-w-xl">
+                  Documented case studies spanning brand architecture, performance marketing, and technical search.
+                </p>
+              </div>
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-500">
+                {curatedProjects.length} Verified Engagements
+              </div>
+            </div>
+
+            {/* Grid of Elevated Case Study Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {curatedProjects.map((project) => (
+                <Link
+                  key={project.id}
+                  href={project.customHref || `/work/${project.id}`}
+                  className="group flex flex-col rounded-2xl bg-white border border-[#D5D2C9] overflow-hidden shadow-xs hover:shadow-xl hover:border-blue-600 transition-all duration-300"
+                >
+                  {/* Cover Image */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-3 left-3">
+                      <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/95 text-zinc-900 border border-white/60 font-semibold backdrop-blur-xs shadow-xs">
+                        {project.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card Content Body */}
+                  <div className="p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                      <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mb-1.5">
+                        {project.client} · {project.year}
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans line-clamp-2 leading-snug">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-zinc-600 mt-2.5 line-clamp-2 leading-relaxed">
+                        {project.tagline}
+                      </p>
+                    </div>
+
+                    {/* Metrics Strip & Clean Text Action */}
+                    <div className="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
+                      <div>
+                        <span className="text-base sm:text-lg font-bold text-[#0B0C10] font-sans">
+                          {project.metrics[0].value}
+                        </span>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block">
+                          {project.metrics[0].label}
+                        </span>
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 group-hover:text-blue-800 transition-colors">
+                        View Case Study
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 5. METHODOLOGY & PHILOSOPHY SECTION                            */}
         {/* ============================================================== */}
         <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
           <div className="max-w-4xl mx-auto text-center">
@@ -473,81 +563,7 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 5. DARK METRICS STRIP                                          */}
-        {/* ============================================================== */}
-        <section className="w-full bg-[#0B0C10] text-white py-14 sm:py-18 px-6 sm:px-12 lg:px-16 border-b border-[#232630]">
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10">
-              <div className="pr-6 lg:border-r border-[#232630]">
-                <div className="text-4xl sm:text-5xl font-medium tracking-tight text-white mb-2 font-sans">
-                  23<span className="text-blue-500 font-light">+</span>
-                </div>
-                <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-normal">
-                  Master Exhibition Boards
-                </p>
-              </div>
-
-              <div className="sm:pl-6 lg:px-8 lg:border-r border-[#232630]">
-                <div className="text-4xl sm:text-5xl font-medium tracking-tight text-white mb-2 font-sans">
-                  35<span className="text-blue-500 font-light">+</span>
-                </div>
-                <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-normal">
-                  Brand Deliverables Crafted
-                </p>
-              </div>
-
-              <div className="pr-6 lg:px-8 lg:border-r border-[#232630]">
-                <div className="text-4xl sm:text-5xl font-medium tracking-tight text-white mb-2 font-sans">
-                  100<span className="text-blue-500 font-light">%</span>
-                </div>
-                <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-normal">
-                  Scalable Vector Symmetry
-                </p>
-              </div>
-
-              <div className="sm:pl-6 lg:pl-8">
-                <div className="text-4xl sm:text-5xl font-medium tracking-tight text-white mb-2 font-sans">
-                  0
-                </div>
-                <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-normal">
-                  Unverified Speculation
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* 6. BOTTOM CALLOUT STRIP MATCHING SITE THEME                    */}
-        {/* ============================================================== */}
-        <section className="w-full bg-[#F7F6F2] py-14 sm:py-20 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 pb-8 border-b border-[#D5D2C9]">
-            <div>
-              <h3 className="text-3xl sm:text-5xl font-bold uppercase tracking-[-0.03em] text-[#0B0C10] font-sans">
-                Want to be{" "}
-                <span className="font-editorial italic font-normal text-blue-600 lowercase text-4xl sm:text-6xl">
-                  next
-                </span>
-                ?
-              </h3>
-            </div>
-
-            <Link href="/contact">
-              <Button
-                size="md"
-                tint="#2563eb"
-                lineColor="#bfdbfe"
-                baseColor="#1d4ed8"
-                className="text-xs sm:text-sm font-semibold tracking-wider uppercase px-8 py-4 shadow-lg shadow-blue-600/30 group cursor-pointer"
-              >
-                <span>START A PROJECT</span>
-              </Button>
-            </Link>
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* 7. FULL-WIDTH MARKETING CTA (MATCHING HOME PAGE)               */}
+        {/* 6. FULL-WIDTH MARKETING CTA (MATCHING HOME PAGE)               */}
         {/* ============================================================== */}
         <CtaFloatingSection />
       </main>
