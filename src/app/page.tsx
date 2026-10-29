@@ -9,7 +9,6 @@ import {
   VideoShowcaseSection,
   ServicesMarqueeSection,
   WebsiteCarouselSection,
-  LiquidGlassShowcaseSection,
   TrustFactorsMarqueeSection,
   CaseStudySection,
   SocialShowcaseDiagonalSection,
@@ -50,9 +49,6 @@ export default function Home() {
 
         {/* Websites We Have Built Showcase Carousel (Mac Browser Mockups & Interactive Lightbox) */}
         <WebsiteCarouselSection />
-
-        Liquid Glass Showcase Carousel (Interactive WebGL Lens With Hero Images)
-        <LiquidGlassShowcaseSection />
 
         {/* Trust Factors Infinite Scroll Marquee (Directly Below Website Carousel) */}
         <TrustFactorsMarqueeSection />
