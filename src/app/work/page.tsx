@@ -9,7 +9,6 @@ import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatin
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Button } from "@/components/ui/Button";
 import { HOUSE_OF_KOLAM_IMAGES } from "@/data/houseOfKolamData";
-import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import "@/app/seo-agency-kolkata/seo-kolkata.css";
 
 const WORK_MARQUEE_ITEMS = [
@@ -55,9 +54,6 @@ const showcaseImages = [
     url: HOUSE_OF_KOLAM_IMAGES[7],
   },
 ];
-
-// Curated verified portfolio case studies excluding the flagship House of Kolam which is featured above
-const curatedProjects = PORTFOLIO_DATA.filter((p) => p.id !== "house-of-kolam").slice(0, 6);
 
 export default function WorkPage() {
   const [previewIdx, setPreviewIdx] = useState(0);
@@ -272,7 +268,7 @@ export default function WorkPage() {
                 </p>
 
                 {/* Compact Highlights Grid */}
-                <div className="grid grid-cols-2 gap-3 py-5 border-y border-[#D5D2C9] mb-6">
+                <div className="grid grid-cols-2 gap-3 py-5 border-y border-[#D5D2C9] mb-8">
                   <div className="flex items-center gap-2">
                     <span className="text-blue-600 font-bold text-xs">✦</span>
                     <span className="text-xs font-semibold text-[#0B0C10]">Vector Dot-Grid Lattice</span>
@@ -288,34 +284,6 @@ export default function WorkPage() {
                   <div className="flex items-center gap-2">
                     <span className="text-blue-600 font-bold text-xs">✦</span>
                     <span className="text-xs font-semibold text-[#0B0C10]">Kinetic Motion Loops</span>
-                  </div>
-                </div>
-
-                {/* Compact Metrics Row */}
-                <div className="grid grid-cols-3 gap-4 pb-5 mb-6 border-b border-[#D5D2C9]">
-                  <div>
-                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B0C10] font-sans">
-                      23<span className="text-blue-600 font-light">+</span>
-                    </div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
-                      Master Boards
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B0C10] font-sans">
-                      35<span className="text-blue-600 font-light">+</span>
-                    </div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
-                      Deliverables
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl sm:text-3xl font-bold tracking-tight text-blue-600 font-sans">
-                      100<span className="font-light">%</span>
-                    </div>
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
-                      Vector Craft
-                    </div>
                   </div>
                 </div>
 
@@ -463,88 +431,7 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 4. SELECTED CLIENT PORTFOLIO CARDS GRID                         */}
-        {/* Rich, diverse, beautifully structured case studies archive     */}
-        {/* ============================================================== */}
-        <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
-          <div className="max-w-7xl mx-auto">
-            {/* Section Header */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 sm:mb-14 pb-6 border-b border-[#D5D2C9]">
-              <div>
-                <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0B0C10] font-sans">
-                  Selected Client Archive
-                </h2>
-                <p className="text-xs sm:text-sm text-zinc-600 font-normal mt-2 max-w-xl">
-                  Documented case studies spanning brand architecture, performance marketing, and technical search.
-                </p>
-              </div>
-              <div className="text-xs font-mono uppercase tracking-wider text-zinc-500">
-                {curatedProjects.length} Verified Engagements
-              </div>
-            </div>
-
-            {/* Grid of Elevated Case Study Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {curatedProjects.map((project) => (
-                <Link
-                  key={project.id}
-                  href={project.customHref || `/work/${project.id}`}
-                  className="group flex flex-col rounded-2xl bg-white border border-[#D5D2C9] overflow-hidden shadow-xs hover:shadow-xl hover:border-blue-600 transition-all duration-300"
-                >
-                  {/* Cover Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/95 text-zinc-900 border border-white/60 font-semibold backdrop-blur-xs shadow-xs">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card Content Body */}
-                  <div className="p-6 flex flex-col flex-1 justify-between">
-                    <div>
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mb-1.5">
-                        {project.client} · {project.year}
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#0B0C10] group-hover:text-blue-600 transition-colors font-sans line-clamp-2 leading-snug">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-zinc-600 mt-2.5 line-clamp-2 leading-relaxed">
-                        {project.tagline}
-                      </p>
-                    </div>
-
-                    {/* Metrics Strip & Clean Text Action */}
-                    <div className="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between">
-                      <div>
-                        <span className="text-base sm:text-lg font-bold text-[#0B0C10] font-sans">
-                          {project.metrics[0].value}
-                        </span>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block">
-                          {project.metrics[0].label}
-                        </span>
-                      </div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 group-hover:text-blue-800 transition-colors">
-                        View Case Study
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* 5. METHODOLOGY & PHILOSOPHY SECTION                            */}
+        {/* 4. METHODOLOGY & PHILOSOPHY SECTION                            */}
         {/* ============================================================== */}
         <section className="w-full bg-[#F7F6F2] py-16 sm:py-24 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
           <div className="max-w-4xl mx-auto text-center">
@@ -563,7 +450,7 @@ export default function WorkPage() {
         </section>
 
         {/* ============================================================== */}
-        {/* 6. FULL-WIDTH MARKETING CTA (MATCHING HOME PAGE)               */}
+        {/* 5. FULL-WIDTH MARKETING CTA (MATCHING HOME PAGE)               */}
         {/* ============================================================== */}
         <CtaFloatingSection />
       </main>
