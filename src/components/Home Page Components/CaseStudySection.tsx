@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
@@ -12,16 +12,16 @@ import { motion } from "framer-motion";
 // =========================================================================
 
 const MARQUEE_ITEMS = [
+  "Brand Identity",
+  "Sacred Geometry",
+  "Vernacular Typography",
+  "Packaging Architecture",
+  "Kinetic Loops",
+  "Culinary Prestige",
   "Design That Converts",
-  "Strategy First",
   "Pixel-Perfect Execution",
-  "Data-Driven Results",
-  "Scalable Solutions",
-  "Brand Authority",
-  "Performance Marketing",
   "Creative Excellence",
-  "Full-Stack Delivery",
-  "Growth Focused",
+  "Cultural Authority",
 ];
 
 // =========================================================================
@@ -50,8 +50,8 @@ export function CaseStudySection() {
               {/* Eyebrow Label */}
               <div className="flex items-center gap-2 mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#f95721]" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                  Featured Portfolio // Case Study
+                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 font-mono">
+                  Featured Branding // House of Kolam
                 </span>
               </div>
 
@@ -77,10 +77,11 @@ export function CaseStudySection() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="mt-6 text-base sm:text-lg leading-relaxed text-zinc-600"
               >
-                We build bespoke web platforms, architectural portfolios, and high-converting
-                digital flagships for visionary brands. Every layout is intentionally engineered
-                to command prestige, captivate high-intent clientele, and convert visual interest
-                into signed agreements.
+                Explore House of Kolam — an expansive branding and visual identity system
+                engineered from ancestral South Indian sacred geometry. From a mathematical
+                dot-grid matrix to bespoke vernacular typography, kinetic motion loops,
+                artisanal kraft spice packaging, and spatial dining brassware, crafted to
+                command cultural authority and culinary prestige.
               </motion.p>
 
               {/* Key Impact Stats */}
@@ -89,22 +90,30 @@ export function CaseStudySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8 grid grid-cols-2 gap-6 border-t border-zinc-100 pt-6"
+                className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 border-t border-zinc-100 pt-6"
               >
                 <div className="space-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-zinc-950 font-editorial">
-                    +340%
+                    23
                   </div>
-                  <p className="text-xs sm:text-sm text-zinc-500">
-                    High-intent qualified inquiries
+                  <p className="text-xs text-zinc-500 font-mono">
+                    Master Boards
                   </p>
                 </div>
                 <div className="space-y-1">
                   <div className="text-2xl sm:text-3xl font-bold text-zinc-950 font-editorial">
-                    4.8x
+                    35+
                   </div>
-                  <p className="text-xs sm:text-sm text-zinc-500">
-                    Average client pipeline growth
+                  <p className="text-xs text-zinc-500 font-mono">
+                    Deliverables
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-blue-600 font-editorial">
+                    100%
+                  </div>
+                  <p className="text-xs text-zinc-500 font-mono">
+                    Vector Craft
                   </p>
                 </div>
               </motion.div>
@@ -118,23 +127,21 @@ export function CaseStudySection() {
                 className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
               >
                 <Button
-                  href="/work"
+                  href="/work/branding/house-of-kolam"
                   size="md"
                   className="group"
                 >
-                  <span>View All Projects</span>
+                  <span>Explore House of Kolam</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
 
-                <a
-                  href="https://www.contekst.be/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/work"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-600 hover:text-zinc-950 transition-colors py-2 px-3"
                 >
-                  <span>Visit Live Flagship</span>
-                  <ExternalLink className="h-3.5 w-3.5 text-zinc-400" />
-                </a>
+                  <span>View All Work</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-zinc-400" />
+                </Link>
               </motion.div>
             </div>
 
@@ -148,16 +155,25 @@ export function CaseStudySection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="lg:col-span-6 flex justify-center lg:justify-end"
             >
-              <div className="group relative aspect-[16/11] sm:aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-3xl bg-zinc-100 border border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+              <Link
+                href="/work/branding/house-of-kolam"
+                className="group relative aspect-[16/11] sm:aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-3xl bg-zinc-100 border border-zinc-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] block cursor-pointer"
+              >
                 <Image
-                  src="https://res.cloudinary.com/dbwrnwa3l/image/upload/f_auto,q_80,c_fill,w_1200,h_900/v1788801506/Contekst_o2pipv.png"
-                  alt="Contekst Studio — Architectural Portfolio & Web Platform"
+                  src="https://res.cloudinary.com/vt5gqi1c/image/upload/v1793186166/31b46d250283873.6a1bd914346e2_converted.png"
+                  alt="House of Kolam — Sacred Geometry Visual Identity & Culinary Branding"
                   fill
                   sizes="(max-width: 1024px) 100vw, 620px"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-zinc-950 shadow-lg backdrop-blur-xs">
+                    <span>View Brand Case Study (23 Boards)</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[#f95721]" />
+                  </span>
+                </div>
+              </Link>
             </motion.div>
 
           </div>
