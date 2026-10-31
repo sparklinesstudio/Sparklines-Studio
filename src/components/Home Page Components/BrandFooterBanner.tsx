@@ -37,7 +37,7 @@ export function BrandFooterBanner() {
     { label: "Selected Works", href: "/work" },
     { label: "Studio Capabilities", href: "/services" },
     { label: "Kolkata SEO Lab", href: "/seo-agency-kolkata" },
-    { label: "Video Production", href: "/services/video-production" },
+    { label: "Kolkata Video Production", href: "/video-production-agency-kolkata" },
     { label: "House of Kolam Flagship", href: "/work/branding/house-of-kolam" },
     { label: "Client Testimonials", href: "/#testimonials" },
   ];
