@@ -3,6 +3,7 @@
 import React, {
   useEffect,
   useRef,
+  useState,
   forwardRef,
   useImperativeHandle,
   type ButtonHTMLAttributes,
@@ -262,6 +263,31 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const wakeRef = useRef<(() => void) | null>(null);
+    const [canRenderWebGL, setCanRenderWebGL] = useState(false);
+
+    useEffect(() => {
+      // Specular shine is a desktop mouse-tracking effect.
+      // On mobile / touch / coarse-pointer devices, disable canvas completely to prevent
+      // WebGL context exhaustion and browser broken-canvas fallback boxes.
+      if (
+        typeof window === 'undefined' ||
+        window.innerWidth < 768 ||
+        !window.matchMedia('(pointer: fine)').matches
+      ) {
+        return;
+      }
+
+      try {
+        const testCanvas = document.createElement('canvas');
+        const testGl = testCanvas.getContext('webgl2');
+        if (testGl) {
+          testGl.getExtension('WEBGL_lose_context')?.loseContext();
+          setCanRenderWebGL(true);
+        }
+      } catch {
+        setCanRenderWebGL(false);
+      }
+    }, []);
 
     // Dynamic defaults based on variant
     const resolvedTint =
@@ -307,6 +333,7 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
     settingsRef.current = settings;
 
     useEffect(() => {
+      if (!canRenderWebGL) return undefined;
       const el = internalRef.current;
       const canvas = canvasRef.current;
       if (!el || !canvas) return undefined;
@@ -319,6 +346,14 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
         stencil: false,
       });
       if (!gl) return undefined;
+
+      const handleContextLost = (e: Event) => {
+        e.preventDefault();
+        if (canvas) {
+          canvas.style.display = 'none';
+        }
+      };
+      canvas.addEventListener('webglcontextlost', handleContextLost);
 
       const program = link(gl);
       if (!program) return undefined;
@@ -534,12 +569,13 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
         window.removeEventListener('pointercancel', onPointerEnd);
         document.documentElement.removeEventListener('pointerleave', onPointerLeave);
         el.removeEventListener('pointerdown', onPointerDown);
+        canvas.removeEventListener('webglcontextlost', handleContextLost);
         gl.deleteBuffer(buffer);
         gl.deleteVertexArray(vao);
         gl.deleteProgram(program);
         gl.getExtension('WEBGL_lose_context')?.loseContext();
       };
-    }, []);
+    }, [canRenderWebGL]);
 
     useEffect(() => {
       wakeRef.current?.();
@@ -560,7 +596,9 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
 
     const content = (
       <>
-        <canvas ref={canvasRef} className="specular-button__light" aria-hidden="true" />
+        {canRenderWebGL && (
+          <canvas ref={canvasRef} className="specular-button__light" aria-hidden="true" />
+        )}
         <span className="specular-button__label">{children}</span>
       </>
     );
@@ -600,4 +638,3 @@ export const SpecularButton = forwardRef<HTMLElement, SpecularButtonProps>(
 
 SpecularButton.displayName = 'SpecularButton';
 export default SpecularButton;
-

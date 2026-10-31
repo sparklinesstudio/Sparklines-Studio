@@ -125,6 +125,18 @@
   width: calc(100% + 48px);
   height: calc(100% + 48px);
   pointer-events: none;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  .specular-button__light {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
 
 .specular-button__label {
@@ -136,4 +148,3 @@
   gap: inherit;
   width: 100%;
 }
-
