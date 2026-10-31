@@ -63,7 +63,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:30",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-3",
@@ -73,7 +73,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:38",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-4",
@@ -83,7 +83,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-5",
@@ -103,7 +103,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:35",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-7",
@@ -123,7 +123,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:32",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-9",
@@ -133,7 +133,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:48",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-10",
@@ -143,7 +143,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-11",
@@ -163,7 +163,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:30",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-13",
@@ -173,7 +173,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:38",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-14",
@@ -183,7 +183,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:55",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-15",
@@ -203,7 +203,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:35",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-17",
@@ -223,7 +223,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:32",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-19",
@@ -233,7 +233,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "0:48",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "masonry-20",
@@ -243,7 +243,7 @@ const MASONRY_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/16]",
   },
 ];
 
@@ -676,18 +676,18 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* Organic Staggered CSS Columns Masonry (4 cols desktop, 3 tablet, 2 mobile) */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-6 [column-fill:_balance]">
+          {/* 20 Curated Videos in 9:16 Vertical Reel Format */}
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {MASONRY_VIDEOS.map((video) => (
               <div
                 key={video.id}
                 onClick={() => setActiveVideoModal(video)}
                 onMouseEnter={() => handleMouseEnter(video.id)}
                 onMouseLeave={() => handleMouseLeave(video.id)}
-                className="break-inside-avoid mb-4 sm:mb-6 group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
+                className="group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
               >
-                {/* Responsive Aspect Ratio Stage - Pure Edge-to-Edge Video */}
-                <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
+                {/* Responsive Aspect Ratio Stage - Strictly 9:16 format */}
+                <div className="relative w-full aspect-[9/16] overflow-hidden bg-black">
                   <video
                     ref={(el) => {
                       videoRefs.current[video.id] = el;
