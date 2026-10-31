@@ -1259,57 +1259,64 @@ export default function VideoProductionAgencyKolkataPage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 6. PRODUCTION METRICS STRIP (ANIMATED STATS)                    */}
+      {/* 6. PRODUCTION METRICS STRIP (ANIMATED STATS // 01 — INDEX)     */}
+      {/* Styled to exactly match the reference image with blue accent   */}
       {/* ============================================================== */}
       <section
         ref={metricsRef}
-        className="w-full bg-[#0B0C10] text-white py-16 sm:py-22 px-6 sm:px-12 lg:px-16 border-b border-[#232630]"
+        className="w-full bg-[#07080B] text-white py-20 sm:py-28 lg:py-32 px-6 sm:px-12 lg:px-16 border-b border-zinc-800/80"
       >
         <div className="w-full max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 pb-8 mb-10 border-b border-[#232630]">
-            <span className="w-2 h-2 rounded-full bg-blue-600" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-400">
-              VERIFIED COMMERCIAL PRODUCTION BENCHMARKS
+          {/* Top Header with Blue Accent & Hairline Divider */}
+          <div className="flex items-center gap-4 sm:gap-6 mb-14 sm:mb-20">
+            <span className="text-xs sm:text-sm font-mono uppercase tracking-[0.22em] text-blue-500 whitespace-nowrap">
+              // 01 — INDEX
             </span>
+            <div className="h-[1px] flex-1 bg-zinc-800/80" />
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10">
-            <div className="pr-6 lg:border-r border-[#232630]">
-              <div className="text-4xl sm:text-6xl font-medium tracking-tight text-white mb-2 font-sans">
+          {/* 4 Architectural Columns with Tall Vertical Dividers */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 sm:gap-y-16">
+            {/* Stat 01 */}
+            <div className="pr-6 sm:pr-8 lg:pr-12 lg:border-r border-zinc-800/80">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white mb-3 sm:mb-4 font-sans leading-none">
                 {count1}
                 <span className="text-blue-500 font-light">M+</span>
               </div>
-              <p className="text-[11px] sm:text-xs uppercase tracking-wider text-zinc-400 font-normal">
+              <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
                 Organic &amp; Paid Views Generated
               </p>
             </div>
 
-            <div className="sm:pl-6 lg:px-8 lg:border-r border-[#232630]">
-              <div className="text-4xl sm:text-6xl font-medium tracking-tight text-white mb-2 font-sans">
+            {/* Stat 02 */}
+            <div className="sm:pl-6 lg:pl-12 sm:pr-6 lg:pr-12 sm:border-r-0 lg:border-r border-zinc-800/80">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white mb-3 sm:mb-4 font-sans leading-none">
                 {count2}
                 <span className="text-blue-500 font-light">%</span>
               </div>
-              <p className="text-[11px] sm:text-xs uppercase tracking-wider text-zinc-400 font-normal">
+              <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
                 Average Video Retention Rate
               </p>
             </div>
 
-            <div className="pr-6 lg:px-8 lg:border-r border-[#232630]">
-              <div className="text-4xl sm:text-6xl font-medium tracking-tight text-white mb-2 font-sans">
+            {/* Stat 03 */}
+            <div className="lg:pl-12 lg:pr-12 lg:border-r border-zinc-800/80">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white mb-3 sm:mb-4 font-sans leading-none">
                 {count3}
                 <span className="text-blue-500 font-light">K</span>
               </div>
-              <p className="text-[11px] sm:text-xs uppercase tracking-wider text-zinc-400 font-normal">
+              <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
                 Cinema RAW Capture Standard
               </p>
             </div>
 
-            <div className="sm:pl-6 lg:pl-8">
-              <div className="text-4xl sm:text-6xl font-medium tracking-tight text-white mb-2 font-sans">
+            {/* Stat 04 */}
+            <div className="sm:pl-6 lg:pl-12">
+              <div className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight text-white mb-3 sm:mb-4 font-sans leading-none">
                 {count4}
                 <span className="text-blue-500 font-light">d</span>
               </div>
-              <p className="text-[11px] sm:text-xs uppercase tracking-wider text-zinc-400 font-normal">
+              <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
                 Average Turnaround to First Cut
               </p>
             </div>
