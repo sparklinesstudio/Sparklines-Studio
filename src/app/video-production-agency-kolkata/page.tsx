@@ -6,6 +6,10 @@ import Link from "next/link";
 import {
   Play,
   X,
+  FileText,
+  Camera,
+  Film,
+  Sparkles,
 } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
@@ -1366,82 +1370,114 @@ export default function VideoProductionAgencyKolkataPage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 8. THE 4-STAGE CINEMA PRODUCTION PIPELINE                       */}
+      {/* 8. FOUR STAGES. ONE TRAJECTORY. (ARCHITECTURAL HAIRLINE GRID)   */}
       {/* ============================================================== */}
-      <section className="w-full bg-[#F7F6F2] py-20 sm:py-28 px-6 sm:px-12 lg:px-16 border-b border-[#D5D2C9]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-14 sm:mb-18 pb-6 border-b border-[#D5D2C9]">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-blue-600 block mb-2">
-              Architectural Methodology
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0B0C10] font-sans">
-              Our 4-Stage Film Pipeline
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 max-w-2xl font-normal">
-              Zero guesswork. We deploy a proven production system that protects your timeline, guarantees
-              impeccable production value, and eliminates revisions loops.
-            </p>
+      <section
+        id="production-pipeline"
+        className="w-full bg-[#F7F6F2] py-20 sm:py-28 lg:py-32 border-b border-[#D5D2C9]"
+      >
+        {/* Full-Width Section Header matching screenshot */}
+        <div className="w-full px-6 sm:px-12 lg:px-16 mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.03em] text-[#0B0C10] leading-[1.04] font-sans">
+            Four stages.<br />
+            <span className="font-editorial italic font-normal text-[#0B0C10]">
+              One
+            </span>{" "}
+            trajectory.
+          </h2>
+        </div>
+
+        {/* Full-Width Architectural Grid Matching Screenshot */}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-b border-[#D5D2C9]">
+          {/* Stage 01: Treatment & Concept */}
+          <div
+            onClick={openAuditModal}
+            className="relative p-8 sm:p-12 lg:p-16 border-b sm:border-r lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2] hover:bg-blue-600 transition-all duration-500 ease-in-out flex flex-col justify-between min-h-[300px] sm:min-h-[360px] group cursor-pointer overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
+
+            <div className="relative z-10 flex items-center justify-between mb-16 sm:mb-24">
+              <FileText className="w-7 h-7 text-[#0B0C10] stroke-[1.5] group-hover:text-white group-hover:scale-105 transition-all duration-500 ease-in-out" />
+              <span className="text-xs font-mono text-zinc-400 group-hover:text-blue-100 transition-colors duration-500 ease-in-out">
+                01
+              </span>
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#0B0C10] group-hover:text-white transition-colors duration-500 ease-in-out mb-3 font-sans">
+                Treatment &amp; Concept
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-600 group-hover:text-blue-100 font-normal leading-relaxed max-w-sm transition-colors duration-500 ease-in-out">
+                Script framing, storyboards, location scouting, and aesthetic moodboarding to lock the narrative before shooting.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-8 bg-white border border-[#D5D2C9] rounded-2xl flex flex-col justify-between">
-              <div>
-                <span className="font-editorial italic text-3xl text-blue-600 block mb-4">01.</span>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[#0B0C10] font-sans mb-2">
-                  Treatment &amp; Concept
-                </h3>
-                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
-                  Script framing, storyboards, location scouting, and aesthetic moodboarding to lock the narrative before shooting.
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-zinc-100 text-[11px] font-mono text-zinc-400">
-                Phase 1 // Pre-Production
-              </div>
-            </div>
+          {/* Stage 02: Cinema Shoot */}
+          <div
+            onClick={openAuditModal}
+            className="relative p-8 sm:p-12 lg:p-16 border-b sm:border-r-0 lg:border-r lg:border-b-0 border-[#D5D2C9] bg-[#F7F6F2] hover:bg-blue-600 transition-all duration-500 ease-in-out flex flex-col justify-between min-h-[300px] sm:min-h-[360px] group cursor-pointer overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
 
-            <div className="p-8 bg-white border border-[#D5D2C9] rounded-2xl flex flex-col justify-between">
-              <div>
-                <span className="font-editorial italic text-3xl text-blue-600 block mb-4">02.</span>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[#0B0C10] font-sans mb-2">
-                  Cinema Shoot
-                </h3>
-                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
-                  Full cinema crew on set with RED/Sony FX bodies, specialized cinema glass, multi-point lighting, and sound capture.
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-zinc-100 text-[11px] font-mono text-zinc-400">
-                Phase 2 // Principal Wrap
-              </div>
+            <div className="relative z-10 flex items-center justify-between mb-16 sm:mb-24">
+              <Camera className="w-7 h-7 text-[#0B0C10] stroke-[1.5] group-hover:text-white group-hover:scale-105 transition-all duration-500 ease-in-out" />
+              <span className="text-xs font-mono text-zinc-400 group-hover:text-blue-100 transition-colors duration-500 ease-in-out">
+                02
+              </span>
             </div>
-
-            <div className="p-8 bg-white border border-[#D5D2C9] rounded-2xl flex flex-col justify-between">
-              <div>
-                <span className="font-editorial italic text-3xl text-blue-600 block mb-4">03.</span>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[#0B0C10] font-sans mb-2">
-                  Edit &amp; Sound Design
-                </h3>
-                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
-                  Rhythmic montage pacing, dialogue cleanup, sound design Foley, and original musical score synchronization.
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-zinc-100 text-[11px] font-mono text-zinc-400">
-                Phase 3 // Editorial Assembly
-              </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#0B0C10] group-hover:text-white transition-colors duration-500 ease-in-out mb-3 font-sans">
+                Cinema Shoot
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-600 group-hover:text-blue-100 font-normal leading-relaxed max-w-sm transition-colors duration-500 ease-in-out">
+                Full cinema crew on set with RED/Sony FX bodies, specialized cinema glass, multi-point lighting, and sound capture.
+              </p>
             </div>
+          </div>
 
-            <div className="p-8 bg-white border border-[#D5D2C9] rounded-2xl flex flex-col justify-between">
-              <div>
-                <span className="font-editorial italic text-3xl text-blue-600 block mb-4">04.</span>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-[#0B0C10] font-sans mb-2">
-                  Color &amp; Multi-Delivery
-                </h3>
-                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
-                  DaVinci Resolve HDR color grading, 16:9 master export, and 9:16 vertical social cutdown delivery.
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-zinc-100 text-[11px] font-mono text-zinc-400">
-                Phase 4 // Master Deployment
-              </div>
+          {/* Stage 03: Edit & Sound Design */}
+          <div
+            onClick={openAuditModal}
+            className="relative p-8 sm:p-12 lg:p-16 border-b sm:border-b-0 sm:border-r lg:border-b-0 lg:border-r border-[#D5D2C9] bg-[#F7F6F2] hover:bg-blue-600 transition-all duration-500 ease-in-out flex flex-col justify-between min-h-[300px] sm:min-h-[360px] group cursor-pointer overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
+
+            <div className="relative z-10 flex items-center justify-between mb-16 sm:mb-24">
+              <Film className="w-7 h-7 text-[#0B0C10] stroke-[1.5] group-hover:text-white group-hover:scale-105 transition-all duration-500 ease-in-out" />
+              <span className="text-xs font-mono text-zinc-400 group-hover:text-blue-100 transition-colors duration-500 ease-in-out">
+                03
+              </span>
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#0B0C10] group-hover:text-white transition-colors duration-500 ease-in-out mb-3 font-sans">
+                Edit &amp; Sound Design
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-600 group-hover:text-blue-100 font-normal leading-relaxed max-w-sm transition-colors duration-500 ease-in-out">
+                Rhythmic montage pacing, dialogue cleanup, sound design Foley, and original musical score synchronization.
+              </p>
+            </div>
+          </div>
+
+          {/* Stage 04: Color & Multi-Delivery */}
+          <div
+            onClick={openAuditModal}
+            className="relative p-8 sm:p-12 lg:p-16 border-[#D5D2C9] bg-[#F7F6F2] hover:bg-blue-600 transition-all duration-500 ease-in-out flex flex-col justify-between min-h-[300px] sm:min-h-[360px] group cursor-pointer overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none" />
+
+            <div className="relative z-10 flex items-center justify-between mb-16 sm:mb-24">
+              <Sparkles className="w-7 h-7 text-[#0B0C10] stroke-[1.5] group-hover:text-white group-hover:scale-105 transition-all duration-500 ease-in-out" />
+              <span className="text-xs font-mono text-zinc-400 group-hover:text-blue-100 transition-colors duration-500 ease-in-out">
+                04
+              </span>
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-bold tracking-tight text-[#0B0C10] group-hover:text-white transition-colors duration-500 ease-in-out mb-3 font-sans">
+                Color &amp; Multi-Delivery
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-600 group-hover:text-blue-100 font-normal leading-relaxed max-w-sm transition-colors duration-500 ease-in-out">
+                DaVinci Resolve HDR color grading, 16:9 master export, and 9:16 vertical social cutdown delivery.
+              </p>
             </div>
           </div>
         </div>
