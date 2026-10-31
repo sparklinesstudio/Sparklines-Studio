@@ -785,8 +785,8 @@ export default function VideoProductionAgencyKolkataPage() {
   // Lightbox Modal State for Selected Video
   const [activeVideoModal, setActiveVideoModal] = useState<MasonryVideoItem | null>(null);
 
-  // Mobile Masonry Expansion State (Only applies on mobile screens < sm)
-  const [mobileExpanded, setMobileExpanded] = useState<{ [key: string]: boolean }>({});
+  // Mobile Masonry Visible Count State (Initial: 3 videos, increments by 5 on each "View More" click)
+  const [mobileVisibleCount, setMobileVisibleCount] = useState<{ [key: string]: number }>({});
 
   // Form state
   const [formData, setFormData] = useState({
@@ -973,11 +973,12 @@ export default function VideoProductionAgencyKolkataPage() {
   // =========================================================================
   // HELPER: RENDER EVEN-ENDING BALANCED MASONRY GRID
   // On Desktop/Tablet (sm+): 4 balanced columns with equal aspect sums
-  // On Mobile (< sm): Shows only 3 videos initially + "View More" toggle button
+  // On Mobile (< sm): Shows 3 videos initially, then reveals 5 more on each click
   // =========================================================================
   const renderMasonryGrid = (items: MasonryVideoItem[], sectionKey: string) => {
-    const isExpanded = Boolean(mobileExpanded[sectionKey]);
-    const visibleMobileItems = isExpanded ? items : items.slice(0, 3);
+    const currentCount = mobileVisibleCount[sectionKey] ?? 3;
+    const visibleMobileItems = items.slice(0, currentCount);
+    const hasMore = currentCount < items.length;
 
     // Desktop: 4 balanced columns
     const numCols = 4;
@@ -997,32 +998,25 @@ export default function VideoProductionAgencyKolkataPage() {
           ))}
         </div>
 
-        {/* MOBILE ONLY: 3 Videos Initially + "View More" Button (hidden on sm+) */}
+        {/* MOBILE ONLY: 3 Videos Initially + reveals 5 more on each "View More" click */}
         <div className="block sm:hidden space-y-4">
           <div className="flex flex-col gap-4">
             {visibleMobileItems.map((video) => renderVideoCard(video))}
           </div>
 
-          {items.length > 3 && (
+          {hasMore && (
             <div className="pt-2">
               <button
                 type="button"
                 onClick={() =>
-                  setMobileExpanded((prev) => ({
+                  setMobileVisibleCount((prev) => ({
                     ...prev,
-                    [sectionKey]: !prev[sectionKey],
+                    [sectionKey]: (prev[sectionKey] ?? 3) + 5,
                   }))
                 }
                 className="w-full py-3.5 px-6 bg-white hover:bg-zinc-50 border border-[#D5D2C9] rounded-2xl text-xs font-semibold uppercase tracking-wider text-[#0B0C10] hover:text-blue-600 transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
-                <span>
-                  {isExpanded ? "Show Less" : `View More (${items.length - 3} More Videos)`}
-                </span>
-                <ChevronDown
-                  className={`w-4 h-4 text-blue-600 transition-transform duration-300 ${
-                    isExpanded ? "rotate-180" : "rotate-0"
-                  }`}
-                />
+                <span>View More</span>
               </button>
             </div>
           )}
