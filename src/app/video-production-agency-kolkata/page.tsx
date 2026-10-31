@@ -8,7 +8,6 @@ import {
   Check,
   ChevronDown,
   X,
-  Play,
   Film,
   Camera,
   Clapperboard,
@@ -663,12 +662,6 @@ export default function VideoProductionAgencyKolkataPage() {
           {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-6 border-b border-[#D5D2C9]">
             <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-blue-600" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">
-                  Motion Archive // 20 Verified Productions
-                </span>
-              </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B0C10] font-sans">
                 Commercial Films &amp;{" "}
                 <span className="font-editorial italic font-normal text-blue-600">
@@ -693,7 +686,7 @@ export default function VideoProductionAgencyKolkataPage() {
                 onMouseLeave={() => handleMouseLeave(video.id)}
                 className="break-inside-avoid mb-4 sm:mb-6 group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
               >
-                {/* Responsive Aspect Ratio Stage */}
+                {/* Responsive Aspect Ratio Stage - Pure Edge-to-Edge Video */}
                 <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
                   <video
                     ref={(el) => {
@@ -707,31 +700,6 @@ export default function VideoProductionAgencyKolkataPage() {
                     preload="metadata"
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {/* Dark Vignette Overlay on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-                  {/* Top Category Badge */}
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-white border border-white/20 font-semibold shadow-xs">
-                      {video.category}
-                    </span>
-                  </div>
-
-                  {/* Top-Right Play Indicator */}
-                  <div className="absolute top-3 right-3 z-10 h-7 w-7 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center border border-white/20 opacity-80 group-hover:opacity-100 group-hover:bg-blue-600 group-hover:border-blue-500 transition-all">
-                    <Play className="h-3 w-3 fill-current ml-0.5" />
-                  </div>
-
-                  {/* Bottom Metadata Bar */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 z-10 pointer-events-none">
-                    <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1">
-                      {video.client} · {video.duration}
-                    </div>
-                    <h3 className="text-sm sm:text-base font-bold text-white font-sans tracking-tight line-clamp-2 drop-shadow-sm group-hover:text-blue-300 transition-colors">
-                      {video.title}
-                    </h3>
-                  </div>
                 </div>
               </div>
             ))}
@@ -1081,13 +1049,11 @@ export default function VideoProductionAgencyKolkataPage() {
           >
             {/* Modal Top Bar */}
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-zinc-800 bg-zinc-900/90 text-white">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-blue-400 block">
-                  {activeVideoModal.category} // {activeVideoModal.client}
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                <span className="text-xs font-mono uppercase tracking-widest text-zinc-300">
+                  Sparklines Studio Cinema Theater
                 </span>
-                <h4 className="text-sm sm:text-base font-bold font-sans tracking-tight text-white line-clamp-1">
-                  {activeVideoModal.title}
-                </h4>
               </div>
               <button
                 type="button"
