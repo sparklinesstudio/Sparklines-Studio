@@ -24,14 +24,15 @@ interface MasonryVideoItem {
   duration: string;
   src: string;
   poster: string;
-  aspect: string; // Tailwind aspect ratio class for staggered Pinterest-style layout
+  aspect: string;
 }
 
 // =========================================================================
-// 1. DATA: RESTAURANTS, CAFES & RETAIL MASONRY (20 VIDEOS)
-// Sensory culinary storytelling, cafe ambience, and retail commercial cuts
+// 1. DATA: RESTAURANTS, CAFES & RETAIL MASONRY (24 VIDEOS)
+// 6 rows of 4 perfectly balanced across 4 columns so bottom finishes cleanly
 // =========================================================================
 const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
+  // --- Row 0 (Pattern A) ---
   {
     id: "dine-1",
     title: "Decadent Culinary & Gastronomy Film",
@@ -50,7 +51,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:35",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "dine-3",
@@ -60,7 +61,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:30",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "dine-4",
@@ -70,8 +71,10 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:32",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/14]",
   },
+
+  // --- Row 1 (Pattern B) ---
   {
     id: "dine-5",
     title: "Artisan Dessert & Pastry Framing",
@@ -80,7 +83,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:40",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "dine-6",
@@ -90,7 +93,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:55",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "dine-7",
@@ -112,6 +115,8 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
     aspect: "aspect-[16/10]",
   },
+
+  // --- Row 2 (Pattern C) ---
   {
     id: "dine-9",
     title: "Sensory Cocoa & Confectionery Macro",
@@ -120,7 +125,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:42",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "dine-10",
@@ -130,7 +135,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:34",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "dine-11",
@@ -140,7 +145,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:30",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
-    aspect: "aspect-[9/16]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "dine-12",
@@ -152,6 +157,8 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
     aspect: "aspect-[4/5]",
   },
+
+  // --- Row 3 (Pattern D) ---
   {
     id: "dine-13",
     title: "Tasting Menu Sizzle & Steam Cinema",
@@ -160,7 +167,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:38",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "dine-14",
@@ -170,7 +177,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:50",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "dine-15",
@@ -180,7 +187,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:33",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "dine-16",
@@ -192,6 +199,8 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
     aspect: "aspect-[9/16]",
   },
+
+  // --- Row 4 (Pattern E) ---
   {
     id: "dine-17",
     title: "Curated Concept Store Experience",
@@ -200,7 +209,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:31",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[3/4]",
   },
   {
     id: "dine-18",
@@ -210,7 +219,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:37",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "dine-19",
@@ -220,7 +229,7 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:45",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[3/4]",
   },
   {
     id: "dine-20",
@@ -230,15 +239,59 @@ const RESTAURANT_RETAIL_VIDEOS: MasonryVideoItem[] = [
     duration: "0:35",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
+    aspect: "aspect-[9/16]",
+  },
+
+  // --- Row 5 (Pattern F: Perfectly balancing all column heights) ---
+  {
+    id: "dine-21",
+    title: "Luxury Cafe Barista Pour Slow-Motion",
+    category: "Cafe & Bar",
+    client: "Park Street Coffee Atelier",
+    duration: "0:33",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714840/minipagebioarchive_ssspin.io_1790714828.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714840/minipagebioarchive_ssspin.io_1790714828.jpg",
+    aspect: "aspect-[9/16]",
+  },
+  {
+    id: "dine-22",
+    title: "Gourmet Herb Infusion & Smoke",
+    category: "Culinary Art",
+    client: "Ballygunge Chef Lab",
+    duration: "0:38",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714449/chiffonandspice_ssspin.io_1790714410.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714449/chiffonandspice_ssspin.io_1790714410.jpg",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    id: "dine-23",
+    title: "Pastry Sugar Glaze Architectural Cut",
+    category: "Patisserie",
+    client: "Salt Lake Bakery Atelier",
+    duration: "0:42",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714905/decadentdepictions_ssspin.io_1790714806.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714905/decadentdepictions_ssspin.io_1790714806.jpg",
+    aspect: "aspect-[9/16]",
+  },
+  {
+    id: "dine-24",
+    title: "Signature Dish Finishing Touches",
+    category: "Fine Dining",
+    client: "Alipore Heritage Kitchen",
+    duration: "0:36",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714439/chiffonandspice_ssspin.io_1790714426.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714439/chiffonandspice_ssspin.io_1790714426.jpg",
     aspect: "aspect-[3/4]",
   },
 ];
 
 // =========================================================================
-// 2. DATA: CLOTHING & APPAREL MASONRY (15 VIDEOS)
+// 2. DATA: CLOTHING & APPAREL MASONRY (24 VIDEOS)
 // Positioned directly below "The Video Production Agency in Kolkata Built for cinematic Conversion."
+// 6 rows of 4 with identical column height sum across all 4 columns
 // =========================================================================
 const CLOTHING_VIDEOS: MasonryVideoItem[] = [
+  // --- Row 0 (Pattern A) ---
   {
     id: "wear-1",
     title: "Editorial Haute Couture Movement Master",
@@ -257,7 +310,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:24",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "wear-3",
@@ -267,7 +320,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:42",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "wear-4",
@@ -277,8 +330,10 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:48",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/14]",
   },
+
+  // --- Row 1 (Pattern B) ---
   {
     id: "wear-5",
     title: "Bridal Couture Drapes & Embroidery Macro",
@@ -287,7 +342,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:38",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "wear-6",
@@ -297,7 +352,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:24",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
-    aspect: "aspect-[9/16]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "wear-7",
@@ -307,7 +362,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:42",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "wear-8",
@@ -317,8 +372,10 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:48",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[16/10]",
   },
+
+  // --- Row 2 (Pattern C) ---
   {
     id: "wear-9",
     title: "Modern Jamdani Contemporary Styling",
@@ -337,7 +394,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:24",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "wear-11",
@@ -347,7 +404,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:42",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
-    aspect: "aspect-[9/16]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "wear-12",
@@ -359,6 +416,8 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
     aspect: "aspect-[4/5]",
   },
+
+  // --- Row 3 (Pattern D) ---
   {
     id: "wear-13",
     title: "Contemporary Indo-Western Lookbook",
@@ -377,7 +436,7 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:24",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "wear-15",
@@ -387,15 +446,110 @@ const CLOTHING_VIDEOS: MasonryVideoItem[] = [
     duration: "0:42",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
+    aspect: "aspect-[16/10]",
+  },
+  {
+    id: "wear-16",
+    title: "Metallic Accent & Jewelry Macro Reflection",
+    category: "Jewelry & Accents",
+    client: "Bowbazar Goldsmiths Studio",
+    duration: "0:48",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
+    aspect: "aspect-[9/16]",
+  },
+
+  // --- Row 4 (Pattern E) ---
+  {
+    id: "wear-17",
+    title: "Festive Silk Sari Movement & Drape",
+    category: "Ethnic Wear",
+    client: "Gariahat Heritage Handlooms",
+    duration: "0:38",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    id: "wear-18",
+    title: "Urban Utility Streetwear Movement Hook",
+    category: "Streetwear",
+    client: "Salt Lake Street Club",
+    duration: "0:24",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
+    aspect: "aspect-[9/16]",
+  },
+  {
+    id: "wear-19",
+    title: "Studio High-Key Color Blocking Fashion Film",
+    category: "High Fashion",
+    client: "Kolkata Haute Studio",
+    duration: "0:42",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    id: "wear-20",
+    title: "Knitted Wool Texture & Stitch Macro",
+    category: "Textile Cinema",
+    client: "Bengal Knitwear Collective",
+    duration: "0:48",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
+    aspect: "aspect-[9/16]",
+  },
+
+  // --- Row 5 (Pattern F: Perfectly balancing all column heights) ---
+  {
+    id: "wear-21",
+    title: "Avant-Garde Silhouette & Dramatic Shadows",
+    category: "Avant-Garde",
+    client: "Camac Street Couture House",
+    duration: "0:38",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714352/IMG_5738.MOV.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714352/IMG_5738.MOV.jpg",
+    aspect: "aspect-[9/16]",
+  },
+  {
+    id: "wear-22",
+    title: "Fast-Paced Footwear & Sneaker Drop Ad",
+    category: "Footwear",
+    client: "Kolkata Kicks Collective",
+    duration: "0:24",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714315/lv_0_20260930014015.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714315/lv_0_20260930014015.jpg",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    id: "wear-23",
+    title: "Summer Chiffon Breeze & Slow-Mo Spin",
+    category: "Resort Wear",
+    client: "Ballygunge Fashion Atelier",
+    duration: "0:42",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714269/lv_0_20260930013757.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714269/lv_0_20260930013757.jpg",
+    aspect: "aspect-[9/16]",
+  },
+  {
+    id: "wear-24",
+    title: "Natural Dye Organic Linen Weave Cinema",
+    category: "Sustainable Fashion",
+    client: "Eco Bengal Textiles",
+    duration: "0:48",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714249/IMG_5657.MOV.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714249/IMG_5657.MOV.jpg",
     aspect: "aspect-[3/4]",
   },
 ];
 
 // =========================================================================
-// 3. DATA: REAL ESTATE & ARCHITECTURAL MASONRY (13 VIDEOS)
-// Replaces the previous FAQ section with premier architectural cinema
+// 3. DATA: REAL ESTATE & ARCHITECTURAL MASONRY (20 VIDEOS)
+// 5 rows of 4 with identical column height sum across all 4 columns
 // =========================================================================
 const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
+  // --- Row 0 (Pattern A) ---
   {
     id: "prop-1",
     title: "Modernist Penthouse & Horizon Spatial Tour",
@@ -404,7 +558,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "prop-2",
@@ -414,7 +568,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[9/16]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "prop-3",
@@ -436,6 +590,8 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
     aspect: "aspect-[9/14]",
   },
+
+  // --- Row 1 (Pattern B) ---
   {
     id: "prop-5",
     title: "Gourmet Marble Kitchen & Living Pavilion",
@@ -444,7 +600,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[4/5]",
   },
   {
     id: "prop-6",
@@ -454,7 +610,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "prop-7",
@@ -474,8 +630,10 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[4/5]",
+    aspect: "aspect-[16/10]",
   },
+
+  // --- Row 2 (Pattern C) ---
   {
     id: "prop-9",
     title: "Private Courtyard & Zen Water Garden",
@@ -484,7 +642,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[9/14]",
+    aspect: "aspect-[16/10]",
   },
   {
     id: "prop-10",
@@ -494,7 +652,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[3/4]",
+    aspect: "aspect-[9/16]",
   },
   {
     id: "prop-11",
@@ -504,7 +662,7 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[9/14]",
   },
   {
     id: "prop-12",
@@ -514,8 +672,10 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "1:00",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
-    aspect: "aspect-[9/16]",
+    aspect: "aspect-[4/5]",
   },
+
+  // --- Row 3 (Pattern D) ---
   {
     id: "prop-13",
     title: "Curated Master Bedroom Suite & Morning Light",
@@ -524,6 +684,78 @@ const REAL_ESTATE_VIDEOS: MasonryVideoItem[] = [
     duration: "0:52",
     src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
     poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
+    aspect: "aspect-[9/14]",
+  },
+  {
+    id: "prop-14",
+    title: "Urban High-Rise Structural Drone Ascend",
+    category: "Drone Cinematography",
+    client: "Park Circus Skyline",
+    duration: "1:00",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    id: "prop-15",
+    title: "Minimalist Terrazzo Bathroom Spa Walk",
+    category: "Interior Spatial",
+    client: "Salt Lake Sector III Villa",
+    duration: "0:52",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
+    aspect: "aspect-[16/10]",
+  },
+  {
+    id: "prop-16",
+    title: "Suburban Villa Gated Enclave Masterplan",
+    category: "Enclave Masterplan",
+    client: "Baruipur Garden Villas",
+    duration: "1:00",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
+    aspect: "aspect-[9/16]",
+  },
+
+  // --- Row 4 (Balancing Row: Identical aspect ratios ensure laser-precise bottom alignment) ---
+  {
+    id: "prop-17",
+    title: "Panoramic Penthouse Rooftop Deck Sunset",
+    category: "Rooftop Architecture",
+    client: "New Town Sky Residences",
+    duration: "0:52",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    id: "prop-18",
+    title: "Flagship Corporate Glass Atrium Architecture",
+    category: "Commercial Real Estate",
+    client: "Salt Lake IT Park",
+    duration: "1:00",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    id: "prop-19",
+    title: "Lush Interior Courtyard & Floating Staircase",
+    category: "Architectural Interior",
+    client: "Ballygunge Circular Road",
+    duration: "0:52",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_480/v1790714705/Video-36346.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_500,so_0/v1790714705/Video-36346.jpg",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    id: "prop-20",
+    title: "Riverside Promenade & Architectural Skyline",
+    category: "Urban Architecture",
+    client: "Millennium Park Waterfront",
+    duration: "1:00",
+    src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_1920/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4",
+    poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_auto,q_auto,w_800,so_1/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg",
     aspect: "aspect-[4/5]",
   },
 ];
@@ -706,44 +938,58 @@ export default function VideoProductionAgencyKolkataPage() {
   ];
 
   // =========================================================================
-  // HELPER: RENDER CLEAN MASONRY GRID (NO TEXT OVERLAY ON TOP OF VIDEOS)
+  // HELPER: RENDER EVEN-ENDING BALANCED MASONRY GRID
+  // Distributes into 4 distinct columns with identical aspect ratio sum
+  // Eliminating jagged bottom gaps completely
   // =========================================================================
-  const renderMasonryGrid = (items: MasonryVideoItem[]) => (
-    <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-6 [column-fill:_balance]">
-      {items.map((video) => (
-        <div
-          key={video.id}
-          onClick={() => setActiveVideoModal(video)}
-          onMouseEnter={() => handleMouseEnter(video.id)}
-          onMouseLeave={() => handleMouseLeave(video.id)}
-          className="break-inside-avoid mb-4 sm:mb-6 group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
-        >
-          {/* Responsive Aspect Ratio Stage - PURE VIDEO, ZERO TEXT OVERLAYS */}
-          <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
-            <video
-              ref={(el) => {
-                videoRefs.current[video.id] = el;
-              }}
-              src={video.src}
-              poster={video.poster}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-            />
+  const renderMasonryGrid = (items: MasonryVideoItem[]) => {
+    const numCols = 4;
+    const cols: MasonryVideoItem[][] = Array.from({ length: numCols }, () => []);
+    items.forEach((item, idx) => {
+      cols[idx % numCols].push(item);
+    });
 
-            {/* Subtle Hover Play Pill - Clean visual icon, absolutely NO text */}
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-center">
-              <div className="h-11 w-11 rounded-full bg-blue-600/95 text-white flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                <Play className="h-4 w-4 fill-current ml-0.5" />
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {cols.map((colItems, colIdx) => (
+          <div key={`col-${colIdx}`} className="flex flex-col gap-4 sm:gap-6">
+            {colItems.map((video) => (
+              <div
+                key={video.id}
+                onClick={() => setActiveVideoModal(video)}
+                onMouseEnter={() => handleMouseEnter(video.id)}
+                onMouseLeave={() => handleMouseLeave(video.id)}
+                className="group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
+              >
+                {/* Responsive Aspect Ratio Stage - PURE VIDEO, ZERO TEXT OVERLAYS */}
+                <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
+                  <video
+                    ref={(el) => {
+                      videoRefs.current[video.id] = el;
+                    }}
+                    src={video.src}
+                    poster={video.poster}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  {/* Subtle Hover Play Pill - Clean visual icon, absolutely NO text */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-center">
+                    <div className="h-11 w-11 rounded-full bg-blue-600/95 text-white flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                      <Play className="h-4 w-4 fill-current ml-0.5" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
-      ))}
-    </div>
-  );
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="bg-[#F7F6F2] text-[#0B0C10] selection:bg-blue-600 selection:text-white min-h-screen">
@@ -909,8 +1155,8 @@ export default function VideoProductionAgencyKolkataPage() {
       </div>
 
       {/* ============================================================== */}
-      {/* 3. MASONRY 1: RESTAURANTS, CAFES & RETAIL (20 VIDEOS)          */}
-      {/* Pure video aesthetic with zero text overlays on cards           */}
+      {/* 3. MASONRY 1: RESTAURANTS, CAFES & RETAIL (24 VIDEOS)          */}
+      {/* Even-ending balanced grid with zero text overlays on cards      */}
       {/* ============================================================== */}
       <section
         id="video-masonry"
@@ -923,7 +1169,7 @@ export default function VideoProductionAgencyKolkataPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">
-                  Motion Archive // 20 Curated Productions
+                  Motion Archive // 24 Curated Productions
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B0C10] font-sans">
@@ -939,7 +1185,7 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 20-Video Staggered Grid (No Text Overlays) */}
+          {/* 24-Video Balanced Grid (Even-ending, zero text overlays) */}
           {renderMasonryGrid(RESTAURANT_RETAIL_VIDEOS)}
         </div>
       </section>
@@ -979,7 +1225,7 @@ export default function VideoProductionAgencyKolkataPage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 5. MASONRY 2: CLOTHING & APPAREL FILMS (15 VIDEOS)             */}
+      {/* 5. MASONRY 2: CLOTHING & APPAREL FILMS (24 VIDEOS)             */}
       {/* Positioned directly below "The Video Production Agency in      */}
       {/* Kolkata Built for cinematic Conversion" as requested          */}
       {/* ============================================================== */}
@@ -994,7 +1240,7 @@ export default function VideoProductionAgencyKolkataPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">
-                  Fashion Archive // 15 Commercial Productions
+                  Fashion Archive // 24 Commercial Productions
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B0C10] font-sans">
@@ -1011,7 +1257,7 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 15-Video Staggered Grid (No Text Overlays) */}
+          {/* 24-Video Balanced Grid (Even-ending, zero text overlays) */}
           {renderMasonryGrid(CLOTHING_VIDEOS)}
         </div>
       </section>
@@ -1202,8 +1448,8 @@ export default function VideoProductionAgencyKolkataPage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 9. MASONRY 3: REAL ESTATE & ARCHITECTURAL CINEMA (13 VIDEOS)   */}
-      {/* Replaces the FAQ section as requested                           */}
+      {/* 9. MASONRY 3: REAL ESTATE & ARCHITECTURAL CINEMA (20 VIDEOS)   */}
+      {/* Even-ending balanced grid with zero text overlays on cards      */}
       {/* ============================================================== */}
       <section
         id="real-estate-masonry"
@@ -1216,7 +1462,7 @@ export default function VideoProductionAgencyKolkataPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-blue-600" />
                 <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500">
-                  Spatial Archive // 13 Verified Productions
+                  Spatial Archive // 20 Verified Productions
                 </span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#0B0C10] font-sans">
@@ -1233,7 +1479,7 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 13-Video Staggered Grid (No Text Overlays) */}
+          {/* 20-Video Balanced Grid (Even-ending, zero text overlays) */}
           {renderMasonryGrid(REAL_ESTATE_VIDEOS)}
         </div>
       </section>
