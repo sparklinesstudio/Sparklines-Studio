@@ -9,6 +9,7 @@ import {
   Camera,
   Film,
   Sparkles,
+  ChevronDown,
 } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
@@ -784,6 +785,9 @@ export default function VideoProductionAgencyKolkataPage() {
   // Lightbox Modal State for Selected Video
   const [activeVideoModal, setActiveVideoModal] = useState<MasonryVideoItem | null>(null);
 
+  // Mobile Masonry Expansion State (Only applies on mobile screens < sm)
+  const [mobileExpanded, setMobileExpanded] = useState<{ [key: string]: boolean }>({});
+
   // Form state
   const [formData, setFormData] = useState({
     name: "",
@@ -940,12 +944,42 @@ export default function VideoProductionAgencyKolkataPage() {
     },
   ];
 
+  // Render single video card (Pure video, hover-play, click-to-modal)
+  const renderVideoCard = (video: MasonryVideoItem) => (
+    <div
+      key={video.id}
+      onClick={() => setActiveVideoModal(video)}
+      onMouseEnter={() => handleMouseEnter(video.id)}
+      onMouseLeave={() => handleMouseLeave(video.id)}
+      className="group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
+    >
+      <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
+        <video
+          ref={(el) => {
+            videoRefs.current[video.id] = el;
+          }}
+          src={video.src}
+          poster={video.poster}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+    </div>
+  );
+
   // =========================================================================
   // HELPER: RENDER EVEN-ENDING BALANCED MASONRY GRID
-  // Distributes into 4 distinct columns with identical aspect ratio sum
-  // Eliminating jagged bottom gaps completely
+  // On Desktop/Tablet (sm+): 4 balanced columns with equal aspect sums
+  // On Mobile (< sm): Shows only 3 videos initially + "View More" toggle button
   // =========================================================================
-  const renderMasonryGrid = (items: MasonryVideoItem[]) => {
+  const renderMasonryGrid = (items: MasonryVideoItem[], sectionKey: string) => {
+    const isExpanded = Boolean(mobileExpanded[sectionKey]);
+    const visibleMobileItems = isExpanded ? items : items.slice(0, 3);
+
+    // Desktop: 4 balanced columns
     const numCols = 4;
     const cols: MasonryVideoItem[][] = Array.from({ length: numCols }, () => []);
     items.forEach((item, idx) => {
@@ -953,37 +987,47 @@ export default function VideoProductionAgencyKolkataPage() {
     });
 
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        {cols.map((colItems, colIdx) => (
-          <div key={`col-${colIdx}`} className="flex flex-col gap-4 sm:gap-6">
-            {colItems.map((video) => (
-              <div
-                key={video.id}
-                onClick={() => setActiveVideoModal(video)}
-                onMouseEnter={() => handleMouseEnter(video.id)}
-                onMouseLeave={() => handleMouseLeave(video.id)}
-                className="group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
-              >
-                {/* Responsive Aspect Ratio Stage - PURE VIDEO, ZERO HOVER OVERLAYS OR BUTTONS */}
-                <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[video.id] = el;
-                    }}
-                    src={video.src}
-                    poster={video.poster}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            ))}
+      <>
+        {/* DESKTOP & TABLET: Full 4-Column Balanced Grid (hidden on mobile) */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {cols.map((colItems, colIdx) => (
+            <div key={`col-${sectionKey}-${colIdx}`} className="flex flex-col gap-4 sm:gap-6">
+              {colItems.map((video) => renderVideoCard(video))}
+            </div>
+          ))}
+        </div>
+
+        {/* MOBILE ONLY: 3 Videos Initially + "View More" Button (hidden on sm+) */}
+        <div className="block sm:hidden space-y-4">
+          <div className="flex flex-col gap-4">
+            {visibleMobileItems.map((video) => renderVideoCard(video))}
           </div>
-        ))}
-      </div>
+
+          {items.length > 3 && (
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() =>
+                  setMobileExpanded((prev) => ({
+                    ...prev,
+                    [sectionKey]: !prev[sectionKey],
+                  }))
+                }
+                className="w-full py-3.5 px-6 bg-white hover:bg-zinc-50 border border-[#D5D2C9] rounded-2xl text-xs font-semibold uppercase tracking-wider text-[#0B0C10] hover:text-blue-600 transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+              >
+                <span>
+                  {isExpanded ? "Show Less" : `View More (${items.length - 3} More Videos)`}
+                </span>
+                <ChevronDown
+                  className={`w-4 h-4 text-blue-600 transition-transform duration-300 ${
+                    isExpanded ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+            </div>
+          )}
+        </div>
+      </>
     );
   };
 
@@ -1181,8 +1225,8 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 24-Video Balanced Grid (Even-ending, zero text overlays) */}
-          {renderMasonryGrid(RESTAURANT_RETAIL_VIDEOS)}
+          {/* 24-Video Balanced Grid (Desktop 4-col, Mobile 3 videos + View More) */}
+          {renderMasonryGrid(RESTAURANT_RETAIL_VIDEOS, "dining")}
         </div>
       </section>
 
@@ -1253,8 +1297,8 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 24-Video Balanced Grid (Even-ending, zero text overlays) */}
-          {renderMasonryGrid(CLOTHING_VIDEOS)}
+          {/* 24-Video Balanced Grid (Desktop 4-col, Mobile 3 videos + View More) */}
+          {renderMasonryGrid(CLOTHING_VIDEOS, "clothing")}
         </div>
       </section>
 
@@ -1514,8 +1558,8 @@ export default function VideoProductionAgencyKolkataPage() {
             </p>
           </div>
 
-          {/* 20-Video Balanced Grid (Even-ending, zero text overlays) */}
-          {renderMasonryGrid(REAL_ESTATE_VIDEOS)}
+          {/* 20-Video Balanced Grid (Desktop 4-col, Mobile 3 videos + View More) */}
+          {renderMasonryGrid(REAL_ESTATE_VIDEOS, "realestate")}
         </div>
       </section>
 
