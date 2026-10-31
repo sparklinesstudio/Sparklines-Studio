@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Play,
   X,
   FileText,
   Camera,
@@ -965,7 +964,7 @@ export default function VideoProductionAgencyKolkataPage() {
                 onMouseLeave={() => handleMouseLeave(video.id)}
                 className="group relative rounded-2xl overflow-hidden border border-[#D5D2C9] bg-black shadow-xs hover:shadow-2xl hover:border-blue-600 transition-all duration-300 cursor-pointer select-none"
               >
-                {/* Responsive Aspect Ratio Stage - PURE VIDEO, ZERO TEXT OVERLAYS */}
+                {/* Responsive Aspect Ratio Stage - PURE VIDEO, ZERO HOVER OVERLAYS OR BUTTONS */}
                 <div className={`relative w-full ${video.aspect} overflow-hidden bg-black`}>
                   <video
                     ref={(el) => {
@@ -979,13 +978,6 @@ export default function VideoProductionAgencyKolkataPage() {
                     preload="metadata"
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {/* Subtle Hover Play Pill - Clean visual icon, absolutely NO text */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-center">
-                    <div className="h-11 w-11 rounded-full bg-blue-600/95 text-white flex items-center justify-center shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                      <Play className="h-4 w-4 fill-current ml-0.5" />
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
@@ -1531,50 +1523,39 @@ export default function VideoProductionAgencyKolkataPage() {
       <BrandFooterBanner />
 
       {/* ============================================================== */}
-      {/* 12. FULLSCREEN VIDEO LIGHTBOX THEATER MODAL                     */}
+      {/* 12. PURE VIDEO LIGHTBOX MODAL (NO TEXT, NO WHITESPACE, BLURRED BG) */}
       {/* ============================================================== */}
       {activeVideoModal && (
         <div
           role="dialog"
           aria-modal="true"
           onClick={() => setActiveVideoModal(null)}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/92 backdrop-blur-xl p-3 sm:p-6 lg:p-10 animate-fadeIn"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 backdrop-blur-2xl p-4 sm:p-8 md:p-12 animate-fadeIn cursor-pointer"
         >
+          {/* Floating Close Button Top Right */}
+          <button
+            type="button"
+            onClick={() => setActiveVideoModal(null)}
+            className="fixed top-5 right-5 sm:top-8 sm:right-8 h-11 w-11 rounded-full bg-black/60 hover:bg-black/90 text-white/80 hover:text-white backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all cursor-pointer z-[10000] shadow-2xl hover:scale-105"
+            title="Close (Esc)"
+            aria-label="Close video"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          {/* Clean Pure Video Element - Zero Whitespace, Zero Text */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-2xl bg-zinc-950 border border-zinc-800 overflow-hidden shadow-2xl"
+            className="relative flex items-center justify-center cursor-default max-w-[92vw] max-h-[90vh]"
           >
-            {/* Modal Top Bar */}
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-zinc-800 bg-zinc-900/90 text-white">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-blue-400 block">
-                  {activeVideoModal.category} // {activeVideoModal.client}
-                </span>
-                <h4 className="text-sm sm:text-base font-bold font-sans tracking-tight text-white line-clamp-1">
-                  {activeVideoModal.title}
-                </h4>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActiveVideoModal(null)}
-                className="h-8 w-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-                title="Close Theater (Esc)"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Modal Center Video Stage */}
-            <div className="relative flex-1 w-full bg-black flex items-center justify-center overflow-hidden max-h-[72vh]">
-              <video
-                src={activeVideoModal.src}
-                poster={activeVideoModal.poster}
-                controls
-                autoPlay
-                playsInline
-                className="w-full max-h-[72vh] object-contain"
-              />
-            </div>
+            <video
+              src={activeVideoModal.src}
+              poster={activeVideoModal.poster}
+              controls
+              autoPlay
+              playsInline
+              className="max-w-[92vw] max-h-[90vh] w-auto h-auto rounded-2xl shadow-2xl object-contain overflow-hidden"
+            />
           </div>
         </div>
       )}
