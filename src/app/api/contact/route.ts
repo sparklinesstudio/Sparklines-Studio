@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, number, website, service, message } = body;
+    const { name, number, website, service, message, email } = body;
 
     const accessKey =
       process.env.FORM_ACCESS_KEY ||
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!name || !number) {
+    if (typeof name !== "string" || !name.trim() || typeof number !== "string" || !number.trim()) {
       return NextResponse.json(
         { success: false, message: "Name and Phone Number are required." },
         { status: 400 }
@@ -28,6 +28,7 @@ export async function POST(request: Request) {
       access_key: accessKey,
       name: name.trim(),
       phone: number.trim(),
+      ...(typeof email === "string" && email.trim() ? { email: email.trim() } : {}),
       website: website ? website.trim() : "Not provided",
       service: service || "General Consultation",
       message:

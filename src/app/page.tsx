@@ -1,34 +1,40 @@
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Clapperboard, MoveUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Clapperboard, MoveUpRight, Sparkles } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
-import { FilmMasonry } from "@/components/studio/FilmMasonry";
 import { ServiceDirectory, StudioCta, StudioFaq } from "@/components/studio/StudioSections";
-import { studioFilms } from "@/data/studioFilms";
+import { StudioMotion, Reveal } from "@/components/studio/StudioMotion";
+import { StudioHero, InteractiveAbout, HomeFilmMasonry, FilmCarousel, BrandingFeature, MotionMarquee } from "@/components/studio/HomeExperience";
 import { serviceMetadata } from "@/lib/serviceMetadata";
 import "@/components/studio/studio.css";
-export const metadata = serviceMetadata({ title: "Video Production Agency in Kolkata", slug: "", description: "Sparklines Studio is a video production agency in Kolkata creating brand films, commercials, social reels, motion graphics and SaaS product videos." });
+import "@/components/studio/experience.css";
+
+export const metadata = serviceMetadata({ title: "Video Production Agency Kolkata", slug: "", description: "Sparklines Studio is a video production agency in Kolkata creating brand films, commercials, social reels, motion graphics and SaaS product videos." });
 const formats = [
  { title: "Brand films & commercials", text: "A story worth paying attention to. Concept-led films that introduce your brand and bring its personality into focus.", href: "/video-production-agency-kolkata", icon: Clapperboard },
  { title: "Social reels & campaign edits", text: "Small screens. Strong ideas. Platform-ready video for product launches, everyday stories and paid campaigns.", href: "/video-production-agency-kolkata", icon: MoveUpRight },
  { title: "Motion graphics & animation", text: "Design with a pulse. Explainers, kinetic typography and brand motion that make complex ideas feel simple.", href: "/motion-graphics-agency-kolkata", icon: Sparkles },
  { title: "SaaS demos & product videos", text: "Show the value behind the interface. Clear product stories, feature launches and onboarding videos.", href: "/saas-video-agency-kolkata", icon: ArrowUpRight },
 ];
+
 export default function Home() {
- return <div className="studio-page"><HeaderNavigation /><main id="main-content">
- <section className="studio-home-hero studio-wrap"><div className="studio-hero-top"><p className="studio-kicker"><span className="studio-dot" /> INDEPENDENT CREATIVE STUDIO · KOLKATA</p><span className="studio-micro">STRATEGY / SHOOT / EDIT / MOTION</span></div><div className="studio-hero-grid"><div><h1>Video production<br />agency in <em>Kolkata.</em></h1><p className="studio-hero-manifesto">Good stories deserve<br /><span>a bigger frame.</span></p></div><div className="studio-hero-copy"><p>We turn brand stories into films people feel. From the first idea to the final cut, we create commercials, social videos and motion-led content with purpose.</p><Link href="/contact" className="studio-button">Let’s make your next film <ArrowUpRight size={18} /></Link><a href="#selected-films" className="studio-text-link">Explore the work <ArrowDown size={16} /></a></div></div>
- <div className="studio-hero-reel"><video controls playsInline preload="none" poster={studioFilms[3].poster} aria-label="Watch a video from our production portfolio"><source src={studioFilms[3].src} type="video/mp4" /></video><div className="studio-reel-caption"><span>STORIES, BROUGHT TO LIFE.</span><span>KOLKATA / EVERYWHERE</span></div></div></section>
- <div className="studio-format-band"><span>Brand films</span><span aria-hidden="true">✳</span><span>Social reels</span><span aria-hidden="true">✳</span><span>Motion graphics</span><span aria-hidden="true">✳</span><span>Product stories</span></div>
- <section id="about" className="studio-section studio-wrap studio-about"><p className="studio-kicker">A FILM-FIRST CREATIVE PARTNER</p><div><h2>From “we have an idea”<br />to <em>“that’s our story.”</em></h2><p>At Sparklines Studio, video production starts with listening. What are you making? Who is it for? What should they feel, understand or do next?</p><p>Our Kolkata studio brings strategy, scripting, production and post-production into one creative conversation. We work with brands, founders and product teams to make video that has a job to do — and a point of view.</p><Link href="/video-production-agency-kolkata" className="studio-text-link">Meet our production capabilities <ArrowUpRight size={18} /></Link></div></section>
- <section id="selected-films" className="studio-section studio-dark"><div className="studio-wrap"><div className="studio-section-heading"><div><p className="studio-kicker">PRESS PLAY / EXPLORE OUR VIDEO LIBRARY</p><h2>Different worlds.<br /><em>The same eye for detail.</em></h2></div><p>Food, fashion, spaces and the moments in between. Discover the visual side of Sparklines Studio.</p></div><FilmMasonry /><Link href="/video-production-agency-kolkata#video-masonry" className="studio-text-link">Explore the full video gallery <ArrowUpRight size={18} /></Link></div></section>
- <section className="studio-section studio-wrap"><div className="studio-section-heading"><div><p className="studio-kicker">WHAT WE CREATE</p><h2>The right format.<br /><em>For your next move.</em></h2></div><p>One campaign or a continuing content partnership. We shape the production around the story and where it needs to live.</p></div><div className="studio-formats">{formats.map(({title,text,href,icon: Icon},i) => <Link href={href} key={title}><div><Icon size={27} strokeWidth={1.4} /><span className="studio-micro">0{i+1}</span></div><h3>{title}</h3><p>{text}</p><span className="studio-text-link">Explore service <ArrowUpRight size={18} /></span></Link>)}</div></section>
- <section id="process" className="studio-section studio-tint"><div className="studio-wrap"><p className="studio-kicker">FROM BRIEF TO FINAL CUT</p><h2>A considered process.<br /><em>A collaborative production.</em></h2><div className="studio-process">{[['Find the story','We align on your audience, message, channels and the action you want the video to inspire.'],['Plan every frame','We develop the concept, script and production plan, with a clear scope and review points.'],['Make it real','Shoot, design and animate. Then bring it all together with editing, colour and sound.'],['Ready for the world','Review the final cut and receive the agreed formats, captions and campaign cutdowns.']].map(([title,text],i) => <article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
- <section className="studio-section studio-wrap studio-faq-layout"><div><p className="studio-kicker">BEFORE THE FIRST TAKE</p><h2>Your questions,<br /><em>in focus.</em></h2></div><StudioFaq items={[
- ['What video production services do you offer in Kolkata?', 'We create brand films, commercials, social reels, founder videos, motion graphics and SaaS product videos. A project can include strategy, scripting, production, editing, colour, sound and format-specific delivery.'],
- ['How much does a video production project cost?', 'The scope depends on the concept, shoot days, crew, locations, animation and final deliverables. Share your brief and intended channels so we can prepare a proposal with clear inclusions.'],
- ['Can you handle both filming and editing?', 'Yes. We can manage the production from concept through post-production, or scope a focused engagement around footage you already have.'],
- ['Do you create videos for social platforms?', 'Yes. We plan vertical, square and widescreen versions around your agreed channels, including captions and shorter campaign edits when required.'],
- ['Do you work with businesses outside Kolkata?', 'Yes. We collaborate remotely for planning, editing and animation. Location shoots and travel are scoped around the production requirements.']
- ]} /></section><ServiceDirectory /><StudioCta />
- </main><BrandFooterBanner /></div>;
+  return <div className="studio-page studio-experience"><HeaderNavigation /><StudioMotion><main id="main-content">
+    <StudioHero />
+    <MotionMarquee words={["Good stories", "Bold identities", "Films that feel", "A different perspective"]} />
+    <InteractiveAbout showEyebrow={false} />
+    <HomeFilmMasonry />
+    <FilmCarousel />
+    <BrandingFeature showEyebrow={false} />
+    <section className="experience-section experience-pad experience-services"><Reveal><div className="experience-section-heading"><div><h2>From first idea<br />to <em>final frame.</em></h2></div><p>A single film or a bigger creative world. We bring the right mix of thinking and making to your next chapter.</p></div></Reveal><div className="experience-service-cards">{formats.map(({title,text,href,icon: Icon},i) => <Reveal key={title}><Link href={href}><span className="service-card-top"><Icon size={30} strokeWidth={1.3} /><span>0{i+1}</span></span><h3>{title}</h3><p>{text}</p><span className="service-card-arrow"><ArrowUpRight size={25} /></span></Link></Reveal>)}</div></section>
+    <MotionMarquee reverse words={["A little strategy", "A lot of craft", "Made together", "Made to matter"]} />
+    <section id="process" className="experience-section experience-pad experience-process"><Reveal><h2>A good process.<br /><em>Great possibilities.</em></h2></Reveal><div className="experience-process-list">{[["Listen first","Your audience. Your ambitions. The reason this project matters. We ask the questions that find the story."],["Find the spark","A creative direction, a script, a plan. We shape the idea together before production begins."],["Make with purpose","Shoot, design, edit and animate. Every detail connects back to the story we set out to tell."],["Put it out there","Review the work, refine the details and deliver the formats your next launch needs."]].map(([title,text],i)=><Reveal key={title}><article><span>0{i+1}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight size={24} /></article></Reveal>)}</div></section>
+    <section className="studio-section studio-wrap studio-faq-layout"><div><h2>Your questions,<br /><em>in focus.</em></h2></div><StudioFaq items={[
+      ["What video production services do you offer in Kolkata?", "We create brand films, commercials, social reels, founder videos, motion graphics and SaaS product videos. A project can include strategy, scripting, production, editing, colour, sound and format-specific delivery."],
+      ["How much does a video production project cost?", "The scope depends on the concept, shoot days, crew, locations, animation and final deliverables. Share your brief and intended channels so we can prepare a proposal with clear inclusions."],
+      ["Can you handle both filming and editing?", "Yes. We can manage production from concept through post-production, or scope a focused engagement around footage you already have."],
+      ["Can you help with branding as well?", "Yes. We develop brand positioning, visual identities and supporting design systems. Explore House of Kolam in our portfolio to see an existing brand identity project."],
+      ["Do you work with businesses outside Kolkata?", "Yes. We collaborate remotely for planning, editing, design and animation. Location shoots and travel are scoped around your production requirements."]
+    ]} /></section>
+    <ServiceDirectory showEyebrow={false} /><StudioCta showEyebrow={false} />
+  </main></StudioMotion><BrandFooterBanner showEyebrow={false} /></div>;
 }
