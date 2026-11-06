@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUp, Check } from "lucide-react";
+import { kolkataServices } from "@/data/kolkataServices";
 import { Button } from "@/components/ui/Button";
 
 export function BrandFooterBanner() {
@@ -39,7 +40,7 @@ export function BrandFooterBanner() {
     { label: "Kolkata SEO Lab", href: "/seo-agency-kolkata" },
     { label: "Kolkata Video Production", href: "/video-production-agency-kolkata" },
     { label: "House of Kolam Flagship", href: "/work/branding/house-of-kolam" },
-    { label: "Client Testimonials", href: "/#testimonials" },
+    ...kolkataServices.map(service => ({ label: service.name, href: "/" + service.slug })),
   ];
 
   return (
@@ -55,11 +56,9 @@ export function BrandFooterBanner() {
                 Our Mission
               </h3>
               <p className="text-sm sm:text-[15px] text-zinc-600 leading-relaxed font-normal">
-                We&apos;re not just another digital agency. We&apos;re brand architects,
-                growth engineers, and creative producers crafting digital flagships
-                from the ground up. We partner with ambitious founders and global
-                brands who demand category leadership, verified search authority,
-                and cinematic conversion.
+                We turn brand stories into films people feel. From our Kolkata studio,
+                we bring strategy, video production, motion graphics and digital
+                craft together for founders, brands and product teams.
               </p>
             </div>
 

@@ -9,6 +9,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://sparklines.studio/seo-agency-kolkata" },
   title: "SEO Agency Kolkata — Rank. Reign. Repeat. | Sparklines Studio",
   description:
     "Kolkata's premier revenue-first SEO agency by Sparklines Studio. Technical SEO, hyperlocal Kolkata search dominance, programmatic scale, and Digital PR built for compounding organic growth.",

@@ -1,4 +1,6 @@
 import React from "react";
+import { ServiceDirectory } from "@/components/studio/StudioSections";
+import "@/components/studio/studio.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +15,7 @@ import { TestimonialsSection } from "@/components/Home Page Components/Testimoni
 export const metadata: Metadata = {
   title: "Core Capabilities & Services | Sparklines Studio",
   description:
-    "Explore Sparklines Studio's 6 core agency practices: Commercial Video Production, Pay-Per-Click Advertising, Social Media Marketing, Technical SEO, Bespoke Website Design, and Branding Identity.",
+    "Explore our Kolkata services: video production, motion graphics, SaaS video, personal branding, AI SEO, web design, website and ecommerce development.",
 };
 
 export default function ServicesIndexPage() {
@@ -21,7 +23,7 @@ export default function ServicesIndexPage() {
     <div className="min-h-screen bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans overflow-x-hidden">
       <HeaderNavigation />
 
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         {/* ============================================================== */}
         {/* HERO SECTION                                                   */}
         {/* ============================================================== */}
@@ -118,6 +120,7 @@ export default function ServicesIndexPage() {
         <TestimonialsSection />
 
         {/* Cloud CTA Section */}
+        <div className="studio-page"><ServiceDirectory /></div>
         <CtaFloatingSection />
       </main>
 

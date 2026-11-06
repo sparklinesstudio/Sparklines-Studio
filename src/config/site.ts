@@ -10,17 +10,17 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Sparklines Studio",
-  tagline: "Designing and engineering next-generation digital experiences.",
+  tagline: "Good stories deserve a bigger frame.",
   description:
-    "Sparklines Studio is a creative digital agency specializing in bespoke web applications, interactive experiences, brand identities, and high-performance engineering.",
+    "Sparklines Studio is a video production agency in Kolkata creating films, motion graphics, brand stories and digital experiences.",
   url: "https://sparklines.studio",
   email: "sparklinestudio.agency@gmail.com",
   navItems: [
-    { label: "Work", href: "#work" },
-    { label: "Services", href: "#services" },
-    { label: "About", href: "#about" },
-    { label: "Process", href: "#process" },
-    { label: "Contact", href: "#contact" },
+    { label: "Work", href: "/work" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/#about" },
+    { label: "Process", href: "/#process" },
+    { label: "Contact", href: "/contact" },
   ],
   socialLinks: [
     { label: "Twitter / X", href: "https://twitter.com" },

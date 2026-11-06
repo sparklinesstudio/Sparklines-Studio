@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { Playfair_Display, Arimo, Instrument_Serif } from "next/font/google";
 import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
 import { Curtains } from "@/components/ui/curtains";
@@ -25,12 +26,14 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Sparklines Studio — Building High-Impact Digital Products",
+  metadataBase: new URL(siteConfig.url),
+  title: "Sparklines Studio | Video, Brand & Digital Experiences",
   description:
-    "Sparklines Studio is a premier digital product design and development agency. We craft expressive websites, apps, and brands with high performance and smooth interactions.",
+    "Sparklines Studio is a Kolkata creative studio for video production, motion graphics, personal branding, SEO and website development.",
   keywords: [
     "Sparklines Studio",
-    "Digital Agency",
+    "Video Production Agency Kolkata",
+    "Motion Graphics Kolkata",
     "Web Design",
     "Next.js Development",
     "UI/UX Design",
@@ -42,9 +45,9 @@ export const metadata: Metadata = {
     apple: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
   },
   openGraph: {
-    title: "Sparklines Studio — Building High-Impact Digital Products",
+    title: "Sparklines Studio | Video, Brand & Digital Experiences",
     description:
-      "Crafting expressive websites, apps, and brands with streamlined processes and top engineering.",
+      "Video production, brand storytelling, motion graphics and digital experiences from our Kolkata studio.",
     type: "website",
   },
 };
