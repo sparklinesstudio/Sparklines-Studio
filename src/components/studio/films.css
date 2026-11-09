@@ -1,0 +1,63 @@
+/* Framed, editorial video masonry that carries the studio's collage style. */
+.films-reference { background: #eef0ff; padding-top: clamp(75px, 8vw, 135px); }
+.films-reference-heading { position: relative; text-align: center; max-width: 1100px; margin: 0 auto 45px; }
+.studio-experience .films-reference h2 { color: #111; font-size: clamp(64px, 8.2vw, 132px); line-height: .91; letter-spacing: -.025em; text-transform: uppercase; }
+.films-reference h2 > span { display: block; font-family: Impact, "Arial Narrow", Arial, sans-serif; font-weight: 400; }
+.studio-experience .films-reference h2 em { display: block; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 1.08em; font-style: normal; font-weight: 400; color: #111; letter-spacing: -.06em; margin-top: 3px; }
+.studio-experience .films-reference-heading > p { max-width: 480px; margin: 28px auto 0; font-size: 16px; line-height: 1.6; color: #252a37; }
+.films-reference-spark { position: absolute; right: 10%; top: 22px; color: #f45c2a; transform: rotate(14deg); }
+.films-reference-filters { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; max-width: 900px; margin: 0 auto 55px; padding-block: 15px; border-block: 1px solid #bfc9f1; }
+.films-reference-filters button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 21px; border: 0; border-radius: 0; color: #073bff; background: transparent; font-family: Impact, "Arial Narrow", Arial, sans-serif; font-size: 16px; font-weight: 400; text-transform: uppercase; letter-spacing: .015em; cursor: pointer; transition: background .2s, color .2s; }
+.films-reference-filters button:hover { background: #dce3ff; }
+.films-reference-filters button[aria-pressed=true] { background: #073bff; color: #fff; }
+.films-reference-filters > span { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 18px; color: #3d4c76; margin-left: 16px; white-space: nowrap; }
+.films-reference-masonry { columns: 3; column-gap: clamp(25px, 3vw, 48px); padding: 15px 12px; }
+.film-reference-card { position: relative; break-inside: avoid; padding: 10px 10px 0; background: #fff; margin-bottom: 45px; box-shadow: 0 13px 30px #17254a13; transform-origin: center; transition: box-shadow .3s; }
+.film-tilt-0 { --film-tilt: -2deg; }
+.film-tilt-1 { --film-tilt: 2deg; }
+.film-tilt-2 { --film-tilt: -1.5deg; }
+.film-reference-card > a { display: block; }
+.film-reference-frame { position: relative; overflow: hidden; aspect-ratio: 4/5; background: #dce4fa; }
+.film-tilt-1 .film-reference-frame { aspect-ratio: 4/3; }
+.film-tilt-2 .film-reference-frame { aspect-ratio: 9/13; }
+.film-reference-frame video { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .65s; }
+.film-reference-index { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #fff; color: #073bff; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 18px; }
+.film-reference-caption { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 16px 3px 16px 8px; }
+.studio-experience .film-reference-caption h3 { margin: 0; font-family: Impact, "Arial Narrow", Arial, sans-serif; font-size: clamp(18px, 1.6vw, 26px); font-weight: 400; text-transform: uppercase; letter-spacing: .005em; line-height: 1.2; color: #111; }
+.film-reference-caption > span { display: grid; place-items: center; width: 43px; height: 43px; background: #073bff; color: #fff; flex-shrink: 0; transition: background .25s; }
+.film-reference-card:hover { box-shadow: 0 20px 45px #073bff26; }
+.film-reference-card:hover .film-reference-caption > span { background: #f45c2a; }
+.film-reference-card:hover video { transform: scale(1.035); }
+.films-reference-footer { text-align: center; margin-top: 12px; }
+.films-reference-footer .about-reference-link { margin-top: 0; }
+.motion-disabled .film-reference-card { transform: rotate(var(--film-tilt)) !important; }
+@media (max-width: 1000px) {
+  .films-reference-masonry { columns: 2; column-gap: 28px; }
+  .films-reference-spark { right: 5%; top: 10px; width: 65px; height: 65px; }
+  .film-reference-caption { padding: 13px 0 13px 4px; }
+}
+@media (max-width: 650px) {
+  .films-reference-heading { margin-bottom: 32px; }
+  .studio-experience .films-reference h2 { font-size: clamp(51px, 10.5vw, 70px); }
+  .studio-experience .films-reference-heading > p { max-width: 350px; font-size: 14px; margin-top: 25px; padding-inline: 5px; }
+  .films-reference-spark { width: 38px; height: 38px; right: 0; top: -24px; }
+  .films-reference-filters { margin-bottom: 35px; padding-block: 12px; gap: 6px; }
+  .films-reference-filters button { font-size: 13px; padding: 11px 13px; }
+  .films-reference-filters > span { font-size: 16px; margin-left: 10px; }
+  .films-reference-masonry { column-gap: 18px; padding: 10px 3px; }
+  .film-reference-card { padding: 6px 6px 0; margin-bottom: 25px; }
+  .film-reference-index { width: 25px; height: 25px; font-size: 15px; left: 8px; top: 8px; }
+  .studio-experience .film-reference-caption h3 { font-size: 15px; line-height: 1.15; }
+  .film-reference-caption { gap: 7px; padding: 11px 0 12px 3px; }
+  .film-reference-caption > span { width: 29px; height: 31px; }
+  .film-reference-caption > span svg { width: 17px; height: 17px; }
+  .films-reference-footer { margin-top: 15px; }
+}
+@media (max-width: 360px) {
+  .films-reference-masonry { columns: 1; padding-inline: 10px; }
+  .film-reference-card { padding: 9px 9px 0; }
+  .studio-experience .film-reference-caption h3 { font-size: 21px; }
+  .film-reference-caption > span { width: 40px; height: 40px; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .film-reference-card { transform: rotate(var(--film-tilt)) !important; } }
+@media (prefers-reduced-motion: reduce) { .films-reference * { transition: none !important; } }

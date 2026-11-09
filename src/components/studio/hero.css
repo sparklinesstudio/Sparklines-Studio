@@ -1,0 +1,137 @@
+/* A framed, editorial hero with live films and original studio artwork. */
+.reference-hero {
+  position: relative;
+  padding: 0 clamp(28px, 6.5vw, 110px) 72px;
+  background: #073bff;
+  color: #111;
+  overflow: hidden;
+}
+.reference-hero-paper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 760px;
+  min-height: max(760px, calc(100svh - 72px));
+  padding: 190px 24px 160px;
+  background: #f3f3ef;
+  isolation: isolate;
+}
+.reference-hero-content { position: relative; z-index: 3; width: 100%; text-align: center; }
+.studio-experience .reference-hero h1 {
+  font-family: Impact, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(58px, 7.8vw, 132px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+.reference-hero h1 > span { display: block; white-space: nowrap; }
+.studio-experience .reference-hero h1 em {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-size: 1.19em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -.055em;
+}
+.reference-discover { display: inline-flex; gap: 9px; align-items: center; margin-top: 30px; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 22px; }
+.reference-discover > span { position: relative; }
+.reference-discover > span::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background: #073bff; transform: rotate(-2deg); transition: transform .25s; }
+.reference-discover > svg { background: #073bff; color: #fff; padding: 2px; width: 21px; height: 21px; transition: transform .25s; }
+.reference-discover:hover > svg { transform: translateY(4px); }
+.reference-discover:hover > span::after { transform: rotate(1deg) scaleX(.8); }
+.reference-video { position: absolute; z-index: 2; display: block; overflow: hidden; width: 190px; height: 220px; border: 10px solid #2860ff; background: #2860ff; box-shadow: 0 12px 25px #073bff12; transition: box-shadow .25s; }
+.reference-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reference-video > span { position: absolute; bottom: 0; right: 0; display: grid; place-items: center; width: 29px; height: 29px; background: #2860ff; color: white; }
+.reference-video:hover { box-shadow: 0 14px 35px #073bff40; z-index: 4; }
+.reference-video-one { top: 112px; right: 11%; transform: rotate(-3deg); --hero-tilt: -3deg; }
+.reference-video-two { bottom: 143px; left: 5%; width: 155px; height: 190px; border-color: #f45c2a; background: #f45c2a; transform: rotate(7deg); --hero-tilt: 7deg; }
+.reference-video-two > span, .reference-video-four > span { background: #f45c2a; }
+.reference-video-three { top: 116px; left: 17%; width: 174px; height: 195px; transform: rotate(5deg); --hero-tilt: 5deg; }
+.reference-video-four { bottom: 136px; right: 10%; width: 174px; height: 195px; border-color: #f45c2a; background: #f45c2a; transform: rotate(-7deg); --hero-tilt: -7deg; }
+.reference-brand-sticker { position: absolute; top: 220px; left: -70px; z-index: 4; display: flex; align-items: center; color: #f45c2a; transform: rotate(9deg); pointer-events: none; }
+.reference-brand-sticker > svg { width: 65px; height: 65px; margin-right: -4px; }
+.reference-brand-sticker > span { font-family: Impact, "Arial Narrow", sans-serif; font-size: 27px; line-height: .94; letter-spacing: -.02em; font-style: italic; text-shadow: 2px 2px #f3f3ef; }
+.reference-scroll-stamp { position: absolute; z-index: 4; bottom: 150px; right: -66px; display: grid; place-items: center; width: 142px; height: 142px; border-radius: 50%; background: #93a5ff; color: #111; transition: background .25s; }
+.reference-scroll-stamp:hover { background: #f9a76e; }
+.reference-stamp-lettering { position: absolute; inset: 0; width: 100%; height: 100%; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; letter-spacing: .2px; fill: currentColor; }
+.reference-scroll-stamp > .lucide { transform: rotate(-18deg); }
+.reference-capabilities { position: absolute; bottom: 44px; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr 140px 1fr 1fr; align-items: center; gap: 12px; padding: 0 35px; text-align: center; list-style: none; margin: 0; color: #073bff; }
+.reference-capabilities li { font-family: Georgia, serif; font-size: clamp(18px, 2.3vw, 31px); font-weight: 700; letter-spacing: -.05em; white-space: nowrap; }
+.reference-capabilities li:nth-child(3) { grid-column: 4; }
+.reference-capabilities li:nth-child(4) { grid-column: 5; }
+.reference-capabilities li:nth-child(2) { font-family: Impact, "Arial Narrow", sans-serif; font-weight: 400; letter-spacing: .025em; text-transform: uppercase; font-size: clamp(17px, 1.9vw, 27px); }
+.reference-capabilities li:nth-child(3) { font-family: Arial, sans-serif; font-weight: 900; letter-spacing: -.07em; }
+.reference-capabilities li:nth-child(4) { font-style: italic; }
+.reference-motion-setting { position: absolute; bottom: 8px; right: 20px; color: #44527a; }
+.reference-motion-setting .motion-switch { font-size: 8px; gap: 6px; padding: 4px 0; }
+.reference-motion-setting .motion-switch > svg { width: 11px; height: 11px; }
+.reference-motion-setting .motion-switch > span { font-size: 7px; padding: 2px 4px; min-width: 25px; }
+.reference-spark { position: absolute; z-index: 5; bottom: -62px; left: calc(50% - 75px); width: 145px; transform: rotate(-10deg); pointer-events: none; }
+.reference-spark svg { display: block; width: 100%; height: auto; }
+.motion-enabled .reference-video { animation: reference-video-float 7s ease-in-out infinite; }
+.motion-enabled .reference-video-two { animation-delay: -3s; }
+.motion-enabled .reference-video-three { animation-delay: -1.5s; }
+.motion-enabled .reference-video-four { animation-delay: -4.5s; }
+.motion-enabled .reference-stamp-lettering { animation: reference-stamp-spin 24s linear infinite; }
+.reference-scroll-stamp:hover .reference-stamp-lettering { animation-play-state: paused; }
+.reference-video:hover { animation-play-state: paused; }
+@keyframes reference-video-float { 0%, 100% { transform: translateY(0) rotate(var(--hero-tilt)); } 50% { transform: translateY(-12px) rotate(calc(var(--hero-tilt) + 2deg)); } }
+@keyframes reference-stamp-spin { to { transform: rotate(360deg); } }
+@media (min-width: 1700px) {
+  .reference-hero-paper { min-height: max(900px, calc(100svh - 72px)); }
+  .reference-video-one { width: 230px; height: 264px; top: 130px; }
+  .reference-video-two { width: 185px; height: 220px; bottom: 160px; }
+  .reference-video-three, .reference-video-four { width: 195px; height: 220px; }
+}
+@media (max-width: 1000px) and (min-width: 701px) {
+  .reference-hero { padding-inline: 50px; }
+  .reference-hero-paper { min-height: 740px; }
+  .studio-experience .reference-hero h1 { font-size: 8vw; }
+  .reference-video-one { width: 163px; height: 180px; right: 9%; top: 130px; }
+  .reference-video-two { width: 130px; height: 158px; left: 4%; bottom: 130px; }
+  .reference-video-three { width: 145px; height: 168px; left: 12%; top: 130px; }
+  .reference-video-four { width: 140px; height: 165px; right: 10%; bottom: 128px; }
+  .reference-brand-sticker { left: -40px; top: 205px; }
+  .reference-brand-sticker > svg { width: 42px; height: 42px; }
+  .reference-brand-sticker > span { font-size: 21px; }
+  .reference-scroll-stamp { width: 115px; height: 115px; right: -43px; bottom: 140px; }
+  .reference-scroll-stamp > .lucide { width: 38px; height: 38px; }
+  .reference-capabilities { padding-inline: 20px; gap: 12px; grid-template-columns: 1fr 1fr 90px 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .reference-hero { padding: 0 15px 55px; }
+  .reference-hero-paper { min-height: 1000px; padding: 190px 12px 560px; justify-content: flex-start; }
+  .studio-experience .reference-hero h1 { font-size: clamp(32px, 7.9vw, 55px); line-height: .99; letter-spacing: -.035em; }
+  .studio-experience .reference-hero h1 em { font-size: 1.2em; }
+  .reference-discover { margin-top: 25px; font-size: 19px; }
+  .reference-discover > svg { width: 19px; height: 19px; }
+  .reference-brand-sticker { top: 114px; left: -9px; }
+  .reference-brand-sticker > svg { width: 34px; height: 34px; }
+  .reference-brand-sticker > span { font-size: 17px; }
+  .reference-video-one { top: auto; bottom: 390px; right: 6%; width: 140px; height: 190px; border-width: 8px; }
+  .reference-video-two { bottom: 390px; left: 6%; width: 140px; height: 180px; border-width: 8px; }
+  .reference-video-three { top: auto; bottom: 175px; left: 6%; width: 140px; height: 180px; border-width: 8px; }
+  .reference-video-four { bottom: 170px; right: 6%; width: 140px; height: 185px; border-width: 8px; }
+  .reference-scroll-stamp { width: 91px; height: 91px; right: -8px; top: 350px; bottom: auto; }
+  .reference-scroll-stamp > .lucide { width: 31px; height: 31px; }
+  .reference-capabilities { bottom: 49px; display: grid; grid-template-columns: 1fr 1fr; text-align: center; gap: 15px 20px; padding-inline: 20px; }
+  .reference-capabilities li { font-size: 20px; }
+  .reference-capabilities li:nth-child(3), .reference-capabilities li:nth-child(4) { grid-column: auto; }
+  .reference-capabilities li:nth-child(2) { font-size: 17px; }
+  .reference-spark { width: 90px; left: calc(50% - 45px); bottom: -41px; }
+  .reference-motion-setting { bottom: 5px; right: 10px; }
+}
+@media (max-width: 360px) {
+  .reference-video { width: 122px; }
+  .reference-video-one, .reference-video-four { right: 5%; }
+  .reference-video-two, .reference-video-three { left: 5%; }
+  .reference-scroll-stamp { width: 78px; height: 78px; }
+  .reference-capabilities li { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-hero * { animation: none !important; transition: none !important; }
+}

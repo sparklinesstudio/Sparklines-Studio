@@ -1,131 +1,25 @@
-import React from "react";
-import { ServiceDirectory } from "@/components/studio/StudioSections";
-import "@/components/studio/studio.css";
-import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { SERVICES_CATALOG } from "@/data/servicesData";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { pageGraph, absoluteUrl } from "@/lib/structuredData";
+import { ArrowUpRight, Layers } from "lucide-react";
+import { SeoServiceHero } from "@/components/studio/SeoServiceLayout";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
-import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
-import { TestimonialsSection } from "@/components/Home Page Components/TestimonialsSection";
-
-export const metadata: Metadata = {
-  title: "Core Capabilities & Services | Sparklines Studio",
-  description:
-    "Explore our Kolkata services: video production, motion graphics, SaaS video, personal branding, AI SEO, web design, website and ecommerce development.",
-};
-
+import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatingSection";
+import { kolkataServices } from "@/data/kolkataServices";
+import { SERVICES_CATALOG } from "@/data/servicesData";
+import { serviceMetadata } from "@/lib/serviceMetadata";
+export const metadata = serviceMetadata({title:"Creative Services in Kolkata",slug:"services",description:"Explore video production, motion graphics, branding, AI SEO, personal branding and website development services from Sparklines Studio, Kolkata."});
+const intro = {name:"Studio services",title:"Creative Services in Kolkata",heroWords:["STRATEGY.","CRAFT.","IMPACT."],description:"From films and visual identities to search visibility and digital experiences, explore the studio capabilities that can support your next chapter."};
+const services = [
+ {name:"Video Production",title:"Video Production Agency in Kolkata",description:"Brand films, social reels, interviews and campaign edits, from concept to final delivery.",slug:"video-production-agency-kolkata"},
+ {name:"SEO",title:"SEO Agency in Kolkata",description:"Technical foundations, useful content and local search strategy for organic discovery.",slug:"seo-agency-kolkata"},
+ ...kolkataServices,
+ ...SERVICES_CATALOG.filter(item=>["ppc-advertising","social-media","branding"].includes(item.id)).map(item=>({name:item.shortTitle,title:item.shortTitle,description:item.tagline,slug:"services/"+item.slug})),
+];
 export default function ServicesIndexPage() {
-  return (
-    <div className="min-h-screen bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans overflow-x-hidden">
-      <HeaderNavigation />
-
-      <main id="main-content" className="relative z-10">
-        {/* ============================================================== */}
-        {/* HERO SECTION                                                   */}
-        {/* ============================================================== */}
-        <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 bg-[linear-gradient(180deg,#1e3a8a_0%,#2563eb_32%,#ffffff_85%)] text-white">
-          <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[550px] w-[1000px] -z-10 rounded-full bg-white/20 blur-[120px]" />
-
-          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 text-center">
-            <div className="mx-auto max-w-4xl flex flex-col items-center">
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl font-sans leading-[1.06]">
-                Crafted for Growth &amp;{" "}
-                <span className="font-editorial italic font-normal text-sky-200 tracking-normal">
-                  Authority
-                </span>
-              </h1>
-
-              <p className="mt-5 max-w-2xl text-base sm:text-lg lg:text-xl text-blue-50/90 leading-relaxed font-normal">
-                High-impact creative, acquisition, and technical engineering
-                practices designed to scale high-ticket brands and build enduring
-                market prestige.
-              </p>
-
-              <div className="mt-8">
-                <Button
-                  href="/contact"
-                  size="lg"
-                >
-                  <span>Start a Conversation</span>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================== */}
-        {/* ALL 6 SERVICES CARDS GRID                                      */}
-        {/* ============================================================== */}
-        <section className="py-16 sm:py-24 bg-zinc-50 border-y border-zinc-200/80">
-          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {SERVICES_CATALOG.map((service, index) => (
-                <Link
-                  key={service.id}
-                  href={`/services/${service.slug}`}
-                  className="group relative flex flex-col rounded-3xl overflow-hidden border border-zinc-200/90 bg-white shadow-xs hover:shadow-2xl hover:border-zinc-300 transition-all duration-300"
-                >
-                  {/* Card Cover Image */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-                    <Image
-                      src={service.heroImage}
-                      alt={service.shortTitle}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
-                    <div>
-                      <h3 className="text-2xl font-semibold tracking-tight text-zinc-950 group-hover:text-blue-600 transition-colors">
-                        {service.titleFirst}{" "}
-                        <span className="font-editorial italic font-normal text-zinc-700">
-                          {service.titleSecond}
-                        </span>
-                      </h3>
-                      <p className="mt-3 text-sm text-zinc-600 leading-relaxed line-clamp-3">
-                        {service.tagline}
-                      </p>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="mt-6 pt-5 border-t border-zinc-100 flex items-center justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono uppercase text-zinc-400 block">
-                          {service.stats[0].label}
-                        </span>
-                        <span className="text-base font-bold text-zinc-950">
-                          {service.stats[0].value}
-                        </span>
-                      </div>
-                      <span className="text-xs font-mono uppercase tracking-wider text-blue-600 font-semibold group-hover:text-[#f95721] transition-colors">
-                        Explore Practice
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Social Proof */}
-        <TestimonialsSection />
-
-        {/* Cloud CTA Section */}
-        <div className="studio-page"><ServiceDirectory /></div>
-        <CtaFloatingSection />
-      </main>
-
-      {/* Global Brand Footer Banner */}
-      <BrandFooterBanner />
-    </div>
-  );
+ const graph = pageGraph("/services", "Services", "CollectionPage");
+ const catalog = {"@type":"ItemList","@id":absoluteUrl("/services#catalog"),name:"Sparklines Studio services",itemListElement:services.map((service,index)=>({"@type":"ListItem",position:index+1,name:service.name,url:absoluteUrl("/"+service.slug)}))};
+ return <div className="seo-service-page bg-[#F7F6F2] text-[#0B0C10] selection:bg-blue-600 selection:text-white min-h-screen"><HeaderNavigation/><main id="main-content"><StructuredData data={{...graph,"@graph":[...graph["@graph"],catalog]}}/><SeoServiceHero service={intro}/><Breadcrumbs items={[{name:"Home",path:"/"},{name:"Services",path:"/services"}]}/><section className="py-20 sm:py-28 lg:py-32 border-b border-[#D5D2C9]"><div className="px-6 sm:px-12 lg:px-16 mb-12 sm:mb-16 lg:mb-20"><h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.03em] leading-[1.04] font-sans">One studio.<br/><span className="font-editorial italic font-normal">Connected</span> disciplines.</h2></div><div className="grid grid-cols-1 md:grid-cols-3 border-y border-[#D5D2C9]">{services.map((service,index)=><Link key={service.slug} href={"/"+service.slug} className="p-8 sm:p-12 lg:p-16 md:border-r border-b border-[#D5D2C9] hover:bg-blue-600 transition-colors duration-500 flex flex-col justify-between min-h-[300px] sm:min-h-[360px] group"><div className="flex justify-between items-center mb-16"><Layers className="w-7 h-7 stroke-[1.5] group-hover:text-white"/><span className="text-xs font-mono text-zinc-400 group-hover:text-blue-100">{String(index+1).padStart(2,"0")}</span></div><div><h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 group-hover:text-white">{service.name}</h3><p className="text-sm text-zinc-600 leading-relaxed group-hover:text-blue-100">{service.description}</p><span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-600 group-hover:text-white mt-6">Explore service <ArrowUpRight size={16}/></span></div></Link>)}</div></section><section className="bg-[#0B0C10] text-white py-20 sm:py-28 px-6 sm:px-12 lg:px-16"><h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-12">Start with the brief.<br/><span className="font-editorial italic font-normal text-blue-500">Build the right scope.</span></h2><div className="grid grid-cols-1 md:grid-cols-3 gap-10">{[["Understand","Share the audience, goal, channels and timing behind your project."],["Shape","Agree on the right capabilities, deliverables and review milestones."],["Create","Collaborate through the production stages and prepare the final handover."]].map(([title,text],index)=><article key={title} className="border-t border-[#232630] pt-6"><span className="text-xs font-mono text-blue-500">0{index+1}</span><h3 className="text-3xl font-bold my-5">{title}</h3><p className="text-sm text-zinc-400 leading-relaxed">{text}</p></article>)}</div><Link href="/contact" className="inline-flex items-center gap-3 bg-blue-600 px-7 py-4 mt-12 text-xs font-semibold uppercase tracking-wider">Discuss your project <ArrowUpRight size={17}/></Link></section><CtaFloatingSection/></main><BrandFooterBanner/></div>;
 }

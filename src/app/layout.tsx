@@ -4,6 +4,8 @@ import { Playfair_Display, Arimo, Instrument_Serif } from "next/font/google";
 import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
 import { Curtains } from "@/components/ui/curtains";
 import "./globals.css";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { organizationGraph } from "@/lib/structuredData";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -30,6 +32,8 @@ export const metadata: Metadata = {
   title: "Sparklines Studio | Video, Brand & Digital Experiences",
   description:
     "Sparklines Studio is a Kolkata creative studio for video production, motion graphics, personal branding, SEO and website development.",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-video-preview": -1, "max-snippet": -1 } },
+  verification: { google: "vpcDQaDSpnn8vkuiYG0fpCmrPS7jHMWJmuDdZWOPnRs" },
   keywords: [
     "Sparklines Studio",
     "Video Production Agency Kolkata",
@@ -63,6 +67,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${arimo.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
+        <StructuredData id="organization-schema" data={organizationGraph()} />
         <LenisSmoothScroll />
         <Curtains color="#3b82f6" accentColor="#60a5fa" />
         {children}

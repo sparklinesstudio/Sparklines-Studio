@@ -1,0 +1,1 @@
+export default function Loading(){return <main className="min-h-screen px-6 py-40 bg-[#f5f5f1]" aria-busy="true"><div className="max-w-6xl mx-auto animate-pulse"><div className="h-20 bg-zinc-200 mb-10 w-2/3"/><p role="status">Loading studio stories…</p></div></main>;}

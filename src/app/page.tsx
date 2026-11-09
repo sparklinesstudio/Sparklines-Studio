@@ -1,31 +1,26 @@
-import Link from "next/link";
-import { ArrowUpRight, Clapperboard, MoveUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { ServiceDirectory, StudioCta, StudioFaq } from "@/components/studio/StudioSections";
 import { StudioMotion, Reveal } from "@/components/studio/StudioMotion";
 import { StudioHero, InteractiveAbout, HomeFilmMasonry, FilmCarousel, BrandingFeature, MotionMarquee } from "@/components/studio/HomeExperience";
+import { ServiceVideoCards } from "@/components/studio/StudioHighlights";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { pageGraph } from "@/lib/structuredData";
 import { serviceMetadata } from "@/lib/serviceMetadata";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 
 export const metadata = serviceMetadata({ title: "Video Production Agency Kolkata", slug: "", description: "Sparklines Studio is a video production agency in Kolkata creating brand films, commercials, social reels, motion graphics and SaaS product videos." });
-const formats = [
- { title: "Brand films & commercials", text: "A story worth paying attention to. Concept-led films that introduce your brand and bring its personality into focus.", href: "/video-production-agency-kolkata", icon: Clapperboard },
- { title: "Social reels & campaign edits", text: "Small screens. Strong ideas. Platform-ready video for product launches, everyday stories and paid campaigns.", href: "/video-production-agency-kolkata", icon: MoveUpRight },
- { title: "Motion graphics & animation", text: "Design with a pulse. Explainers, kinetic typography and brand motion that make complex ideas feel simple.", href: "/motion-graphics-agency-kolkata", icon: Sparkles },
- { title: "SaaS demos & product videos", text: "Show the value behind the interface. Clear product stories, feature launches and onboarding videos.", href: "/saas-video-agency-kolkata", icon: ArrowUpRight },
-];
-
 export default function Home() {
-  return <div className="studio-page studio-experience"><HeaderNavigation /><StudioMotion><main id="main-content">
+  return <div className="studio-page studio-experience"><HeaderNavigation /><StudioMotion><main id="main-content"><StructuredData data={pageGraph("/", "Video Production Agency Kolkata", "WebPage")} />
     <StudioHero />
     <MotionMarquee words={["Good stories", "Bold identities", "Films that feel", "A different perspective"]} />
     <InteractiveAbout showEyebrow={false} />
     <HomeFilmMasonry />
     <FilmCarousel />
     <BrandingFeature showEyebrow={false} />
-    <section className="experience-section experience-pad experience-services"><Reveal><div className="experience-section-heading"><div><h2>From first idea<br />to <em>final frame.</em></h2></div><p>A single film or a bigger creative world. We bring the right mix of thinking and making to your next chapter.</p></div></Reveal><div className="experience-service-cards">{formats.map(({title,text,href,icon: Icon},i) => <Reveal key={title}><Link href={href}><span className="service-card-top"><Icon size={30} strokeWidth={1.3} /><span>0{i+1}</span></span><h3>{title}</h3><p>{text}</p><span className="service-card-arrow"><ArrowUpRight size={25} /></span></Link></Reveal>)}</div></section>
+    <ServiceVideoCards />
     <MotionMarquee reverse words={["A little strategy", "A lot of craft", "Made together", "Made to matter"]} />
     <section id="process" className="experience-section experience-pad experience-process"><Reveal><h2>A good process.<br /><em>Great possibilities.</em></h2></Reveal><div className="experience-process-list">{[["Listen first","Your audience. Your ambitions. The reason this project matters. We ask the questions that find the story."],["Find the spark","A creative direction, a script, a plan. We shape the idea together before production begins."],["Make with purpose","Shoot, design, edit and animate. Every detail connects back to the story we set out to tell."],["Put it out there","Review the work, refine the details and deliver the formats your next launch needs."]].map(([title,text],i)=><Reveal key={title}><article><span>0{i+1}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight size={24} /></article></Reveal>)}</div></section>
     <section className="studio-section studio-wrap studio-faq-layout"><div><h2>Your questions,<br /><em>in focus.</em></h2></div><StudioFaq items={[

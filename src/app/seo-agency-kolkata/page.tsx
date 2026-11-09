@@ -24,6 +24,8 @@ import { CtaFloatingSection } from "@/components/Home Page Components/CtaFloatin
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Button } from "@/components/ui/Button";
 import "./seo-kolkata.css";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { serviceBreadcrumbs } from "@/lib/structuredData";
 
 const SEO_MARQUEE_ITEMS = [
   "Technical SEO Audits",
@@ -285,6 +287,7 @@ export default function SeoAgencyKolkataPage() {
           </div>
         </div>
       </header>
+      <Breadcrumbs items={serviceBreadcrumbs("SEO", "seo-agency-kolkata")} />
 
       {/* ============================================================== */}
       {/* 2. INFINITE SERVICE MARQUEE SECTION (REFINED & SLEEK)           */}
