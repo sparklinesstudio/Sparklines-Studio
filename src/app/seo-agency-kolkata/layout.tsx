@@ -2,14 +2,6 @@ import type { Metadata } from "next";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { serviceGraph } from "@/lib/structuredData";
 import { serviceMetadata } from "@/lib/serviceMetadata";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   ...serviceMetadata({ title: "SEO Agency Kolkata — Rank. Reign. Repeat.", slug: "seo-agency-kolkata", description: "Technical SEO, local search, content architecture and digital PR services from Sparklines Studio in Kolkata." }),
@@ -49,11 +41,10 @@ export default function SeoKolkataLayout({
 }) {
   return (
     <div
-      className={`${montserrat.variable} font-sans bg-[#F7F6F2] text-[#0B0C10] selection:bg-blue-600 selection:text-white min-h-screen`}
+      className="font-sans bg-[#F7F6F2] text-[#0B0C10] selection:bg-blue-600 selection:text-white min-h-screen"
     >
       <StructuredData data={serviceGraph({slug:"seo-agency-kolkata",name:"SEO",title:"SEO Agency Kolkata",description:"Technical SEO, local search, content architecture and digital PR services from Sparklines Studio in Kolkata."})} />
       {children}
     </div>
   );
 }
-
