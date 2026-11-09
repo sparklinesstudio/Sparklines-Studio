@@ -44,11 +44,12 @@ export function HeaderNavigation() {
  }, [mobileOpen,servicesOpen]);
  return <>
  <a href="#main-content" className="studio-skip-link">Skip to content</a>
- {mobileOpen && <div className="studio-nav-backdrop" aria-hidden="true" />}
+ <div className={"studio-nav-backdrop " + (mobileOpen ? "is-active" : "")} onClick={close} aria-hidden="true" />
  <header ref={headerRef} className="studio-nav" onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setServicesOpen(false); }}>
  <Link href="/" onClick={close} className="studio-nav-logo" aria-label="Sparklines Studio home"><Image src="/logo.png" alt="Sparklines Studio" width={140} height={42} priority unoptimized /></Link>
- <button ref={mobileToggle} className="studio-mobile-toggle" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} aria-controls="studio-navigation" onClick={() => {setMobileOpen(!mobileOpen);setServicesOpen(false);}}>{mobileOpen ? <X size={21} /> : <Menu size={21} />}</button>
+ <button ref={mobileToggle} className="studio-mobile-toggle" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} aria-controls="studio-navigation" onClick={() => {setMobileOpen(!mobileOpen);setServicesOpen(false);}}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
  <nav data-lenis-prevent id="studio-navigation" aria-label="Main navigation" className={"studio-nav-links " + (mobileOpen ? "is-open" : "")}>
+ <div className="studio-drawer-header"><span className="studio-drawer-title">Menu</span></div>
  <Link href="/about" onClick={close} aria-current={pathname === "/about" ? "page" : undefined}>About</Link><Link href="/work" onClick={close} aria-current={pathname.startsWith("/work") ? "page" : undefined}>Work</Link>
  <div className="studio-services-nav"><button ref={servicesToggle} type="button" aria-expanded={servicesOpen} aria-controls="studio-mega-menu" onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown size={14} className={servicesOpen ? "is-rotated" : ""} /></button>
  {servicesOpen && <div data-lenis-prevent id="studio-mega-menu" className="studio-mega-menu"><div className="studio-mega-intro"><span>THE SPARKLINES STUDIO</span><p>Good stories.<br />Considered experiences.</p><Link href="/services" onClick={close}>Explore all services <ArrowUpRight size={16} /></Link></div><div className="studio-mega-groups">{serviceGroups.map(group => <div key={group.title}><h2>{group.title}</h2>{group.links.map(service => <Link key={service.slug} href={"/"+service.slug} onClick={close} aria-current={pathname === "/"+service.slug ? "page" : undefined}>{service.name}<ArrowUpRight size={14} /></Link>)}</div>)}</div></div>}
