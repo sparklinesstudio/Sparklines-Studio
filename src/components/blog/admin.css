@@ -1,14 +1,14 @@
 .blog-admin {
   min-height: 100vh;
-  background-color: #0d0f14;
-  color: #e2e8f0;
+  background-color: #f8fafc;
+  color: #334155;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   padding-bottom: 80px;
 }
 
 .admin-header {
   height: 64px;
-  border-bottom: 1px solid #1e2430;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,7 +30,7 @@
 }
 
 .admin-logo span:first-child {
-  background: #2563eb;
+  background: #2383e2;
   color: #fff;
   font-weight: 800;
   width: 32px;
@@ -48,7 +48,7 @@
 }
 
 .admin-header nav a {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
   text-decoration: none;
   transition: color 0.2s;
@@ -60,7 +60,7 @@
 
 .admin-header nav button {
   background: transparent;
-  border: 1px solid #334155;
+  border: 1px solid #cbd5e1;
   color: #cbd5e1;
   padding: 6px 14px;
   border-radius: 6px;
@@ -84,14 +84,14 @@
   max-width: 420px;
   margin: 100px auto 0;
   padding: 40px;
-  background: #141720;
-  border: 1px solid #232938;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .admin-brand-mark {
-  background: #2563eb;
+  background: #2383e2;
   color: #fff;
   font-weight: 800;
   width: 40px;
@@ -120,7 +120,7 @@
 }
 
 .admin-login-card p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 14px;
   line-height: 1.5;
   margin: 0 0 24px;
@@ -171,7 +171,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #2563eb;
+  background: #2383e2;
   color: #fff;
   padding: 10px 20px;
   border-radius: 8px;
@@ -184,7 +184,7 @@
 }
 
 .admin-primary:hover:not(:disabled) {
-  background: #1d4ed8;
+  background: #1a6cb8;
 }
 
 .admin-primary:disabled {
@@ -197,14 +197,14 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #1e2638;
+  background: #eff6ff;
   color: #f1f5f9;
   padding: 9px 16px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  border: 1px solid #334155;
+  border: 1px solid #cbd5e1;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -217,7 +217,7 @@
 .admin-text-button {
   background: none;
   border: none;
-  color: #f87171;
+  color: #dc2626;
   font-size: 12px;
   padding: 6px 0;
   cursor: pointer;
@@ -265,7 +265,7 @@
 }
 
 .admin-page-heading p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 14px;
   margin: 0;
 }
@@ -278,8 +278,8 @@
 }
 
 .admin-stats > div {
-  background: #141720;
-  border: 1px solid #232938;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 16px 24px;
   min-width: 140px;
@@ -295,7 +295,7 @@
 
 .admin-stats span {
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: capitalize;
   margin-top: 4px;
 }
@@ -316,9 +316,9 @@
 }
 
 .admin-filters button {
-  background: #141720;
-  border: 1px solid #232938;
-  color: #94a3b8;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
@@ -328,8 +328,8 @@
 }
 
 .admin-filters button[aria-pressed="true"] {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #2383e2;
+  border-color: #2383e2;
   color: #fff;
 }
 
@@ -340,8 +340,8 @@
 }
 
 .admin-post-list article {
-  background: #141720;
-  border: 1px solid #232938;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 20px 24px;
   display: flex;
@@ -359,7 +359,7 @@
 }
 
 .admin-post-list p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
   margin: 0;
 }
@@ -376,22 +376,22 @@
 
 .admin-status-published {
   background: rgba(34, 197, 94, 0.2);
-  color: #4ade80;
+  color: #059669;
 }
 
 .admin-status-draft {
   background: rgba(234, 179, 8, 0.2);
-  color: #facc15;
+  color: #b45309;
 }
 
 .admin-status-scheduled {
   background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
+  color: #2383e2;
 }
 
 .admin-status-trash {
   background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
+  color: #dc2626;
 }
 
 .admin-post-actions {
@@ -401,9 +401,9 @@
 }
 
 .admin-post-actions a {
-  background: #1e2638;
-  border: 1px solid #334155;
-  color: #e2e8f0;
+  background: #eff6ff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
   padding: 7px 14px;
   border-radius: 6px;
   font-size: 13px;
@@ -413,7 +413,7 @@
 
 .admin-post-actions button {
   background: transparent;
-  border: 1px solid #334155;
+  border: 1px solid #cbd5e1;
   color: #cbd5e1;
   padding: 7px 14px;
   border-radius: 6px;
@@ -424,8 +424,8 @@
 .admin-empty {
   text-align: center;
   padding: 80px 20px;
-  background: #141720;
-  border: 1px solid #232938;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
 }
 
@@ -436,7 +436,7 @@
 }
 
 .admin-empty p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -462,7 +462,7 @@
 }
 
 .admin-editor-actions a {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
   text-decoration: none;
 }
@@ -472,7 +472,7 @@
 }
 
 .admin-back {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
   text-decoration: none;
   display: inline-block;
@@ -483,7 +483,7 @@
   font-size: 24px;
   font-weight: 700;
   padding: 14px 18px;
-  background: #141720;
+  background: #ffffff;
   border: 1px solid #283042;
   border-radius: 10px;
   color: #fff;
@@ -495,7 +495,7 @@
 }
 
 .admin-editor-shell {
-  background: #141720;
+  background: #ffffff;
   border: 1px solid #283042;
   border-radius: 12px;
   overflow: hidden;
@@ -508,12 +508,12 @@
   gap: 6px;
   padding: 12px;
   background: #0f121a;
-  border-bottom: 1px solid #232938;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .admin-editor-toolbar button {
   background: #1a202c;
-  border: 1px solid #2d3748;
+  border: 1px solid #dbe3ef;
   color: #cbd5e1;
   padding: 6px 12px;
   border-radius: 6px;
@@ -523,8 +523,8 @@
 }
 
 .admin-editor-toolbar button[aria-pressed="true"] {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #2383e2;
+  border-color: #2383e2;
   color: #fff;
 }
 
@@ -538,7 +538,7 @@
   gap: 8px;
   padding: 8px 12px;
   background: #12151e;
-  border-bottom: 1px solid #232938;
+  border-bottom: 1px solid #e2e8f0;
   align-items: center;
 }
 
@@ -549,8 +549,8 @@
 }
 
 .admin-editor-link button {
-  background: #1e2638;
-  border: 1px solid #334155;
+  background: #eff6ff;
+  border: 1px solid #cbd5e1;
   color: #cbd5e1;
   padding: 6px 12px;
   border-radius: 6px;
@@ -562,7 +562,7 @@
   min-height: 400px;
   padding: 24px;
   outline: none;
-  color: #e2e8f0;
+  color: #334155;
 }
 
 .admin-html-editor {
@@ -571,7 +571,7 @@
   padding: 20px;
   background: #0a0c10;
   border: none;
-  color: #38bdf8;
+  color: #2383e2;
   font-family: monospace;
   font-size: 13px;
   outline: none;
@@ -584,8 +584,8 @@
 }
 
 .admin-settings section {
-  background: #141720;
-  border: 1px solid #232938;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 20px;
 }
@@ -594,7 +594,7 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0 0 16px;
   font-weight: 600;
 }
@@ -605,7 +605,7 @@
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 12px;
-  border: 1px solid #2d3748;
+  border: 1px solid #dbe3ef;
 }
 
 .admin-help {
@@ -619,3 +619,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.blog-admin:has(.vaphers-login){background:#fff;padding-bottom:0;color:#0f172a}.vaphers-login{font-family:Arial,Helvetica,sans-serif}.vaphers-login input:focus-visible,.vaphers-login button:focus-visible,.vaphers-login a:focus-visible{outline:2px solid #2383e2;outline-offset:3px}
+
+.blog-admin{color:#0f172a}.admin-page-heading h1,.admin-stats strong,.admin-post-list h2,.admin-empty h2,.admin-settings label,.admin-title-label,.admin-title-input{color:#0f172a}.admin-primary{background:#2383e2;color:#fff}.admin-header{background:white}.admin-editor-toolbar,.admin-editor-link,.admin-editor-content,.admin-settings input,.admin-settings textarea,.admin-settings select,.admin-html-editor{background:#fff;color:#0f172a;border-color:#e2e8f0}.admin-editor-toolbar button,.admin-editor-link button,.admin-secondary{background:#f8fafc;color:#475569;border-color:#e2e8f0}.admin-editor-toolbar button[aria-pressed=true]{color:#2383e2;background:#eff6ff}.admin-stats>div,.admin-empty,.admin-post-list article{background:#fff;border-color:#e2e8f0}.admin-title-input::placeholder{color:#94a3b8}.admin-login-card{background:white}.admin-header nav button{background:#f8fafc;color:#475569}.admin-post-actions a{background:#eff6ff;color:#1d4ed8}.admin-settings h2{color:#334155}

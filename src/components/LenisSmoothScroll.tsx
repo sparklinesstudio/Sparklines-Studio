@@ -38,6 +38,12 @@ export function LenisSmoothScroll() {
       }
     }
 
+    const handleNavigation = (event: Event) => {
+      if ((event as CustomEvent<{ open: boolean }>).detail.open) lenis.stop();
+      else lenis.start();
+    };
+    window.addEventListener("studio-navigation-toggle", handleNavigation);
+
     const handleResize = () => {
       lenis.resize();
     };
@@ -58,6 +64,7 @@ export function LenisSmoothScroll() {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      window.removeEventListener("studio-navigation-toggle", handleNavigation);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("load", handleResize);
       if (resizeObserver) {

@@ -341,8 +341,3 @@ export const kolkataServices: KolkataService[] = [
     "gallery": false
   }
 ];
-export const serviceGroups = [
- { title: "Film & motion", links: [{ name: "Video Production", slug: "video-production-agency-kolkata" }, ...kolkataServices.filter(s => s.group === "Film & motion")] },
- { title: "Brand & visibility", links: [{ name: "SEO", slug: "seo-agency-kolkata" }, ...kolkataServices.filter(s => s.group === "Brand & visibility")] },
- { title: "Web & commerce", links: kolkataServices.filter(s => s.group === "Web & commerce") },
-];

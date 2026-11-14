@@ -7,7 +7,7 @@ import type { BlogInput, BlogPost } from "./types";
 
 try {
   if (typeof dns.setServers === "function") {
-    dns.setServers(["8.8.8.8", "1.1.1.1"]);
+    dns.setServers((process.env.MONGODB_DNS_SERVERS || "1.1.1.1,8.8.8.8").split(","));
   }
 } catch {
   // ignore in constrained runtime environments
@@ -37,16 +37,23 @@ export const blogConfigured = () =>
 export async function blogsCollection() {
   if (!blogConfigured()) throw new BlogError("Blog storage is not configured yet.", 503);
   if (!state.studioMongo) {
-    state.studioMongo = new MongoClient(process.env.MONGODB_URI!, {
-      serverSelectionTimeoutMS: 8000,
-      connectTimeoutMS: 8000,
-      maxPoolSize: 10,
-    })
-      .connect()
-      .catch((error) => {
-        state.studioMongo = undefined;
-        throw error;
-      });
+    state.studioMongo = (async () => {
+      const options = { serverSelectionTimeoutMS: 8000, connectTimeoutMS: 8000, maxPoolSize: 10 };
+      for (let attempt = 0; attempt < 2; attempt++) {
+        const client = new MongoClient(process.env.MONGODB_URI!, options);
+        try { return await client.connect(); }
+        catch (error) {
+          await client.close();
+          const code = error && typeof error === "object" && "code" in error ? String(error.code) : "";
+          if (attempt === 0 && ["ECONNREFUSED", "ETIMEOUT", "EAI_AGAIN", "ENOTFOUND"].includes(code)) {
+            try { dns.setServers((process.env.MONGODB_DNS_SERVERS || "1.1.1.1,8.8.8.8").split(",")); } catch { /* use existing resolver */ }
+            continue;
+          }
+          throw error;
+        }
+      }
+      throw new Error("Blog storage connection failed.");
+    })().catch(error => { state.studioMongo = undefined; throw error; });
   }
   const client = await state.studioMongo;
   const collection = client.db(process.env.MONGODB_DB || "sparklines_blog").collection<BlogDocument>("blogs");
@@ -102,11 +109,23 @@ export async function listBlogs(admin = false): Promise<BlogPost[]> {
     ).map(serialize);
   } catch (error) {
     if (!admin) {
-      console.error("Error retrieving blogs:", error);
-      return [];
+      console.error("Blog storage is temporarily unavailable.");
+      throw error;
     }
     throw error;
   }
+}
+
+// Query the same public visibility rules as the blog on every sitemap request.
+// Project metadata only; article bodies do not need to be loaded for XML generation.
+export async function listBlogSitemapEntries(): Promise<{slug:string;lastModified:Date}[]> {
+  if (!blogConfigured()) return [];
+  const collection = await blogsCollection();
+  const posts = await collection.find(publicFilter(), {projection:{slug:1,createdAt:1,updatedAt:1,publishedAt:1,scheduledAt:1}}).toArray();
+  return posts.map(post => ({
+    slug: post.slug,
+    lastModified: new Date(Math.max(...[post.createdAt,post.updatedAt,post.publishedAt || post.scheduledAt].filter(Boolean).map(value=>new Date(value!).getTime()))),
+  }));
 }
 
 export const findBlog = cache(async (slug: string, admin = false): Promise<BlogPost | null> => {
@@ -117,8 +136,8 @@ export const findBlog = cache(async (slug: string, admin = false): Promise<BlogP
     return doc ? serialize(doc) : null;
   } catch (error) {
     if (!admin) {
-      console.error("Error finding blog:", error);
-      return null;
+      console.error("Blog storage is temporarily unavailable.");
+      throw error;
     }
     throw error;
   }
@@ -210,3 +229,5 @@ export async function saveBlog(input: BlogInput, oldSlug?: string) {
   }
   return input.slug;
 }
+
+export async function blogDatabase(){await blogsCollection();return (await state.studioMongo!).db(process.env.MONGODB_DB||"sparklines_blog");}

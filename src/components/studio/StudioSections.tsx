@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
-import { serviceGroups } from "@/data/kolkataServices";
+import { serviceGroups } from "@/data/serviceNavigation";
 export function StudioFaq({ items }: { items: string[][] }) {
  return <div className="studio-faq">{items.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>;
 }

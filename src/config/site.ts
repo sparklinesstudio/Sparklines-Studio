@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
   tagline: "Good stories deserve a bigger frame.",
   description:
     "Sparklines Studio is a video production agency in Kolkata creating films, motion graphics, brand stories and digital experiences.",
-  url: "https://sparklines.studio",
+  url: "https://www.sparklinesstudio.com",
   email: "sparklinestudio.agency@gmail.com",
   navItems: [
     { label: "Work", href: "/work" },
@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
     { label: "Contact", href: "/contact" },
   ],
   socialLinks: [
-    { label: "Twitter / X", href: "https://twitter.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "Instagram", href: "https://www.instagram.com/sparklinesstudio" },
+    { label: "Facebook", href: "https://www.facebook.com/sparklinesstudio" },
   ],
 };

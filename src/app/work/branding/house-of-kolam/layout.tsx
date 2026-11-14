@@ -1,10 +1,14 @@
+import {StructuredData} from "@/components/seo/StructuredData";
+import {pageGraph,absoluteUrl} from "@/lib/structuredData";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates:{canonical:absoluteUrl("/work/branding/house-of-kolam")},
   title: "House of Kolam — Sacred Geometry & Heritage Culinary Branding | Sparklines Studio",
   description:
     "Explore the complete visual identity, bespoke vernacular typography, artisanal packaging, and heritage branding design system for House of Kolam, engineered and crafted by Sparklines Studio.",
   openGraph: {
+    url:absoluteUrl("/work/branding/house-of-kolam"),siteName:"Sparklines Studio",type:"website",
     title: "House of Kolam — Sacred Geometry & Heritage Culinary Branding",
     description:
       "23 master presentation boards encompassing visual identity, geometric iconography, packaging architecture, motion loops, and luxury hospitality guidelines.",
@@ -33,5 +37,5 @@ export default function HouseOfKolamLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <><StructuredData data={pageGraph("/work/branding/house-of-kolam","House of Kolam Brand Identity","WebPage")}/>{children}</>;
 }

@@ -31,7 +31,7 @@ export default function RivieraEstatesPpcPage() {
     <div className="min-h-screen bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans overflow-x-hidden">
       <HeaderNavigation />
 
-      <main>
+      <main id="main-content">
         {/* ================================================================ */}
         {/* 1. HERO SECTION WITH CLIENT LOGO & MEDIA                         */}
         {/* ================================================================ */}
@@ -44,7 +44,7 @@ export default function RivieraEstatesPpcPage() {
           tagline={project.tagline}
           coverImage={project.coverImage}
           
-          liveUrl="https://sparklines.studio"
+          liveUrl="https://www.sparklinesstudio.com"
         />
 
         {/* ================================================================ */}

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
+import "./production-gallery.css";
 import { productionVideoGroups, type MasonryVideoItem } from "@/data/videoProductionGallery";
 
 export function ProductionGallery() {

@@ -1,6 +1,4 @@
-import type { KolkataService } from "@/data/kolkataServices";
-import { fromKolkataService } from "@/lib/servicePageContent";
-import { SeoServiceLayout } from "./SeoServiceLayout";
-export function ServiceLandingPage({ service }: { service: KolkataService }) {
-  return <SeoServiceLayout service={fromKolkataService(service)} />;
-}
+import type {KolkataService} from "@/data/kolkataServices";
+import {serviceBySlug} from "@/data/services/catalog";
+import {SupportingServicePage} from "./SupportingServicePage";
+export function ServiceLandingPage({service}:{service:KolkataService}){const content=serviceBySlug(service.slug);if(!content)return null;return <SupportingServicePage service={content}/>;}

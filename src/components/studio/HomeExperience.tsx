@@ -26,6 +26,8 @@ function HeroSpark() {
   </svg>;
 }
 
+const filmDestinations:Record<string,string>={"Food & hospitality":"/product-video-production-kolkata","Spaces & interiors":"/real-estate-video-production-kolkata","People & stories":"/corporate-video-production-kolkata","Fashion campaign":"/brand-film-production-kolkata","Brand moments":"/brand-film-production-kolkata","Lifestyle campaign":"/social-media-video-production-kolkata"};
+
 export function StudioHero() {
   return <section className="reference-hero" aria-label="Sparklines Studio video production">
     <div className="reference-hero-paper">
@@ -48,6 +50,7 @@ export function StudioHero() {
       <div className="reference-brand-sticker" aria-hidden="true"><Asterisk strokeWidth={1.5} /><span>SPARKLINES<br />STUDIO</span></div>
       <div className="reference-hero-content">
         <h1><span>Video Production</span>{" "}<span>Agency <em>Kolkata</em></span></h1>
+        <p className="reference-hero-description">Kolkata video production for brand films, product stories and social campaigns. From the first idea to the final frame.</p>
         <a className="reference-discover" href="#selected-films"><span>Discover our films</span><ArrowDownRight size={18} /></a>
       </div>
       <a href="#selected-films" className="reference-scroll-stamp" aria-label="Scroll to explore our films">
@@ -134,7 +137,7 @@ function FilmWorkCard({ film, index }: { film: (typeof studioFilms)[number]; ind
     pointerX.set(Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2)));
     pointerY.set(Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2)));
   }} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
-    <Link href="/video-production-agency-kolkata#video-masonry" aria-label={"Explore " + film.title}>
+    <Link href={filmDestinations[film.title]||"/brand-film-production-kolkata"} aria-label={"Explore " + film.title}>
       <div className="film-reference-frame"><AmbientVideo {...film} /><span className="film-reference-index">{String(index + 1).padStart(2, "0")}</span></div>
       <div className="film-reference-caption"><h3>{film.title}</h3><span><ArrowUpRight size={22} /></span></div>
     </Link>
@@ -153,7 +156,7 @@ export function HomeFilmMasonry() {
     </div>
     <div className="films-reference-filters" role="group" aria-label="Filter films">{filters.map(label => <button key={label} aria-pressed={filter === label} onClick={() => setFilter(label)}>{label}</button>)}<span aria-live="polite">{matching.length} films</span></div>
     <div className="films-reference-masonry">{matching.map(film => <FilmWorkCard key={film.src} film={film} index={studioFilms.indexOf(film)} />)}</div>
-    <div className="films-reference-footer"><Link href="/video-production-agency-kolkata" className="about-reference-link"><span><ArrowRight size={20} /></span><span>Explore all video work</span></Link></div>
+    <div className="films-reference-footer"><Link href="/brand-film-production-kolkata#production-library" className="about-reference-link"><span><ArrowRight size={20} /></span><span>Explore all video work</span></Link></div>
   </section>;
 }
 
@@ -223,7 +226,7 @@ export function FilmCarousel() {
       activeIndex.current = next;
       setIndex(next);
     }}>
-      {studioFilms.map((film,i) => <Link href="/video-production-agency-kolkata" key={film.src} className="film-carousel-card" aria-label={film.title + ", film " + (i + 1) + " of " + studioFilms.length}><div><AmbientVideo {...film} /><span>0{i+1}</span><ArrowUpRight size={23} /></div><h3>{film.title}</h3></Link>)}
+      {studioFilms.map((film,i) => <Link href={filmDestinations[film.title]||"/brand-film-production-kolkata"} key={film.src} className="film-carousel-card" aria-label={film.title + ", film " + (i + 1) + " of " + studioFilms.length}><div><AmbientVideo {...film} /><span>0{i+1}</span><ArrowUpRight size={23} /></div><h3>{film.title}</h3></Link>)}
       <div className="film-carousel-tail" style={{ flex: "0 0 " + tailWidth + "px" }} aria-hidden="true" />
     </div>
   </section>;

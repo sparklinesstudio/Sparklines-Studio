@@ -12,8 +12,8 @@ import "./highlights.css";
 
 const caseStudyUrl = "/work/branding/house-of-kolam";
 const services = [
-  { title: "Video", text: "Brand stories, beautifully brought to life.", href: "/video-production-agency-kolkata", film: studioFilms[3], tilt: -3 },
-  { title: "Social", text: "Small-screen stories with a bigger feeling.", href: "/video-production-agency-kolkata", film: studioFilms[0], tilt: 2 },
+  { title: "Video", text: "Brand stories, beautifully brought to life.", href: "/brand-film-production-kolkata", film: studioFilms[3], tilt: -3 },
+  { title: "Social", text: "Small-screen stories with a bigger feeling.", href: "/social-media-video-production-kolkata", film: studioFilms[0], tilt: 2 },
   { title: "Motion", text: "Design, rhythm and ideas that move.", href: "/motion-graphics-agency-kolkata", film: studioFilms[5], tilt: -2 },
   { title: "SaaS video", text: "Make the value behind your product clear.", href: "/saas-video-agency-kolkata", film: studioFilms[4], tilt: 3 },
 ];

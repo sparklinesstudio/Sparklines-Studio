@@ -256,7 +256,7 @@ export default function HouseOfKolamPage() {
       {/* Global Navigation Header */}
       <HeaderNavigation />
 
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10">
         {/* ============================================================== */}
         {/* 1. HERO SECTION: BRANDING SHOWCASE HEADER                      */}
         {/* ============================================================== */}
@@ -267,7 +267,7 @@ export default function HouseOfKolamPage() {
             {/* Top Navigation Row: Back Link & Project Name */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-5 mb-8 border-b border-zinc-200/80">
               <Link
-                href="/work#branding"
+                href="/work#featured-branding"
                 className="group inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 text-amber-600" />

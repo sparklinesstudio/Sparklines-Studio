@@ -5,6 +5,7 @@ import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
 import { Curtains } from "@/components/ui/curtains";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { serviceMetadata } from "@/lib/serviceMetadata";
 import { organizationGraph } from "@/lib/structuredData";
 
 const playfair = Playfair_Display({
@@ -27,7 +28,9 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const defaultSocial = serviceMetadata({title:"Video Production Agency Kolkata",slug:"",description:siteConfig.description});
 export const metadata: Metadata = {
+  ...defaultSocial,
   metadataBase: new URL(siteConfig.url),
   title: "Sparklines Studio | Video, Brand & Digital Experiences",
   description:
@@ -49,6 +52,7 @@ export const metadata: Metadata = {
     apple: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
   },
   openGraph: {
+    ...defaultSocial.openGraph,
     title: "Sparklines Studio | Video, Brand & Digital Experiences",
     description:
       "Video production, brand storytelling, motion graphics and digital experiences from our Kolkata studio.",

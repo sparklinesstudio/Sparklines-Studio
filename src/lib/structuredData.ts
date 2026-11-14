@@ -14,6 +14,8 @@ export function organizationGraph() {
         name: siteConfig.name, url: absoluteUrl(), description: siteConfig.description,
         logo: { "@type": "ImageObject", "@id": absoluteUrl("/#logo"), url: absoluteUrl("/logo.png") },
         email: siteConfig.email, telephone: "+919641861932",
+        sameAs: siteConfig.socialLinks.map(link=>link.href),
+        areaServed: {"@type":"City",name:"Kolkata"},
         address: { "@type": "PostalAddress", addressLocality: "Kolkata", addressRegion: "West Bengal", addressCountry: "IN" },
         contactPoint: { "@type": "ContactPoint", telephone: "+919641861932", email: siteConfig.email, contactType: "customer service" },
       },
@@ -35,22 +37,23 @@ export function serviceBreadcrumbs(name: string, slug: string): BreadcrumbItem[]
   return [{ name: "Home", path: "/" }, { name: "Services", path: "/services" }, { name, path: "/" + slug }];
 }
 
-export function serviceGraph(service: { slug: string; name: string; title: string; description: string; faqs?: { question: string; answer: string }[] }) {
+export function serviceGraph(service: { slug: string; name: string; title: string; description: string; faqs?: { question: string; answer: string }[]; breadcrumbs?: BreadcrumbItem[] }) {
   const path = "/" + service.slug;
   const url = absoluteUrl(path);
   const pageId = url + "#webpage";
   return { "@context": "https://schema.org", "@graph": [
     { "@type": "Service", "@id": url + "#service", name: service.title, serviceType: service.name,
-      description: service.description, url, provider: { "@id": organizationId },
+      description: service.description, url, image:absoluteUrl("/og?title="+encodeURIComponent(service.title)), provider: { "@id": organizationId },
       areaServed: { "@type": "City", name: "Kolkata" }, mainEntityOfPage: { "@id": pageId },
     },
     { "@type": service.faqs?.length ? ["WebPage", "FAQPage"] : "WebPage", "@id": pageId,
       url, name: service.title, description: service.description, inLanguage: "en-IN",
       isPartOf: { "@id": websiteId }, about: { "@id": url + "#service" },
-      breadcrumb: { "@id": url + "#breadcrumbs" },
+      ...(service.slug ? { breadcrumb: { "@id": url + "#breadcrumbs" } } : {}),
+      ...(!service.faqs?.length ? { mainEntity: {"@id":url+"#service"} } : {}),
       ...(service.faqs?.length ? { mainEntity: service.faqs.map(faq => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) } : {}),
     },
-    breadcrumbSchema(serviceBreadcrumbs(service.name, service.slug), path),
+    ...(service.slug ? [breadcrumbSchema(service.breadcrumbs || serviceBreadcrumbs(service.name, service.slug), path)] : []),
   ] };
 }
 

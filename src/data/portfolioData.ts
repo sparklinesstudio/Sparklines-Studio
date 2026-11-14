@@ -195,7 +195,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
   },
   {
     id: "5star-decor",
-    customHref: "/#contact",
+    customHref: "/contact",
     title: "5 Star Decor — Luxury Furnishings & Digital Showroom",
     client: "5 Star Decor",
     category: "Paid Marketing",
@@ -228,7 +228,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
   // =========================================================================
   {
     id: "decadent-depictions",
-    customHref: "/#contact",
+    customHref: "/contact",
     title: "Decadent Depictions — Cinematic Commercial Production",
     client: "Decadent Depictions",
     category: "Video Productions",
@@ -257,7 +257,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
   },
   {
     id: "chiffon-spice",
-    customHref: "/#contact",
+    customHref: "/contact",
     title: "Chiffon & Spice — Artisanal Pastry Brand & Social Cinema",
     client: "Chiffon & Spice",
     category: "Video Productions",
@@ -287,7 +287,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
   },
   {
     id: "aura-living",
-    customHref: "/#contact",
+    customHref: "/contact",
     title: "Aura Architectural Living — Spatial 3D Platform",
     client: "Aura Architectural Living",
     category: "Video Productions",

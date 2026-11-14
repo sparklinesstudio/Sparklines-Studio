@@ -1,59 +1,19 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import {useEffect,useRef,useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
-import { serviceGroups } from "@/data/kolkataServices";
+import {usePathname} from "next/navigation";
+import {ArrowUpRight,ChevronDown,Menu,X} from "lucide-react";
+import {serviceGroups} from "@/data/serviceNavigation";
 import "./navigation.css";
-
-export function HeaderNavigation() {
- const [mobileOpen, setMobileOpen] = useState(false);
- const [servicesOpen, setServicesOpen] = useState(false);
- const pathname = usePathname();
- const headerRef = useRef<HTMLElement>(null);
- const mobileToggle = useRef<HTMLButtonElement>(null);
- const servicesToggle = useRef<HTMLButtonElement>(null);
- const close = () => { setMobileOpen(false); setServicesOpen(false); };
- useEffect(() => {
-  if (!mobileOpen) return;
-  const previous = document.body.style.overflow;
-  document.body.style.overflow = "hidden";
-  return () => { document.body.style.overflow = previous; };
- }, [mobileOpen]);
- useEffect(() => {
-  const onPointer = (event: PointerEvent) => {
-   if (!headerRef.current?.contains(event.target as Node)) { setMobileOpen(false); setServicesOpen(false); }
-  };
-  const onKey = (event: KeyboardEvent) => {
-   if (event.key === "Escape") {
-    setMobileOpen(false); setServicesOpen(false);
-    if (mobileOpen) mobileToggle.current?.focus();
-    else if (servicesOpen) servicesToggle.current?.focus();
-   }
-   if (event.key === "Tab" && mobileOpen && headerRef.current) {
-    const targets = Array.from(headerRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')).filter(el => el.getClientRects().length > 0);
-    const first = targets[0], last = targets[targets.length - 1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-   }
-  };
-  const onResize = () => { if (window.innerWidth >= 900) setMobileOpen(false); };
-  document.addEventListener("pointerdown",onPointer); document.addEventListener("keydown",onKey); window.addEventListener("resize",onResize);
-  return () => { document.removeEventListener("pointerdown",onPointer); document.removeEventListener("keydown",onKey); window.removeEventListener("resize",onResize); };
- }, [mobileOpen,servicesOpen]);
- return <>
- <a href="#main-content" className="studio-skip-link">Skip to content</a>
- <div className={"studio-nav-backdrop " + (mobileOpen ? "is-active" : "")} onClick={close} aria-hidden="true" />
- <header ref={headerRef} className="studio-nav" onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setServicesOpen(false); }}>
- <Link href="/" onClick={close} className="studio-nav-logo" aria-label="Sparklines Studio home"><Image src="/logo.png" alt="Sparklines Studio" width={140} height={42} priority unoptimized /></Link>
- <button ref={mobileToggle} className="studio-mobile-toggle" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} aria-controls="studio-navigation" onClick={() => {setMobileOpen(!mobileOpen);setServicesOpen(false);}}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
- <nav data-lenis-prevent id="studio-navigation" aria-label="Main navigation" className={"studio-nav-links " + (mobileOpen ? "is-open" : "")}>
- <div className="studio-drawer-header"><span className="studio-drawer-title">Menu</span></div>
- <Link href="/about" onClick={close} aria-current={pathname === "/about" ? "page" : undefined}>About</Link><Link href="/work" onClick={close} aria-current={pathname.startsWith("/work") ? "page" : undefined}>Work</Link>
- <div className="studio-services-nav"><button ref={servicesToggle} type="button" aria-expanded={servicesOpen} aria-controls="studio-mega-menu" onClick={() => setServicesOpen(!servicesOpen)}>Services <ChevronDown size={14} className={servicesOpen ? "is-rotated" : ""} /></button>
- {servicesOpen && <div data-lenis-prevent id="studio-mega-menu" className="studio-mega-menu"><div className="studio-mega-intro"><span>THE SPARKLINES STUDIO</span><p>Good stories.<br />Considered experiences.</p><Link href="/services" onClick={close}>Explore all services <ArrowUpRight size={16} /></Link></div><div className="studio-mega-groups">{serviceGroups.map(group => <div key={group.title}><h2>{group.title}</h2>{group.links.map(service => <Link key={service.slug} href={"/"+service.slug} onClick={close} aria-current={pathname === "/"+service.slug ? "page" : undefined}>{service.name}<ArrowUpRight size={14} /></Link>)}</div>)}</div></div>}
- </div><Link href="/blogs" onClick={close} aria-current={pathname.startsWith("/blogs") ? "page" : undefined}>Blog</Link><Link href="/services" onClick={close} className="studio-nav-all">All services</Link><Link href="/contact" onClick={close} aria-current={pathname === "/contact" ? "page" : undefined}>Contact</Link><Link href="/contact" onClick={close} className="studio-nav-cta">Let’s talk <ArrowUpRight size={15} /></Link>
- </nav>
- </header></>;
+export function HeaderNavigation(){
+ const pathname=usePathname();const [mobileOpen,setMobileOpen]=useState(false);const [servicesOpen,setServicesOpen]=useState(false);const [mobileServicesOpen,setMobileServicesOpen]=useState(false);
+ const header=useRef<HTMLElement>(null);const drawer=useRef<HTMLDialogElement>(null);const toggle=useRef<HTMLButtonElement>(null);const servicesToggle=useRef<HTMLButtonElement>(null);
+ const close=()=>{drawer.current?.close();setMobileOpen(false);setServicesOpen(false);setMobileServicesOpen(false);};
+ useEffect(()=>{const panel=drawer.current;if(mobileOpen&&!panel?.open)panel?.showModal();if(!mobileOpen&&panel?.open)panel.close();if(!mobileOpen)return;const previous=document.body.style.overflow;document.body.style.overflow="hidden";window.dispatchEvent(new CustomEvent("studio-navigation-toggle",{detail:{open:true}}));return()=>{document.body.style.overflow=previous;window.dispatchEvent(new CustomEvent("studio-navigation-toggle",{detail:{open:false}}));};},[mobileOpen]);
+ useEffect(()=>{drawer.current?.close();setMobileOpen(false);setServicesOpen(false);setMobileServicesOpen(false);},[pathname]);
+ useEffect(()=>{const outside=(e:PointerEvent)=>{if(!header.current?.contains(e.target as Node))setServicesOpen(false);};const escape=(e:KeyboardEvent)=>{if(e.key==="Escape"&&servicesOpen){setServicesOpen(false);servicesToggle.current?.focus();}};const resize=()=>{if(window.innerWidth>=900){drawer.current?.close();setMobileOpen(false);}};document.addEventListener("pointerdown",outside);document.addEventListener("keydown",escape);window.addEventListener("resize",resize);return()=>{document.removeEventListener("pointerdown",outside);document.removeEventListener("keydown",escape);window.removeEventListener("resize",resize);};},[servicesOpen]);
+ const links=(mobile=false)=><>{[["About","/about"],["Work","/work"],["Blog","/blogs"]].map(([name,href])=><Link key={href} href={href} onClick={close} aria-current={pathname.startsWith(href)?"page":undefined}>{name}{mobile&&<ArrowUpRight size={18}/>}</Link>)}</>;
+ const groups=()=> <div className="studio-mega-groups">{serviceGroups.map(group=><div key={group.title}><h2>{group.title}</h2>{group.links.map(service=><Link key={service.slug} href={"/"+service.slug} onClick={close} aria-current={pathname==="/"+service.slug?"page":undefined}>{service.name}<ArrowUpRight size={15}/></Link>)}</div>)}</div>;
+ return <><a href="#main-content" className="studio-skip-link">Skip to content</a><header ref={header} className="studio-nav" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node))setServicesOpen(false);}}><Link href="/" onClick={close} className="studio-nav-logo" aria-label="Sparklines Studio home"><Image src="/logo.png" alt="Sparklines Studio" width={140} height={42} priority unoptimized/></Link><nav className="studio-desktop-links" aria-label="Main navigation">{links()}<div className="studio-services-nav"><button type="button" ref={servicesToggle} aria-expanded={servicesOpen} aria-controls="desktop-services-menu" onClick={()=>setServicesOpen(!servicesOpen)}>Services <ChevronDown size={15} className={servicesOpen?"is-rotated":""}/></button>{servicesOpen&&<div id="desktop-services-menu" className="studio-mega-menu" data-lenis-prevent><div className="studio-mega-intro"><span>THE SPARKLINES STUDIO</span><p>Good stories.<br/>Considered experiences.</p><Link href="/services" onClick={close}>Explore all services <ArrowUpRight size={16}/></Link></div>{groups()}</div>}</div><Link href="/contact" onClick={close} aria-current={pathname==="/contact"?"page":undefined}>Contact</Link><Link href="/contact" onClick={close} className="studio-nav-cta">Let’s talk <ArrowUpRight size={16}/></Link></nav><button ref={toggle} type="button" className="studio-mobile-toggle" aria-label="Open navigation" aria-expanded={mobileOpen} aria-controls="studio-mobile-navigation" onClick={()=>setMobileOpen(true)}><Menu size={23}/></button></header><dialog ref={drawer} id="studio-mobile-navigation" className="studio-mobile-dialog" aria-labelledby="studio-drawer-title" onClose={()=>{setMobileOpen(false);setMobileServicesOpen(false);toggle.current?.focus();}} onClick={e=>{if(e.target===e.currentTarget){const bounds=e.currentTarget.getBoundingClientRect();if(e.clientX<bounds.left||e.clientX>bounds.right||e.clientY<bounds.top||e.clientY>bounds.bottom)close();}}}><div className="studio-drawer-heading"><span id="studio-drawer-title">Explore the studio</span><button type="button" aria-label="Close navigation" onClick={close} autoFocus><X size={23}/></button></div><div className="studio-drawer-scroll" data-lenis-prevent><nav aria-label="Mobile navigation">{links(true)}<button type="button" className="studio-drawer-services" aria-controls="mobile-services-menu" aria-expanded={mobileServicesOpen} onClick={()=>setMobileServicesOpen(!mobileServicesOpen)}>Services <ChevronDown size={20} className={mobileServicesOpen?"is-rotated":""}/></button>{mobileServicesOpen&&<div id="mobile-services-menu">{groups()}<Link href="/services" className="studio-drawer-all" onClick={close}>Explore all services <ArrowUpRight size={17}/></Link></div>}<Link href="/contact" onClick={close}>Contact <ArrowUpRight size={18}/></Link><Link href="/contact" className="studio-nav-cta" onClick={close}>Let’s talk <ArrowUpRight size={18}/></Link></nav><p className="studio-drawer-note">Kolkata roots.<br/>A wider perspective.</p></div></dialog></>;
 }

@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, Check, Loader2 } from "lucide-react";
-const services = ["Video Production", "Motion Graphics", "SaaS Video", "Branding & Identity", "Personal Branding", "SEO & AI Search", "Website & Ecommerce", "Something else"];
+const services = ["Video Production", "Motion Graphics", "SaaS Video", "Branding & Identity", "Personal Branding", "SEO & AI Search", "Paid Advertising", "Social Media Marketing", "Website & Ecommerce", "Something else"];
 const budgets = ["Under ₹1 lakh", "₹1–3 lakh", "₹3–8 lakh", "₹8 lakh+", "Let’s discuss"];
 export function ContactForm() {
  const router = useRouter();

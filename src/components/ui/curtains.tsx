@@ -133,7 +133,7 @@ export function Curtains({
       targetHrefRef.current = href;
 
       try {
-        const url = new URL(href, window.location.origin);
+        const url = new URL(href, window.location.href);
         pendingPathRef.current = url.pathname;
       } catch {
         pendingPathRef.current = href.split("?")[0].split("#")[0];
@@ -189,7 +189,7 @@ export function Curtains({
         href.startsWith("tel:")
       ) {
         try {
-          const targetUrl = new URL(href, window.location.origin);
+          const targetUrl = new URL(href, window.location.href);
           if (targetUrl.origin !== window.location.origin) return;
         } catch {
           return;
@@ -198,7 +198,7 @@ export function Curtains({
 
       try {
         const currentUrl = new URL(window.location.href);
-        const targetUrl = new URL(href, window.location.origin);
+        const targetUrl = new URL(href, window.location.href);
 
         // If in-page anchor hash on the same path (e.g. /#contact, #about):
         if (targetUrl.pathname === currentUrl.pathname && targetUrl.hash) {

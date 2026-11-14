@@ -5,7 +5,7 @@ import type { ServicePageContent } from "@/lib/servicePageContent";
 import { serviceGraph, serviceBreadcrumbs } from "@/lib/structuredData";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { serviceGroups } from "@/data/kolkataServices";
+import { serviceGroups } from "@/data/serviceNavigation";
 import { HOUSE_OF_KOLAM_SLIDES } from "@/data/houseOfKolamData";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";

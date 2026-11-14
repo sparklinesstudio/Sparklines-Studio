@@ -31,7 +31,7 @@ export default function HauteHorlogerieMacroPage() {
     <div className="min-h-screen bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans overflow-x-hidden">
       <HeaderNavigation />
 
-      <main>
+      <main id="main-content">
         {/* ================================================================ */}
         {/* 1. HERO SECTION WITH CLIENT LOGO & MEDIA                         */}
         {/* ================================================================ */}
@@ -44,7 +44,7 @@ export default function HauteHorlogerieMacroPage() {
           tagline={project.tagline}
           coverImage={project.coverImage}
           videoUrl="https://res.cloudinary.com/demo/video/upload/c_fill,ar_16:9,w_1280/snow_horses.mp4"
-          liveUrl="https://sparklines.studio"
+          liveUrl="https://www.sparklinesstudio.com"
         />
 
         {/* ================================================================ */}
