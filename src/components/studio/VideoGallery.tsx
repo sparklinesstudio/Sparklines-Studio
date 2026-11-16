@@ -53,7 +53,7 @@ export function VideoGallery() {
     <main id="main-content" className="video-gallery-page">
       <header className="video-gallery-heading">
         <p className="studio-kicker">SPARKLINES STUDIO · MOVING PICTURES</p>
-        <h1>Video production<br />in <em>Kolkata.</em></h1>
+        <h1>Video <em>gallery.</em></h1>
         <p>A collection of food, fashion and spaces, told one frame at a time.</p>
       </header>
       <div className="video-gallery-grid">{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
@@ -63,7 +63,7 @@ export function VideoGallery() {
 }
 
 export function HomeFeaturedVideos() {
-  const featured = INSTAGRAM_VIDEOS.filter(video => video.src);
+  const featured = INSTAGRAM_VIDEOS.filter(video => video.src).slice(0, 6);
   return (
     <section className="home-featured-videos experience-section experience-pad" aria-labelledby="home-featured-videos-title">
       <div className="home-featured-videos-heading"><div><p className="studio-kicker">RESTAURANTS · CAFES · RETAIL</p><h2 id="home-featured-videos-title">A little more <em>appetite.</em></h2></div><Link href="/video-gallery">Explore all {allVideos.length} films <ArrowUpRight size={18} /></Link></div>
