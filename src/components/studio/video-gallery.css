@@ -1,0 +1,32 @@
+.video-gallery-page{min-height:100vh;padding:155px clamp(20px,5vw,80px) 100px;background:#fafbff;color:#121b34}
+.video-gallery-heading{max-width:850px;margin:0 auto 52px;text-align:center}
+.video-gallery-heading .studio-kicker{margin-bottom:16px}
+.video-gallery-heading h1{font-size:clamp(58px,10vw,128px);line-height:.95;letter-spacing:-.065em;font-weight:500}
+.video-gallery-heading h1 em,.home-featured-videos h2 em{font-family:var(--font-instrument-serif),Georgia,serif;font-weight:400;color:#2055e8}
+.video-gallery-heading>p:last-child{max-width:520px;margin:22px auto 0;color:#657087;line-height:1.7}
+.video-gallery-filters{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 36px;max-width:1200px}
+.video-gallery-filters button{border:1px solid #d9deea;border-radius:999px;background:#fff;padding:10px 16px;color:#44506a;font:500 12px/1.3 Arial,Helvetica,sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.video-gallery-filters button[aria-pressed=true],.video-gallery-filters button:hover{background:#2055e8;border-color:#2055e8;color:#fff}
+.video-gallery-filters>span{margin-left:8px;color:#778196;font-size:12px}
+.video-gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 20px;max-width:1440px;margin:auto}
+.video-gallery-card{min-width:0}
+.video-gallery-media{position:relative;overflow:hidden;aspect-ratio:9/16;border-radius:5px;background:#e9ecf4}
+.video-gallery-media video{display:block;width:100%;height:100%;object-fit:cover;background:#111}
+.video-gallery-media iframe{display:block;width:100%;height:100%;border:0;background:#111}
+.video-gallery-source{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(155deg,#dce6ff,#f3f3ef 65%,#fed9c7);color:#17213c;font-size:14px;font-weight:600;text-decoration:none}
+.video-gallery-source svg{color:#f45c2a}
+.video-gallery-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:13px}
+.video-gallery-caption p{margin:0 0 5px;color:#6e7890;font:10px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.video-gallery-caption h2{font-size:14px;line-height:1.35;font-weight:600;letter-spacing:-.025em}
+.video-gallery-caption>a{display:grid;place-items:center;flex:none;width:34px;height:34px;border:1px solid #dce1ed;border-radius:50%;color:#2055e8}
+.video-gallery-contact{display:flex;align-items:center;justify-content:center;gap:10px;width:max-content;max-width:100%;margin:70px auto 0;padding:15px 21px;border-radius:999px;background:#2055e8;color:white;font-size:13px;text-decoration:none}
+.home-featured-videos{background:#f3f3ef}
+.home-featured-videos-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}
+.home-featured-videos-heading .studio-kicker{margin-bottom:14px}
+.home-featured-videos h2{font-size:clamp(38px,5.5vw,76px);line-height:1.02;letter-spacing:-.05em}
+.home-featured-videos-heading>a{display:flex;align-items:center;gap:9px;padding-bottom:9px;color:#2055e8;font-size:13px;text-decoration:none}
+.home-featured-videos-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.home-featured-videos-grid .video-gallery-caption h2{font-size:12px}
+@media(max-width:1100px){.video-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.home-featured-videos-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.video-gallery-page{padding:125px 18px 70px}.video-gallery-heading{margin-bottom:36px}.video-gallery-filters{justify-content:flex-start;margin-bottom:26px}.video-gallery-filters button{font-size:11px;padding:9px 12px}.video-gallery-filters>span{width:100%;margin:4px 0 0}.video-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 12px}.video-gallery-caption h2{font-size:12px}.home-featured-videos-heading{align-items:flex-start;flex-direction:column}.home-featured-videos-heading>a{padding-bottom:0}.home-featured-videos-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.home-featured-videos-grid .video-gallery-caption h2{font-size:11px}}
+@media(max-width:380px){.video-gallery-grid{gap:22px 9px}.video-gallery-caption h2{font-size:11px}}

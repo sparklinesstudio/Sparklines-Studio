@@ -9,6 +9,7 @@ import { ServiceVideoCards } from "@/components/studio/StudioHighlights";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { serviceGraph } from "@/lib/structuredData";
 import { serviceMetadata } from "@/lib/serviceMetadata";
+import { HomeFeaturedVideos } from "@/components/studio/VideoGallery";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 
@@ -19,6 +20,7 @@ export default function Home() {
     <MotionMarquee words={["Good stories", "Bold identities", "Films that feel", "A different perspective"]} />
     <InteractiveAbout showEyebrow={false} />
     <HomeFilmMasonry />
+    <HomeFeaturedVideos />
     <FilmCarousel />
     <BrandingFeature showEyebrow={false} />
     <ServiceVideoCards />

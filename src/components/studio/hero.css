@@ -13,8 +13,8 @@
   align-items: center;
   justify-content: center;
   min-height: 760px;
-  min-height: max(760px, calc(100svh - 72px));
-  padding: 190px 24px 160px;
+  min-height: max(760px, calc(100svh - 84px));
+  padding: 274px 24px 160px;
   background: #f3f3ef;
   isolation: isolate;
 }
@@ -82,7 +82,7 @@
 @keyframes reference-video-float { 0%, 100% { transform: translateY(0) rotate(var(--hero-tilt)); } 50% { transform: translateY(-12px) rotate(calc(var(--hero-tilt) + 2deg)); } }
 @keyframes reference-stamp-spin { to { transform: rotate(360deg); } }
 @media (min-width: 1700px) {
-  .reference-hero-paper { min-height: max(900px, calc(100svh - 72px)); }
+  .reference-hero-paper { min-height: max(900px, calc(100svh - 84px)); }
   .reference-video-one { width: 230px; height: 264px; top: 130px; }
   .reference-video-two { width: 185px; height: 220px; bottom: 160px; }
   .reference-video-three, .reference-video-four { width: 195px; height: 220px; }
@@ -108,8 +108,8 @@
   }
   .reference-hero-paper {
     min-height: 720px;
-    min-height: max(720px, calc(100svh - 45px));
-    padding: 130px 16px 125px;
+    min-height: max(720px, calc(100svh - 74px));
+    padding: 204px 16px 125px;
     display: flex;
     flex-direction: column;
     align-items: center;
