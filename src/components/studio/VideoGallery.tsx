@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { AmbientVideo } from "./StudioMotion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -13,7 +13,8 @@ import { INSTAGRAM_VIDEOS, INSTAGRAM_VIDEO_URLS } from "@/data/instagramVideos";
 import "./video-gallery.css";
 
 const existingVideos = [...RESTAURANT_RETAIL_VIDEOS, ...CLOTHING_VIDEOS, ...REAL_ESTATE_VIDEOS];
-const allVideos = [...INSTAGRAM_VIDEOS, ...existingVideos];
+const seen = new Set<string>();
+const allVideos = [...INSTAGRAM_VIDEOS, ...existingVideos].filter(video => { if (!video.src) return false; const key = video.src.split(/\/v\d+\//).pop() || video.src; if (seen.has(key)) return false; seen.add(key); return true; });
 const instagramUrlById = new Map(INSTAGRAM_VIDEOS.map((video, index) => [video.id, INSTAGRAM_VIDEO_URLS[index]]));
 
 function VideoCard({ video }: { video: MasonryVideoItem }) {
@@ -23,9 +24,7 @@ function VideoCard({ video }: { video: MasonryVideoItem }) {
     <article className="video-gallery-card">
       <div className="video-gallery-media">
         {video.src ? (
-          <video controls playsInline preload="none" poster={video.poster || undefined} aria-label={video.title}>
-            <source src={video.src} type="video/mp4" />
-          </video>
+          <AmbientVideo src={video.src} poster={video.poster} />
         ) : originalUrl ? (
           <iframe
             src={`https://www.instagram.com${new URL(originalUrl).pathname.replace(/\/$/, "")}/embed`}
@@ -49,26 +48,14 @@ function VideoCard({ video }: { video: MasonryVideoItem }) {
 }
 
 export function VideoGallery() {
-  const [filter, setFilter] = useState("All videos");
-  const filters = ["All videos", "Restaurants, Cafes & Retail", "Fashion & lifestyle", "Spaces & real estate"];
-  const videos = useMemo(() => {
-    if (filter === "All videos") return allVideos;
-    if (filter === "Restaurants, Cafes & Retail") return [...INSTAGRAM_VIDEOS, ...RESTAURANT_RETAIL_VIDEOS];
-    if (filter === "Fashion & lifestyle") return CLOTHING_VIDEOS;
-    return REAL_ESTATE_VIDEOS;
-  }, [filter]);
-
+  const videos = allVideos.filter(video => video.src);
   return (
     <main id="main-content" className="video-gallery-page">
       <header className="video-gallery-heading">
         <p className="studio-kicker">SPARKLINES STUDIO · MOVING PICTURES</p>
-        <h1>Video <em>gallery.</em></h1>
+        <h1>Video production<br />in <em>Kolkata.</em></h1>
         <p>A collection of food, fashion and spaces, told one frame at a time.</p>
       </header>
-      <div className="video-gallery-filters" role="group" aria-label="Filter videos">
-        {filters.map((label) => <button key={label} type="button" aria-pressed={filter === label} onClick={() => setFilter(label)}>{label}</button>)}
-        <span aria-live="polite">{videos.length} videos</span>
-      </div>
       <div className="video-gallery-grid">{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
       <Link className="video-gallery-contact" href="/contact">Have a story in mind? Let’s make it move <ArrowUpRight size={18} /></Link>
     </main>
@@ -76,7 +63,7 @@ export function VideoGallery() {
 }
 
 export function HomeFeaturedVideos() {
-  const featured = INSTAGRAM_VIDEOS.slice(0, 6);
+  const featured = INSTAGRAM_VIDEOS.filter(video => video.src);
   return (
     <section className="home-featured-videos experience-section experience-pad" aria-labelledby="home-featured-videos-title">
       <div className="home-featured-videos-heading"><div><p className="studio-kicker">RESTAURANTS · CAFES · RETAIL</p><h2 id="home-featured-videos-title">A little more <em>appetite.</em></h2></div><Link href="/video-gallery">Explore all {allVideos.length} films <ArrowUpRight size={18} /></Link></div>
@@ -84,3 +71,4 @@ export function HomeFeaturedVideos() {
     </section>
   );
 }
+

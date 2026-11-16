@@ -6,10 +6,11 @@ import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 
 export const metadata = {
-  title: "Video Gallery | Sparklines Studio",
-  description: "Explore video stories for restaurants, cafes, retail, fashion, and spaces by Sparklines Studio.",
+  title: "Video Production Portfolio in Kolkata | Sparklines Studio",
+  description: "Explore our video production portfolio in Kolkata: brand films, restaurant reels, fashion campaigns and property videos crafted by Sparklines Studio.",
 };
 
 export default function VideoGalleryPage() {
   return <div className="studio-page studio-experience"><HeaderNavigation /><StudioMotion><VideoGallery /></StudioMotion><BrandFooterBanner showEyebrow={false} /></div>;
 }
+
