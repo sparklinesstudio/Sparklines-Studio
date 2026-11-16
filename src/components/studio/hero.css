@@ -1,7 +1,7 @@
 /* A framed, editorial hero with live films and original studio artwork. */
 .reference-hero {
   position: relative;
-  padding: 0 clamp(28px, 6.5vw, 110px) 72px;
+  padding: var(--studio-nav-height, 84px) clamp(28px, 6.5vw, 110px) 72px;
   background: #073bff;
   color: #111;
   overflow: hidden;
@@ -104,7 +104,7 @@
 }
 @media (max-width: 700px) {
   .reference-hero {
-    padding: 0 12px 55px;
+    padding: var(--studio-nav-height, 74px) 12px 55px;
   }
   .reference-hero-paper {
     min-height: 720px;
@@ -266,10 +266,10 @@
     left: 6px;
   }
   .reference-video-three {
-    top: 20px;
+    top: 32px;
   }
   .reference-video-one {
-    top: 16px;
+    top: 28px;
   }
   .reference-video-two {
     bottom: 95px;
