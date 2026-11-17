@@ -1,0 +1,223 @@
+{
+  "verifiedAt": "2026-11-17T12:59:38.661Z",
+  "publicationBatch": "videography-2026-11-17",
+  "status": "published",
+  "featuredImage": "https://www.sparklinesstudio.com/og?title=Videography%20image%20placeholder",
+  "articles": [
+    {
+      "slug": "restaurant-reel-shot-list",
+      "url": "https://www.sparklinesstudio.com/blogs/restaurant-reel-shot-list",
+      "title": "What should a restaurant reel shot list include when you only have one hour before service?",
+      "targetKeyword": "restaurant reel shot list",
+      "metaTitle": "Restaurant reel shot list: What should you film?",
+      "metaDescription": "Build a restaurant reel shot list for a one-hour shoot, with food prep, plating, ambience and serving shots that help diners decide where to eat.",
+      "bodyWords": 748,
+      "totalWords": 797
+    },
+    {
+      "slug": "jewellery-video-lighting",
+      "url": "https://www.sparklinesstudio.com/blogs/jewellery-video-lighting",
+      "title": "How can you set up jewellery video lighting so gold looks rich without losing gemstone detail?",
+      "targetKeyword": "jewellery video lighting",
+      "metaTitle": "Jewellery video lighting: How do you control reflections?",
+      "metaDescription": "Plan jewellery video lighting that controls reflections, preserves gold colour and shows gemstone detail, with a practical setup and filming checklist.",
+      "bodyWords": 749,
+      "totalWords": 802
+    },
+    {
+      "slug": "interior-walkthrough-video",
+      "url": "https://www.sparklinesstudio.com/blogs/interior-walkthrough-video",
+      "title": "How do you plan an interior walkthrough video that shows a small apartment without making it look misleading?",
+      "targetKeyword": "interior walkthrough video",
+      "metaTitle": "Interior walkthrough video: How should you plan it?",
+      "metaDescription": "Plan an interior walkthrough video for a small apartment with honest framing, a clear room sequence, controlled window exposure and useful detail shots.",
+      "bodyWords": 752,
+      "totalWords": 805
+    },
+    {
+      "slug": "customer-testimonial-video-questions",
+      "url": "https://www.sparklinesstudio.com/blogs/customer-testimonial-video-questions",
+      "title": "Which customer testimonial video questions get specific answers from clients who are nervous on camera?",
+      "targetKeyword": "customer testimonial video questions",
+      "metaTitle": "Customer testimonial video questions: What should you ask?",
+      "metaDescription": "Use customer testimonial video questions that reveal the original problem, buying concerns, real experience and credible results without scripted praise.",
+      "bodyWords": 742,
+      "totalWords": 797
+    },
+    {
+      "slug": "factory-video-shoot-plan",
+      "url": "https://www.sparklinesstudio.com/blogs/factory-video-shoot-plan",
+      "title": "What should a factory video shoot plan include when production cannot stop for the camera crew?",
+      "targetKeyword": "factory video shoot plan",
+      "metaTitle": "Factory video shoot plan: How do you avoid disruption?",
+      "metaDescription": "Create a factory video shoot plan around production access, process coverage, staff interviews, confidentiality and approvals without disrupting operations.",
+      "bodyWords": 727,
+      "totalWords": 774
+    },
+    {
+      "slug": "saree-product-video",
+      "url": "https://www.sparklinesstudio.com/blogs/saree-product-video",
+      "title": "How do you shoot a saree product video that shows the drape, fabric texture and colour clearly?",
+      "targetKeyword": "saree product video",
+      "metaTitle": "Saree product video: How do you show fabric clearly?",
+      "metaDescription": "Plan a saree product video that shows fabric texture, drape, borders and colour with useful product views, consistent lighting and an honest edit.",
+      "bodyWords": 746,
+      "totalWords": 803
+    },
+    {
+      "slug": "corporate-event-highlight-video",
+      "url": "https://www.sparklinesstudio.com/blogs/corporate-event-highlight-video",
+      "title": "What should you include in a corporate event highlight video when you also need usable speaker clips?",
+      "targetKeyword": "corporate event highlight video",
+      "metaTitle": "Corporate event highlight video: What needs filming?",
+      "metaDescription": "Plan a corporate event highlight video alongside speaker clips, with a practical coverage schedule, audio checks, audience shots and clear deliverables.",
+      "bodyWords": 746,
+      "totalWords": 798
+    },
+    {
+      "slug": "office-interview-audio",
+      "url": "https://www.sparklinesstudio.com/blogs/office-interview-audio",
+      "title": "How can you record clear office interview audio when the room has traffic noise, air conditioning and echo?",
+      "targetKeyword": "office interview audio",
+      "metaTitle": "Office interview audio: How do you reduce room noise?",
+      "metaDescription": "Improve office interview audio with quieter room choices, tested microphone placement, monitored recordings and practical steps for traffic, fans and echo.",
+      "bodyWords": 751,
+      "totalWords": 799
+    },
+    {
+      "slug": "vertical-and-horizontal-video-shoot",
+      "url": "https://www.sparklinesstudio.com/blogs/vertical-and-horizontal-video-shoot",
+      "title": "How do you plan a vertical and horizontal video shoot without cutting off people, products or important actions?",
+      "targetKeyword": "vertical and horizontal video shoot",
+      "metaTitle": "Vertical and horizontal video shoot: How do you plan it?",
+      "metaDescription": "Plan a vertical and horizontal video shoot with clear deliverables, crop tests, separate takes and graphics that work for website films and social edits.",
+      "bodyWords": 746,
+      "totalWords": 797
+    },
+    {
+      "slug": "small-business-video-production-brief",
+      "url": "https://www.sparklinesstudio.com/blogs/small-business-video-production-brief",
+      "title": "What should a small business video production brief include before you ask an agency for a quote?",
+      "targetKeyword": "small business video production brief",
+      "metaTitle": "Small business video production brief: What goes in it?",
+      "metaDescription": "Write a small business video production brief that defines your audience, message, deliverables, filming access, budget priorities and approval process.",
+      "bodyWords": 745,
+      "totalWords": 791
+    }
+  ],
+  "publicVerification": {
+    "checkedAt": "2026-11-17T12:59:50.549Z",
+    "results": [
+      {
+        "slug": "restaurant-reel-shot-list",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "jewellery-video-lighting",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "interior-walkthrough-video",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "customer-testimonial-video-questions",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "factory-video-shoot-plan",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "saree-product-video",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "corporate-event-highlight-video",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "office-interview-audio",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "vertical-and-horizontal-video-shoot",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      },
+      {
+        "slug": "small-business-video-production-brief",
+        "http": 200,
+        "h1": true,
+        "metadata": true,
+        "canonical": true,
+        "sectionLinks": true,
+        "publicApi": true,
+        "blogListing": true,
+        "sitemap": true
+      }
+    ]
+  }
+}
