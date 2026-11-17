@@ -1,6 +1,6 @@
 import {serviceBySlug} from "@/data/services/catalog";
-import {SupportingServicePage} from "@/components/studio/SupportingServicePage";
+import {SeoServicePage} from "@/components/studio/SeoServicePage";
 import {serviceMetadata} from "@/lib/serviceMetadata";
 const service=serviceBySlug("ai-seo-agency-kolkata")!;
 export const metadata=serviceMetadata(service);
-export default function ServicePage(){return <SupportingServicePage service={service}/>;}
+export default function ServicePage(){return <SeoServicePage service={service}/>;}
