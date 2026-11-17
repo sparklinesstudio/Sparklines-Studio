@@ -14,7 +14,7 @@ import { INSTAGRAM_VIDEOS } from "@/data/instagramVideos";
 import importedVideos from "@/data/importedGalleryVideos.json";
 import "./video-gallery.css";
 
-const categories = ["All", "Food", "Personal Branding", "Real Estate", "Clothing"] as const;
+const categories = ["Food", "Personal Branding", "Real Estate", "Clothing"] as const;
 type Category = (typeof categories)[number];
 const categorize = (videos: MasonryVideoItem[], category: Category) => videos.map(video => ({ ...video, category }));
 const existingVideos = [...categorize(RESTAURANT_RETAIL_VIDEOS, "Food"), ...categorize(CLOTHING_VIDEOS, "Clothing"), ...categorize(REAL_ESTATE_VIDEOS, "Real Estate")];
@@ -35,8 +35,8 @@ function VideoCard({ video }: { video: MasonryVideoItem }) {
 }
 
 export function VideoGallery() {
-  const [category, setCategory] = useState<Category>("All");
-  const videos = allVideos.filter(video => category === "All" || video.category === category);
+  const [category, setCategory] = useState<Category>("Food");
+  const videos = allVideos.filter(video => video.category === category);
   return (
     <main id="main-content" className="video-gallery-page">
       <header className="video-gallery-heading">
@@ -49,7 +49,7 @@ export function VideoGallery() {
         <span role="status">{videos.length} {videos.length === 1 ? "film" : "films"}</span>
       </div>
       {videos.length === 0 && <p className="video-gallery-empty">Films in this category are coming soon.</p>}
-      <div id="gallery-videos" className="video-gallery-grid">{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
+      <div id="gallery-videos" key={category} className="video-gallery-grid video-gallery-category-enter" aria-label={`${category} videos`}>{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
       <Link className="video-gallery-contact" href="/contact">Have a story in mind? Let’s make it move <ArrowUpRight size={18} /></Link>
     </main>
   );

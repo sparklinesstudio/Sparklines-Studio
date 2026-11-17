@@ -10,12 +10,13 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { serviceGraph } from "@/lib/structuredData";
 import { serviceMetadata } from "@/lib/serviceMetadata";
 import { HomeFeaturedVideos } from "@/components/studio/VideoGallery";
+import { HomeReveal } from "@/components/studio/HomeReveal";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 
 export const metadata = serviceMetadata({ title: "Video Production Agency Kolkata", slug: "", description: "Sparklines Studio is a video production agency in Kolkata creating brand films, commercials, social reels, motion graphics and SaaS product videos." });
 export default function Home() {
-  return <div className="studio-page studio-experience"><HeaderNavigation /><StudioMotion><main id="main-content"><StructuredData data={serviceGraph({slug:"",name:"Video Production",title:"Video Production Agency Kolkata",description:"Kolkata video production for brand films, commercials, product videos and social stories, from planning through the final edit."})} />
+  return <div className="studio-page studio-experience"><HomeReveal /><HeaderNavigation /><StudioMotion><main id="main-content"><StructuredData data={serviceGraph({slug:"",name:"Video Production",title:"Video Production Agency Kolkata",description:"Kolkata video production for brand films, commercials, product videos and social stories, from planning through the final edit."})} />
     <StudioHero />
     <MotionMarquee words={["Good stories", "Bold identities", "Films that feel", "A different perspective"]} />
     <InteractiveAbout showEyebrow={false} />
