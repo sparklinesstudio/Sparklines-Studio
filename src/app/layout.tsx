@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { siteConfig } from "@/config/site";
 import { Playfair_Display, Arimo, Instrument_Serif } from "next/font/google";
 import { LenisSmoothScroll } from "@/components/LenisSmoothScroll";
@@ -68,9 +69,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${playfair.variable} ${arimo.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-orange-500/20 selection:text-orange-950 font-sans">
+        <Script id="home-reveal-session" strategy="beforeInteractive">{`try{if(sessionStorage.getItem("sparklines-home-revealed")==="true"){document.documentElement.dataset.homeRevealSeen="true"}}catch{}`}</Script>
         <StructuredData id="organization-schema" data={organizationGraph()} />
         <LenisSmoothScroll />
         <Curtains color="#3b82f6" accentColor="#60a5fa" />
