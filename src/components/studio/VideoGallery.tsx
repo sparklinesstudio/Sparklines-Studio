@@ -2,7 +2,7 @@
 
 import { AmbientVideo } from "./StudioMotion";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Asterisk } from "lucide-react";
 import {
   CLOTHING_VIDEOS,
   REAL_ESTATE_VIDEOS,
@@ -26,6 +26,7 @@ const clothingVideos = CLOTHING_VIDEOS.filter(video => !removedClothingSources.h
 const existingVideos = [...categorize(foodVideos, "Food"), ...categorize(clothingVideos, "Clothing"), ...categorize(REAL_ESTATE_VIDEOS, "Real Estate")];
 const seen = new Set<string>();
 const allVideos = [...categorize(INSTAGRAM_VIDEOS, "Food"), ...importedVideos, ...existingVideos].filter(video => { if (!video.src) return false; const key = video.src.split(/\/v\d+\//).pop() || video.src; if (seen.has(key)) return false; seen.add(key); return true; });
+const heroVideos = ["Food", "Clothing", "Real Estate"].map(category => allVideos.find(video => video.category === category)).filter((video): video is MasonryVideoItem => Boolean(video));
 
 function VideoCard({ video }: { video: MasonryVideoItem }) {
   return (
@@ -44,16 +45,28 @@ export function VideoGallery() {
   return (
     <main id="main-content" className="video-gallery-page">
       <header className="video-gallery-heading">
-        <p className="studio-kicker">SPARKLINES STUDIO · MOVING PICTURES</p>
-        <h1>Video <em>gallery.</em></h1>
-        <p>Food, personal brands, real estate and clothing, told one frame at a time.</p>
+        <div className="gallery-hero-copy">
+          <p className="studio-kicker">SPARKLINES STUDIO / THE FILM COLLECTION</p>
+          <h1>Video<br /><em>gallery.</em></h1>
+          <p className="gallery-hero-description">Good food. Bold brands. Remarkable spaces.<br />Stories worth stopping for, made to move.</p>
+          <a className="gallery-hero-explore" href="#gallery-food"><span>Explore the films</span><ArrowDownRight size={24} /></a>
+        </div>
+        <div className="gallery-hero-collage" aria-hidden="true">
+          <span className="gallery-hero-note">A FEW FRAMES FROM OUR WORLD</span>
+          {heroVideos.map((video, index) => <div key={video.id} className={`gallery-hero-frame gallery-hero-frame-${index + 1}`}>
+            <AmbientVideo src={video.src} poster={video.poster} />
+            <span>0{index + 1} / {video.category === "Food" ? "Food & feeling" : video.category === "Clothing" ? "Style in motion" : "Spaces & stories"}</span>
+          </div>)}
+          <div className="gallery-hero-stamp"><Asterisk size={30} strokeWidth={1.5} /><span>MADE TO<br />MAKE YOU FEEL.</span></div>
+        </div>
+        <div className="gallery-hero-footer"><span>{allVideos.length} FILMS. ENDLESS PERSPECTIVES.</span><span>FOOD / FASHION / PEOPLE / PLACES</span></div>
       </header>
       {categories.map(category => {
         const videos = allVideos.filter(video => video.category === category);
         const sectionId = `gallery-${category.toLowerCase().replaceAll(" ", "-")}`;
-        return <section key={category} className="video-gallery-section" aria-labelledby={sectionId}>
+        return <section key={category} id={sectionId} className="video-gallery-section" aria-labelledby={`${sectionId}-title`}>
           <div className="video-gallery-section-heading">
-            <h2 id={sectionId}>{category === "Food" ? "Restaurants & Food" : category}</h2>
+            <h2 id={`${sectionId}-title`}>{category === "Food" ? "Restaurants & Food" : category}</h2>
             <span>{videos.length} {videos.length === 1 ? "film" : "films"}</span>
           </div>
           <div className="video-gallery-grid">{videos.map(video => <VideoCard key={video.id} video={video} />)}</div>

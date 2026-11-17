@@ -55,3 +55,31 @@
 .home-featured-videos-grid .video-gallery-caption>a{width:25px;height:25px;flex-shrink:0}
 @media(max-width:1100px) and (min-width:701px){.home-featured-videos-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:760px;margin-inline:auto}}
 @media(max-width:700px){.home-featured-videos-grid{display:flex;overflow-x:auto;gap:18px;padding:12px 8px 20px;scroll-snap-type:x mandatory}.home-featured-videos-grid .video-gallery-card{flex:0 0 160px;scroll-snap-align:start}}
+/* The film collection opens with an editorial cover and moving contact sheets. */
+.video-gallery-heading{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:24px 40px;max-width:1440px;margin:0 auto 64px;padding:30px 0 0;text-align:left}
+.gallery-hero-copy{position:relative;z-index:2;padding:12px 0 32px}
+.video-gallery-heading .studio-kicker{font-size:10px;letter-spacing:.12em;margin:0 0 30px}
+.video-gallery-heading h1{font-size:clamp(88px,10vw,158px);line-height:.78;letter-spacing:-.055em;margin:0}
+.video-gallery-heading h1 em{display:inline-block;margin:8px 0 0 28px;font-size:1.12em;line-height:.85;letter-spacing:-.055em}
+.video-gallery-heading .gallery-hero-description{font-size:15px;line-height:1.8;color:#657087;margin:42px 0 24px;max-width:390px}
+.gallery-hero-explore{display:inline-flex;align-items:center;gap:30px;padding:0 0 10px;border-bottom:2px solid #2055e8;color:#121b34;text-decoration:none;font-size:14px}
+.gallery-hero-explore svg{color:#2055e8;transition:transform .2s}
+.gallery-hero-explore:hover svg{transform:translate(3px,3px)}
+.gallery-hero-explore:focus-visible{outline:2px solid #2055e8;outline-offset:6px}
+.gallery-hero-collage{position:relative;min-width:0;min-height:455px;isolation:isolate}
+.gallery-hero-note{position:absolute;right:12px;top:0;color:#657087;font:9px/1.5 monospace;letter-spacing:.12em}
+.gallery-hero-frame{position:absolute;width:39%;padding:7px 7px 0;background:#fff;box-shadow:0 18px 35px #121b3420}
+.gallery-hero-frame video{display:block;width:100%;aspect-ratio:9/13;object-fit:cover;border:5px solid #2055e8;background:#2055e8}
+.gallery-hero-frame>span{display:block;padding:10px 2px;font:9px/1.4 monospace;text-transform:uppercase;color:#121b34}
+.gallery-hero-frame-1{left:0;top:66px;transform:rotate(-10deg);z-index:1}
+.gallery-hero-frame-2{left:31%;top:26px;transform:rotate(5deg);z-index:3}
+.gallery-hero-frame-2 video{border-color:#f45c2a}
+.gallery-hero-frame-3{right:0;top:112px;transform:rotate(12deg);z-index:2}
+.gallery-hero-stamp{position:absolute;left:13%;bottom:0;z-index:4;display:flex;align-items:center;gap:8px;background:#f45c2a;color:#fff;padding:13px 17px;transform:rotate(-7deg)}
+.gallery-hero-stamp span{font:400 18px/1 Impact,"Arial Narrow",Arial,sans-serif}
+.gallery-hero-footer{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;padding:25px 0 0;margin-top:8px;border-top:1px solid #121b3426;color:#657087;font:10px/1.5 monospace;letter-spacing:.07em}
+.video-gallery-section{scroll-margin-top:120px}
+@media(min-width:1500px){.gallery-hero-collage{min-height:540px}.gallery-hero-stamp{bottom:20px}}
+@media(max-width:1000px) and (min-width:701px){.video-gallery-heading{grid-template-columns:1fr 1fr;gap:20px}.gallery-hero-collage{min-height:400px}.gallery-hero-frame{width:44%}.gallery-hero-frame-1{top:85px}.gallery-hero-frame-2{left:25%;top:50px}.gallery-hero-frame-3{top:150px}.gallery-hero-stamp{left:15%;bottom:10px}.gallery-hero-note{font-size:8px}.video-gallery-heading h1{font-size:100px}}
+@media(max-width:700px){.video-gallery-page{padding-top:115px}.video-gallery-heading{grid-template-columns:1fr;gap:12px;padding-top:12px;margin-bottom:42px}.gallery-hero-copy{padding-bottom:0}.video-gallery-heading .studio-kicker{font-size:8px;margin-bottom:26px}.video-gallery-heading h1{font-size:clamp(88px,20vw,138px)}.gallery-hero-description{font-size:14px;margin:24px 0 18px}.gallery-hero-collage{min-height:clamp(300px,80vw,450px);margin:10px 12px 0}.gallery-hero-note{top:0;right:0;font-size:8px}.gallery-hero-frame{width:36%}.gallery-hero-frame-1{top:45px}.gallery-hero-frame-2{top:28px;left:32%}.gallery-hero-frame-3{top:75px}.gallery-hero-frame video{border-width:4px}.gallery-hero-frame>span{font-size:7px;padding:8px 0}.gallery-hero-stamp{bottom:10px;left:4%;padding:10px 12px}.gallery-hero-stamp span{font-size:15px}.gallery-hero-footer{margin-top:0;padding-top:18px;font-size:8px;gap:12px}.gallery-hero-footer>span{max-width:48%}}
+@media(prefers-reduced-motion:reduce){.gallery-hero-explore svg{transition:none}}
