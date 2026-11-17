@@ -1,6 +1,7 @@
 "use client";
 
 import { AmbientVideo } from "./StudioMotion";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -9,54 +10,46 @@ import {
   RESTAURANT_RETAIL_VIDEOS,
   type MasonryVideoItem,
 } from "@/data/videoProductionGallery";
-import { INSTAGRAM_VIDEOS, INSTAGRAM_VIDEO_URLS } from "@/data/instagramVideos";
+import { INSTAGRAM_VIDEOS } from "@/data/instagramVideos";
+import importedVideos from "@/data/importedGalleryVideos.json";
 import "./video-gallery.css";
 
-const existingVideos = [...RESTAURANT_RETAIL_VIDEOS, ...CLOTHING_VIDEOS, ...REAL_ESTATE_VIDEOS];
+const categories = ["All", "Food", "Personal Branding", "Real Estate", "Clothing"] as const;
+type Category = (typeof categories)[number];
+const categorize = (videos: MasonryVideoItem[], category: Category) => videos.map(video => ({ ...video, category }));
+const existingVideos = [...categorize(RESTAURANT_RETAIL_VIDEOS, "Food"), ...categorize(CLOTHING_VIDEOS, "Clothing"), ...categorize(REAL_ESTATE_VIDEOS, "Real Estate")];
 const seen = new Set<string>();
-const allVideos = [...INSTAGRAM_VIDEOS, ...existingVideos].filter(video => { if (!video.src) return false; const key = video.src.split(/\/v\d+\//).pop() || video.src; if (seen.has(key)) return false; seen.add(key); return true; });
-const instagramUrlById = new Map(INSTAGRAM_VIDEOS.map((video, index) => [video.id, INSTAGRAM_VIDEO_URLS[index]]));
+const allVideos = [...categorize(INSTAGRAM_VIDEOS, "Food"), ...importedVideos, ...existingVideos].filter(video => { if (!video.src) return false; const key = video.src.split(/\/v\d+\//).pop() || video.src; if (seen.has(key)) return false; seen.add(key); return true; });
 
 function VideoCard({ video }: { video: MasonryVideoItem }) {
-  const originalUrl = instagramUrlById.get(video.id);
-
   return (
     <article className="video-gallery-card">
       <div className="video-gallery-media">
-        {video.src ? (
-          <AmbientVideo src={video.src} poster={video.poster} />
-        ) : originalUrl ? (
-          <iframe
-            src={`https://www.instagram.com${new URL(originalUrl).pathname.replace(/\/$/, "")}/embed`}
-            title={video.title}
-            loading="lazy"
-            allow="autoplay; encrypted-media; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        ) : (
-          <a className="video-gallery-source" href="#" aria-label={video.title}>
-            <span>Video preview unavailable</span><ArrowUpRight size={22} />
-          </a>
-        )}
+        <AmbientVideo src={video.src} poster={video.poster} />
       </div>
       <div className="video-gallery-caption">
         <div><p>{video.category}</p><h2>{video.title}</h2></div>
-        {originalUrl && <a href={originalUrl} target="_blank" rel="noreferrer" aria-label={`View original post for ${video.title}`}><ArrowUpRight size={19} /></a>}
       </div>
     </article>
   );
 }
 
 export function VideoGallery() {
-  const videos = allVideos.filter(video => video.src);
+  const [category, setCategory] = useState<Category>("All");
+  const videos = allVideos.filter(video => category === "All" || video.category === category);
   return (
     <main id="main-content" className="video-gallery-page">
       <header className="video-gallery-heading">
         <p className="studio-kicker">SPARKLINES STUDIO · MOVING PICTURES</p>
         <h1>Video <em>gallery.</em></h1>
-        <p>A collection of food, fashion and spaces, told one frame at a time.</p>
+        <p>Food, personal brands, real estate and clothing, told one frame at a time.</p>
       </header>
-      <div className="video-gallery-grid">{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
+      <div className="video-gallery-filters" role="group" aria-label="Filter videos by category">
+        {categories.map(item => <button key={item} type="button" aria-pressed={category === item} aria-controls="gallery-videos" onClick={() => setCategory(item)}>{item}</button>)}
+        <span role="status">{videos.length} {videos.length === 1 ? "film" : "films"}</span>
+      </div>
+      {videos.length === 0 && <p className="video-gallery-empty">Films in this category are coming soon.</p>}
+      <div id="gallery-videos" className="video-gallery-grid">{videos.map((video) => <VideoCard key={video.id} video={video} />)}</div>
       <Link className="video-gallery-contact" href="/contact">Have a story in mind? Let’s make it move <ArrowUpRight size={18} /></Link>
     </main>
   );

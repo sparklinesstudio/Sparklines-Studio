@@ -8,6 +8,8 @@
 .video-gallery-filters button{border:1px solid #d9deea;border-radius:999px;background:#fff;padding:10px 16px;color:#44506a;font:500 12px/1.3 Arial,Helvetica,sans-serif;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .video-gallery-filters button[aria-pressed=true],.video-gallery-filters button:hover{background:#2055e8;border-color:#2055e8;color:#fff}
 .video-gallery-filters>span{margin-left:8px;color:#778196;font-size:12px}
+.video-gallery-filters button:focus-visible{outline:3px solid #121b34;outline-offset:3px}
+.video-gallery-empty{text-align:center;color:#657087;padding:40px 20px}
 .video-gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 20px;max-width:1440px;margin:auto}
 .video-gallery-card{min-width:0}
 .video-gallery-media{position:relative;overflow:hidden;aspect-ratio:9/16;border-radius:5px;background:#e9ecf4}
