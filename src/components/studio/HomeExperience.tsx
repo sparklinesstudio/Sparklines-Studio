@@ -98,10 +98,10 @@ function AboutPhotoCollage() {
       <Image src={founders[0].image} alt="Asad, founder of Sparklines Studio" fill sizes="(max-width: 750px) 65vw, 32vw" />
     </motion.figure>
     <motion.figure className="about-photo about-photo-detail" style={{ x: detailX, y: detailY, rotate: detailRotation }} whileHover={enabled ? { scale: 1.035 } : undefined}>
-      <Image src={founders[1].image} alt="Saif, founder of Sparklines Studio" fill sizes="(max-width: 750px) 45vw, 22vw" />
+      <Image src={founders[1].image} alt="Saif, founder of Sparklines Studio" fill sizes="(max-width: 750px) 65vw, 32vw" />
     </motion.figure>
     <motion.figure className="about-photo about-photo-brand" style={{ x: brandX, y: brandY, rotate: brandRotation }} whileHover={enabled ? { scale: 1.04 } : undefined}>
-      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 30vw, 14vw" />
+      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 45vw, 22vw" />
     </motion.figure>
   </div>;
 }

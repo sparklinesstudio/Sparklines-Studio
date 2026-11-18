@@ -17,24 +17,21 @@
 .about-photo {
   position: absolute;
   margin: 0;
-  border: 12px solid #fff;
-  background: #fff;
-  box-shadow: 0 13px 35px #18213b12;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
   will-change: transform;
 }
-.about-photo img { object-fit: cover; }
-.about-photo-main { top: 12px; left: 2%; width: 70%; height: 92%; z-index: 1; --about-tilt: -4deg; }
-.about-photo-main img { object-position: center top; }
-.about-photo-detail { bottom: 0; right: 0; width: 51%; height: 55%; z-index: 3; --about-tilt: 6deg; }
-.about-photo-detail img { object-position: center top; }
-.about-photo-brand { top: 24%; right: 7%; width: 36%; height: 28%; z-index: 4; border-width: 8px; --about-tilt: -8.5deg; }
-.about-photo-brand { border: 0; background: transparent; box-shadow: none; }
+.about-photo img { object-fit: contain; object-position: center; }
+.about-photo-main { top: 0; left: -5%; width: 68%; height: 70%; z-index: 1; --about-tilt: -4deg; }
+.about-photo-detail { bottom: 0; right: -5%; width: 68%; height: 70%; z-index: 3; --about-tilt: 6deg; }
+.about-photo-brand { bottom: 0; left: 0; width: 45%; height: 36%; z-index: 4; --about-tilt: -8.5deg; }
 .about-photo-brand img { object-fit: contain; object-position: center; }
 .about-founders { background: #f3f3ef; }
 .about-founders-intro { max-width: 520px; margin-top: 24px; }
 .about-founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); margin-top: 48px; }
-.about-founder-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e7e7e1; }
-.about-founder-portrait img { object-fit: contain; object-position: center bottom; }
+.about-founder-portrait { position: relative; aspect-ratio: 1; background: transparent; }
+.about-founder-portrait img { object-fit: contain; object-position: center; }
 .about-founder-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid #181a2226; margin-top: 20px; }
 .studio-experience .about-founder-caption h3 { margin: 0; font-size: clamp(30px, 3vw, 48px); }
 .about-founder-caption p { margin: 0; }
@@ -62,18 +59,12 @@
 @media (max-width: 1100px) and (min-width: 751px) {
   .about-reference { gap: 45px; min-height: 700px; }
   .about-photo-collage { height: 510px; }
-  .about-photo { border-width: 9px; }
-  .about-photo-brand { border-width: 6px; }
   .studio-experience .about-reference h2 { font-size: clamp(41px, 5vw, 57px); }
   .studio-experience .about-reference-copy > p:not(.about-reference-intro) { font-size: 14px; }
 }
 @media (max-width: 750px) {
   .about-reference { grid-template-columns: 1fr; gap: 55px; min-height: 0; padding-block: 65px 75px; }
   .about-photo-collage { height: clamp(390px, 83vw, 570px); max-width: 600px; margin-inline: auto; width: 96%; }
-  .about-photo { border-width: 9px; }
-  .about-photo-brand { border-width: 6px; }
-  .about-photo-main { left: 1%; width: 71%; }
-  .about-photo-detail { right: 0; width: 50%; }
   .about-reference-copy { padding-inline: 5px; }
   .studio-experience .about-reference h2 { font-size: clamp(43px, 8vw, 60px); line-height: .98; }
   .studio-experience .about-reference h2 em { font-size: .94em; }
