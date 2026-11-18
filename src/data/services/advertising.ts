@@ -3,18 +3,18 @@ export const advertisingServices:StudioService[] = [
   {
     "slug": "paid-ads-agency-kolkata",
     "name": "Paid Advertising",
-    "title": "Paid Ads Agency Kolkata",
+    "title": "Paid Ads & PPC Agency in Kolkata",
     "family": "Paid advertising",
-    "description": "Paid ads agency Kolkata for channel planning, conversion tracking and creative testing across Google, Meta, LinkedIn and Reddit. Plan around qualified enquiries.",
+    "description": "Get PPC management in Kolkata for Google Ads, Facebook and Instagram. Plan your ad budget, launch campaigns and track the enquiries and sales they generate.",
     "hero": [
-      "Spend with purpose.",
-      "Learn what converts."
+      "Reach your next customer.",
+      "Plan your PPC budget."
     ],
-    "intro": "Kolkata businesses investing in paid advertising need to distinguish an inexpensive lead from a customer worth acquiring. We connect channel selection, landing-page messaging and sales feedback before recommending where your advertising budget should go.",
+    "intro": "Sparklines Studio manages Google Ads, Facebook and Instagram campaigns for Kolkata businesses. We help you choose where to spend, set up conversion tracking and see which campaigns bring in bookings, sales or qualified enquiries. We also scope LinkedIn and Reddit campaigns when they fit your audience.",
     "insight": {
-      "title": "Start with the economics of a customer.",
+      "title": "What should your PPC budget buy?",
       "paragraphs": [
-        "Work backwards from your offer: gross margin, typical order value, repeat purchases and the proportion of enquiries your team can close. An acceptable acquisition cost for a recurring B2B contract will differ from the cost a single restaurant booking can support. Platform-reported returns are only one part of that calculation.",
+        "Start with the customer you want and what a sale is worth to your business. For a Kolkata interior studio, a useful lead may be a homeowner with a property in your service area, a suitable budget and a project timeline. For an online store, the useful signal may be a completed order after accounting for margin and delivery costs. Set the budget and reporting around that outcome.",
         "A useful channel plan gives each platform a job. Search can capture an existing requirement; social creative can demonstrate an unfamiliar product; professional targeting can reach a buying committee. We scope a focused starting point rather than spreading a small budget across every platform."
       ]
     },
@@ -34,16 +34,16 @@ export const advertisingServices:StudioService[] = [
     ],
     "deliverables": [
       {
-        "title": "Channel and measurement plan",
-        "body": "Budget allocation, campaign objectives, conversion definitions and an account-access checklist."
+        "title": "PPC strategy and budget",
+        "body": "Choose the platform, service areas and offer to test. Agree on media spend and what counts as a qualified lead, booking or sale."
       },
       {
-        "title": "Launch-ready campaigns",
-        "body": "Agreed account structure, audience or keyword research, ad assets and landing-page recommendations."
+        "title": "Campaign setup and conversion tracking",
+        "body": "Set up the account structure, keywords or audiences, ad copy and campaign assets. Review the landing page and test the agreed enquiry or purchase events before launch."
       },
       {
-        "title": "Decision-focused reporting",
-        "body": "Spend, enquiries and qualification outcomes with the next test and its rationale."
+        "title": "Campaign management and reporting",
+        "body": "Review spend, search terms or creative performance and lead quality. See which campaigns to keep, adjust or pause and why."
       }
     ],
     "example": {
@@ -54,8 +54,36 @@ export const advertisingServices:StudioService[] = [
     },
     "faqs": [
       [
-        "Is ad spend included in your fee?",
-        "Media spend, studio management, asset production and software costs are scoped separately. Your proposal identifies who pays each provider."
+        "Should I run ads for a brand-new company in Kolkata?",
+        "Yes, if you want to start bringing in business and have an offer ready to sell. If you serve customers locally, begin in the areas you can actually cover and give people one clear way to call, book or buy. Set a spending limit and review the first conversations or orders before expanding."
+      ],
+      [
+        "Can I run ads myself with AI, or should I hire a specialist who uses AI?",
+        "DIY can work for one straightforward offer if you can verify tracking, review the enquiries and manage the account each week. AI can help draft ad variants and summarise reports. A specialist can set up and check measurement, design a controlled test and use your sales feedback to decide what to change. That support matters more when several campaigns share a budget or sales close offline."
+      ],
+      [
+        "Should a Kolkata business start with Google Ads or Instagram ads?",
+        "Start with Google Search when customers already look for your service, such as office fit-outs in Salt Lake. Try Instagram or Facebook when seeing the product helps people decide, such as a home décor brand demonstrating how a piece fits in a small flat. Put a small test budget behind one clear offer on the channel that suits it."
+      ],
+      [
+        "How much should I budget if I have never run ads before?",
+        "Work out what you can pay for a customer from the gross profit available per sale. If you can afford ₹5,000 per new customer and you expect one in five qualified leads to buy, that implies a target of ₹1,000 per qualified lead. Use that as a planning assumption, set a spend cap and revise your estimates when you have actual sales data."
+      ],
+      [
+        "Can I run ads only in the Kolkata areas I serve?",
+        "Yes. If you can take jobs in Salt Lake and New Town, start with the coverage you can deliver. Check where qualified enquiries actually come from and ask for the customer’s locality or PIN code when they enquire. Use that feedback to refine targeting and explain your service area on the landing page."
+      ],
+      [
+        "My ads get WhatsApp clicks. How do I know if they bring in customers?",
+        "Record the WhatsApp click as an early signal. Have whoever answers label conversations by whether the person was a fit, booked or bought, and record the campaign source where you can. Review cost per qualified conversation and booked sale alongside the click count."
+      ],
+      [
+        "When should I pause a campaign that has spent money without a sale?",
+        "Check the landing page, enquiry routing and conversion tracking first. Then compare spend with your agreed test limit and allow for your normal sales cycle. If that window has passed and the campaign still produces few suitable enquiries, pause and revise the offer, audience or page before funding another test."
+      ],
+      [
+        "How much does PPC management cost in Kolkata?",
+        "We quote management separately from the media budget you pay to the ad platforms. The fee depends on the channels, campaign complexity and whether you need new creative, landing-page work or conversion tracking. Tell us your offer, target areas and budget range so we can scope a first campaign or an account takeover."
       ],
       [
         "Do you need control of our accounts?",

@@ -3,7 +3,7 @@ export const coreSearchServices:StudioService[] = [
   {
     "slug": "seo-agency-kolkata",
     "name": "SEO",
-    "title": "SEO Agency Kolkata",
+    "title": "SEO Agency in Kolkata",
     "family": "SEO & AI search",
     "description": "SEO agency Kolkata for technical priorities, useful content, local visibility and qualified organic enquiries. Build search around your actual customers.",
     "hero": [

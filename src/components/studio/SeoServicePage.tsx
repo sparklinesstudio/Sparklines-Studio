@@ -13,6 +13,7 @@ import { ServiceHero } from "./ServiceHero";
 import { ServicePointerCard } from "./ServicePointerCard";
 import { StudioMotion } from "./StudioMotion";
 import { SeoSourceIllustration } from "./SeoSourceIllustration";
+import { SearchCaseStudy } from "./SearchCaseStudy";
 import "./supporting-services.css";
 import "./service-editorial.css";
 import "./seo-content.css";
@@ -43,6 +44,7 @@ export function SeoServicePage({ service }: { service: StudioService }) {
 
     <section className="seo-cost" id="seo-cost"><div className="svc-wrap seo-cost-layout"><div><span className="svc-small-label">PRICING / YOUR BUSINESS, YOUR SCOPE</span><h2>What does<br /><em>{service.name} cost?</em></h2><p>{copy.costIntro}</p><p>Tell us your niche, what needs attention and what you want to achieve. We’ll discuss the requirements and shape the proposal around the agreed work.</p><Link href="/contact" className="svc-button">Get pricing details <ArrowUpRight size={19} /></Link></div><div className="seo-cost-sheet"><div className="seo-cost-sheet-top"><span>WHAT SHAPES THE COST</span><Asterisk size={30} /></div>{copy.costFactors.map(([title, body], index) => <div className="seo-cost-factor" key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{body}</p></div></div>)}<p className="seo-cost-footnote">No fixed packages. Start with a conversation on our <Link href="/contact">contact page</Link>.</p></div></div></section>
 
+    <SearchCaseStudy serviceSlug={service.slug} />
     <section className="svc-faq svc-wrap"><div><span className="svc-small-label">BEFORE YOU DECIDE</span><h2>{service.name}.<br /><em>Your questions answered.</em></h2><p>Practical details to help you decide what your business needs.</p><Link href="/contact" className="svc-text-link">Discuss your website <ArrowUpRight size={18} /></Link></div><div>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span className="svc-plus" aria-hidden="true">+</span></summary><p>{answer}{question === copy.costQuestion && <> <Link href="/contact">Contact us for more details.</Link></>}</p></details>)}</div></section>
 
     <section className="svc-related svc-wrap"><div className="svc-section-heading"><h2>Connect the work.<br /><em>Explore the next service.</em></h2><Link href="/seo-agency-kolkata" className="svc-text-link">Our SEO approach <ArrowUpRight size={18} /></Link></div><div className="svc-related-grid">{related.map(item => <Link href={`/${item.slug}`} key={item.slug}><h3>{item.name}</h3><ArrowUpRight size={21} /></Link>)}</div></section>

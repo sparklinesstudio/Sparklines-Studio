@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/structuredData";
 import {studioServices} from "@/data/services/catalog";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
+import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
 import { listBlogSitemapEntries } from "@/lib/blog/store";
 
 // Always read MongoDB at request time: publish, unpublish, trash and scheduling
@@ -23,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/refund-policy",
     ...studioServices.map(service=>"/"+service.slug),
     ...PORTFOLIO_DATA.map((p) => p.customHref || "/work/" + p.id),
+    ...Object.values(searchCaseStudies).map(searchCaseHref),
   ];
 
   const staticEntries: MetadataRoute.Sitemap = [...new Set(staticRoutes.map(route => route.split(/[?#]/)[0]))].map((route) => ({
