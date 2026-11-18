@@ -68,25 +68,54 @@ export function MotionMarquee({ words, reverse = false }: { words: string[]; rev
   return <div className={"experience-marquee " + (reverse ? "marquee-blue" : "")}><div className="experience-marquee-track">{[0, 1].map(copy => <div key={copy} className="experience-marquee-group" aria-hidden={copy === 1}>{words.map(word => <span key={word}>{word}<Asterisk size={28} strokeWidth={1.3} aria-hidden="true" /></span>)}</div>)}</div></div>;
 }
 
-function DraggableFounder({ founder, className, tilt }: { founder: (typeof founders)[number]; className: string; tilt: number }) {
+function FounderSticker({ src, alt, label, className, tilt, face = false }: { src: string; alt: string; label: string; className: string; tilt: number; face?: boolean }) {
   const { enabled } = useStudioMotion();
+  const dragging = useRef(false);
+  const repelX = useMotionValue(0);
+  const repelY = useMotionValue(0);
+  const x = useSpring(repelX, { stiffness: 280, damping: 20 });
+  const y = useSpring(repelY, { stiffness: 280, damping: 20 });
+  const resetRepulsion = () => { repelX.set(0); repelY.set(0); };
+
+  useEffect(() => {
+    if (!enabled) { repelX.set(0); repelY.set(0); }
+  }, [enabled, repelX, repelY]);
+
   return <motion.button type="button" className={"about-photo about-founder-drag " + className}
-    aria-label={"Drag " + founder.name + "’s portrait; release to return it to its starting position"}
+    aria-label={"Drag " + label + "; release to return it to its starting position"}
     drag dragSnapToOrigin dragMomentum={false}
     dragTransition={{ bounceStiffness: enabled ? 260 : 1000, bounceDamping: enabled ? 18 : 100 }}
     style={{ rotate: tilt, touchAction: "none" }}
-    whileDrag={{ zIndex: 20, scale: enabled ? 1.05 : 1, cursor: "grabbing" }}>
-    <Image src={founder.image} alt={founder.name + ", founder and director of Sparklines Studio"} fill sizes="(max-width: 750px) 65vw, 32vw" draggable={false} />
+    whileDrag={{ zIndex: 20, scale: enabled ? 1.05 : 1, cursor: "grabbing" }}
+    onPointerMove={event => {
+      if (!enabled || dragging.current || event.buttons !== 0 || event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      // Measure the drag wrapper, so the repelling image never moves its own hover target.
+      const bounds = event.currentTarget.getBoundingClientRect();
+      const dx = event.clientX - (bounds.left + bounds.width / 2);
+      const dy = event.clientY - (bounds.top + bounds.height / 2);
+      const distance = Math.hypot(dx, dy);
+      const force = 10 + 16 * (1 - Math.min(distance / (Math.max(bounds.width, bounds.height) / 2), 1));
+      repelX.set(distance > 1 ? -dx / distance * force : 0);
+      repelY.set(distance > 1 ? -dy / distance * force : -force);
+    }}
+    onPointerLeave={resetRepulsion}
+    onPointerDown={resetRepulsion}
+    onDragStart={() => { dragging.current = true; resetRepulsion(); }}
+    onDragEnd={() => { dragging.current = false; resetRepulsion(); }}>
+    <motion.span className="about-sticker-repel" style={{ x, y }}>
+      <span className={face ? "about-sticker-art about-face-wobble" : "about-sticker-art"}>
+        <Image src={src} alt={alt} fill sizes={face ? "(max-width: 750px) 65vw, 32vw" : "(max-width: 750px) 50vw, 25vw"} draggable={false} />
+      </span>
+    </motion.span>
   </motion.button>;
 }
 
 function AboutPhotoCollage() {
-  return <div className="about-photo-collage" aria-label="Drag the founders’ portraits and release to spring back">
-    <DraggableFounder founder={founders[0]} className="about-photo-main" tilt={-4} />
-    <DraggableFounder founder={founders[1]} className="about-photo-detail" tilt={6} />
-    <figure className="about-photo about-photo-brand" aria-hidden="true">
-      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 50vw, 25vw" draggable={false} />
-    </figure>
+  return <div className="about-photo-collage" aria-label="Drag all three stickers and release to spring back">
+    {founders.map((founder, index) => <FounderSticker key={founder.name} src={founder.image}
+      alt={founder.name + ", founder and director of Sparklines Studio"} label={founder.name + "’s portrait"}
+      className={index === 0 ? "about-photo-main" : "about-photo-detail"} tilt={index === 0 ? -4 : 6} face />)}
+    <FounderSticker src={studioSticker} alt="Studio clapperboard sticker" label="the clapperboard sticker" className="about-photo-brand" tilt={-8.5} />
     <p className="about-drag-hint">Give us a little nudge. Drag &amp; release.</p>
   </div>;
 }

@@ -18,9 +18,7 @@
 .film-tilt-1 { --film-tilt: 2deg; }
 .film-tilt-2 { --film-tilt: -1.5deg; }
 .film-reference-card > a { display: block; }
-.film-reference-frame { position: relative; overflow: hidden; aspect-ratio: 4/5; background: #dce4fa; }
-.film-tilt-1 .film-reference-frame { aspect-ratio: 4/3; }
-.film-tilt-2 .film-reference-frame { aspect-ratio: 9/13; }
+.film-reference-frame { position: relative; overflow: hidden; aspect-ratio: 9/16; background: #dce4fa; }
 .film-reference-frame video { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .65s; }
 .film-reference-index { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #fff; color: #073bff; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 18px; }
 .film-reference-caption { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 16px 3px 16px 8px; }
