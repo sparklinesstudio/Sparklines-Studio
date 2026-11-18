@@ -68,41 +68,26 @@ export function MotionMarquee({ words, reverse = false }: { words: string[]; rev
   return <div className={"experience-marquee " + (reverse ? "marquee-blue" : "")}><div className="experience-marquee-track">{[0, 1].map(copy => <div key={copy} className="experience-marquee-group" aria-hidden={copy === 1}>{words.map(word => <span key={word}>{word}<Asterisk size={28} strokeWidth={1.3} aria-hidden="true" /></span>)}</div>)}</div></div>;
 }
 
-function AboutPhotoCollage() {
+function DraggableFounder({ founder, className, tilt }: { founder: (typeof founders)[number]; className: string; tilt: number }) {
   const { enabled } = useStudioMotion();
-  const pointerX = useMotionValue(0);
-  const pointerY = useMotionValue(0);
-  const x = useSpring(pointerX, { stiffness: 100, damping: 22, mass: 0.8 });
-  const y = useSpring(pointerY, { stiffness: 100, damping: 22, mass: 0.8 });
-  const mainX = useTransform(x, [-1, 1], [25, -25]);
-  const mainY = useTransform(y, [-1, 1], [18, -18]);
-  const mainRotation = useTransform(x, [-1, 1], [-6, -2]);
-  const detailX = useTransform(x, [-1, 1], [-32, 32]);
-  const detailY = useTransform(y, [-1, 1], [24, -24]);
-  const detailRotation = useTransform(x, [-1, 1], [9, 3]);
-  const brandX = useTransform(x, [-1, 1], [18, -18]);
-  const brandY = useTransform(y, [-1, 1], [-30, 30]);
-  const brandRotation = useTransform(x, [-1, 1], [-12, -5]);
+  return <motion.button type="button" className={"about-photo about-founder-drag " + className}
+    aria-label={"Drag " + founder.name + "’s portrait; release to return it to its starting position"}
+    drag dragSnapToOrigin dragMomentum={false}
+    dragTransition={{ bounceStiffness: enabled ? 260 : 1000, bounceDamping: enabled ? 18 : 100 }}
+    style={{ rotate: tilt, touchAction: "none" }}
+    whileDrag={{ zIndex: 20, scale: enabled ? 1.05 : 1, cursor: "grabbing" }}>
+    <Image src={founder.image} alt={founder.name + ", founder and director of Sparklines Studio"} fill sizes="(max-width: 750px) 65vw, 32vw" draggable={false} />
+  </motion.button>;
+}
 
-  useEffect(() => {
-    if (!enabled) { pointerX.set(0); pointerY.set(0); }
-  }, [enabled, pointerX, pointerY]);
-
-  return <div className="about-photo-collage" aria-label="Sparklines Studio founders Asad and Saif with a studio sticker" onPointerMove={event => {
-    if (!enabled || event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    pointerX.set(Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2)));
-    pointerY.set(Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2)));
-  }} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
-    <motion.figure className="about-photo about-photo-main" style={{ x: mainX, y: mainY, rotate: mainRotation }} whileHover={enabled ? { scale: 1.025 } : undefined}>
-      <Image src={founders[0].image} alt="Asad, founder of Sparklines Studio" fill sizes="(max-width: 750px) 65vw, 32vw" />
-    </motion.figure>
-    <motion.figure className="about-photo about-photo-detail" style={{ x: detailX, y: detailY, rotate: detailRotation }} whileHover={enabled ? { scale: 1.035 } : undefined}>
-      <Image src={founders[1].image} alt="Saif, founder of Sparklines Studio" fill sizes="(max-width: 750px) 65vw, 32vw" />
-    </motion.figure>
-    <motion.figure className="about-photo about-photo-brand" style={{ x: brandX, y: brandY, rotate: brandRotation }} whileHover={enabled ? { scale: 1.04 } : undefined}>
-      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 45vw, 22vw" />
-    </motion.figure>
+function AboutPhotoCollage() {
+  return <div className="about-photo-collage" aria-label="Drag the founders’ portraits and release to spring back">
+    <DraggableFounder founder={founders[0]} className="about-photo-main" tilt={-4} />
+    <DraggableFounder founder={founders[1]} className="about-photo-detail" tilt={6} />
+    <figure className="about-photo about-photo-brand" aria-hidden="true">
+      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 40vw, 20vw" draggable={false} />
+    </figure>
+    <p className="about-drag-hint">Give us a little nudge. Drag &amp; release.</p>
   </div>;
 }
 

@@ -1,11 +1,13 @@
 export const founders = [
   {
     name: "Asad",
-    image: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1795004333/file_00000000995481fa83ca53b311510082_1.png",
+    bio: "Asad brings a storyteller’s eye to the studio, connecting the first idea to the details that make a film feel right. His approach starts with listening, finding the heart of a brand and shaping it into a clear creative direction.",
+    image: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1795008954/Asad_-_Director_-_Sparklines_Studio.png",
   },
   {
     name: "Saif",
-    image: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1795004610/Generated_Image_November_18_2026_-_1_02PM.png",
+    bio: "Saif brings a hands-on approach to making ideas happen, with a love for thoughtful visuals and a well-crafted finish. He enjoys the back-and-forth of collaboration, refining the small details that help a story connect with its audience.",
+    image: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1795008953/Saif_-_Director_-_Sparklines_Studio.png",
   },
 ] as const;
 

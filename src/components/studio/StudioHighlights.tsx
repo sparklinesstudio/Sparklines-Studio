@@ -6,15 +6,17 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Asterisk } from "lucide-react";
 import { HOUSE_OF_KOLAM_SLIDES } from "@/data/houseOfKolamData";
+import { allVideos } from "@/data/galleryVideos";
+import { StudioSticker } from "./StudioSticker";
 import { studioFilms } from "@/data/studioFilms";
 import { AmbientVideo, useStudioMotion } from "./StudioMotion";
 import "./highlights.css";
 
 const caseStudyUrl = "/work/branding/house-of-kolam";
 const services = [
-  { title: "Video", text: "Brand stories, beautifully brought to life.", href: "/brand-film-production-kolkata", film: studioFilms[3], tilt: -3 },
-  { title: "Social", text: "Small-screen stories with a bigger feeling.", href: "/social-media-video-production-kolkata", film: studioFilms[0], tilt: 2 },
-  { title: "Motion", text: "Design, rhythm and ideas that move.", href: "/motion-graphics-agency-kolkata", film: studioFilms[5], tilt: -2 },
+  { title: "Video", text: "Brand stories, beautifully brought to life.", href: "/brand-film-production-kolkata", film: allVideos.find(video => video.category === "Clothing")!, tilt: -3 },
+  { title: "Social", text: "Small-screen stories with a bigger feeling.", href: "/social-media-video-production-kolkata", film: allVideos.find(video => video.category === "Food")!, tilt: 2 },
+  { title: "Motion", text: "Design, rhythm and ideas that move.", href: "/motion-graphics-agency-kolkata", film: { src: "https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_h264,q_auto,w_720/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.mp4", poster: "https://res.cloudinary.com/vt5gqi1c/video/upload/so_1,f_jpg,q_auto,w_640/v1790422620/From_Klickpin.com-_4855512095374493-pin-id-4855512095374493.jpg" }, tilt: -2 },
   { title: "SaaS video", text: "Make the value behind your product clear.", href: "/saas-video-agency-kolkata", film: studioFilms[4], tilt: 3 },
 ];
 
@@ -40,7 +42,7 @@ function RepellingCard({ children, tilt, className, scale = 1.055 }: { children:
 
 export function ServiceVideoCards() {
   return <section id="creative-services" className="service-video-section experience-section experience-pad">
-    <div className="service-video-heading"><h2><span>From first idea</span>{" "}<em>to final frame.</em></h2></div>
+    <div className="service-video-heading"><StudioSticker variant="video" className="sticker-video" /><h2><span>From first idea</span>{" "}<em>to final frame.</em></h2></div>
     <div className="service-video-grid">{services.map((service,index) => <RepellingCard key={service.title} tilt={service.tilt} className={"service-video-card service-video-color-" + index}>
       <Link href={service.href} aria-label={"Explore " + service.title + " services"}>
         <div className="service-video-media"><AmbientVideo {...service.film} /><span className="service-video-open"><ArrowUpRight size={21} /></span></div>
@@ -53,7 +55,7 @@ export function ServiceVideoCards() {
 
 export function BrandingSpotlight({ listing = false, showEyebrow = true }: { listing?: boolean; showEyebrow?: boolean }) {
   return <section id="featured-branding" className={"branding-reference experience-section experience-pad " + (listing ? "branding-reference-listing" : "")}>
-    <div className="branding-reference-heading">
+    <div className="branding-reference-heading"><StudioSticker variant="studio" className="sticker-studio" />
       {showEyebrow && <p className="studio-kicker">HOUSE OF KOLAM / BRAND IDENTITY</p>}
       <h2><span>A tradition.</span>{" "}<em>A whole new expression.</em></h2>
       <p>A complete identity rooted in the art of Kolam. From the first mark to packaging, print and the spaces in between.</p>

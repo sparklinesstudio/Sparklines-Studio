@@ -9,7 +9,7 @@ import { ArrowUpRight, Asterisk, ChevronDown } from "lucide-react";
 import { serviceGroups } from "@/data/serviceNavigation";
 import "./navigation.css";
 
-const navigationLinks = [["About", "/about"], ["Work", "/work"], ["Video gallery", "/video-gallery"], ["Blog", "/blogs"]];
+const navigationLinks = [["About", "/about"], ["Work", "/work"], ["Video Gallery", "/video-gallery"], ["Blog", "/blogs"]];
 // Matching cubic curves let the drawer's leading edge flow into a flat surface.
 const liquidClosed = "M 100 0 H 100 V 100 H 100 C 100 75 100 25 100 0 Z";
 const liquidWave = "M 0 0 H 100 V 100 H 0 C -24 75 24 25 0 0 Z";

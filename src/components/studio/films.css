@@ -11,7 +11,8 @@
 .films-reference-filters button:hover { background: #dce3ff; }
 .films-reference-filters button[aria-pressed=true] { background: #073bff; color: #fff; }
 .films-reference-filters > span { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 18px; color: #3d4c76; margin-left: 16px; white-space: nowrap; }
-.films-reference-masonry { columns: 3; column-gap: clamp(25px, 3vw, 48px); padding: 15px 12px; }
+.films-reference-masonry { --film-gap: clamp(25px, 3vw, 48px); display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 0 var(--film-gap); padding: 15px 12px; }
+.films-reference-masonry > article { flex: 0 0 calc((100% - 2 * var(--film-gap)) / 3); min-width: 0; }
 .film-reference-card { position: relative; break-inside: avoid; padding: 10px 10px 0; background: #fff; margin-bottom: 45px; box-shadow: 0 13px 30px #17254a13; transform-origin: center; transition: box-shadow .3s; }
 .film-tilt-0 { --film-tilt: -2deg; }
 .film-tilt-1 { --film-tilt: 2deg; }
@@ -32,7 +33,8 @@
 .films-reference-footer .about-reference-link { margin-top: 0; }
 .motion-disabled .film-reference-card { transform: rotate(var(--film-tilt)) !important; }
 @media (max-width: 1000px) {
-  .films-reference-masonry { columns: 2; column-gap: 28px; }
+  .films-reference-masonry { --film-gap: 28px; }
+  .films-reference-masonry > article { flex-basis: calc((100% - var(--film-gap)) / 2); }
   .films-reference-spark { right: 5%; top: 10px; width: 65px; height: 65px; }
   .film-reference-caption { padding: 13px 0 13px 4px; }
 }
@@ -44,7 +46,7 @@
   .films-reference-filters { margin-bottom: 35px; padding-block: 12px; gap: 6px; }
   .films-reference-filters button { font-size: 13px; padding: 11px 13px; }
   .films-reference-filters > span { font-size: 16px; margin-left: 10px; }
-  .films-reference-masonry { column-gap: 18px; padding: 10px 3px; }
+  .films-reference-masonry { --film-gap: 18px; padding: 10px 3px; }
   .film-reference-card { padding: 6px 6px 0; margin-bottom: 25px; }
   .film-reference-index { width: 25px; height: 25px; font-size: 15px; left: 8px; top: 8px; }
   .studio-experience .film-reference-caption h3 { font-size: 15px; line-height: 1.15; }
@@ -54,7 +56,8 @@
   .films-reference-footer { margin-top: 15px; }
 }
 @media (max-width: 360px) {
-  .films-reference-masonry { columns: 1; padding-inline: 10px; }
+  .films-reference-masonry { padding-inline: 10px; }
+  .films-reference-masonry > article { flex-basis: 100%; }
   .film-reference-card { padding: 9px 9px 0; }
   .studio-experience .film-reference-caption h3 { font-size: 21px; }
   .film-reference-caption > span { width: 40px; height: 40px; }
