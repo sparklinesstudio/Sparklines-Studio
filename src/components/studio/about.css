@@ -24,11 +24,23 @@
 }
 .about-photo img { object-fit: cover; }
 .about-photo-main { top: 12px; left: 2%; width: 70%; height: 92%; z-index: 1; --about-tilt: -4deg; }
-.about-photo-main img { object-position: center; }
+.about-photo-main img { object-position: center top; }
 .about-photo-detail { bottom: 0; right: 0; width: 51%; height: 55%; z-index: 3; --about-tilt: 6deg; }
-.about-photo-detail img { object-position: 70% center; }
+.about-photo-detail img { object-position: center top; }
 .about-photo-brand { top: 24%; right: 7%; width: 36%; height: 28%; z-index: 4; border-width: 8px; --about-tilt: -8.5deg; }
-.about-photo-brand img { object-position: 76% center; }
+.about-photo-brand { border: 0; background: transparent; box-shadow: none; }
+.about-photo-brand img { object-fit: contain; object-position: center; }
+.about-founders { background: #f3f3ef; }
+.about-founders-intro { max-width: 520px; margin-top: 24px; }
+.about-founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); margin-top: 48px; }
+.about-founder-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e7e7e1; }
+.about-founder-portrait img { object-fit: contain; object-position: center bottom; }
+.about-founder-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid #181a2226; margin-top: 20px; }
+.studio-experience .about-founder-caption h3 { margin: 0; font-size: clamp(30px, 3vw, 48px); }
+.about-founder-caption p { margin: 0; }
+@media (max-width: 750px) {
+  .about-founders-grid { grid-template-columns: 1fr; gap: 40px; }
+}
 .about-reference-copy { text-align: center; position: relative; z-index: 1; }
 .studio-experience .about-reference-intro { margin-bottom: 20px; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 26px; line-height: 1.1; }
 .studio-experience .about-reference h2 { margin: 0; font-size: clamp(44px, 5.1vw, 90px); color: #111; line-height: .94; text-transform: uppercase; letter-spacing: -.025em; }

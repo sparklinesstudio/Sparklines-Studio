@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Asterisk, Globe } from "lucide-react";
 import { studioFilms } from "@/data/studioFilms";
-import { HOUSE_OF_KOLAM_SLIDES } from "@/data/houseOfKolamData";
+import { founders, studioSticker } from "@/data/founders";
 import { AmbientVideo, MotionSwitch, useStudioMotion } from "./StudioMotion";
 import "./hero.css";
 import "./about.css";
@@ -88,20 +88,20 @@ function AboutPhotoCollage() {
     if (!enabled) { pointerX.set(0); pointerY.set(0); }
   }, [enabled, pointerX, pointerY]);
 
-  return <div className="about-photo-collage" aria-label="A collage of studio films and brand design" onPointerMove={event => {
+  return <div className="about-photo-collage" aria-label="Sparklines Studio founders Asad and Saif with a studio sticker" onPointerMove={event => {
     if (!enabled || event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     pointerX.set(Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2)));
     pointerY.set(Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2)));
   }} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
     <motion.figure className="about-photo about-photo-main" style={{ x: mainX, y: mainY, rotate: mainRotation }} whileHover={enabled ? { scale: 1.025 } : undefined}>
-      <Image src={studioFilms[2].poster} alt="People and storytelling from the Sparklines Studio film library" fill sizes="(max-width: 700px) 65vw, 32vw" />
+      <Image src={founders[0].image} alt="Asad, founder of Sparklines Studio" fill sizes="(max-width: 750px) 65vw, 32vw" />
     </motion.figure>
     <motion.figure className="about-photo about-photo-detail" style={{ x: detailX, y: detailY, rotate: detailRotation }} whileHover={enabled ? { scale: 1.035 } : undefined}>
-      <Image src={HOUSE_OF_KOLAM_SLIDES[17].url} alt="House of Kolam product packaging and visual identity" fill sizes="(max-width: 700px) 45vw, 22vw" />
+      <Image src={founders[1].image} alt="Saif, founder of Sparklines Studio" fill sizes="(max-width: 750px) 45vw, 22vw" />
     </motion.figure>
     <motion.figure className="about-photo about-photo-brand" style={{ x: brandX, y: brandY, rotate: brandRotation }} whileHover={enabled ? { scale: 1.04 } : undefined}>
-      <Image src={HOUSE_OF_KOLAM_SLIDES[7].url} alt="The House of Kolam logo and brand story" fill sizes="(max-width: 700px) 30vw, 14vw" />
+      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 30vw, 14vw" />
     </motion.figure>
   </div>;
 }
