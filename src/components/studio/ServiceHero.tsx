@@ -5,7 +5,7 @@ import type {StudioService} from "@/data/services/types";
 import {serviceDepth} from "@/data/services/experience";
 import {studioFilms} from "@/data/studioFilms";
 import {HOUSE_OF_KOLAM_SLIDES} from "@/data/houseOfKolamData";
-import {AmbientVideo,MotionSwitch} from "./StudioMotion";
+import {AmbientVideo} from "./StudioMotion";
 import {ServicePointerCard} from "./ServicePointerCard";
 export function ServiceHero({service,proofHref="#service-proof",heroNotes}:{service:StudioService;proofHref?:string;heroNotes?:[string,string,string,string]}){
  const depth=serviceDepth[service.slug];
@@ -18,6 +18,6 @@ export function ServiceHero({service,proofHref="#service-proof",heroNotes}:{serv
   <div className="svc-hero-sticker" aria-hidden="true"><Asterisk size={45} strokeWidth={1.3}/><span>SPARKLINES<br/>STUDIO</span></div>
   <div className="svc-hero-centre"><h1>{service.title.replace(/\s+Kolkata$/i,"")}{" "}<em>Kolkata</em></h1><p>{service.intro}</p><a href="#service-plan" className="svc-discover"><span>{service.hero[1]}</span><ArrowDownRight size={21}/></a></div>
   <a href={proofHref} className="svc-hero-stamp" aria-label="Look closer at the service approach"><Globe size={32} strokeWidth={1.4}/><span>LOOK CLOSER<br/>AT THE WORK</span></a>
-  <div className="svc-hero-bottom"><span>{service.hero[0]}</span><Asterisk size={46} strokeWidth={1.2}/><span>Made with a point of view.</span></div><div className="svc-hero-motion"><MotionSwitch/></div>
+  <div className="svc-hero-bottom"><span>{service.hero[0]}</span><Asterisk size={46} strokeWidth={1.2}/><span>Made with a point of view.</span></div>
  </div></section>;
 }

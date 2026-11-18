@@ -1,5 +1,6 @@
 "use client";
 
+import { StudioSticker } from "./StudioSticker";
 import { AmbientVideo } from "./StudioMotion";
 import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Asterisk } from "lucide-react";
@@ -47,6 +48,7 @@ export function VideoGallery() {
         const videos = allVideos.filter(video => video.category === category);
         const sectionId = `gallery-${category.toLowerCase().replaceAll(" ", "-")}`;
         return <section key={category} id={sectionId} className="video-gallery-section" aria-labelledby={`${sectionId}-title`}>
+          {category === "Food" && <StudioSticker variant="video" className="sticker-video" />}
           <div className="video-gallery-section-heading">
             <h2 id={`${sectionId}-title`}>{category === "Food" ? "Restaurants & Food" : category}</h2>
             <span>{videos.length} {videos.length === 1 ? "film" : "films"}</span>

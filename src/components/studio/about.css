@@ -30,8 +30,9 @@
 .about-founder-drag { padding: 0; cursor: grab; user-select: none; -webkit-user-select: none; }
 .about-sticker-repel, .about-sticker-art { position: absolute; inset: 0; display: block; pointer-events: none; }
 .about-face-wobble { transform-origin: 50% 65%; }
-.motion-enabled .about-face-wobble { animation: about-face-wobble 2.8s ease-in-out infinite alternate; }
-@keyframes about-face-wobble { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+.motion-enabled .about-face-wobble { animation: about-face-wobble 2s steps(1, end) infinite; }
+.about-photo-detail .about-face-wobble { animation-delay: -1s; }
+@keyframes about-face-wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
 .about-founder-drag img { pointer-events: none; }
 .about-founder-drag:focus-visible { outline: 2px dashed #073bff; outline-offset: 6px; }
 .about-drag-hint { position: absolute; bottom: -24px; left: 0; width: 100%; text-align: center; font-size: 12px; color: #52576a; pointer-events: none; }

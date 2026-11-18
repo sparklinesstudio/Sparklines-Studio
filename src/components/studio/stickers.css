@@ -1,12 +1,15 @@
 .studio-art-sticker { position: absolute; display: block; top: 0; z-index: 5; width: clamp(100px, 10vw, 140px); aspect-ratio: 1; pointer-events: none; user-select: none; }
 .studio-art-sticker img { object-fit: contain; }
-.service-video-section, .about-founders, .studio-cta, .branding-reference { position: relative; }
+.service-video-section, .about-founders, .studio-cta, .branding-reference, .films-reference, .experience-process, .about-principles, .video-gallery-section { position: relative; }
 .sticker-video { right: 8%; transform: translateY(-50%) rotate(9deg); }
 .sticker-smile { right: 8%; transform: translateY(-50%) rotate(12deg); }
 .sticker-studio { left: 8%; transform: translateY(-50%) rotate(-12deg); }
 .sticker-creature { right: 8%; transform: translateY(-50%) rotate(10deg); }
+.sticker-craft { top: auto; bottom: 0; left: 8%; transform: translateY(50%) rotate(-9deg); }
+.video-gallery-section:has(> .studio-art-sticker) { padding-top: 65px; }
 @media (max-width: 750px) {
   .studio-art-sticker { width: 80px; }
   .sticker-video, .sticker-smile, .sticker-creature { right: 7%; }
   .sticker-studio { left: 7%; }
+  .sticker-craft { left: 7%; }
 }

@@ -10,6 +10,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { serviceGraph } from "@/lib/structuredData";
 import { serviceMetadata } from "@/lib/serviceMetadata";
 import { HomeFeaturedVideos } from "@/components/studio/VideoGallery";
+import { StudioSticker } from "@/components/studio/StudioSticker";
 import { HomeReveal } from "@/components/studio/HomeReveal";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
@@ -27,7 +28,7 @@ export default function Home() {
     <ServiceVideoCards />
     <VideoServiceLinks />
     <MotionMarquee reverse words={["A little strategy", "A lot of craft", "Made together", "Made to matter"]} />
-    <section id="process" className="experience-section experience-pad experience-process"><Reveal><h2>A good process.<br /><em>Great possibilities.</em></h2></Reveal><div className="experience-process-list">{[["Listen first","Your audience. Your ambitions. The reason this project matters. We ask the questions that find the story."],["Find the spark","A creative direction, a script, a plan. We shape the idea together before production begins."],["Make with purpose","Shoot, design, edit and animate. Every detail connects back to the story we set out to tell."],["Put it out there","Review the work, refine the details and deliver the formats your next launch needs."]].map(([title,text],i)=><Reveal key={title}><article><span>0{i+1}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight size={24} /></article></Reveal>)}</div></section>
+    <section id="process" className="experience-section experience-pad experience-process"><StudioSticker variant="craft" className="sticker-craft" /><Reveal><h2>A good process.<br /><em>Great possibilities.</em></h2></Reveal><div className="experience-process-list">{[["Listen first","Your audience. Your ambitions. The reason this project matters. We ask the questions that find the story."],["Find the spark","A creative direction, a script, a plan. We shape the idea together before production begins."],["Make with purpose","Shoot, design, edit and animate. Every detail connects back to the story we set out to tell."],["Put it out there","Review the work, refine the details and deliver the formats your next launch needs."]].map(([title,text],i)=><Reveal key={title}><article><span>0{i+1}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight size={24} /></article></Reveal>)}</div></section>
     <section className="studio-section studio-wrap studio-faq-layout"><div><h2>Your questions,<br /><em>in focus.</em></h2></div><StudioFaq items={[
       ["What video production services do you offer in Kolkata?", "We create brand films, commercials, social reels, founder videos, motion graphics and SaaS product videos. A project can include strategy, scripting, production, editing, colour, sound and format-specific delivery."],
       ["How much does a video production project cost?", "The scope depends on the concept, shoot days, crew, locations, animation and final deliverables. Share your brief and intended channels so we can prepare a proposal with clear inclusions."],

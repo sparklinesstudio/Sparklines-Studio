@@ -8,10 +8,11 @@ import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Asterisk, Globe } 
 import { homeGalleryFilms, categories } from "@/data/galleryVideos";
 import { studioFilms } from "@/data/studioFilms";
 import { founders, studioSticker } from "@/data/founders";
-import { AmbientVideo, MotionSwitch, useStudioMotion } from "./StudioMotion";
+import { AmbientVideo, useStudioMotion } from "./StudioMotion";
 import "./hero.css";
 import "./about.css";
 import "./films.css";
+import { StudioSticker } from "./StudioSticker";
 import { BrandingSpotlight } from "./StudioHighlights";
 
 function HeroSpark() {
@@ -47,7 +48,7 @@ export function StudioHero() {
         <AmbientVideo {...studioFilms[5]} />
         <span><ArrowUpRight size={18} /></span>
       </a>
-      <div className="reference-brand-sticker" aria-hidden="true"><Asterisk strokeWidth={1.5} /><span>SPARKLINES<br />STUDIO</span></div>
+      <div className="reference-brand-sticker" aria-hidden="true"><Image src="https://res.cloudinary.com/vt5gqi1c/image/upload/e_trim/v1795004332/Generated_Image_November_17_2026_-_6_19PM.png" alt="" fill sizes="(max-width: 700px) 90px, 180px" draggable={false} /></div>
       <div className="reference-hero-content">
         <h1><span>Video Production</span>{" "}<span>Agency <em>Kolkata</em></span></h1>
         <p className="reference-hero-description">Kolkata video production for brand films, product stories and social campaigns. From the first idea to the final frame.</p>
@@ -58,7 +59,6 @@ export function StudioHero() {
         <Globe size={47} strokeWidth={1.4} />
       </a>
       <ul className="reference-capabilities" aria-label="Studio capabilities"><li>Brand films</li><li>Social stories</li><li>Motion design</li><li>Brand identity</li></ul>
-      <div className="reference-motion-setting"><MotionSwitch /></div>
       <div className="reference-spark"><HeroSpark /></div>
     </div>
   </section>;
@@ -114,7 +114,7 @@ function AboutPhotoCollage() {
   return <div className="about-photo-collage" aria-label="Drag all three stickers and release to spring back">
     {founders.map((founder, index) => <FounderSticker key={founder.name} src={founder.image}
       alt={founder.name + ", founder and director of Sparklines Studio"} label={founder.name + "’s portrait"}
-      className={index === 0 ? "about-photo-main" : "about-photo-detail"} tilt={index === 0 ? -4 : 6} face />)}
+      className={index === 0 ? "about-photo-detail" : "about-photo-main"} tilt={index === 0 ? 6 : -4} face />)}
     <FounderSticker src={studioSticker} alt="Studio clapperboard sticker" label="the clapperboard sticker" className="about-photo-brand" tilt={-8.5} />
     <p className="about-drag-hint">Give us a little nudge. Drag &amp; release.</p>
   </div>;
@@ -163,6 +163,7 @@ export function HomeFilmMasonry() {
   const filters = ["All films", ...categories];
   const matching = homeGalleryFilms.filter(film => filter === "All films" || film.category === filter);
   return <section id="selected-films" className="experience-section experience-pad films-reference">
+    <StudioSticker variant="smile" className="sticker-smile" />
     <div className="films-reference-heading">
       <Asterisk className="films-reference-spark" size={90} strokeWidth={1.2} aria-hidden="true" />
       <h2><span>Less ordinary.</span>{" "}<em>More you.</em></h2>
