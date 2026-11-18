@@ -1,0 +1,45 @@
+.paid-approach {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(1.75rem, 6vw, 6rem);
+  padding-block: clamp(2.75rem, 6vw, 6rem);
+  scroll-margin-top: 5rem;
+}
+.paid-approach-copy p { margin: 1rem 0 0; max-width: 34rem; }
+.paid-approach-copy .svc-text-link { margin-top: 1.4rem; }
+.paid-approach-figure {
+  --approach-paper: #e8edff;
+  --approach-ink: #2549b2;
+  --approach-tile: #fff;
+  margin: 0;
+  padding: clamp(.75rem, 2.5vw, 1.7rem);
+  color: var(--approach-ink);
+  background: var(--approach-paper);
+  border: 1px solid color-mix(in srgb, var(--approach-ink) 25%, transparent);
+  border-radius: .65rem;
+}
+.paid-approach-green { --approach-paper: #e4f1e8; --approach-ink: #205b49; }
+.paid-approach-lilac { --approach-paper: #eee6fb; --approach-ink: #5d3d8d; }
+.paid-approach-peach { --approach-paper: #ffebdd; --approach-ink: #833f27; }
+.paid-approach-art { display: block; width: 100%; height: auto; }
+.paid-approach-grid, .paid-approach-route, .paid-approach-halo { fill: none; stroke: currentColor; }
+.paid-approach-grid { opacity: .17; }
+.paid-approach-route { stroke-width: 2; stroke-dasharray: 5 5; }
+.paid-approach-halo { opacity: .36; }
+.paid-approach-tile { fill: var(--approach-tile); stroke: currentColor; stroke-width: 1.5; }
+.paid-approach-figure ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .4rem;
+  margin: 0;
+  padding: .55rem 0 .3rem;
+  list-style: none;
+  text-align: center;
+  font-size: .875rem;
+  font-weight: 700;
+}
+@media (max-width: 740px) {
+  .paid-approach { grid-template-columns: 1fr; }
+  .paid-approach-figure { max-width: 35rem; width: 100%; }
+}

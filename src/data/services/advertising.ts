@@ -108,19 +108,19 @@ export const advertisingServices:StudioService[] = [
   {
     "slug": "google-ads-agency-kolkata",
     "name": "Google Ads",
-    "title": "Google Ads Agency Kolkata",
+    "title": "Google Ads Agency in Kolkata",
     "family": "Paid advertising",
-    "description": "Google Ads agency Kolkata for intent-led search campaigns, negative keywords, conversion tracking and landing-page alignment. Focus on qualified demand.",
+    "description": "Google Ads management in Kolkata for Search, Shopping and PPC lead generation, with conversion tracking and campaign reviews.",
     "hero": [
-      "Be there.",
-      "When intent is clear."
+      "Reach buyers while they’re searching.",
+      "See how we plan Google Ads."
     ],
-    "intro": "Kolkata Google Ads campaigns work best when the search term, advert and destination answer the same requirement. We build campaigns around commercial intent and qualified outcomes, with the tracking and landing-page checks needed to interpret your spend.",
+    "intro": "Get in front of people already looking for what you sell. We manage Google Search campaigns for Kolkata businesses and assess Shopping for online stores. We connect each campaign to the landing page, call, enquiry or purchase it needs to drive.",
     "insight": {
-      "title": "A search term is a clue, not a customer.",
+      "title": "Turn the right searches into enquiries.",
       "paragraphs": [
-        "Someone searching for an interior design course has a different need from a homeowner comparing design fees. Campaign structure should make those differences visible. We separate brand and non-brand demand, review location intent and build exclusions around irrelevant enquiries rather than assuming every related keyword deserves a bid.",
-        "The next step matters as much as the click. A service advert needs a page explaining coverage, relevant work and a practical contact route. Ecommerce campaigns require dependable product information and a viable purchase journey. We choose campaign types after reviewing the offer, not before."
+        "A Kolkata fit-out company could bid for “office fit-out Salt Lake”, exclude job and course searches, and send buyers to a page with relevant work and a quote form.",
+        "Review the search terms and the quality of the enquiries together. Ask sales to flag suitable briefs, then check which campaigns are bringing them in."
       ]
     },
     "decisions": [
@@ -160,15 +160,19 @@ export const advertisingServices:StudioService[] = [
     "faqs": [
       [
         "Should we start with Search or Performance Max?",
-        "That depends on the objective, conversion data, product or asset readiness and available budget. We assess those inputs before recommending a campaign type."
+        "For a Kolkata service business with a clear offer, Search can be a good first test because you can review the searches that drove clicks. For an online shop, check the product feed and purchase tracking before testing Shopping or Performance Max."
       ],
       [
         "Can you work with our existing account?",
         "Yes. We first review access, historical campaign changes, conversion definitions and existing exclusions before changing live settings."
       ],
       [
-        "How quickly should we judge a test?",
-        "The useful observation period depends on traffic volume and the sales cycle. We agree a review window and avoid presenting a few days of activity as a reliable forecast."
+        "Why are my Google Ads leads coming from outside Kolkata?",
+        "Check the campaign’s location settings and the locations customers actually enter on forms. If you only serve people in and around Kolkata, review whether the campaign should target people present in the area. Confirm serviceability with a locality or PIN-code field."
+      ],
+      [
+        "What does Google Ads management cost in Kolkata?",
+        "The fee depends on account size, the number of offers or locations and the tracking or feed work needed. The media budget is paid separately to Google. For a quote, share your target areas, monthly budget range and the types of leads or sales you want."
       ]
     ],
     "related": [
@@ -190,19 +194,19 @@ export const advertisingServices:StudioService[] = [
   {
     "slug": "meta-ads-agency-kolkata",
     "name": "Meta Ads",
-    "title": "Meta Ads Agency Kolkata",
+    "title": "Meta Ads Agency in Kolkata",
     "family": "Paid advertising",
     "description": "Meta Ads agency Kolkata for Facebook and Instagram campaign planning, video creative tests, retargeting and lead-quality reviews with clear reporting.",
     "hero": [
       "Stop the scroll.",
       "Make the next step count."
     ],
-    "intro": "Kolkata brands using Meta Ads need a clear reason for someone to stop, understand the offer and act. We plan Facebook and Instagram campaigns around that sequence, connecting creative variations with the form, product page or conversation that follows.",
+    "intro": "Run Facebook and Instagram ads that show buyers why your offer matters. We help Kolkata brands test ad creative, choose between WhatsApp, lead forms and checkout, and measure which responses become real enquiries or orders.",
     "insight": {
-      "title": "A creative test needs a clear hypothesis.",
+      "title": "Give customers something they can see.",
       "paragraphs": [
-        "Changing the colour of a button is rarely the most useful first experiment. An advert can lead with a customer problem, demonstrate a product or answer a buying objection. We distinguish the proposition being tested from the visual treatment so the result can inform the next production brief.",
-        "For lead generation, the cheapest submitted form may create extra work for your team. The offer, qualification questions and follow-up process should match the purchase decision. For product sales, we review catalogue quality, purchase tracking and the handoff from the advert to checkout."
+        "A Kolkata homeware brand can show its product fitting into a small kitchen, then test a second ad that answers a common sizing or delivery question.",
+        "Keep the offer and destination consistent while you compare the ads. Judge an ecommerce test by delivered orders after returns. For WhatsApp campaigns, count the conversations that qualify or book."
       ]
     },
     "decisions": [
@@ -249,8 +253,8 @@ export const advertisingServices:StudioService[] = [
         "Placements are planned around the campaign and asset suitability. We review performance and the customer experience rather than assuming every placement should receive equal spend."
       ],
       [
-        "Is boosting a post the same as a campaign plan?",
-        "A boosted post can serve a limited purpose. A broader plan also defines the conversion objective, measurement, audience assumptions, creative tests and follow-up journey."
+        "Should Meta ads send customers to WhatsApp or a website?",
+        "Use WhatsApp when people need to discuss availability or choose a package and you have someone who can reply quickly. Use a product page when buyers can check the details and order directly. Pick the destination that helps customers complete the next step."
       ]
     ],
     "related": [
@@ -267,19 +271,19 @@ export const advertisingServices:StudioService[] = [
   {
     "slug": "linkedin-ads-agency-kolkata",
     "name": "LinkedIn Ads",
-    "title": "LinkedIn Ads Agency Kolkata",
+    "title": "LinkedIn Ads Agency in Kolkata",
     "family": "Paid advertising",
     "description": "LinkedIn Ads agency Kolkata for B2B campaign strategy, buying-group messaging, lead forms and qualified pipeline measurement. Connect campaigns to sales.",
     "hero": [
       "Reach the right roles.",
       "Start better conversations."
     ],
-    "intro": "Kolkata B2B companies considering LinkedIn Ads need to connect a professional audience with a credible business reason to respond. We build campaigns around the buying group, the offer and the sales conversation that a lead should progress into.",
+    "intro": "Reach the people who influence a B2B purchase. We build LinkedIn Ads for Kolkata software, industrial and professional services teams and connect campaign responses to sales-ready enquiries and meetings.",
     "insight": {
-      "title": "A job title is only the beginning of a brief.",
+      "title": "Give the buying group a reason to reply.",
       "paragraphs": [
-        "A finance leader, operations manager and end user may care about different parts of the same software purchase. We map those concerns before choosing an audience or writing a campaign. An educational document may support early evaluation; a product workshop or tailored demonstration may fit a later-stage requirement.",
-        "Lead forms reduce the effort required to respond, but that does not make every submission sales-ready. We agree qualification criteria, a response owner and a feedback route so reporting can distinguish content interest from a genuine business opportunity."
+        "A Salt Lake SaaS team could offer operations leads a workflow checklist and invite companies with an active requirement to a tailored demo.",
+        "Agree with sales on company fit and the signs of an active buying project. Review the cost of meetings that actually happen alongside the cost of form submissions."
       ]
     },
     "decisions": [
@@ -318,8 +322,8 @@ export const advertisingServices:StudioService[] = [
     },
     "faqs": [
       [
-        "Is LinkedIn suitable for every B2B company?",
-        "Not automatically. Audience availability, contract value, offer quality and the ability to follow up all influence whether it is a sensible channel to test."
+        "When is LinkedIn Ads worth the budget for a Kolkata B2B company?",
+        "Consider it when you can describe the companies and roles involved in a sale, offer something useful to those buyers, and follow up promptly. Use deal margin and the rate at which sales meetings close to decide what you can afford to pay for a meeting."
       ],
       [
         "Can you target named companies?",
@@ -349,19 +353,19 @@ export const advertisingServices:StudioService[] = [
   {
     "slug": "reddit-ads-agency-kolkata",
     "name": "Reddit Ads",
-    "title": "Reddit Ads Agency Kolkata",
+    "title": "Reddit Ads Agency in Kolkata",
     "family": "Paid advertising",
     "description": "Reddit Ads agency Kolkata for community-informed audience research, clear creative, conversion planning and measured tests for relevant products and services.",
     "hero": [
       "Understand the conversation.",
       "Earn a useful response."
     ],
-    "intro": "Kolkata businesses exploring Reddit Ads need to understand why a community discusses a problem before interrupting that discussion with an advert. We research language, objections and product fit, then plan a bounded test with a clear destination and measurement approach.",
+    "intro": "Test Reddit Ads when your buyers already compare tools or discuss a specialist problem on Reddit. We help Kolkata software and niche ecommerce teams build a focused campaign and measure what visitors do after the click.",
     "insight": {
-      "title": "Community relevance is different from local reach.",
+      "title": "Start with a problem the audience recognises.",
       "paragraphs": [
-        "Reddit may be useful for a specialist product whose buyers actively discuss a category, but it is not automatically the best first channel for a neighbourhood-only service. We assess the relationship between your offer, the audience and the available geographic reach before allocating a test budget.",
-        "Community targeting refers to people associated with selected communities; it should not be presented as a promise that an advert appears only inside a particular subreddit. Creative needs to make sense to the person seeing it, wherever the eligible placement appears."
+        "A Kolkata software team selling abroad could find recurring complaints about a workflow and test one ad that shows how its product handles that task.",
+        "Send visitors to a demo or trial that matches the ad. Agree what counts as a useful trial, such as completing the first workflow, and use that event to judge the test."
       ]
     },
     "decisions": [

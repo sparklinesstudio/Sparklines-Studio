@@ -19,6 +19,7 @@ import {StudioMotion,AmbientVideo} from "./StudioMotion";
 import {ServiceHero} from "./ServiceHero";
 import {ServicePointerCard} from "./ServicePointerCard";
 import {PaidAdsComparison} from "./PaidAdsComparison";
+import {PaidAdsApproach} from "./PaidAdsApproach";
 import {PaidAdsBusinessFit} from "./PaidAdsBusinessFit";
 import {SearchCaseStudy} from "./SearchCaseStudy";
 import "./supporting-services.css";
@@ -30,6 +31,7 @@ export function SupportingServicePage({service}:{service:StudioService}){
  const process=serviceProcess[service.family];
  const caseStudy=serviceCaseStudies[service.slug];
  const paidAds=service.slug==="paid-ads-agency-kolkata";
+ const advertising=service.family==="Paid advertising";
  const film=service.family==="Film & motion"&&!["saas-video-agency-kolkata","motion-graphics-agency-kolkata","explainer-video-production-kolkata"].includes(service.slug);
  const brand=["branding-agency-kolkata","brand-strategy-agency-kolkata","logo-design-agency-kolkata"].includes(service.slug);
  const related=service.related.map(slug=>slug?serviceBySlug(slug):{slug:"",name:"Video Production",title:"Video Production Agency Kolkata",description:"Explore the main production overview, selected films and the route from a first idea to the final frame."}).filter((item):item is NonNullable<typeof item>=>Boolean(item));
@@ -41,8 +43,10 @@ export function SupportingServicePage({service}:{service:StudioService}){
   <div className="svc-breadcrumbs"><Breadcrumbs items={trail}/></div>
   <ServiceHero service={service} proofHref={paidAds ? "#case-study" : undefined}/>
   <nav className="svc-chapter-nav" aria-label="On this service page">{paidAds?<a href="#ads-businesses">Which businesses benefit? <ArrowUpRight size={14}/></a>:<a href="#service-plan">The approach <ArrowUpRight size={14}/></a>}{paidAds?<a href="#ads-comparison">DIY or specialist? <ArrowUpRight size={14}/></a>:<a href="#service-proof">The proof <ArrowUpRight size={14}/></a>}<a href="#case-study">Case study <ArrowUpRight size={14}/></a><a href="#service-scope">Your scope <ArrowUpRight size={14}/></a></nav>
+  {advertising ? <PaidAdsApproach service={service} /> : <>
   <section className="svc-goal svc-wrap"><div className="svc-goal-marker"><Asterisk size={54} strokeWidth={1.2}/><span>The point<br/>of the project.</span></div><p>{depth.goal}</p><Link href="/contact" className="svc-text-link">Tell us where you want to go <ArrowUpRight size={19}/></Link></section>
   <section id="service-plan" className="svc-insight svc-wrap"><div><h2>{service.insight.title}</h2><div className="svc-section-count" aria-hidden="true">01 / THE THINKING</div></div><div className="svc-reading-text">{service.insight.paragraphs.slice(0,1).map(text=><p key={text}>{text}</p>)}</div></section>
+  </>}
   {!paidAds && <section className="svc-guide svc-wrap"><div className="svc-section-heading"><h2>{depth.question}</h2><p>The choices that give this brief a useful direction.</p></div><div className="svc-guide-grid">{depth.guide.map(([title,body],index)=><article key={title}><span className="svc-guide-number">0{index+1}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div></section>}
   {paidAds && <><PaidAdsBusinessFit /><PaidAdsComparison /></>}
   {!paidAds && <section id="service-proof" className="svc-proof"><div className="svc-wrap"><div className="svc-section-heading"><h2>Less promise.<br/><em>More to inspect.</em></h2><p>{film||brand?"Existing work, plus the decisions behind your own project. Look at what the evidence demonstrates and use it to ask better questions.":"Make the work visible. Review the reasoning and the evidence behind a result."}</p></div><div className="svc-proof-grid">

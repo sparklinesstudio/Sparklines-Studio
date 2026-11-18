@@ -33,9 +33,6 @@ const defaultSocial = serviceMetadata({title:"Video Production Agency Kolkata",s
 export const metadata: Metadata = {
   ...defaultSocial,
   metadataBase: new URL(siteConfig.url),
-  title: "Sparklines Studio | Video, Brand & Digital Experiences",
-  description:
-    "Sparklines Studio is a Kolkata creative studio for video production, motion graphics, personal branding, SEO and website development.",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-video-preview": -1, "max-snippet": -1 } },
   verification: { google: "vpcDQaDSpnn8vkuiYG0fpCmrPS7jHMWJmuDdZWOPnRs" },
   keywords: [
@@ -51,13 +48,6 @@ export const metadata: Metadata = {
     icon: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
     shortcut: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
     apple: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1790456941/WhatsApp_Image_2026-09-27_at_02.30.07.jpg",
-  },
-  openGraph: {
-    ...defaultSocial.openGraph,
-    title: "Sparklines Studio | Video, Brand & Digital Experiences",
-    description:
-      "Video production, brand storytelling, motion graphics and digital experiences from our Kolkata studio.",
-    type: "website",
   },
 };
 

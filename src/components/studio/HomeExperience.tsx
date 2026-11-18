@@ -36,10 +36,6 @@ export function StudioHero() {
         <AmbientVideo {...studioFilms[3]} />
         <span><ArrowUpRight size={18} /></span>
       </a>
-      <a href="#selected-films" className="reference-video reference-video-two" aria-label="Explore our food and hospitality films">
-        <AmbientVideo {...studioFilms[0]} />
-        <span><ArrowUpRight size={18} /></span>
-      </a>
       <a href="#selected-films" className="reference-video reference-video-three" aria-label="Explore our interiors films">
         <AmbientVideo {...studioFilms[1]} />
         <span><ArrowUpRight size={18} /></span>
@@ -54,6 +50,10 @@ export function StudioHero() {
         <p className="reference-hero-description">Kolkata video production for brand films, product stories and social campaigns. From the first idea to the final frame.</p>
         <a className="reference-discover" href="#selected-films"><span>Discover our films</span><ArrowDownRight size={18} /></a>
       </div>
+      <a href="#selected-films" className="reference-video reference-video-two" aria-label="Explore our food and hospitality films">
+        <AmbientVideo {...studioFilms[0]} />
+        <span><ArrowUpRight size={18} /></span>
+      </a>
       <a href="#selected-films" className="reference-scroll-stamp" aria-label="Scroll to explore our films">
         <svg className="reference-stamp-lettering" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="reference-scroll-ring" d="M80 80m-58 0a58 58 0 1 1 116 0a58 58 0 1 1-116 0" /></defs><text><textPath href="#reference-scroll-ring" textLength="364">THIS IS HOW WE MOVE • THIS IS HOW WE MOVE • </textPath></text></svg>
         <Globe size={47} strokeWidth={1.4} />

@@ -1,20 +1,22 @@
 import {StructuredData} from "@/components/seo/StructuredData";
-import {pageGraph,absoluteUrl} from "@/lib/structuredData";
+import {pageGraph} from "@/lib/structuredData";
 import type { Metadata } from "next";
+import { serviceMetadata } from "@/lib/serviceMetadata";
+
+const base = serviceMetadata({
+  slug: "work/branding/house-of-kolam",
+  title: "House of Kolam Brand Identity",
+  description: "The visual identity, typography and packaging for House of Kolam.",
+});
+const cover = "https://res.cloudinary.com/vt5gqi1c/image/upload/v1793186166/31b46d250283873.6a1bd914346e2_converted.png";
 
 export const metadata: Metadata = {
-  alternates:{canonical:absoluteUrl("/work/branding/house-of-kolam")},
-  title: "House of Kolam — Sacred Geometry & Heritage Culinary Branding | Sparklines Studio",
-  description:
-    "Explore the complete visual identity, bespoke vernacular typography, artisanal packaging, and heritage branding design system for House of Kolam, engineered and crafted by Sparklines Studio.",
+  ...base,
   openGraph: {
-    url:absoluteUrl("/work/branding/house-of-kolam"),siteName:"Sparklines Studio",type:"website",
-    title: "House of Kolam — Sacred Geometry & Heritage Culinary Branding",
-    description:
-      "23 master presentation boards encompassing visual identity, geometric iconography, packaging architecture, motion loops, and luxury hospitality guidelines.",
+    ...base.openGraph,
     images: [
       {
-        url: "https://res.cloudinary.com/vt5gqi1c/image/upload/v1793186166/31b46d250283873.6a1bd914346e2_converted.png",
+        url: cover,
         width: 1920,
         height: 1080,
         alt: "House of Kolam — Brand Identity & Visual System",
@@ -23,12 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "House of Kolam — Sacred Geometry & Heritage Culinary Branding",
-    description:
-      "A complete 23-board master visual identity designed by Sparklines Studio.",
-    images: [
-      "https://res.cloudinary.com/vt5gqi1c/image/upload/v1793186166/31b46d250283873.6a1bd914346e2_converted.png",
-    ],
+    ...base.twitter,
+    images: [cover],
   },
 };
 
