@@ -5,16 +5,16 @@ export const advertisingServices:StudioService[] = [
     "name": "Paid Advertising",
     "title": "Paid Ads & PPC Agency in Kolkata",
     "family": "Paid advertising",
-    "description": "Get PPC management in Kolkata for Google Ads, Facebook and Instagram. Plan your ad budget, launch campaigns and track the enquiries and sales they generate.",
+    "description": "Paid ads management in Kolkata for local services, ecommerce and B2B. Compare Google, Meta and LinkedIn Ads and see what a lead, booking or sale can be worth.",
     "hero": [
-      "Reach your next customer.",
+      "Lead generation, bookings and ecommerce sales.",
       "Plan your PPC budget."
     ],
-    "intro": "Sparklines Studio manages Google Ads, Facebook and Instagram campaigns for Kolkata businesses. We help you choose where to spend, set up conversion tracking and see which campaigns bring in bookings, sales or qualified enquiries. We also scope LinkedIn and Reddit campaigns when they fit your audience.",
+    "intro": "Fill weekday tables, book more site visits or sell more of the products that make you money. We manage Google, Meta and LinkedIn Ads for Kolkata businesses and measure what happens after someone clicks, from a qualified WhatsApp enquiry to a paid order.",
     "insight": {
-      "title": "What should your PPC budget buy?",
+      "title": "How much can you pay for one customer?",
       "paragraphs": [
-        "Start with the customer you want and what a sale is worth to your business. For a Kolkata interior studio, a useful lead may be a homeowner with a property in your service area, a suitable budget and a project timeline. For an online store, the useful signal may be a completed order after accounting for margin and delivery costs. Set the budget and reporting around that outcome.",
+        "Start with the amount you keep after delivering the sale. Say a product leaves ₹750 after product, delivery and return costs. If you spend ₹450 to acquire a delivered order, you have ₹300 left per order before management fees and overhead. On 40 incremental orders, that’s ₹12,000 in contribution after media. Use the same calculation for a booking or a signed project, and check that the sale would not have come through anyway.",
         "A useful channel plan gives each platform a job. Search can capture an existing requirement; social creative can demonstrate an unfamiliar product; professional targeting can reach a buying committee. We scope a focused starting point rather than spreading a small budget across every platform."
       ]
     },
@@ -55,7 +55,7 @@ export const advertisingServices:StudioService[] = [
     "faqs": [
       [
         "Should I run ads for a brand-new company in Kolkata?",
-        "Yes, if you want to start bringing in business and have an offer ready to sell. If you serve customers locally, begin in the areas you can actually cover and give people one clear way to call, book or buy. Set a spending limit and review the first conversations or orders before expanding."
+        "Yes, if you want to start bringing in business and have an offer ready to sell. A new Kolkata interiors firm could test one consultation offer in the neighbourhoods it can serve. Set a budget cap, send every enquiry to someone who can reply, and review how many suitable prospects book a consultation before expanding."
       ],
       [
         "Can I run ads myself with AI, or should I hire a specialist who uses AI?",
@@ -78,8 +78,8 @@ export const advertisingServices:StudioService[] = [
         "Record the WhatsApp click as an early signal. Have whoever answers label conversations by whether the person was a fit, booked or bought, and record the campaign source where you can. Review cost per qualified conversation and booked sale alongside the click count."
       ],
       [
-        "When should I pause a campaign that has spent money without a sale?",
-        "Check the landing page, enquiry routing and conversion tracking first. Then compare spend with your agreed test limit and allow for your normal sales cycle. If that window has passed and the campaign still produces few suitable enquiries, pause and revise the offer, audience or page before funding another test."
+        "What's worth fixing if I get clicks and no booked work?",
+        "Check the enquiry path on a mobile phone and send yourself a test message or form. If enquiries arrive but rarely qualify, review the search terms, location and offer. If qualified leads arrive but stall, compare response times, quotes and follow-up before paying for more traffic."
       ],
       [
         "How much does PPC management cost in Kolkata?",

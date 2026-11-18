@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { HeaderNavigation } from "@/components/Home Page Components/HeaderNavigation";
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { serviceMetadata } from "@/lib/serviceMetadata";
-import { searchCaseSource, searchCaseStudies } from "@/data/searchCaseStudies";
+import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
+import { SearchCaseArtwork } from "@/components/studio/SearchCaseArtwork";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
-import "@/components/studio/supporting-services.css";
-import "@/components/studio/service-editorial.css";
+import "@/components/studio/search-portfolio.css";
 
 const projects = Object.values(searchCaseStudies);
 type Props = { params: Promise<{ project: string }> };
@@ -23,44 +23,74 @@ export async function generateMetadata({ params }: Props) {
   const { project } = await params;
   const entry = projects.find(({ slug }) => slug === project);
   if (!entry) notFound();
-  return serviceMetadata({ title: `${entry.client} SEO Case Study`, slug: `work/${entry.slug}`, description: entry.summary });
+  return serviceMetadata({ title: `${entry.client} SEO ${"spotlight" in entry ? "Spotlight" : "Case Study"}`, slug: `work/${entry.slug}`, description: entry.summary });
 }
 
 export default async function SearchCasePage({ params }: Props) {
   const { project } = await params;
   const entry = projects.find(({ slug }) => slug === project);
   if (!entry) notFound();
+  const next = projects[(projects.indexOf(entry) + 1) % projects.length];
 
   return (
     <div className="studio-page studio-experience">
       <HeaderNavigation />
       <main id="main-content">
-        <section className="experience-page-hero experience-pad portfolio-hero">
-          <p className="studio-kicker">NYSEO/CO CASE STUDY / {entry.industry} / {entry.location}</p>
-          <div>
-            <h1 className="min-w-0 [overflow-wrap:anywhere]">{entry.client}<span className="orange-period">.</span></h1>
-            <div>
+        <header className="search-story-hero experience-pad">
+          <Link href="/work#search-case-studies" className="studio-text-link"><ArrowLeft size={17} aria-hidden="true" /> All search case studies</Link>
+          <div className="search-story-cover">
+            <div className="search-story-intro">
+              <p className="studio-kicker">{entry.discipline} / {entry.location}</p>
+              <h1>{entry.client}<span className="orange-period">.</span></h1>
               <p>{entry.title}</p>
-              <Link href="/work#search-case-studies" className="studio-text-link">Browse case studies</Link>
+              <p className="search-card-label">{"spotlight" in entry ? "Homepage spotlight by NYSEO/CO" : "Project by NYSEO/CO"} · {entry.duration}</p>
+              <ul className="search-story-tags" aria-label="Focus areas">
+                {entry.tags.map(tag => <li key={tag}>{tag}</li>)}
+              </ul>
             </div>
+            <SearchCaseArtwork visual={entry.visual} />
           </div>
-        </section>
-        <div className="svc-page svc-editorial">
-          <section className="svc-case-study svc-wrap" aria-labelledby="case-brief">
+        </header>
+        <article className="search-story-body experience-pad">
+          <section className="search-story-section" aria-labelledby="case-brief">
+            <h2 id="case-brief">The brief</h2>
+            <p>{entry.summary}</p>
+          </section>
+          <section className="search-story-section" aria-labelledby="case-approach">
+            <h2 id="case-approach">The approach</h2>
             <div>
-              <h2 id="case-brief">The brief.</h2>
-              <p>{entry.summary}</p>
-              <a href={searchCaseSource(entry)} className="svc-text-link">
-                Read the original NYSEO/CO case study <ArrowUpRight size={18} aria-hidden="true" />
-              </a>
-            </div>
-            <div className="svc-case-sheet">
-              <div className="svc-case-sheet-title"><span>Project by NYSEO/CO</span></div>
-              <div><h3>The approach</h3><p>{entry.approach}</p></div>
-              <div><h3>The reported result</h3><p>{entry.result}</p></div>
+              <p>{entry.approach}</p>
+              {entry.steps.length > 0 && (
+                <ol className="search-story-steps">
+                  {entry.steps.map(([title, detail]) => (
+                    <li key={title}><h3>{title}</h3><p>{detail}</p></li>
+                  ))}
+                </ol>
+              )}
             </div>
           </section>
-        </div>
+          <section className="search-story-section" aria-labelledby="case-result">
+            <h2 id="case-result">The reported result</h2>
+            <div>
+              <dl className="search-story-metrics">
+                {entry.metrics.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+              </dl>
+              <p>{entry.result}</p>
+              <p>{entry.measurement}</p>
+            </div>
+          </section>
+          <section className="search-story-section search-story-local" aria-labelledby="case-local">
+            <h2 id="case-local">Apply it in Kolkata</h2>
+            <div>
+              <p>{entry.application}</p>
+              <Link href={`/${entry.service}`} className="studio-text-link">Explore Sparklines Studio’s service <ArrowUpRight size={18} aria-hidden="true" /></Link>
+            </div>
+          </section>
+          <nav className="search-story-nav" aria-label="Case study navigation">
+            <Link href="/work#search-case-studies" className="studio-text-link"><ArrowLeft size={17} aria-hidden="true" /> All search case studies</Link>
+            <Link href={searchCaseHref(next)} className="studio-text-link">Next case study · {next.client} <ArrowUpRight size={18} aria-hidden="true" /></Link>
+          </nav>
+        </article>
       </main>
       <BrandFooterBanner />
     </div>

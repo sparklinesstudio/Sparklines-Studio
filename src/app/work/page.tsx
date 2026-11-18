@@ -5,6 +5,7 @@ import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooter
 import { StudioMotion } from "@/components/studio/StudioMotion";
 import { BrandingFeature, MotionMarquee } from "@/components/studio/HomeExperience";
 import { PortfolioArchive } from "@/components/studio/PortfolioArchive";
+import { SearchCaseArtwork } from "@/components/studio/SearchCaseArtwork";
 import { StudioCta } from "@/components/studio/StudioSections";
 import {StructuredData} from "@/components/seo/StructuredData";
 import {pageGraph} from "@/lib/structuredData";
@@ -13,13 +14,12 @@ import { serviceMetadata } from "@/lib/serviceMetadata";
 import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
-import "@/components/studio/supporting-services.css";
-import "@/components/studio/service-editorial.css";
+import "@/components/studio/search-portfolio.css";
 
 export const metadata = serviceMetadata({
   title: "Branding Portfolio & Search Case Studies",
   slug: "work",
-  description: "Explore the House of Kolam identity by Sparklines Studio and six credited NYSEO/CO case studies on local, technical and AI search.",
+  description: "Explore the House of Kolam identity by Sparklines Studio and credited NYSEO/CO case studies on local, technical and AI search.",
 });
 
 export default function WorkPage() {
@@ -34,7 +34,7 @@ export default function WorkPage() {
             <div>
               <h1>Ideas made<br /><em>real.</em><span className="orange-period">*</span></h1>
               <div>
-                <p>Explore the identity we built for House of Kolam and six search case studies published by NYSEO/CO.</p>
+                <p>Explore the identity we built for House of Kolam and search projects published by NYSEO/CO.</p>
                 <a href="#portfolio-archive" className="studio-text-link">Explore the project boards <ArrowDownRight size={20} /></a>
                 <a href="#search-case-studies" className="studio-text-link">Browse the search case studies <ArrowDownRight size={20} /></a>
                 <Link href="/brand-film-production-kolkata" className="studio-text-link">Looking for our films? <ArrowUpRight size={18} /></Link>
@@ -43,26 +43,35 @@ export default function WorkPage() {
             <div className="portfolio-project-meta"><span>01 FEATURED BRAND IDENTITY</span><span>23 PROJECT BOARDS</span><span>STRATEGY → IDENTITY → APPLICATION</span></div>
           </section>
           <BrandingFeature listing />
-          <MotionMarquee reverse words={["Identity", "Packaging", "Motion", "Every touchpoint matters"]} />
-          <PortfolioArchive />
-          <section id="search-case-studies" className="svc-page svc-editorial" aria-labelledby="search-case-studies-title">
-            <div className="svc-wrap svc-index-section">
-              <div className="svc-section-heading">
-                <h2 id="search-case-studies-title">Search case studies.</h2>
-                <p>Six projects by NYSEO/CO, from local discovery and AI citations to moving an ecommerce site.</p>
-              </div>
-              <div className="svc-index-grid">
-                {Object.values(searchCaseStudies).map(project => (
-                  <Link href={searchCaseHref(project)} key={project.slug}>
-                    <span className="svc-small-label">{project.industry}</span>
-                    <h3>{project.client}</h3>
-                    <p>{project.title}</p>
-                    <ArrowUpRight size={21} aria-hidden="true" />
+          <section id="search-case-studies" className="search-archive experience-pad" aria-labelledby="search-case-studies-title">
+            <div className="search-archive-heading">
+              <h2 id="search-case-studies-title">Search case studies<span className="orange-period">.</span></h2>
+              <p>Six case studies and one homepage spotlight from NYSEO/CO, with reported results and lessons for Kolkata businesses.</p>
+            </div>
+            <div className="search-archive-grid">
+              {Object.values(searchCaseStudies).map(project => (
+                <article key={project.slug}>
+                  <Link href={searchCaseHref(project)} className="search-archive-card">
+                    <SearchCaseArtwork visual={project.visual} />
+                    <div className="search-card-copy">
+                      <span className="search-card-label">{"spotlight" in project ? "Project spotlight" : project.industry} · {project.duration}</span>
+                      <h3>{project.client}</h3>
+                      <p>{project.title}</p>
+                      <p className="search-card-label">{project.location}</p>
+                      <div className="search-card-bottom">
+                        <dl className="search-card-metrics">
+                          {project.metrics.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+                        </dl>
+                        <span className="search-card-action">{"spotlight" in project ? "Read spotlight" : "Read case study"} <ArrowUpRight size={18} aria-hidden="true" /></span>
+                      </div>
+                    </div>
                   </Link>
-                ))}
-              </div>
+                </article>
+              ))}
             </div>
           </section>
+          <MotionMarquee reverse words={["Identity", "Packaging", "Motion", "Every touchpoint matters"]} />
+          <PortfolioArchive />
           <div className="experience-pad">
             <ServiceConnections slugs={["branding-agency-kolkata", "logo-design-agency-kolkata", "brand-strategy-agency-kolkata"]} title="Take the identity into your own brief." />
           </div>
