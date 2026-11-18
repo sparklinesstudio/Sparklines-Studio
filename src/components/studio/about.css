@@ -24,30 +24,33 @@
   will-change: transform;
 }
 .about-photo img { object-fit: contain; object-position: center; }
-.about-photo-main { top: 12px; left: 2%; width: 68%; height: 70%; z-index: 1; --about-tilt: -4deg; }
-.about-photo-detail { bottom: 0; right: 0; width: 68%; height: 70%; z-index: 3; --about-tilt: 6deg; }
+.about-photo-main { top: 8%; left: 0; width: 44%; height: 43%; z-index: 1; --about-tilt: -4deg; }
+.about-photo-detail { bottom: 8%; right: 0; width: 44%; height: 43%; z-index: 3; --about-tilt: 6deg; }
 .about-photo-brand { bottom: 0; left: -3%; width: 50%; height: 40%; z-index: 4; }
 .about-founder-drag { padding: 0; cursor: grab; user-select: none; -webkit-user-select: none; }
 .about-sticker-repel, .about-sticker-art { position: absolute; inset: 0; display: block; pointer-events: none; }
 .about-face-wobble { transform-origin: 50% 65%; }
 .motion-enabled .about-face-wobble { animation: about-face-wobble 2s steps(1, end) infinite; }
-.about-photo-detail .about-face-wobble { animation-delay: -1s; }
+.about-photo-detail .about-face-wobble, .about-founders-grid > :nth-child(2) .about-face-wobble { animation-delay: -1s; }
 @keyframes about-face-wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
 .about-founder-drag img { pointer-events: none; }
 .about-founder-drag:focus-visible { outline: 2px dashed #073bff; outline-offset: 6px; }
 .about-drag-hint { position: absolute; bottom: -24px; left: 0; width: 100%; text-align: center; font-size: 12px; color: #52576a; pointer-events: none; }
 .about-founder-bio { max-width: 560px; margin: 20px 0 0; font-size: 16px; line-height: 1.75; color: #454958; }
 .about-photo-brand img { object-fit: contain; object-position: center; }
-.about-founders { background: #f3f3ef; }
-.about-founders-intro { max-width: 520px; margin-top: 24px; }
-.about-founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); margin-top: 48px; }
-.about-founder-portrait { position: relative; aspect-ratio: 1; background: transparent; }
+.about-founders { background: #f3f3ef; padding-block: clamp(55px, 6vw, 90px); }
+.about-founders-intro { max-width: 520px; margin-top: 18px; }
+.about-founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); margin-top: 28px; }
+.about-founder-portrait { position: relative; width: 100%; height: clamp(250px, 30vw, 400px); background: transparent; }
+.about-founder-head { position: absolute; inset: 0; }
 .about-founder-portrait img { object-fit: contain; object-position: center; }
-.about-founder-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-top: 20px; border-top: 1px solid #181a2226; margin-top: 20px; }
+.about-founder-caption { display: flex; align-items: baseline; justify-content: flex-start; gap: 12px; padding-top: 16px; border-top: 1px solid #181a2226; margin-top: 16px; }
+.about-founder-caption > span { color: #727784; font-size: 22px; }
 .studio-experience .about-founder-caption h3 { margin: 0; font-size: clamp(30px, 3vw, 48px); }
-.about-founder-caption p { margin: 0; }
+.about-founder-caption p { margin: 0; font-size: clamp(12px, 1.3vw, 16px); }
 @media (max-width: 750px) {
   .about-founders-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-founder-portrait { height: 290px; }
 }
 .about-reference-copy { text-align: center; position: relative; z-index: 1; }
 .studio-experience .about-reference-intro { margin-bottom: 20px; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 26px; line-height: 1.1; }

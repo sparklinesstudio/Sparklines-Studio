@@ -70,6 +70,9 @@
 @keyframes studio-drawer-dismiss { to { opacity:0;transform:translateX(16px); } }
 @keyframes studio-backdrop-in { from { opacity:0; } to { opacity:1; } }
 @keyframes studio-backdrop-out { from { opacity:1; } to { opacity:0; } }
+@media(min-width:900px) {
+  .studio-nav-logo img { height:42px; max-width:190px; }
+}
 @media(max-width:899px) {
   :root { --studio-nav-height:calc(74px + env(safe-area-inset-top,0px)); }
   .studio-nav,.studio-experience .studio-nav { padding:calc(14px + env(safe-area-inset-top,0px)) 20px 14px;min-height:74px;width:100%; }
