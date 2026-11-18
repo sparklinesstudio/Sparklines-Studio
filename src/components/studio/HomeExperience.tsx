@@ -104,7 +104,7 @@ function FounderSticker({ src, alt, label, className, tilt, face = false }: { sr
     onDragEnd={() => { dragging.current = false; resetRepulsion(); }}>
     <motion.span className="about-sticker-repel" style={{ x, y }}>
       <span className={face ? "about-sticker-art about-face-wobble" : "about-sticker-art"}>
-        <Image src={src} alt={alt} fill sizes={face ? "(max-width: 750px) 48vw, 24vw" : "(max-width: 750px) 50vw, 25vw"} draggable={false} />
+        <Image src={src} alt={alt} fill sizes="(max-width: 750px) 50vw, 25vw" draggable={false} />
       </span>
     </motion.span>
   </motion.button>;

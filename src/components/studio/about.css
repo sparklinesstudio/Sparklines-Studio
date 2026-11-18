@@ -24,8 +24,8 @@
   will-change: transform;
 }
 .about-photo img { object-fit: contain; object-position: center; }
-.about-photo-main { top: 13%; left: -2%; width: 48%; height: 50%; z-index: 1; --about-tilt: -4deg; }
-.about-photo-detail { bottom: 13%; right: -2%; width: 48%; height: 50%; z-index: 3; --about-tilt: 6deg; }
+.about-photo-main { top: 15%; left: -3%; width: 50%; height: 53%; z-index: 1; --about-tilt: -4deg; }
+.about-photo-detail { bottom: 15%; right: -3%; width: 50%; height: 53%; z-index: 3; --about-tilt: 6deg; }
 .about-photo-brand { bottom: 0; left: -3%; width: 50%; height: 40%; z-index: 4; }
 .about-founder-drag { padding: 0; cursor: grab; user-select: none; -webkit-user-select: none; }
 .about-sticker-repel, .about-sticker-art { position: absolute; inset: 0; display: block; pointer-events: none; }
