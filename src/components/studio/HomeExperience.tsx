@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Asterisk, Globe } from "lucide-react";
+import { homeGalleryFilms, categories } from "@/data/galleryVideos";
 import { studioFilms } from "@/data/studioFilms";
 import { founders, studioSticker } from "@/data/founders";
 import { AmbientVideo, MotionSwitch, useStudioMotion } from "./StudioMotion";
@@ -26,7 +27,6 @@ function HeroSpark() {
   </svg>;
 }
 
-const filmDestinations:Record<string,string>={"Food & hospitality":"/product-video-production-kolkata","Spaces & interiors":"/real-estate-video-production-kolkata","People & stories":"/corporate-video-production-kolkata","Fashion campaign":"/brand-film-production-kolkata","Brand moments":"/brand-film-production-kolkata","Lifestyle campaign":"/social-media-video-production-kolkata"};
 
 export function StudioHero() {
   return <section className="reference-hero" aria-label="Sparklines Studio video production">
@@ -118,7 +118,7 @@ export function InteractiveAbout({ showEyebrow = true }: { showEyebrow?: boolean
   </section>;
 }
 
-function FilmWorkCard({ film, index }: { film: (typeof studioFilms)[number]; index: number }) {
+function FilmWorkCard({ film, index }: { film: (typeof homeGalleryFilms)[number]; index: number }) {
   const { enabled } = useStudioMotion();
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -137,7 +137,7 @@ function FilmWorkCard({ film, index }: { film: (typeof studioFilms)[number]; ind
     pointerX.set(Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width - 0.5) * 2)));
     pointerY.set(Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height - 0.5) * 2)));
   }} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); }}>
-    <Link href={filmDestinations[film.title]||"/brand-film-production-kolkata"} aria-label={"Explore " + film.title}>
+    <Link href={"/video-gallery#gallery-" + film.category.toLowerCase().replaceAll(" ", "-")} aria-label={"Explore " + film.title}>
       <div className="film-reference-frame"><AmbientVideo {...film} /><span className="film-reference-index">{String(index + 1).padStart(2, "0")}</span></div>
       <div className="film-reference-caption"><h3>{film.title}</h3><span><ArrowUpRight size={22} /></span></div>
     </Link>
@@ -146,8 +146,8 @@ function FilmWorkCard({ film, index }: { film: (typeof studioFilms)[number]; ind
 
 export function HomeFilmMasonry() {
   const [filter, setFilter] = useState("All films");
-  const filters = ["All films", "Brand & lifestyle", "Food & spaces", "People"];
-  const matching = studioFilms.filter((_,index) => filter === "All films" || (filter === "Brand & lifestyle" ? [3,5].includes(index) : filter === "Food & spaces" ? [0,1].includes(index) : [2,4].includes(index)));
+  const filters = ["All films", ...categories];
+  const matching = homeGalleryFilms.filter(film => filter === "All films" || film.category === filter);
   return <section id="selected-films" className="experience-section experience-pad films-reference">
     <div className="films-reference-heading">
       <Asterisk className="films-reference-spark" size={90} strokeWidth={1.2} aria-hidden="true" />
@@ -155,8 +155,8 @@ export function HomeFilmMasonry() {
       <p>Different stories. Different formats. A shared obsession with making every frame count.</p>
     </div>
     <div className="films-reference-filters" role="group" aria-label="Filter films">{filters.map(label => <button key={label} aria-pressed={filter === label} onClick={() => setFilter(label)}>{label}</button>)}<span aria-live="polite">{matching.length} films</span></div>
-    <div className="films-reference-masonry">{matching.map(film => <FilmWorkCard key={film.src} film={film} index={studioFilms.indexOf(film)} />)}</div>
-    <div className="films-reference-footer"><Link href="/brand-film-production-kolkata#production-library" className="about-reference-link"><span><ArrowRight size={20} /></span><span>Explore all video work</span></Link></div>
+    <div className="films-reference-masonry">{matching.map(film => <FilmWorkCard key={film.src} film={film} index={homeGalleryFilms.indexOf(film)} />)}</div>
+    <div className="films-reference-footer"><Link href="/video-gallery" className="about-reference-link"><span><ArrowRight size={20} /></span><span>Explore all video work</span></Link></div>
   </section>;
 }
 
@@ -209,12 +209,12 @@ export function FilmCarousel() {
 
   useEffect(() => {
     if (!enabled || !inView || focused || interacting || !pageVisible) return;
-    const timer = window.setInterval(() => move((activeIndex.current + 1) % studioFilms.length), 5000);
+    const timer = window.setInterval(() => move((activeIndex.current + 1) % homeGalleryFilms.length), 5000);
     return () => window.clearInterval(timer);
   }, [enabled, inView, focused, interacting, pageVisible, move]);
 
   return <section id="motion-films" className="experience-section film-carousel-section" aria-label="Video inspiration carousel" aria-roledescription="carousel" onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setFocused(false); }}>
-    <div className="experience-pad carousel-heading"><div><h2>Always in <em>motion.</em></h2></div><div className="carousel-controls"><button aria-label="Previous film" onClick={() => move((index + studioFilms.length - 1) % studioFilms.length, enabled)}><ArrowLeft size={20} /></button><span>{String(index + 1).padStart(2, "0")} / {String(studioFilms.length).padStart(2, "0")}</span><button aria-label="Next film" onClick={() => move((index + 1) % studioFilms.length, enabled)}><ArrowRight size={20} /></button></div></div>
+    <div className="experience-pad carousel-heading"><div><h2>Always in <em>motion.</em></h2></div><div className="carousel-controls"><button aria-label="Previous film" onClick={() => move((index + homeGalleryFilms.length - 1) % homeGalleryFilms.length, enabled)}><ArrowLeft size={20} /></button><span>{String(index + 1).padStart(2, "0")} / {String(homeGalleryFilms.length).padStart(2, "0")}</span><button aria-label="Next film" onClick={() => move((index + 1) % homeGalleryFilms.length, enabled)}><ArrowRight size={20} /></button></div></div>
     <div className="film-carousel-track" ref={ref} onPointerDown={() => setInteracting(true)} onPointerUp={() => setInteracting(false)} onPointerCancel={() => setInteracting(false)} onPointerLeave={() => setInteracting(false)} onScroll={() => {
       const track = ref.current;
       if (!track) return;
@@ -222,11 +222,11 @@ export function FilmCarousel() {
       const second = track.children[1] as HTMLElement;
       const step = second.offsetLeft - first.offsetLeft;
       if (!step) return;
-      const next = Math.max(0, Math.min(studioFilms.length - 1, Math.round(track.scrollLeft / step)));
+      const next = Math.max(0, Math.min(homeGalleryFilms.length - 1, Math.round(track.scrollLeft / step)));
       activeIndex.current = next;
       setIndex(next);
     }}>
-      {studioFilms.map((film,i) => <Link href={filmDestinations[film.title]||"/brand-film-production-kolkata"} key={film.src} className="film-carousel-card" aria-label={film.title + ", film " + (i + 1) + " of " + studioFilms.length}><div><AmbientVideo {...film} /><span>0{i+1}</span><ArrowUpRight size={23} /></div><h3>{film.title}</h3></Link>)}
+      {homeGalleryFilms.map((film,i) => <Link href={"/video-gallery#gallery-" + film.category.toLowerCase().replaceAll(" ", "-")} key={film.src} className="film-carousel-card" aria-label={film.title + ", film " + (i + 1) + " of " + homeGalleryFilms.length}><div><AmbientVideo {...film} /><span>0{i+1}</span><ArrowUpRight size={23} /></div><h3>{film.title}</h3></Link>)}
       <div className="film-carousel-tail" style={{ flex: "0 0 " + tailWidth + "px" }} aria-hidden="true" />
     </div>
   </section>;
