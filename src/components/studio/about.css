@@ -26,7 +26,7 @@
 .about-photo img { object-fit: contain; object-position: center; }
 .about-photo-main { top: 12px; left: 2%; width: 68%; height: 70%; z-index: 1; --about-tilt: -4deg; }
 .about-photo-detail { bottom: 0; right: 0; width: 68%; height: 70%; z-index: 3; --about-tilt: 6deg; }
-.about-photo-brand { bottom: 4%; left: 0; width: 40%; height: 32%; z-index: 0; transform: rotate(-8.5deg); pointer-events: none; }
+.about-photo-brand { bottom: 0; left: -3%; width: 50%; height: 40%; z-index: 0; transform: rotate(-8.5deg); pointer-events: none; }
 .about-founder-drag { padding: 0; cursor: grab; user-select: none; -webkit-user-select: none; }
 .about-founder-drag img { pointer-events: none; }
 .about-founder-drag:focus-visible { outline: 2px dashed #073bff; outline-offset: 6px; }

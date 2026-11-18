@@ -42,7 +42,8 @@ function RepellingCard({ children, tilt, className, scale = 1.055 }: { children:
 
 export function ServiceVideoCards() {
   return <section id="creative-services" className="service-video-section experience-section experience-pad">
-    <div className="service-video-heading"><StudioSticker variant="video" className="sticker-video" /><h2><span>From first idea</span>{" "}<em>to final frame.</em></h2></div>
+    <StudioSticker variant="video" className="sticker-video" />
+    <div className="service-video-heading"><h2><span>From first idea</span>{" "}<em>to final frame.</em></h2></div>
     <div className="service-video-grid">{services.map((service,index) => <RepellingCard key={service.title} tilt={service.tilt} className={"service-video-card service-video-color-" + index}>
       <Link href={service.href} aria-label={"Explore " + service.title + " services"}>
         <div className="service-video-media"><AmbientVideo {...service.film} /><span className="service-video-open"><ArrowUpRight size={21} /></span></div>
@@ -55,7 +56,8 @@ export function ServiceVideoCards() {
 
 export function BrandingSpotlight({ listing = false, showEyebrow = true }: { listing?: boolean; showEyebrow?: boolean }) {
   return <section id="featured-branding" className={"branding-reference experience-section experience-pad " + (listing ? "branding-reference-listing" : "")}>
-    <div className="branding-reference-heading"><StudioSticker variant="studio" className="sticker-studio" />
+    <StudioSticker variant="studio" className="sticker-studio" />
+    <div className="branding-reference-heading">
       {showEyebrow && <p className="studio-kicker">HOUSE OF KOLAM / BRAND IDENTITY</p>}
       <h2><span>A tradition.</span>{" "}<em>A whole new expression.</em></h2>
       <p>A complete identity rooted in the art of Kolam. From the first mark to packaging, print and the spaces in between.</p>

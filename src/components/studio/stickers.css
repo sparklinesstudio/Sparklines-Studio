@@ -1,14 +1,12 @@
-.studio-art-sticker { position: absolute; display: block; width: clamp(85px, 10vw, 140px); aspect-ratio: 1; pointer-events: none; user-select: none; }
+.studio-art-sticker { position: absolute; display: block; top: 0; z-index: 5; width: clamp(100px, 10vw, 140px); aspect-ratio: 1; pointer-events: none; user-select: none; }
 .studio-art-sticker img { object-fit: contain; }
-.service-video-heading, .about-founders, .studio-cta, .branding-reference-heading { position: relative; }
-.sticker-video { right: 0; bottom: -35px; transform: rotate(9deg); }
-.sticker-smile { right: 5%; top: 28px; transform: rotate(12deg); }
-.sticker-studio { left: 0; bottom: -25px; transform: rotate(-12deg); }
-.sticker-creature { right: 5%; top: 35px; transform: rotate(10deg); }
+.service-video-section, .about-founders, .studio-cta, .branding-reference { position: relative; }
+.sticker-video { right: 8%; transform: translateY(-50%) rotate(9deg); }
+.sticker-smile { right: 8%; transform: translateY(-50%) rotate(12deg); }
+.sticker-studio { left: 8%; transform: translateY(-50%) rotate(-12deg); }
+.sticker-creature { right: 8%; transform: translateY(-50%) rotate(10deg); }
 @media (max-width: 750px) {
-  .studio-art-sticker { width: 72px; }
-  .sticker-video { bottom: -55px; right: -5px; }
-  .sticker-smile { top: 12px; right: 4%; width: 60px; }
-  .sticker-studio { bottom: -65px; left: 0; }
-  .sticker-creature { top: 4px; right: 5%; width: 60px; }
+  .studio-art-sticker { width: 80px; }
+  .sticker-video, .sticker-smile, .sticker-creature { right: 7%; }
+  .sticker-studio { left: 7%; }
 }

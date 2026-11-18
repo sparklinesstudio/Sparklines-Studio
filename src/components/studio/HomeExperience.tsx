@@ -85,7 +85,7 @@ function AboutPhotoCollage() {
     <DraggableFounder founder={founders[0]} className="about-photo-main" tilt={-4} />
     <DraggableFounder founder={founders[1]} className="about-photo-detail" tilt={6} />
     <figure className="about-photo about-photo-brand" aria-hidden="true">
-      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 40vw, 20vw" draggable={false} />
+      <Image src={studioSticker} alt="" fill sizes="(max-width: 750px) 50vw, 25vw" draggable={false} />
     </figure>
     <p className="about-drag-hint">Give us a little nudge. Drag &amp; release.</p>
   </div>;

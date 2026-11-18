@@ -1,5 +1,5 @@
 /* Framed branding and service posters, using the studio's editorial theme. */
-.branding-reference { background: #f3f3ef; overflow: hidden; }
+.branding-reference { background: #f3f3ef; overflow: visible; }
 .branding-reference-heading { text-align: center; max-width: 1150px; margin: 0 auto 65px; }
 .branding-reference-heading .studio-kicker { justify-content: center; }
 .studio-experience .branding-reference h2 { font-size: clamp(53px, 6.2vw, 100px); text-transform: uppercase; color: #111; line-height: .98; letter-spacing: -.025em; }
