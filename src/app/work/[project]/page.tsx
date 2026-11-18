@@ -43,7 +43,7 @@ export default async function SearchCasePage({ params }: Props) {
               <p className="studio-kicker">{entry.discipline} / {entry.location}</p>
               <h1>{entry.client}<span className="orange-period">.</span></h1>
               <p>{entry.title}</p>
-              <p className="search-card-label">{"spotlight" in entry ? "Homepage spotlight by NYSEO/CO" : "Project by NYSEO/CO"} · {entry.duration}</p>
+              <p className="search-card-label">{"spotlight" in entry ? "Third-party project spotlight" : "Third-party case study"} · {entry.duration}</p>
               <ul className="search-story-tags" aria-label="Focus areas">
                 {entry.tags.map(tag => <li key={tag}>{tag}</li>)}
               </ul>

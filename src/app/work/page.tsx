@@ -19,7 +19,7 @@ import "@/components/studio/search-portfolio.css";
 export const metadata = serviceMetadata({
   title: "Branding Portfolio & Search Case Studies",
   slug: "work",
-  description: "Explore the House of Kolam identity by Sparklines Studio and credited NYSEO/CO case studies on local, technical and AI search.",
+  description: "Explore the House of Kolam identity by Sparklines Studio and third-party case studies on local, technical and AI search.",
 });
 
 export default function WorkPage() {
@@ -34,7 +34,7 @@ export default function WorkPage() {
             <div>
               <h1>Ideas made<br /><em>real.</em><span className="orange-period">*</span></h1>
               <div>
-                <p>Explore the identity we built for House of Kolam and search projects published by NYSEO/CO.</p>
+                <p>Explore the identity we built for House of Kolam and published third-party search projects.</p>
                 <a href="#portfolio-archive" className="studio-text-link">Explore the project boards <ArrowDownRight size={20} /></a>
                 <a href="#search-case-studies" className="studio-text-link">Browse the search case studies <ArrowDownRight size={20} /></a>
                 <Link href="/brand-film-production-kolkata" className="studio-text-link">Looking for our films? <ArrowUpRight size={18} /></Link>
@@ -46,7 +46,7 @@ export default function WorkPage() {
           <section id="search-case-studies" className="search-archive experience-pad" aria-labelledby="search-case-studies-title">
             <div className="search-archive-heading">
               <h2 id="search-case-studies-title">Search case studies<span className="orange-period">.</span></h2>
-              <p>Six case studies and one homepage spotlight from NYSEO/CO, with reported results and lessons for Kolkata businesses.</p>
+              <p>Six third-party case studies and one project spotlight, with reported results and lessons for Kolkata businesses.</p>
             </div>
             <div className="search-archive-grid">
               {Object.values(searchCaseStudies).map(project => (
