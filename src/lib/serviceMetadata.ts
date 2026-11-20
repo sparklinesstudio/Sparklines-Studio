@@ -11,17 +11,20 @@ function shorten(text: string, limit: number) {
   return text.slice(0, lastSpace > 0 ? lastSpace : limit - 1).replace(/[,:;\s–—-]+$/, "") + "…";
 }
 
-export function serviceMetadata(page: { title: string; description?: string; slug: string }): Metadata {
-  const copy = pageMetadata[page.slug];
+export function serviceMetadata(
+  page: { title: string; description?: string; slug: string },
+  editorialCopy?: { title: string; description: string },
+): Metadata {
+  const copy = editorialCopy ?? pageMetadata[page.slug];
   const pageTitle = copy?.title ?? page.title.replace(/\s*[|–—-]\s*Sparklines Studio(?:,? Kolkata)?\s*$/i, "").trim();
   const titleSuffix = ` | ${siteConfig.name}`;
   const trimmedTitle = shorten(pageTitle, metadataLength - titleSuffix.length);
-  const title = city.test(trimmedTitle)
+  const title = editorialCopy ? pageTitle + titleSuffix : city.test(trimmedTitle)
     ? trimmedTitle + titleSuffix
     : shorten(pageTitle, metadataLength - titleSuffix.length - ", Kolkata".length) + titleSuffix + ", Kolkata";
   const text = (copy?.description ?? page.description?.trim()) || pageTitle;
   const trimmedDescription = shorten(text, metadataLength);
-  const description = city.test(trimmedDescription)
+  const description = editorialCopy ? editorialCopy.description : city.test(trimmedDescription)
     ? trimmedDescription
     : shorten(text, metadataLength - " · Kolkata".length).replace(/[.!?]$/, "") + " · Kolkata";
   const url = new URL(page.slug ? "/" + page.slug : "/", siteConfig.url).toString();

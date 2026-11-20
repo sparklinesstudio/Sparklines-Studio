@@ -1,0 +1,107 @@
+.seo-buying-hero {
+  padding-bottom: clamp(24px, 5vw, 62px);
+}
+
+.seo-buying-hero .svc-hero-paper {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  min-height: auto;
+  padding: clamp(38px, 7vw, 100px) clamp(18px, 5vw, 64px);
+}
+
+.seo-buying-hero .svc-hero-centre {
+  pointer-events: auto;
+}
+
+.seo-buying-hero .svc-hero-centre h1 {
+  font-size: clamp(39px, 6vw, 88px);
+  overflow-wrap: break-word;
+}
+
+.seo-buying-hero .svc-hero-centre > p,
+.seo-buying-page .seo-buying-copy p,
+.seo-buying-page .svc-faq details p {
+  font-size: 1rem;
+}
+
+.seo-buying-hero-mark {
+  color: var(--svc-orange);
+}
+
+.seo-buying-section {
+  border-bottom: 1px solid #cccfc4;
+}
+
+.seo-buying-section .seo-buying-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(32px, 7vw, 105px);
+}
+
+.seo-buying-copy > :first-child,
+.seo-buying-detail > :last-child {
+  margin-top: 0;
+}
+
+.seo-buying-copy > p + p {
+  margin-top: 1rem;
+}
+
+.seo-buying-section h3 {
+  font: 400 clamp(24px, 3vw, 32px)/1.15 var(--font-instrument-serif), Georgia, serif;
+  margin: 0 0 10px;
+}
+
+.seo-buying-detail {
+  border-top: 1px solid #b9c4bf;
+  margin-top: 18px;
+  padding-top: 18px;
+  scroll-margin-top: 105px;
+}
+
+.seo-buying-scope {
+  background: #e8edff;
+}
+
+.seo-buying-example {
+  background: #fff8f0;
+}
+
+.seo-buying-pricing {
+  background: var(--svc-orange);
+}
+
+.seo-buying-pricing .seo-buying-copy {
+  padding: clamp(20px, 4vw, 40px);
+  background: var(--svc-paper);
+}
+
+.seo-buying-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.seo-buying-page .seo-buying-actions .svc-button {
+  margin-top: 0;
+}
+
+.seo-buying-page .seo-buying-actions .alt {
+  background: transparent;
+  border: 1px solid #c7d0c2;
+}
+
+.seo-buying-page .seo-buying-actions .alt:hover {
+  background: #303b2c;
+}
+
+@media (max-width: 700px) {
+  .seo-buying-section .seo-buying-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+}

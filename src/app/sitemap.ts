@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/structuredData";
 import {studioServices} from "@/data/services/catalog";
+import {seoBuyingPages} from "@/data/services/seo-buying-pages";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
 import { listBlogSitemapEntries } from "@/lib/blog/store";
@@ -23,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/terms-and-conditions",
     "/refund-policy",
     ...studioServices.map(service=>"/"+service.slug),
+    ...seoBuyingPages.map(page=>"/"+page.slug),
     ...PORTFOLIO_DATA.map((p) => p.customHref || "/work/" + p.id),
     ...Object.values(searchCaseStudies).map(searchCaseHref),
   ];
