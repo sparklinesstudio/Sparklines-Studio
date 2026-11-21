@@ -33,7 +33,7 @@
   border-bottom: 1px solid #cccfc4;
 }
 
-.seo-buying-section .seo-buying-layout {
+.seo-buying-page .seo-buying-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   align-items: start;
@@ -78,29 +78,50 @@
   background: var(--svc-paper);
 }
 
-.seo-buying-actions {
+.seo-buying-hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 24px;
+}
+
+.seo-buying-price-cta {
+  margin-top: 18px;
+}
+
+.seo-buying-enquiry {
+  background: #e8edff;
+}
+
+.seo-buying-enquiry .seo-buying-layout > div > p {
+  font-size: 1rem;
+  margin: 20px 0;
+}
+
+.seo-buying-enquiry .studio-contact-form {
+  min-width: 0;
+}
+
+.seo-buying-enquiry .studio-button {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 24px;
+  min-height: 45px;
+  padding: 12px 19px;
+  background: var(--svc-blue);
+  color: #fff;
+  font-size: .9375rem;
+  font-weight: 600;
 }
 
-.seo-buying-page .seo-buying-actions .svc-button {
-  margin-top: 0;
-}
-
-.seo-buying-page .seo-buying-actions .alt {
-  background: transparent;
-  border: 1px solid #c7d0c2;
-}
-
-.seo-buying-page .seo-buying-actions .alt:hover {
-  background: #303b2c;
+.seo-buying-enquiry .studio-button:hover:not(:disabled) {
+  background: #1534bd;
 }
 
 @media (max-width: 700px) {
-  .seo-buying-section .seo-buying-layout {
+  .seo-buying-page .seo-buying-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
   }

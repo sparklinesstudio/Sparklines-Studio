@@ -2,20 +2,21 @@ import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const ecommerceBuyingPages: SeoBuyingPage[] = [
   {
-    slug: "ecommerce-seo-agency-kolkata",
+    slug: "ecommerce-seo-retainer-pricing",
     name: "Ongoing Ecommerce SEO",
-    title: "Ecommerce SEO Agency in Kolkata | Monthly SEO Services",
-    description: "Request an ecommerce SEO retainer quote. Get a plan for category discovery, catalogue changes, buying content, and tracking organic sales.",
-    heading: ["Ecommerce SEO", "for growing stores"],
-    intro: "If customers can find your brand but struggle to discover your profitable categories through search, start with the catalogue. Sparklines Studio helps ecommerce teams in Kolkata refine store structure, improve useful category and product content, and measure how those changes support sales. Share your store, priority product ranges and merchandising calendar to scope ongoing work.",
+    title: "Ecommerce SEO Retainer Pricing and Monthly Scope",
+    description: "Compare ecommerce SEO retainer pricing based on categories, catalogue size and the work your team needs covered. Get a tailored monthly scope.",
+    heading: ["Ecommerce SEO retainer pricing", "for growing stores"],
+    intro: "Ecommerce SEO retainer pricing depends on what needs attention across your catalogue and how often it changes. We help store teams make profitable collections easier to find, improve the product information shoppers use, and check what search contributes to orders where measurement allows. Your quote specifies what we own and what stays with merchandising or development.",
     sections: [
       {
         id: "ecommerce-seo-retainer-pricing",
-        title: "What changes the price of an ecommerce retainer?",
+        title: "What drives ecommerce SEO retainer pricing?",
         style: "pricing",
         paragraphs: [
           "We quote ongoing SEO according to catalogue scale, the number of storefronts or markets, the condition of key templates and the work your own team can take on. A small store with a stable range might prioritise a few collections and stronger product information. A retailer with seasonal categories, variants and regular releases may need continuing technical checks as well.",
           "Ask for the recurring priorities and reporting to be shown separately from setup, development and content production. We clarify who builds changes, who approves product details and which template or market releases need separate estimates. This gives you comparable responsibilities when reviewing retainer proposals.",
+          "Use the proposal to decide which category work can be shipped ahead of the next merchandising cycle. For example, a homeware team might prioritise permanent dining collections while holding template changes until its seasonal sale ends.",
         ],
       },
       {
@@ -60,16 +61,16 @@ export const ecommerceBuyingPages: SeoBuyingPage[] = [
       ["Do you work with Shopify and WooCommerce?", "We assess both. Theme, app and developer access determine which changes we can make and how they are deployed. We can discuss another platform after seeing your setup and scope."],
       ["Are product descriptions included?", "Writing can be scoped for selected products or templates. We agree the number of pages, source information and approval process before including it in a recurring proposal."],
     ],
-    related: ["ecommerce-technical-seo-audit", "shopify-seo-services", "monthly-seo-for-small-businesses"],
-    inquiry: { label: "Request an ecommerce SEO retainer quote", prompt: "Share your platform, priority categories and what you want organic search to sell. Include your next catalogue or merchandising release if it affects scope." },
+    related: ["ecommerce-technical-seo-audit-services", "shopify-seo-services-pricing", "monthly-seo-packages-for-small-business"],
+    inquiry: { label: "Get an ecommerce SEO proposal", prompt: "Send your platform and priority ranges. Tell us which products or categories you want organic search to sell." },
   },
   {
-    slug: "ecommerce-technical-seo-audit",
+    slug: "ecommerce-technical-seo-audit-services",
     name: "Ecommerce Technical SEO Audits",
     title: "Ecommerce Technical SEO Audit Services",
-    description: "Request a technical audit for your online store. Review catalogue URLs, filters, variants, crawl paths, and indexing with a developer-ready handover.",
-    heading: ["Ecommerce technical", "SEO audits"],
-    intro: "Commission a technical audit when you need to know why the catalogue generates thousands of URLs or why profitable categories stay hard to find. Sparklines Studio reviews how store templates, navigation and inventory affect search discovery. Send your store, platform and representative problem URLs to discuss an audit with a defined handover.",
+    description: "Get a quote for ecommerce technical SEO audit services. Review catalogue links, filters, variants and indexing, then get a prioritised backlog for developers.",
+    heading: ["Ecommerce technical SEO", "audit services"],
+    intro: "Our ecommerce technical SEO audit services are for stores where valuable products or categories are hard to find, or filters and variants create competing URLs. We trace those patterns across representative templates and give your developers a prioritised backlog with example URLs and release checks.",
     sections: [
       {
         id: "fit",
@@ -106,10 +107,11 @@ export const ecommerceBuyingPages: SeoBuyingPage[] = [
       },
       {
         id: "pricing",
-        title: "How the audit is quoted",
+        title: "How we quote ecommerce technical SEO audit services",
         style: "pricing",
         paragraphs: [
           "This is a one-time audit. Pricing depends on catalogue complexity, the number of templates and markets, filters or variants, and whether you need support interpreting incomplete data or testing staging. Large catalogues can sometimes be reviewed through representative URL patterns. Agree the depth of sampling, handover format and any follow-up review before kickoff.",
+          "Before work starts, name a group of products your team considers commercially important and a few that surface properly today. Comparing both gives developers a reference for separating a repeatable template problem from an isolated merchandising decision.",
         ],
       },
       {
@@ -128,7 +130,7 @@ export const ecommerceBuyingPages: SeoBuyingPage[] = [
       ["Is this useful if we already use an SEO plugin?", "Yes. Include the plugin and relevant settings in your brief. We check the actual behaviour of key pages and identify where the theme, store or plugin affects it."],
       ["How is this different from ongoing ecommerce SEO?", "The audit ends with a documented diagnosis and handover. A recurring engagement can take responsibility for improvements and review how new products or releases change priorities."],
     ],
-    related: ["shopify-seo-audit", "ecommerce-seo-agency-kolkata", "technical-seo-agency-kolkata"],
-    inquiry: { label: "Request an ecommerce technical audit quote", prompt: "Send your store, platform, affected categories or URL patterns, and the names of the systems that handle filters, variants and catalogue updates." },
+    related: ["shopify-seo-audit-cost", "ecommerce-seo-retainer-pricing", "technical-seo-audit-pricing"],
+    inquiry: { label: "Get an ecommerce technical audit quote", prompt: "Send your store, platform and an example of the catalogue problem. Mention any upcoming theme or catalogue release." },
   },
 ];

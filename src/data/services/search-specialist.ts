@@ -1,7 +1,7 @@
 import type {StudioService} from "./types";
 export const specialistSearchServices:StudioService[] = [
   {
-    "slug": "ecommerce-seo-agency-kolkata",
+    "slug": "ecommerce-seo-retainer-pricing",
     "name": "Ecommerce SEO",
     "title": "Ecommerce SEO Agency Kolkata",
     "family": "SEO & AI search",
@@ -70,7 +70,7 @@ export const specialistSearchServices:StudioService[] = [
       "ecommerce-development-agency-kolkata",
       "product-video-production-kolkata",
       "google-ads-agency-kolkata",
-      "technical-seo-agency-kolkata"
+      "technical-seo-audit-pricing"
     ],
     "reading": [
       "how-to-do-keyword-research",
@@ -145,7 +145,7 @@ export const specialistSearchServices:StudioService[] = [
     ],
     "related": [
       "real-estate-video-production-kolkata",
-      "local-seo-agency-kolkata",
+      "local-seo-packages-for-small-business",
       "google-ads-agency-kolkata",
       "website-development-agency-kolkata"
     ],
@@ -221,7 +221,7 @@ export const specialistSearchServices:StudioService[] = [
       ]
     ],
     "related": [
-      "local-seo-agency-kolkata",
+      "local-seo-packages-for-small-business",
       "branding-agency-kolkata",
       "real-estate-video-production-kolkata",
       "website-development-agency-kolkata"
@@ -232,7 +232,7 @@ export const specialistSearchServices:StudioService[] = [
     ]
   },
   {
-    "slug": "local-seo-agency-kolkata",
+    "slug": "local-seo-packages-for-small-business",
     "name": "Local SEO",
     "title": "Local SEO Agency Kolkata",
     "family": "SEO & AI search",
@@ -310,7 +310,7 @@ export const specialistSearchServices:StudioService[] = [
     ]
   },
   {
-    "slug": "technical-seo-agency-kolkata",
+    "slug": "technical-seo-audit-pricing",
     "name": "Technical SEO",
     "title": "Technical SEO Agency Kolkata",
     "family": "SEO & AI search",
@@ -377,7 +377,7 @@ export const specialistSearchServices:StudioService[] = [
     ],
     "related": [
       "website-development-agency-kolkata",
-      "ecommerce-seo-agency-kolkata",
+      "ecommerce-seo-retainer-pricing",
       "seo-agency-kolkata",
       "chatgpt-seo-agency-kolkata"
     ],

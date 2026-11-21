@@ -2,20 +2,21 @@ import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const shopifyBuyingPages: SeoBuyingPage[] = [
   {
-    slug: "shopify-seo-services",
+    slug: "shopify-seo-services-pricing",
     name: "Shopify SEO Services",
-    title: "Shopify SEO Services and Monthly Pricing",
-    description: "Hire Shopify SEO support for collections, product pages, theme changes, and organic sales reporting. Compare what goes into a monthly quote.",
-    heading: ["Shopify SEO services", "with monthly support"],
-    intro: "Your Shopify store changes every time you launch a range, update the theme or introduce an app. We help store owners and marketing teams make those changes with search discovery and buying decisions in mind. Share your Shopify store and priority collections for a proposal covering the recurring work you want us to handle.",
+    title: "Shopify SEO Services Pricing and Monthly Scope",
+    description: "Compare Shopify SEO services pricing for collection updates, product copy, release checks and ongoing reporting. Get a monthly quote for your store.",
+    heading: ["Shopify SEO services pricing", "and monthly scope"],
+    intro: "Shopify SEO services pricing depends on the collections, products and theme changes you want us to handle each month. We help you improve priority buying pages and verify that new ranges, apps and releases keep those pages easy to find. Your proposal specifies what we can change in Shopify and what your developer owns.",
     sections: [
       {
         id: "monthly-shopify-pricing",
-        title: "What goes into monthly Shopify SEO pricing?",
+        title: "What drives Shopify SEO services pricing?",
         style: "pricing",
         paragraphs: [
           "Shopify SEO is quoted for your store. The main factors are how often the catalogue changes, how many collections and products need work, the complexity of your theme and apps, and the number of markets involved. A small range with one merchandiser needs a different plan from a store bringing out many products each season.",
-          "Compare proposals by asking which activities happen each month, how many priority pages the team can work on, and who owns theme implementation. Agree which content is written, which updates are made in Shopify and which development or app changes need a separate estimate. For a defined diagnosis and handover, request a Shopify SEO audit."
+          "Compare proposals by asking which activities happen each month, how many priority pages the team can work on, and who owns theme implementation. Agree which content is written, which updates are made in Shopify and which development or app changes need a separate estimate. For a defined diagnosis and handover, request a Shopify SEO audit.",
+          "Ask for one example month in the proposal. If a new collection is going live, that month might include a navigation review, briefs for priority products and a post-release check on the collection’s links and search signals.",
         ],
       },
       {
@@ -60,24 +61,25 @@ export const shopifyBuyingPages: SeoBuyingPage[] = [
       ["How do we plan work around a sale or catalogue launch?", "Share your release calendar at kickoff and flag periods when the theme is frozen. We can prioritise briefs and content approvals before a promotion, schedule template changes for a suitable window, and review comparable periods before attributing order changes to SEO."],
       ["Who owns the content and the changes to our store?", "Agree where drafts, approvals and decisions are stored and which collaborator roles are needed. Your team keeps control over who can publish and retains a record of what was changed for each collection or product group."],
     ],
-    related: ["shopify-seo-audit", "shopify-migration-seo", "ecommerce-seo-agency-kolkata"],
-    inquiry: { label: "Request a monthly Shopify SEO quote", prompt: "Send your store URL, priority ranges and next release. Tell us whether you need product or collection copy, theme review, or continuing optimisation." },
+    related: ["shopify-seo-audit-cost", "wordpress-to-shopify-seo-migration-services", "ecommerce-seo-retainer-pricing"],
+    inquiry: { label: "Get a monthly Shopify proposal", prompt: "Send your store and the collections you want to grow. Tell us whether you need product copy, theme review or ongoing optimisation." },
   },
   {
-    slug: "shopify-seo-audit",
+    slug: "shopify-seo-audit-cost",
     name: "Shopify SEO Audits",
     title: "Shopify SEO Audit Cost and Deliverables",
-    description: "Request a one-time Shopify SEO audit quote. Get a prioritised review of collections, product templates, navigation, theme output, and indexing.",
-    heading: ["A one-time", "Shopify SEO audit"],
-    intro: "If you need an independent look at what is holding back your Shopify store, commission a review with a clear handover. We investigate representative product and collection pages, check your theme and app behaviour where relevant, and show your team which changes to prioritise. Share your store URL and the questions you need the audit to answer.",
+    description: "Find out what affects Shopify SEO audit cost. Get a one-time quote for collection, product, theme and indexing checks with a developer-ready handover.",
+    heading: ["Shopify SEO audit cost", "and deliverables"],
+    intro: "Shopify SEO audit cost depends on how many catalogue, theme and app patterns need testing. In a one-time audit, we examine priority collection and product pages, then give your team a list of what to fix first, the URLs affected and how to verify the changes.",
     sections: [
       {
         id: "shopify-audit-cost",
-        title: "What does the Shopify audit cost?",
+        title: "What affects Shopify SEO audit cost?",
         style: "pricing",
         paragraphs: [
           "We quote the audit as a one-time project. Cost depends on the catalogue and how many templates, apps, markets and URL patterns need review. A single-market store with a standard theme has fewer combinations to test than a heavily customised store with separate language or regional URLs.",
           "Your quote should distinguish a findings walkthrough from implementation or a later retest. If you plan a theme release soon, send the deadline and confirm whether we can review a preview or staging setup. We agree what evidence the audit needs and which pages will be sampled before starting.",
+          "If the audit needs to inform a decision about replacing a theme or removing an app, tell us before we price it. We can scope a comparison of representative pages and record which behaviours each component controls.",
         ],
       },
       {
@@ -124,16 +126,16 @@ export const shopifyBuyingPages: SeoBuyingPage[] = [
       ["Can the audit distinguish template and catalogue problems?", "Yes. We compare priority products on shared templates, including examples that work as intended. An issue repeated across the sample may warrant a template change. A missing detail confined to several listings may be a catalogue task, which we route to the people who maintain product data."],
       ["How should we prepare for a follow-up?", "Keep a release record and note any additional app, theme or catalogue changes made between reviews. That helps us reproduce the original checks and explain what changed."],
     ],
-    related: ["shopify-seo-services", "ecommerce-technical-seo-audit", "shopify-migration-seo"],
-    inquiry: { label: "Request a Shopify audit quote", prompt: "Share your store URL, high-priority collections and known issues. Include major theme or app changes so we can estimate the investigation." },
+    related: ["shopify-seo-services-pricing", "ecommerce-technical-seo-audit-services", "wordpress-to-shopify-seo-migration-services"],
+    inquiry: { label: "Get a Shopify audit quote", prompt: "Send your store and one or two examples. Tell us if a recent app or theme change affected the pages." },
   },
   {
-    slug: "shopify-migration-seo",
+    slug: "wordpress-to-shopify-seo-migration-services",
     name: "Shopify Migration SEO",
-    title: "SEO for WordPress, WooCommerce and Magento to Shopify Migrations",
-    description: "Plan SEO for a move to Shopify from WordPress, WooCommerce, or Magento. Scope legacy URL mapping, content checks, launch QA, and monitoring.",
-    heading: ["Moving to Shopify", "with SEO support"],
-    intro: "A new Shopify store changes how the catalogue, content and old URLs fit together. Bring your current store and planned Shopify setup before the import and navigation are final. We can scope the SEO work around what needs to be preserved, what can move to a suitable Shopify destination and what your store team needs to verify at launch.",
+    title: "WordPress to Shopify SEO Migration Services",
+    description: "Scope WordPress to Shopify SEO migration services for URL mapping, staging checks and launch monitoring. WooCommerce and Magento moves can also be scoped.",
+    heading: ["WordPress to Shopify", "SEO migration services"],
+    intro: "Our WordPress to Shopify SEO migration services help you preserve the path from old articles, product pages and category links to the new store. We scope URL mapping, staging checks and launch verification around your catalogue and traffic. If you’re moving from WooCommerce or Magento, we also account for the source platform’s URL patterns.",
     sections: [
       {
         id: "source-platforms",
@@ -165,10 +167,11 @@ export const shopifyBuyingPages: SeoBuyingPage[] = [
       },
       {
         id: "pricing",
-        title: "How we quote a move to Shopify",
+        title: "What do WordPress to Shopify SEO migration services cost?",
         style: "pricing",
         paragraphs: [
           "The migration SEO project is quoted around the number of templates and legacy URL patterns, access to exports, the availability of comparable Shopify destinations, markets and languages, and post-launch observation. Let us know if the domain, product identifiers or analytics setup will change. Agree who owns imports, redirects outside Shopify and fixes identified during QA.",
+          "Give your migration team a separate list of pages that assist a purchase even when they don’t sell anything directly. Buying guides, stockist pages and care instructions may need new destinations or fresh links to the products they support.",
         ],
       },
       {
@@ -186,7 +189,7 @@ export const shopifyBuyingPages: SeoBuyingPage[] = [
       ["How do you handle retired products or changed variants?", "Decide which replacement or range would satisfy someone following the old link. A page for an equivalent model may work when the products genuinely match. Record exceptions where a product or option has no successor so the team can maintain links and catalogue references without sending shoppers to unrelated pages."],
       ["What should we save before switching off the old platform?", "Keep relevant crawl results, URL rewrites, page templates or copies, and available landing-page reports. Make sure someone can explain the old product and category structure after go-live. Those records help the team investigate missing destinations or unexpected changes without depending on access to the old storefront."],
     ],
-    related: ["website-migration-seo", "shopify-seo-services", "post-migration-seo-recovery"],
-    inquiry: { label: "Discuss your move to Shopify", prompt: "Send the old store URL, source platform, planned Shopify markets and launch date. Tell us how the catalogue and navigation will change." },
+    related: ["website-migration-seo-consultant", "shopify-seo-services-pricing", "seo-recovery-after-website-migration"],
+    inquiry: { label: "Discuss your Shopify move", prompt: "Send the old store URL, source platform and launch date. Tell us which products, collections or guides bring in valuable visits." },
   },
 ];

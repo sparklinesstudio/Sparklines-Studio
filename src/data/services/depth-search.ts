@@ -44,7 +44,7 @@ export const searchDepth:Record<string,ServiceDepth>={
  evidence:["The reviewable evidence is a task-to-source map, an access decision record and a publication log. Together they show the technical and editorial work behind the project rather than relying on a single favourable answer.","Platform documentation is available below for the crawler distinctions. A future client result needs its dates, sampling conditions and limitations stated alongside the outcome; unverified citation counts are not presented as proof."],
  handover:"Keep a list of maintained resources, reviewed access settings and questions worth revisiting. Assign ownership for factual updates so the material remains trustworthy after the initial project rather than drifting into stale claims."
  },
- "b2b-seo-agency-kolkata":{
+ "b2b-saas-seo-agency-pricing":{
  goal:"Help the right buying group evaluate your offer, with content that supports technical, operational and commercial questions throughout a longer sales process.",
  question:"Are you answering the questions that hold up a deal?",
  guide:[
@@ -55,7 +55,7 @@ export const searchDepth:Record<string,ServiceDepth>={
  evidence:["Inspect a buying-group map, objection-led content brief and the path from an educational page to a relevant commercial resource. These show whether the strategy understands the sale rather than simply identifying keywords.","A future case study should connect dated search observations with qualified enquiries and the sales team’s definition of fit. Pipeline or revenue claims need a stated attribution method and permission to publish the underlying information."],
  handover:"Keep the account priorities, buyer questions, reviewed technical statements and lead definitions together. Name subject experts for future updates, because inaccurate integration or delivery details can undermine an otherwise useful resource."
  },
- "ecommerce-seo-agency-kolkata":{
+ "ecommerce-seo-retainer-pricing":{
  goal:"Help shoppers discover the right collection or product, with catalogue structure and product information that remain useful as stock and customer needs change.",
  question:"Can shoppers reach the right product without getting lost?",
  guide:[
@@ -88,7 +88,7 @@ export const searchDepth:Record<string,ServiceDepth>={
  evidence:["A strong evidence pack contains a permitted project story, original images and a clear statement of the practice’s role. Search recommendations should show how that material answers a specific buyer question rather than adding generic location copy.","A future case study should identify the services promoted, the review period and the practice’s definition of a suitable enquiry. Consultation bookings and project appointments should be distinguished from general inspiration traffic."],
  handover:"Maintain a project permissions register, image descriptions, service-to-project links and a schedule for new portfolio stories. Assign someone to confirm scope and credits before publication, especially when several specialists contributed to a completed interior."
  },
- "local-seo-agency-kolkata":{
+ "local-seo-packages-for-small-business":{
  goal:"Make it easier for nearby customers to confirm what you do, where you operate and how to contact you, using accurate information across the website and eligible business profiles.",
  question:"Can a nearby customer confidently choose and contact you?",
  guide:[
@@ -100,7 +100,7 @@ export const searchDepth:Record<string,ServiceDepth>={
  evidence:["Inspect a contact-information audit, a tested enquiry journey and the list of business profiles reviewed. These show what is accurate today and which changes need approval from the owner before they are published.","A future case study should identify genuine coverage, the comparison period and what counts as a useful call or enquiry. Map positions and profile interactions should not be presented as completed sales without further supporting evidence."],
  handover:"Keep profile access under the business’s ownership and document contact details, update responsibilities and escalation routes. A simple change checklist helps staff update the website and public profiles together when operational information changes."
  },
- "technical-seo-agency-kolkata":{
+ "technical-seo-audit-pricing":{
  goal:"Remove technical obstacles that stop important pages being discovered, understood or used, with fixes your developers can implement and verify.",
  question:"Which technical problems are actually holding the site back?",
  guide:[

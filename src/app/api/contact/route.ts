@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
+import { findServiceInquiry } from "@/lib/serviceInquiry";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, number, website, service, message, email } = body;
+    const { name, number, website, service, message, email, seo, inquiry } = body;
+    const selected = findServiceInquiry(inquiry) ?? findServiceInquiry(seo);
+    const phone = typeof number === "string" ? number.trim() : "";
+    const replyEmail = typeof email === "string" ? email.trim() : "";
+    const brief = typeof message === "string" ? message.trim() : "";
+    const hasContact = selected ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(replyEmail) : Boolean(phone);
 
     const accessKey =
       process.env.FORM_ACCESS_KEY ||
@@ -17,25 +23,26 @@ export async function POST(request: Request) {
       );
     }
 
-    if (typeof name !== "string" || !name.trim() || typeof number !== "string" || !number.trim()) {
+    if (typeof name !== "string" || !name.trim() || !hasContact) {
       return NextResponse.json(
-        { success: false, message: "Name and Phone Number are required." },
+        { success: false, message: selected ? "Please add your name and a valid email address." : "Name and Phone Number are required." },
         { status: 400 }
       );
     }
+    if (selected && !brief) {
+      return NextResponse.json({ success: false, message: "Please add a short project brief." }, { status: 400 });
+    }
 
+    const serviceName = selected?.name || service || "General Consultation";
     const payload = {
       access_key: accessKey,
       name: name.trim(),
-      phone: number.trim(),
-      ...(typeof email === "string" && email.trim() ? { email: email.trim() } : {}),
+      ...(phone ? { phone } : {}),
+      ...(replyEmail ? { email: replyEmail } : {}),
       website: website ? website.trim() : "Not provided",
-      service: service || "General Consultation",
-      message:
-        message && message.trim().length > 0
-          ? message.trim()
-          : `Lead from Website - Interested in: ${service || "General Consultation"}`,
-      subject: `New Lead: ${name.trim()} - ${service || "Project Inquiry"}`,
+      service: serviceName,
+      message: brief || `Lead from Website - Interested in: ${serviceName}`,
+      subject: `New Lead: ${name.trim()} - ${selected ? serviceName : service || "Project Inquiry"}`,
       from_name: "Sparklines Studio Website",
     };
 

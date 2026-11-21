@@ -5,6 +5,7 @@ import {BrandFooterBanner} from "@/components/Home Page Components/BrandFooterBa
 import {StructuredData} from "@/components/seo/StructuredData";
 import {absoluteUrl,organizationId,websiteId,breadcrumbSchema} from "@/lib/structuredData";
 import {articleContent,textContent} from "@/lib/blog/content";
+import {blogThumbnail} from "@/lib/blog/thumbnail";
 import type {BlogPost} from "@/lib/blog/types";
 import {ArticleServiceConnections} from "@/components/studio/ServiceConnections";
 import SummarizeButtons from "./SummarizeButtons";
@@ -13,10 +14,11 @@ const calculateReadTime=(html:string)=>Math.max(1,Math.ceil(textContent(html).sp
 export function BlogArticle({post,related=[],preview=false}:{post:BlogPost;related?:BlogPost[];preview?:boolean}){
  const blog={...post,authorBio:post.authorBio||"Stories, ideas and perspectives on digital marketing from the editorial team.",isGuest:false,authorWebsite:""};
  const {html:processedHtml,toc}=articleContent(post.contentHtml);const slug=post.slug;const blogUrl=absoluteUrl("/blogs/"+slug);
+ const image=blogThumbnail(post);
  const latestBlogs=related;const dynamicReadTime=calculateReadTime(post.contentHtml);
  const date=post.publishedAt||post.createdAt;
  const formattedDate=new Date(date).toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric",timeZone:"Asia/Kolkata"});
- const path="/blogs/"+slug;const schema={"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":blogUrl+"#article",headline:post.title,description:post.metaDescription,url:blogUrl,datePublished:date,dateModified:post.updatedAt,inLanguage:"en-IN",...(post.featuredImage?{image:[post.featuredImage]}:{}),author:post.authorName==="Sparklines Studio"?{"@id":organizationId}:{"@type":"Person",name:post.authorName},publisher:{"@id":organizationId},mainEntityOfPage:{"@id":blogUrl+"#webpage"},articleSection:post.categories},{"@type":"WebPage","@id":blogUrl+"#webpage",url:blogUrl,name:post.metaTitle,isPartOf:{"@id":websiteId},breadcrumb:{"@id":blogUrl+"#breadcrumbs"},mainEntity:{"@id":blogUrl+"#article"}},breadcrumbSchema([{name:"Home",path:"/"},{name:"Blog",path:"/blogs"},{name:post.title,path}],path)]};
+ const path="/blogs/"+slug;const schema={"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":blogUrl+"#article",headline:post.title,description:post.metaDescription,url:blogUrl,datePublished:date,dateModified:post.updatedAt,inLanguage:"en-IN",image:[absoluteUrl(image.src)],author:post.authorName==="Sparklines Studio"?{"@id":organizationId}:{"@type":"Person",name:post.authorName},publisher:{"@id":organizationId},mainEntityOfPage:{"@id":blogUrl+"#webpage"},articleSection:post.categories},{"@type":"WebPage","@id":blogUrl+"#webpage",url:blogUrl,name:post.metaTitle,isPartOf:{"@id":websiteId},breadcrumb:{"@id":blogUrl+"#breadcrumbs"},mainEntity:{"@id":blogUrl+"#article"}},breadcrumbSchema([{name:"Home",path:"/"},{name:"Blog",path:"/blogs"},{name:post.title,path}],path)]};
   return (
     <div className="vaphers-article min-h-screen bg-white font-sans text-gray-900 scroll-smooth">
       <HeaderNavigation />
@@ -124,14 +126,12 @@ export function BlogArticle({post,related=[],preview=false}:{post:BlogPost;relat
             {/* CENTER: MAIN ARTICLE CONTENT */}
             <article className="w-full max-w-[800px] flex-1 shrink-1 order-1 lg:order-2">
 
-              {blog.featuredImage && (
                 <img
-                  src={blog.featuredImage}
-                  alt={blog.title}
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full aspect-[16/9] object-cover rounded-lg mb-10 border border-gray-100 shadow-sm"
                   loading="eager"
                 />
-              )}
 
               <div
                 className="blog-prose prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-700 prose-figure:my-8 prose-figure:flex prose-figure:flex-col prose-figure:items-center prose-figcaption:text-[15px] prose-figcaption:text-gray-500 prose-figcaption:mt-3 prose-figcaption:text-center prose-img:rounded-lg prose-img:shadow-sm"
@@ -229,21 +229,20 @@ export function BlogArticle({post,related=[],preview=false}:{post:BlogPost;relat
                 // Calculate read time for the sidebar items dynamically as well
                 const sidebarReadTime = calculateReadTime(item.contentHtml ?? "");
 
+                const thumbnail=blogThumbnail(item);
                 return (
                   <a
                     key={item.id}
                     href={`/blogs/${item.slug}`}
                     className="group flex flex-col border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow duration-200"
                   >
-                    {item.featuredImage && (
                       <div className="relative w-full aspect-[16/10] overflow-hidden border-b border-gray-100">
                         <img
-                          src={item.featuredImage}
-                          alt={item.title}
+                          src={thumbnail.src}
+                          alt={thumbnail.alt}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                    )}
 
                     <div className="p-5 flex-1 flex flex-col">
                       <h4 className="text-[17px] font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-3">

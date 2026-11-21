@@ -80,7 +80,7 @@ export const existingServiceDetails:Record<string,Partial<StudioService>> = {
       "chatgpt-seo-agency-kolkata",
       "gemini-seo-agency-kolkata",
       "claude-seo-agency-kolkata",
-      "technical-seo-agency-kolkata"
+      "technical-seo-audit-pricing"
     ],
     "reading": [
       "user-intent-optimization-ai-search-engines",
@@ -166,7 +166,7 @@ export const existingServiceDetails:Record<string,Partial<StudioService>> = {
     },
     "related": [
       "explainer-video-production-kolkata",
-      "b2b-seo-agency-kolkata",
+      "b2b-saas-seo-agency-pricing",
       "linkedin-ads-agency-kolkata",
       "motion-graphics-agency-kolkata"
     ],
@@ -209,7 +209,7 @@ export const existingServiceDetails:Record<string,Partial<StudioService>> = {
     },
     "related": [
       "web-design-agency-kolkata",
-      "technical-seo-agency-kolkata",
+      "technical-seo-audit-pricing",
       "ecommerce-development-agency-kolkata",
       "seo-agency-kolkata"
     ],
@@ -253,7 +253,7 @@ export const existingServiceDetails:Record<string,Partial<StudioService>> = {
     "related": [
       "website-development-agency-kolkata",
       "branding-agency-kolkata",
-      "technical-seo-agency-kolkata",
+      "technical-seo-audit-pricing",
       "ecommerce-development-agency-kolkata"
     ],
     "reading": [
@@ -295,7 +295,7 @@ export const existingServiceDetails:Record<string,Partial<StudioService>> = {
       "measure": "Verify complete orders, correct operational information and a maintainable catalogue."
     },
     "related": [
-      "ecommerce-seo-agency-kolkata",
+      "ecommerce-seo-retainer-pricing",
       "product-video-production-kolkata",
       "google-ads-agency-kolkata",
       "website-development-agency-kolkata"

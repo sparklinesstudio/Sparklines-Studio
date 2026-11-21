@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { pageMetadata } from "@/data/pageMetadata";
+import { serviceSalesCopy } from "@/data/services/service-sales-copy";
 
 const city = /\bKolkata\b/i;
 const metadataLength = 88;
@@ -16,7 +17,8 @@ export function serviceMetadata(
   editorialCopy?: { title: string; description: string },
 ): Metadata {
   const copy = editorialCopy ?? pageMetadata[page.slug];
-  const pageTitle = copy?.title ?? page.title.replace(/\s*[|–—-]\s*Sparklines Studio(?:,? Kolkata)?\s*$/i, "").trim();
+  const sales = serviceSalesCopy[page.slug];
+  const pageTitle = editorialCopy?.title ?? sales?.keyword ?? copy?.title ?? page.title.replace(/\s*[|–—-]\s*Sparklines Studio(?:,? Kolkata)?\s*$/i, "").trim();
   const titleSuffix = ` | ${siteConfig.name}`;
   const trimmedTitle = shorten(pageTitle, metadataLength - titleSuffix.length);
   const title = editorialCopy ? pageTitle + titleSuffix : city.test(trimmedTitle)

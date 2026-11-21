@@ -67,10 +67,10 @@ export const coreSearchServices:StudioService[] = [
       ]
     ],
     "related": [
-      "local-seo-agency-kolkata",
-      "technical-seo-agency-kolkata",
-      "b2b-seo-agency-kolkata",
-      "ecommerce-seo-agency-kolkata",
+      "local-seo-packages-for-small-business",
+      "technical-seo-audit-pricing",
+      "b2b-saas-seo-agency-pricing",
+      "ecommerce-seo-retainer-pricing",
       "ai-seo-agency-kolkata"
     ],
     "reading": [
@@ -148,7 +148,7 @@ export const coreSearchServices:StudioService[] = [
       "ai-seo-agency-kolkata",
       "gemini-seo-agency-kolkata",
       "claude-seo-agency-kolkata",
-      "technical-seo-agency-kolkata"
+      "technical-seo-audit-pricing"
     ],
     "reading": [
       "user-intent-optimization-ai-search-engines",
@@ -313,7 +313,7 @@ export const coreSearchServices:StudioService[] = [
       "ai-seo-agency-kolkata",
       "chatgpt-seo-agency-kolkata",
       "gemini-seo-agency-kolkata",
-      "b2b-seo-agency-kolkata"
+      "b2b-saas-seo-agency-pricing"
     ],
     "reading": [
       "user-intent-optimization-ai-search-engines",
@@ -327,7 +327,7 @@ export const coreSearchServices:StudioService[] = [
     ]
   },
   {
-    "slug": "b2b-seo-agency-kolkata",
+    "slug": "b2b-saas-seo-agency-pricing",
     "name": "B2B SEO",
     "title": "B2B SEO Agency Kolkata",
     "family": "SEO & AI search",

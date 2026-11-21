@@ -2,20 +2,21 @@ import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const localBuyingPages: SeoBuyingPage[] = [
   {
-    slug: "monthly-seo-for-small-businesses",
+    slug: "monthly-seo-packages-for-small-business",
     name: "Monthly SEO for Small Businesses",
-    title: "Monthly SEO Packages for Small Businesses",
-    description: "Compare monthly SEO scope for your small business. Get a tailored quote for technical fixes, service-page content, and reporting on qualified enquiries.",
-    heading: ["Monthly SEO", "for small businesses"],
-    intro: "If you run a small service business and need someone to carry SEO forward each month, Sparklines Studio can scope the work around the jobs you want to win. We review which pages already bring in enquiries, what customers need to know before they call, and which fixes or content deserve time first. Share your site and priorities to request a monthly proposal.",
+    title: "Monthly SEO Packages for Small Business",
+    description: "Compare monthly SEO packages for small business. Get a quote that spells out the service pages, content writing, technical fixes and enquiry reporting included.",
+    heading: ["Monthly SEO packages", "for small business"],
+    intro: "Monthly SEO packages for small business should spell out who fixes the site, who writes the copy and what gets reviewed each month. We build the plan around the jobs you want more of. You’ll get agreed priorities for your service pages and technical fixes, plus a way to judge whether organic enquiries fit the work you actually take on.",
     sections: [
       {
         id: "monthly-seo-pricing",
-        title: "What goes into your monthly SEO quote?",
+        title: "What do monthly SEO packages for small business include?",
         style: "pricing",
         paragraphs: [
           "We quote recurring work after reviewing the site. An established firm with good service pages might need a small publishing and optimisation plan. A business with outdated pages, several priority services and an unreliable enquiry form can need more work at the start. Ask for the initial setup and recurring responsibilities to be shown separately so you can compare proposals fairly.",
           "Your quote reflects how many services and markets you want to grow, how much content needs writing or rewriting, and who will implement changes. A proposal that includes content writing should specify who supplies the facts, which pages will be drafted or revised, who approves them and who publishes. Ask which developer changes or tracking work require a separate estimate.",
+          "To compare monthly proposals, ask each provider to show the first month’s work and a sample review. For a service business, that could mean one existing page to improve, the information needed from your team and the enquiry signal you’ll use to decide whether it worked.",
         ],
       },
       {
@@ -58,24 +59,25 @@ export const localBuyingPages: SeoBuyingPage[] = [
       ["Can you work with our existing developer?", "Yes. Agree who applies each type of change and how we can verify it. Include ownership and any separate development costs when comparing monthly SEO management quotes."],
       ["When should I expect useful feedback?", "Delivery can be reviewed as soon as agreed changes ship. Visibility and enquiry trends take longer to assess and depend on demand, competition and implementation. We agree a review window once the baseline is clear."],
     ],
-    related: ["local-seo-agency-kolkata", "technical-seo-agency-kolkata", "ecommerce-seo-agency-kolkata"],
-    inquiry: { label: "Request a monthly SEO quote", prompt: "Send your website, the services you want to grow and an example of a qualified enquiry. Tell us if you need content writing or implementation support in the proposal." },
+    related: ["local-seo-packages-for-small-business", "technical-seo-audit-pricing", "ecommerce-seo-retainer-pricing"],
+    inquiry: { label: "Get a monthly SEO proposal", prompt: "Send your site and the jobs you want more of. We’ll use that to discuss what to tackle first and what belongs in the monthly scope." },
   },
   {
-    slug: "local-seo-agency-kolkata",
+    slug: "local-seo-packages-for-small-business",
     name: "Local SEO for Small Businesses",
-    title: "Local SEO for Small Businesses in Kolkata",
-    description: "Get a tailored local SEO quote for your Kolkata business. Scope profile and Maps optimisation, location pages, and tracking for calls, bookings, or visits.",
-    heading: ["Local SEO for", "small businesses in Kolkata"],
-    intro: "A nearby customer needs to know what you offer, whether you serve them, and how to reach you. We help Kolkata businesses make those answers consistent across their websites and eligible Google Business Profiles. If you run a shop, a clinic, or a team that travels to customers, share your website, profile and actual coverage so we can discuss local SEO that fits.",
+    title: "Local SEO Packages for Small Business in Kolkata",
+    description: "Explore local SEO packages for small business in Kolkata. Get a quote for Google Business Profile, Maps, location pages and tracking calls or bookings.",
+    heading: ["Local SEO packages", "for small business"],
+    intro: "Our local SEO packages for small business help Kolkata teams turn nearby searches into serviceable calls, bookings or visits. We check whether your website and eligible Google Business Profile agree on where you operate, what you do and how customers reach you. Get a scope based on your real locations and the enquiries your team can handle.",
     sections: [
       {
         id: "local-seo-pricing",
-        title: "How local SEO is priced",
+        title: "How we quote local SEO packages for small business",
         style: "pricing",
         paragraphs: [
           "Small-business local SEO is scoped around the locations you actually operate, the services you want enquiries for and the condition of your website and profiles. One service area with a reliable website may need a focused audit and a short list of fixes. Several branches with different hours and phone numbers may need continuing coordination and local page work.",
           "For ongoing support, ask which profile updates, location-page changes and reporting are included in the quote. For a defined project, agree what will be reviewed, which changes we can make and how we will verify them. The budget depends on the work and access required.",
+          "If you dispatch one crew across Kolkata, a useful proposal names the areas you can actually serve and shows how you’ll review out-of-area calls. If you run several branches, ask whether the quote covers each location’s hours, booking links and reporting.",
         ],
       },
       {
@@ -120,7 +122,7 @@ export const localBuyingPages: SeoBuyingPage[] = [
       ["Do we need a shopfront?", "Service-area businesses can have an eligible profile when they meet Google’s requirements. Tell us how you meet customers and where your staff operate so we can review the appropriate setup."],
       ["Can you promise a specific Maps position?", "Google controls local placements, which vary with the search and the customer’s location. We track the agreed changes and review how easily relevant customers can find and contact your business."],
     ],
-    related: ["monthly-seo-for-small-businesses", "technical-seo-agency-kolkata"],
-    inquiry: { label: "Request a local SEO quote", prompt: "Share your website, Google Business Profile links, genuine locations and the areas your team can serve. Tell us which calls, visits or bookings you want more of." },
+    related: ["monthly-seo-packages-for-small-business", "technical-seo-audit-pricing"],
+    inquiry: { label: "Get a local SEO proposal", prompt: "Send your site or Google Business Profile, the areas you serve and the calls or bookings you want more of." },
   },
 ];

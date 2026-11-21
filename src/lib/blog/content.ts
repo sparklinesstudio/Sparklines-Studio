@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { seoBuyingRedirects } from "@/data/services/seo-buying-redirects";
 import sanitizeHtml from "sanitize-html";
 function editorialHref(href: string) {
   if (!href || href.startsWith("#")) return href;
@@ -6,7 +7,7 @@ function editorialHref(href: string) {
     const url = new URL(href, siteConfig.url);
     const legacy: Record<string, string> = {
       "/seo-services": "/seo-agency-kolkata",
-      "/seo-services/local-seo-services": "/local-seo-agency-kolkata",
+      "/seo-services/local-seo-services": "/local-seo-packages-for-small-business",
       "/seo-for-interior-designers": "/interior-design-seo-agency-kolkata",
       "/vaphers.com": "https://www.vaphers.com/",
       "/video-production-agency-kolkata": "/",
@@ -27,14 +28,14 @@ function editorialHref(href: string) {
       ].includes(url.hostname)
     )
       return (
-        (legacy[url.pathname] || url.pathname) +
+        (legacy[url.pathname] || (Object.hasOwn(seoBuyingRedirects, url.pathname.slice(1)) ? "/" + seoBuyingRedirects[url.pathname.slice(1)] : url.pathname)) +
         url.search +
         (url.hash === "#video-masonry" ? "#selected-films" : url.hash)
       );
     if (["vaphers.com", "www.vaphers.com"].includes(url.hostname)) {
       const relevant: Record<string, string> = {
         "/seo-for-interior-designers": "/interior-design-seo-agency-kolkata",
-        "/seo-services/local-seo-services": "/local-seo-agency-kolkata",
+        "/seo-services/local-seo-services": "/local-seo-packages-for-small-business",
       };
       if (relevant[url.pathname]) return relevant[url.pathname];
     }

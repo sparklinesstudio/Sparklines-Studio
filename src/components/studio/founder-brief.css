@@ -1,0 +1,62 @@
+.founder-brief {
+  background: #e8edff;
+  border-block: 1px solid #b9c4e2;
+}
+
+.founder-brief-layout {
+  display: grid;
+  grid-template-columns: minmax(205px, .6fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 6vw, 88px);
+  align-items: center;
+}
+
+.founder-brief-portraits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 3vw, 30px);
+  margin-bottom: 24px;
+}
+
+.founder-brief-portraits figure {
+  margin: 0;
+  text-align: center;
+}
+
+.founder-brief-portraits figure > div {
+  position: relative;
+  width: clamp(84px, 13vw, 104px);
+  aspect-ratio: 1;
+  background: #073bff;
+  border-radius: 45% 48% 42% 40%;
+  transform: rotate(-4deg);
+}
+
+.founder-brief-portraits figure:nth-child(2) > div {
+  background: #ff601c;
+  transform: rotate(4deg);
+}
+
+.founder-brief-portraits img {
+  object-fit: contain;
+}
+
+.founder-brief-portraits figcaption {
+  margin-top: 8px;
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+.founder-brief-layout p {
+  margin-block: 18px;
+  max-width: 55ch;
+}
+
+@media (max-width: 660px) {
+  .founder-brief-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .founder-brief-layout .founder-brief-portraits {
+    margin-bottom: 0;
+  }
+}

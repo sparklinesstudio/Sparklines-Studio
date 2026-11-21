@@ -20,6 +20,13 @@ export interface CaseStudyHeroProps {
   onPlayClick?: () => void;
 }
 
+const portfolioServices: Record<string, { href: string; label: string }> = {
+  "Organic Marketing": { href: "/seo-agency-kolkata", label: "Explore the SEO service" },
+  "Paid Marketing": { href: "/paid-ads-agency-kolkata", label: "Explore paid advertising services" },
+  "Branding & Identity": { href: "/branding-agency-kolkata", label: "Explore branding services" },
+  "Video Productions": { href: "/brand-film-production-kolkata", label: "Explore film production services" },
+};
+
 export function CaseStudyHero({
   title,
   client,
@@ -33,6 +40,7 @@ export function CaseStudyHero({
   liveUrl,
   onPlayClick,
 }: CaseStudyHeroProps) {
+  const service = portfolioServices[category];
   return (
     <section className="relative overflow-hidden pt-28 pb-10 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-14 bg-gradient-to-b from-blue-600/[0.08] via-zinc-100/40 to-white">
       {/* Ambient glow orbs */}
@@ -123,6 +131,7 @@ export function CaseStudyHero({
           >
             {tagline}
           </motion.p>
+          {service && <Link href={service.href} className="mt-5 inline-flex items-center gap-2 font-semibold text-blue-700 hover:underline">{service.label}<ArrowUpRight size={16} aria-hidden="true" /></Link>}
         </div>
 
         {/* Hero Media Showcase (Image or Video) */}

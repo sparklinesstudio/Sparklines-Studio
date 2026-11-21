@@ -4,7 +4,7 @@ import {studioServices} from "@/data/services/catalog";
 import {seoBuyingPages} from "@/data/services/seo-buying-pages";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
-import { listBlogSitemapEntries } from "@/lib/blog/store";
+import { listPublicBlogSitemapEntries } from "@/lib/blog/public";
 
 // Always read MongoDB at request time: publish, unpublish, trash and scheduling
 // are reflected without a deployment or a manually edited URL list.
@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services",
     "/work",
     "/blogs",
+    "/video-gallery",
     "/contact",
     "/about",
     "/privacy-policy",
@@ -44,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Let an unavailable database return an error rather than a successful sitemap
   // that incorrectly drops every article from the indexable URL list.
-  const posts = await listBlogSitemapEntries();
+  const posts = await listPublicBlogSitemapEntries();
   const blogEntries: MetadataRoute.Sitemap = posts.map(post => ({
     url: absoluteUrl("/blogs/" + post.slug),
     lastModified: post.lastModified,

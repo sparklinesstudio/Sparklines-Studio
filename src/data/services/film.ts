@@ -147,7 +147,7 @@ export const filmServices:StudioService[] = [
       "",
       "brand-film-production-kolkata",
       "personal-branding-agency-kolkata",
-      "b2b-seo-agency-kolkata"
+      "b2b-saas-seo-agency-pricing"
     ],
     "reading": [
       "brand-authenticity-strategy"
@@ -221,7 +221,7 @@ export const filmServices:StudioService[] = [
     ],
     "related": [
       "",
-      "ecommerce-seo-agency-kolkata",
+      "ecommerce-seo-retainer-pricing",
       "meta-ads-agency-kolkata",
       "social-media-video-production-kolkata"
     ],

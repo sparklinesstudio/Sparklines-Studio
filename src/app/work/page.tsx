@@ -32,12 +32,12 @@ export default function WorkPage() {
           <section className="experience-page-hero experience-pad portfolio-hero">
             <p className="studio-kicker">SELECTED WORK / THE SPARKLINES STUDIO</p>
             <div>
-              <h1>Ideas made<br /><em>real.</em><span className="orange-period">*</span></h1>
+              <h1>Selected <em>work</em><span className="orange-period">.</span></h1>
               <div>
-                <p>Explore the identity we built for House of Kolam and published third-party search projects.</p>
+                <p>Explore selected work, including the House of Kolam identity by Sparklines Studio and third-party search case studies. See the brief, the decisions and the files or reported outcomes available for each project.</p>
                 <a href="#portfolio-archive" className="studio-text-link">Explore the project boards <ArrowDownRight size={20} /></a>
                 <a href="#search-case-studies" className="studio-text-link">Browse the search case studies <ArrowDownRight size={20} /></a>
-                <Link href="/brand-film-production-kolkata" className="studio-text-link">Looking for our films? <ArrowUpRight size={18} /></Link>
+                <Link href="/brand-film-production-kolkata" className="studio-text-link">Explore our film production <ArrowUpRight size={18} /></Link>
               </div>
             </div>
             <div className="portfolio-project-meta"><span>01 FEATURED BRAND IDENTITY</span><span>23 PROJECT BOARDS</span><span>STRATEGY → IDENTITY → APPLICATION</span></div>

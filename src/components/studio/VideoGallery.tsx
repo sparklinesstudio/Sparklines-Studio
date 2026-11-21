@@ -30,8 +30,8 @@ export function VideoGallery() {
       <header className="video-gallery-heading">
         <div className="gallery-hero-copy">
           <p className="studio-kicker">SPARKLINES STUDIO / THE FILM COLLECTION</p>
-          <h1>Video<br /><em>gallery.</em></h1>
-          <p className="gallery-hero-description">Good food. Bold brands. Remarkable spaces.<br />Stories worth stopping for, made to move.</p>
+          <h1>Video <em>gallery</em></h1>
+          <p className="gallery-hero-description">Browse our video gallery by food, fashion, personal branding and real estate. If a film has the pace, framing or feel you want, include it when you brief us.</p>
           <a className="gallery-hero-explore" href="#gallery-food"><span>Explore the films</span><ArrowDownRight size={24} /></a>
         </div>
         <div className="gallery-hero-collage" aria-hidden="true">
@@ -56,7 +56,7 @@ export function VideoGallery() {
           <div className="video-gallery-grid">{videos.map(video => <VideoCard key={video.id} video={video} />)}</div>
         </section>;
       })}
-      <Link className="video-gallery-contact" href="/contact">Have a story in mind? Let’s make it move <ArrowUpRight size={18} /></Link>
+      <Link className="video-gallery-contact" href="/contact">Send a film brief with your references <ArrowUpRight size={18} /></Link>
     </main>
   );
 }

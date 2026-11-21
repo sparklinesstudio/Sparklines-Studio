@@ -177,8 +177,8 @@ export const advertisingServices:StudioService[] = [
     ],
     "related": [
       "paid-ads-agency-kolkata",
-      "local-seo-agency-kolkata",
-      "ecommerce-seo-agency-kolkata"
+      "local-seo-packages-for-small-business",
+      "ecommerce-seo-retainer-pricing"
     ],
     "reading": [
       "what-is-local-search-engine-marketing",
@@ -335,7 +335,7 @@ export const advertisingServices:StudioService[] = [
       ]
     ],
     "related": [
-      "b2b-seo-agency-kolkata",
+      "b2b-saas-seo-agency-pricing",
       "saas-video-agency-kolkata",
       "personal-branding-agency-kolkata",
       "paid-ads-agency-kolkata"
@@ -419,7 +419,7 @@ export const advertisingServices:StudioService[] = [
     "related": [
       "paid-ads-agency-kolkata",
       "saas-video-agency-kolkata",
-      "b2b-seo-agency-kolkata",
+      "b2b-saas-seo-agency-pricing",
       "google-ads-agency-kolkata"
     ],
     "reading": [

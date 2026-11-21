@@ -4,6 +4,8 @@ import { HeaderNavigation } from "@/components/Home Page Components/HeaderNaviga
 import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooterBanner";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { ContactForm } from "./ContactForm";
+import { FounderPortraits } from "./FounderBrief";
 import { seoBuyingPageBySlug } from "@/data/services/seo-buying-pages";
 import type { SeoBuyingPage, SeoBuyingSection } from "@/data/services/seo-buying-types";
 import { serviceGraph } from "@/lib/structuredData";
@@ -12,7 +14,7 @@ import "./service-editorial.css";
 import "./seo-content.css";
 import "./seo-buying.css";
 
-function BuyingSection({ section }: { section: SeoBuyingSection }) {
+function BuyingSection({ section, quoteLabel }: { section: SeoBuyingSection; quoteLabel: string }) {
   const style = section.style ?? "plain";
   return (
     <section id={section.id} className={`seo-buying-section seo-buying-${style}`}>
@@ -27,6 +29,7 @@ function BuyingSection({ section }: { section: SeoBuyingSection }) {
             </div>
           ))}
           {section.source && <a className="svc-text-link" href={section.source.url}>{section.source.title}</a>}
+          {style === "pricing" && <a className="svc-button seo-buying-price-cta" href="#seo-enquiry">{quoteLabel}</a>}
         </div>
       </div>
     </section>
@@ -40,7 +43,7 @@ export function SeoBuyingLanding({ page }: { page: SeoBuyingPage }) {
     { name: "SEO", path: "/seo-agency-kolkata" },
     { name: page.name, path: `/${page.slug}` },
   ];
-  const inquiryHref = `/contact?seo=${page.slug}`;
+  const pricing = page.sections.find(section => section.style === "pricing");
   const related = page.related.map(seoBuyingPageBySlug).filter(item => item !== undefined);
 
   return (
@@ -51,15 +54,18 @@ export function SeoBuyingLanding({ page }: { page: SeoBuyingPage }) {
         <div className="svc-breadcrumbs"><Breadcrumbs items={breadcrumbs} /></div>
         <section className="svc-home-hero seo-buying-hero">
           <div className="svc-hero-paper">
-            <Asterisk className="seo-buying-hero-mark" size={68} strokeWidth={1.2} aria-hidden="true" />
+            <Asterisk className="seo-buying-hero-mark" size={44} strokeWidth={1.2} aria-hidden="true" />
             <div className="svc-hero-centre">
               <h1>{page.heading[0]} <em>{page.heading[1]}</em></h1>
               <p>{page.intro}</p>
-              <Link href={inquiryHref} className="svc-button">{page.inquiry.label}</Link>
+              <div className="seo-buying-hero-actions">
+                <a href="#seo-enquiry" className="svc-button">{page.inquiry.label}</a>
+                {pricing && <a className="svc-text-link" href={`#${pricing.id}`}>See how pricing works</a>}
+              </div>
             </div>
           </div>
         </section>
-        {page.sections.map(section => <BuyingSection key={section.id} section={section} />)}
+        {page.sections.map(section => <BuyingSection key={section.id} section={section} quoteLabel={page.inquiry.label} />)}
         <section className="svc-faq svc-wrap" id="faq">
           <div><h2>Questions before you hire</h2></div>
           <div>{page.faqs.map(([question, answer]) => (
@@ -69,6 +75,17 @@ export function SeoBuyingLanding({ page }: { page: SeoBuyingPage }) {
             </details>
           ))}</div>
         </section>
+        <section className="seo-buying-enquiry" id="seo-enquiry" aria-labelledby="seo-enquiry-heading">
+          <div className="svc-wrap seo-buying-layout">
+            <div>
+              <FounderPortraits />
+              <h2 id="seo-enquiry-heading">{page.inquiry.label}</h2>
+              <p>{page.inquiry.prompt}</p>
+              <a className="svc-text-link" href="tel:+919641861932">Call +91 96418 61932</a>
+            </div>
+            <ContactForm inquiry={{ slug: page.slug, name: page.name, prompt: page.inquiry.prompt, seo: true }} showInquiryIntro={false} />
+          </div>
+        </section>
         {related.length > 0 && (
           <section className="svc-related svc-wrap">
             <div className="svc-section-heading"><h2>Related SEO services</h2></div>
@@ -77,15 +94,6 @@ export function SeoBuyingLanding({ page }: { page: SeoBuyingPage }) {
             ))}</div>
           </section>
         )}
-        <section className="svc-contact">
-          <Asterisk size={60} strokeWidth={1.2} aria-hidden="true" />
-          <h2>{page.inquiry.label}</h2>
-          <p>{page.inquiry.prompt}</p>
-          <div className="seo-buying-actions">
-            <Link href={inquiryHref} className="svc-button">Send an SEO brief</Link>
-            <a className="svc-button alt" href="tel:+919641861932">Call +91 96418 61932</a>
-          </div>
-        </section>
       </main>
       <BrandFooterBanner />
     </div>

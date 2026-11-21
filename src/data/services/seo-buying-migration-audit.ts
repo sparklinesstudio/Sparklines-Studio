@@ -1,12 +1,12 @@
 import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const migrationAuditPage: SeoBuyingPage = {
-  slug: "seo-migration-audit",
+  slug: "seo-migration-audit-service",
   name: "SEO Migration Audits",
-  title: "Pre-Launch SEO Migration Audit Services",
-  description: "Commission a one-time review of your migration plan, redirects and staging site. Get launch risks, evidence, owners, and criteria for retesting.",
-  heading: ["Pre-launch SEO", "migration audits"],
-  intro: "Your developers have a staging site and a launch date. You need a review of the move before signing off. Sparklines Studio can audit the plan, sample the proposed destinations and explain what should be fixed or retested before go-live. Send the current site, staging access and the draft redirect inventory so we can scope a one-time review.",
+  title: "SEO Migration Audit Service for Pre-Launch Reviews",
+  description: "Use our SEO migration audit service to review staging, draft redirects and launch risks. Get a one-time quote with clear findings and retest criteria.",
+  heading: ["SEO migration audit service", "for launch sign-off"],
+  intro: "Our SEO migration audit service is for teams that already own the move and need an independent pre-launch review. We test the draft redirects and staging templates against the pages your business relies on, then give your release owner a prioritised list of risks, fixes and retest criteria.",
   sections: [
     {
       id: "fit",
@@ -36,11 +36,12 @@ export const migrationAuditPage: SeoBuyingPage = {
     },
     {
       id: "pricing",
-      title: "How we price an SEO migration audit",
+      title: "What does an SEO migration audit service cost?",
       style: "pricing",
       paragraphs: [
         "The audit is a one-time project. We quote it based on the number of old and new URL patterns, availability and quality of the redirect map, staging access, markets and any retest rounds. A domain consolidation with several template families needs a different review from a redesign that preserves most URLs.",
         "Ask for the agreed coverage, handover date, walkthrough and retest window to appear in the proposal. Redirect implementation, content transfer, launch attendance and monitoring can be discussed as separate migration responsibilities.",
+        "For example, a redirect might return the expected status but lead to a location page with the wrong booking number. The launch report should show both checks and make clear whether the issue can be verified on staging or has to be retested on the live site.",
       ],
     },
     {
@@ -59,6 +60,6 @@ export const migrationAuditPage: SeoBuyingPage = {
     ["Can you review several domains together?", "Share the role of each domain, who owns it and how the release will be phased. Those inputs determine audit coverage and whether multiple handovers make sense."],
     ["Can the audit guarantee a safe launch?", "The audit documents evidence and risks within the agreed sample. An authorised release owner should review unresolved items and complete the live checks before closing the project."],
   ],
-  related: ["website-migration-seo", "post-migration-seo-recovery", "shopify-migration-seo"],
-  inquiry: { label: "Request a migration audit quote", prompt: "Send the current domain, launch date, staging availability and map status. Tell us who owns fixes and whether you need a retest." },
+  related: ["website-migration-seo-consultant", "seo-recovery-after-website-migration", "wordpress-to-shopify-seo-migration-services"],
+  inquiry: { label: "Get a migration audit quote", prompt: "Send your current site, target launch date and redirect map status. Tell us if you need a retest before sign-off." },
 };

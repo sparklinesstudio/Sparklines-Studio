@@ -17,6 +17,7 @@
 .svc-discover>span{border-bottom:3px solid var(--svc-blue);padding-bottom:3px}
 .svc-discover svg{padding:2px;background:var(--svc-blue);color:white;transition:transform .25s}
 .svc-discover:hover svg{transform:translate(3px,3px)}
+.svc-hero-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px;pointer-events:auto}
 .svc-pointer{--repel-x:0px;--repel-y:0px;--card-rotation:0deg;transform:translate(var(--repel-x),var(--repel-y)) rotate(var(--card-rotation));transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .3s;will-change:transform}
 .svc-pointer:hover{transform:translate(var(--repel-x),var(--repel-y)) rotate(0deg) scale(1.025);z-index:5}
 .motion-disabled .svc-pointer,.motion-disabled .svc-pointer:hover{transform:rotate(var(--card-rotation));transition:none}

@@ -66,7 +66,7 @@ export const searchCaseStudies = {
     ],
     measurement: "The detailed project report describes the 61% figure as a drop in paid cost per lead while organic search took on more demand. It also reports a 41% increase in average project size over the engagement.",
     application: "An interiors business covering Salt Lake and New Town could record the PIN code, budget range and expected start date for each enquiry, then compare how many qualified opportunities each channel produces.",
-    service: "local-seo-agency-kolkata",
+    service: "local-seo-packages-for-small-business",
   },
   walker: {
     slug: "the-walker-group",
@@ -90,7 +90,7 @@ export const searchCaseStudies = {
     ],
     measurement: "The project report recorded 4.1 times as many direction requests and 3.6 times as many calls over 18 months. The revenue figure credits the final measured organic or local touchpoint before conversion.",
     application: "A Kolkata hospitality group can give each real venue accurate opening hours, directions and a direct booking path. Track calls and bookings for each venue separately.",
-    service: "local-seo-agency-kolkata",
+    service: "local-seo-packages-for-small-business",
   },
   northbridge: {
     slug: "northbridge-fintech",
@@ -138,7 +138,7 @@ export const searchCaseStudies = {
     ],
     measurement: "Traffic was measured over the migration window. The product-page timing improved by roughly 41% according to the detailed case, and the reported revenue change compares the six months after launch with the previous six.",
     application: "Before a Kolkata retailer rebuilds its storefront, list the category and product pages that drive organic sales. Verify their redirects and measure those pages through launch.",
-    service: "ecommerce-seo-agency-kolkata",
+    service: "ecommerce-seo-retainer-pricing",
   },
   halsted: {
     slug: "halsted-legal",
@@ -162,7 +162,7 @@ export const searchCaseStudies = {
     ],
     measurement: "The case reports qualified consultations attributed to organic search over 12 months and matter revenue attributed to organic and referral channels over 18 months.",
     application: "A Kolkata professional services firm can pick one engagement it wants more of, document what a suitable enquiry looks like, and build pages that answer scope, timing and eligibility questions.",
-    service: "b2b-seo-agency-kolkata",
+    service: "b2b-saas-seo-agency-pricing",
   },
   jamesChristian: {
     slug: "james-christian-cosmetics",
@@ -182,7 +182,7 @@ export const searchCaseStudies = {
     steps: [],
     measurement: "The homepage spotlight gives the reporting period and headline outcomes. It provides no detailed rollout or breakdown of the booking attribution.",
     application: "A Kolkata practice with multiple clinics can give each location accurate contact details, explain which services are available there and measure consultation bookings by branch.",
-    service: "local-seo-agency-kolkata",
+    service: "local-seo-packages-for-small-business",
   },
 } satisfies Record<string, SearchCaseStudy>;
 
@@ -196,10 +196,10 @@ export const searchCaseByService: Partial<Record<string, { project: SearchCaseSt
   "chatgpt-seo-agency-kolkata": { project: northbridge, takeaway: "See how the project used commercial questions to check which brands ChatGPT named during buyer research." },
   "gemini-seo-agency-kolkata": { project: northbridge, takeaway: "The initial audit covered Gemini. The case shows how to check the same buying questions across several tools." },
   "claude-seo-agency-kolkata": { project: northbridge, takeaway: "The initial citation audit covered Claude. The case offers an example of benchmarking before changing content." },
-  "b2b-seo-agency-kolkata": { project: halsted, takeaway: "See how a professional services firm built around one buying need and tracked qualified consultations from search." },
-  "ecommerce-seo-agency-kolkata": { project: atelier, takeaway: "See what to protect when your store changes platform, from product URLs to organic revenue reporting." },
-  "technical-seo-agency-kolkata": { project: atelier, takeaway: "See how a crawl baseline, a tested redirect map and monitoring helped a store manage migration risk." },
-  "local-seo-agency-kolkata": { project: walker, takeaway: "If you operate in more than one Kolkata locality, give each real location accurate hours and contact details. Link its eligible Google Business Profile to the page customers need for directions or bookings." },
+  "b2b-saas-seo-agency-pricing": { project: halsted, takeaway: "See how a professional services firm built around one buying need and tracked qualified consultations from search." },
+  "ecommerce-seo-retainer-pricing": { project: atelier, takeaway: "See what to protect when your store changes platform, from product URLs to organic revenue reporting." },
+  "technical-seo-audit-pricing": { project: atelier, takeaway: "See how a crawl baseline, a tested redirect map and monitoring helped a store manage migration risk." },
+  "local-seo-packages-for-small-business": { project: walker, takeaway: "If you operate in more than one Kolkata locality, give each real location accurate hours and contact details. Link its eligible Google Business Profile to the page customers need for directions or bookings." },
   "real-estate-seo-agency-kolkata": { project: allIsland, takeaway: "Take the location-first approach and apply it to your active inventory. Someone comparing flats in New Town needs current project details, useful location information and a clear way to arrange a visit." },
   "interior-design-seo-agency-kolkata": { project: allIsland, takeaway: "Use completed Kolkata projects to show the kinds of briefs you take on. A kitchen renovation page can explain the scope, show the finished space and help homeowners decide what to ask at their first consultation." },
   "paid-ads-agency-kolkata": { project: allIsland, takeaway: "If you’re paying for renovation leads in Kolkata, use the same definition of a qualified enquiry across paid search and SEO. Check service area, project type and budget fit, then compare cost per qualified lead over the same period." },

@@ -2,20 +2,21 @@ import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const b2bBuyingPages: SeoBuyingPage[] = [
   {
-    slug: "b2b-seo-agency-kolkata",
+    slug: "b2b-saas-seo-agency-pricing",
     name: "B2B SEO for SaaS and Specialist Businesses",
-    title: "B2B SaaS and Industrial SEO Agency in Kolkata",
-    description: "Scope B2B SEO for a SaaS, manufacturing, or IT services business. Plan evaluation pages, technical work, and reporting on qualified sales conversations.",
-    heading: ["B2B SEO for SaaS", "and specialist businesses"],
-    intro: "If prospects need to understand integrations, specifications or service boundaries before they talk to sales, your website should help them evaluate those details. Sparklines Studio works with Kolkata B2B teams to improve the pages buyers use to compare options and request a demo or quote. Share what you sell and how your team identifies a qualified opportunity.",
+    title: "B2B SaaS SEO Agency Pricing and Scope",
+    description: "Compare B2B SaaS SEO agency pricing for use-case pages, technical review and lead reporting. Scope the work around demos your sales team can qualify.",
+    heading: ["B2B SaaS SEO agency pricing", "and scope"],
+    intro: "B2B SaaS SEO agency pricing depends on how much buyers need to learn before they can request a qualified demo. We help SaaS teams turn use cases, integrations and implementation requirements into useful evaluation pages. Manufacturers and managed IT providers can scope the same work around specifications, supported environments and quote requests.",
     sections: [
       {
         id: "b2b-saas-pricing",
-        title: "What shapes the cost of B2B SEO?",
+        title: "What affects B2B SaaS SEO agency pricing?",
         style: "pricing",
         paragraphs: [
           "A B2B SaaS SEO proposal depends on the complexity of your product, the buyer roles involved, the depth of technical review and the number of use cases or integrations to cover. Interviewing subject experts and getting technical claims approved may take more time than publishing the pages. Agree who supplies examples, reviews requirements and approves updates.",
           "We can scope a defined review if your in-house team needs decisions and briefs. An ongoing engagement can cover a sequence of technical changes, publishing and sales feedback. Ask for those responsibilities, the review cadence and any developer costs to be clear in the quote.",
+          "Start with one objection sales hears repeatedly. If buyers keep asking whether your software supports a particular workflow, the proposal can show how we’d turn that question into a useful evaluation page and what would count as a better-qualified demo.",
         ],
       },
       {
@@ -60,7 +61,7 @@ export const b2bBuyingPages: SeoBuyingPage[] = [
       ["What if sales has very few qualified opportunities each month?", "Agree a longer review window and record the details sales can share for each worthwhile enquiry. Earlier indicators include discovery for relevant use-case pages and whether visitors reach useful evaluation resources. Use those alongside sales feedback to judge where the next round of work belongs."],
       ["Can you work with our in-house marketing team?", "Yes. Agree which pages and tasks each team owns, how approvals work and who can deploy or schedule changes."],
     ],
-    related: ["technical-seo-agency-kolkata", "monthly-seo-for-small-businesses", "website-migration-seo"],
-    inquiry: { label: "Request a B2B SEO proposal", prompt: "Send your site, priority use cases or capabilities, and what makes a demo or quote request qualified. Tell us who can review technical claims." },
+    related: ["technical-seo-audit-pricing", "monthly-seo-packages-for-small-business", "website-migration-seo-consultant"],
+    inquiry: { label: "Get a B2B SEO proposal", prompt: "Send your site, priority use cases and an example of a good demo or quote request. Tell us who can confirm technical details." },
   },
 ];

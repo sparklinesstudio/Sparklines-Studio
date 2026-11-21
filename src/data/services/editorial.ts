@@ -11,14 +11,14 @@ export const serviceReading:Record<string,{title:string;summary:string}>={
  "how-to-do-keyword-research":{title:"Choosing useful website keywords",summary:"Match the search question with a page that can actually answer it."},
 };
 export const articleServices:Record<string,string[]>={
- "what-is-local-search-engine-marketing":["local-seo-agency-kolkata","google-ads-agency-kolkata","seo-agency-kolkata"],
- "nap-consistency-local-seo":["local-seo-agency-kolkata","real-estate-seo-agency-kolkata","interior-design-seo-agency-kolkata"],
- "rank-service-area-business":["local-seo-agency-kolkata","technical-seo-agency-kolkata","google-ads-agency-kolkata"],
- "directory-submissions-local-seo":["local-seo-agency-kolkata","seo-agency-kolkata"],
- "local-seo-for-small-businesses":["local-seo-agency-kolkata","google-ads-agency-kolkata","website-development-agency-kolkata"],
+ "what-is-local-search-engine-marketing":["local-seo-packages-for-small-business","google-ads-agency-kolkata","seo-agency-kolkata"],
+ "nap-consistency-local-seo":["local-seo-packages-for-small-business","real-estate-seo-agency-kolkata","interior-design-seo-agency-kolkata"],
+ "rank-service-area-business":["local-seo-packages-for-small-business","technical-seo-audit-pricing","google-ads-agency-kolkata"],
+ "directory-submissions-local-seo":["local-seo-packages-for-small-business","seo-agency-kolkata"],
+ "local-seo-for-small-businesses":["local-seo-packages-for-small-business","google-ads-agency-kolkata","website-development-agency-kolkata"],
  "brand-authenticity-strategy":["brand-strategy-agency-kolkata","branding-agency-kolkata","personal-branding-agency-kolkata"],
- "choose-website-framework-for-business":["website-development-agency-kolkata","ecommerce-development-agency-kolkata","technical-seo-agency-kolkata"],
- "b2b-saas-marketing-funnel":["b2b-seo-agency-kolkata","saas-video-agency-kolkata","linkedin-ads-agency-kolkata"],
+ "choose-website-framework-for-business":["website-development-agency-kolkata","ecommerce-development-agency-kolkata","technical-seo-audit-pricing"],
+ "b2b-saas-marketing-funnel":["b2b-saas-seo-agency-pricing","saas-video-agency-kolkata","linkedin-ads-agency-kolkata"],
  "user-intent-optimization-ai-search-engines":["chatgpt-seo-agency-kolkata","gemini-seo-agency-kolkata","claude-seo-agency-kolkata"],
- "how-to-do-keyword-research":["seo-agency-kolkata","google-ads-agency-kolkata","ecommerce-seo-agency-kolkata"],
+ "how-to-do-keyword-research":["seo-agency-kolkata","google-ads-agency-kolkata","ecommerce-seo-retainer-pricing"],
 };

@@ -6,6 +6,8 @@ import { BrandFooterBanner } from "@/components/Home Page Components/BrandFooter
 import { serviceMetadata } from "@/lib/serviceMetadata";
 import { searchCaseHref, searchCaseStudies } from "@/data/searchCaseStudies";
 import { SearchCaseArtwork } from "@/components/studio/SearchCaseArtwork";
+import { seoBuyingPageBySlug } from "@/data/services/seo-buying-pages";
+import { serviceSalesCopy } from "@/data/services/service-sales-copy";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 import "@/components/studio/search-portfolio.css";
@@ -31,6 +33,7 @@ export default async function SearchCasePage({ params }: Props) {
   const entry = projects.find(({ slug }) => slug === project);
   if (!entry) notFound();
   const next = projects[(projects.indexOf(entry) + 1) % projects.length];
+  const linkedService = seoBuyingPageBySlug(entry.service)?.name ?? serviceSalesCopy[entry.service]?.keyword ?? entry.discipline;
 
   return (
     <div className="studio-page studio-experience">
@@ -41,8 +44,8 @@ export default async function SearchCasePage({ params }: Props) {
           <div className="search-story-cover">
             <div className="search-story-intro">
               <p className="studio-kicker">{entry.discipline} / {entry.location}</p>
-              <h1>{entry.client}<span className="orange-period">.</span></h1>
-              <p>{entry.title}</p>
+              <h1>{entry.client} SEO {("spotlight" in entry) ? "spotlight" : "case study"}</h1>
+              <p>{entry.client} · {entry.title}</p>
               <p className="search-card-label">{"spotlight" in entry ? "Third-party project spotlight" : "Third-party case study"} · {entry.duration}</p>
               <ul className="search-story-tags" aria-label="Focus areas">
                 {entry.tags.map(tag => <li key={tag}>{tag}</li>)}
@@ -83,7 +86,7 @@ export default async function SearchCasePage({ params }: Props) {
             <h2 id="case-local">Apply it in Kolkata</h2>
             <div>
               <p>{entry.application}</p>
-              <Link href={`/${entry.service}`} className="studio-text-link">Explore Sparklines Studio’s service <ArrowUpRight size={18} aria-hidden="true" /></Link>
+              <Link href={`/${entry.service}`} className="studio-text-link">{linkedService} <ArrowUpRight size={18} aria-hidden="true" /></Link>
             </div>
           </section>
           <nav className="search-story-nav" aria-label="Case study navigation">

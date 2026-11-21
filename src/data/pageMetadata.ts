@@ -19,16 +19,16 @@ export const pageMetadata: Readonly<Partial<Record<string, PageCopy>>> = {
     description: "Explore film, branding, SEO, paid advertising and web services from our Kolkata studio.",
   },
   work: {
-    title: "Creative Portfolio in Kolkata: Branding, Film & Search Studies",
-    description: "See work from our Kolkata studio and search case studies with reported results.",
+    title: "Selected Work and Search Case Studies in Kolkata",
+    description: "See selected work by Sparklines Studio and third-party search case studies.",
   },
   "video-gallery": {
-    title: "Kolkata Video Portfolio: Brand Films, Reels & Product Videos",
-    description: "Watch food films, property showcases and social videos from our Kolkata studio.",
+    title: "Video Gallery for Brand Films and Reels in Kolkata",
+    description: "Browse our video gallery by food, fashion, personal branding and real estate.",
   },
   blogs: {
-    title: "Kolkata Studio Journal on Filmmaking, Branding & Search",
-    description: "Read our Kolkata studio’s field notes on filmmaking, branding, SEO and web design.",
+    title: "Blogs on SEO, AI Search and Video Production",
+    description: "Read research on SEO, AI search, video and web design from our Kolkata studio.",
   },
   "privacy-policy": {
     title: "Website Privacy Policy for Our Kolkata Creative Studio",
@@ -90,11 +90,11 @@ export const pageMetadata: Readonly<Partial<Record<string, PageCopy>>> = {
     title: "Claude SEO Services in Kolkata for AI Buyer Research & Mentions",
     description: "Check how Claude describes your business and sources answers with our Kolkata team.",
   },
-  "b2b-seo-agency-kolkata": {
+  "b2b-saas-seo-agency-pricing": {
     title: "B2B SEO Agency in Kolkata for SaaS, Suppliers & Services",
     description: "Help Kolkata B2B buyers find your SaaS, supply or service offer through search.",
   },
-  "ecommerce-seo-agency-kolkata": {
+  "ecommerce-seo-retainer-pricing": {
     title: "Ecommerce SEO Agency in Kolkata for Product & Category Pages",
     description: "Improve category pages, product discovery and technical SEO for Kolkata stores.",
   },
@@ -106,11 +106,11 @@ export const pageMetadata: Readonly<Partial<Record<string, PageCopy>>> = {
     title: "SEO for Interior Designers in Kolkata: Services & Project Pages",
     description: "Help Kolkata homeowners find your design services and request a consultation.",
   },
-  "local-seo-agency-kolkata": {
+  "local-seo-packages-for-small-business": {
     title: "Local SEO Agency in Kolkata for Google Maps & Business Profiles",
     description: "Improve Google Business Profiles and local pages for Kolkata calls and visits.",
   },
-  "technical-seo-agency-kolkata": {
+  "technical-seo-audit-pricing": {
     title: "Technical SEO Agency in Kolkata for Site Audits & Migrations",
     description: "Find crawl, indexing and migration issues with a technical SEO audit in Kolkata.",
   },

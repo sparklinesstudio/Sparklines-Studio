@@ -105,7 +105,7 @@ export const seoPageContent: Record<string, SeoPageContent> = {
     ctaTitle: "Put your specialist knowledge within reach.",
     ctaBody: "Share the questions your sales and delivery teams answer every week. We’ll discuss which resources to improve and what the work would involve.",
   },
-  "ecommerce-seo-agency-kolkata": {
+  "ecommerce-seo-retainer-pricing": {
     heroNotes: ["Shopping intent", "Clear categories", "Product detail", "Useful discovery"],
     intro: "Help shoppers find the right category, understand the product and buy with confidence. We build ecommerce SEO plans for Kolkata brands around catalogue structure, useful product information and commercially relevant organic traffic.",
     visual: "catalog", flow: ["Shopping intent", "Category & product", "Purchase decision"],
@@ -123,7 +123,7 @@ export const seoPageContent: Record<string, SeoPageContent> = {
     ctaTitle: "Make the right products easier to find.",
     ctaBody: "Share your store, platform and the categories you want to grow. We’ll discuss a search plan that fits your catalogue and commercial priorities.",
   },
-  "technical-seo-agency-kolkata": {
+  "technical-seo-audit-pricing": {
     heroNotes: ["Crawl & render", "Indexing signals", "Developer briefs", "Release checks"],
     intro: "An audit only helps when the right issues get fixed. We help Kolkata businesses diagnose crawling, rendering and indexing problems, then translate findings into priorities, developer briefs and release checks.",
     visual: "code", flow: ["Find the barrier", "Implement the fix", "Verify the release"],
@@ -141,7 +141,7 @@ export const seoPageContent: Record<string, SeoPageContent> = {
     ctaTitle: "Find the issue. Make the fix count.",
     ctaBody: "Share your website, platform and the problem or upcoming release. We’ll discuss the diagnosis, implementation responsibilities and pricing.",
   },
-  "local-seo-agency-kolkata": {
+  "local-seo-packages-for-small-business": {
     heroNotes: ["Real coverage", "Accurate profiles", "Local relevance", "Better enquiries"],
     intro: "Be clear when nearby customers need you. Our local SEO work connects accurate business profiles, genuine Kolkata service coverage and useful website pages with a direct route to a call, visit or booking.",
     visual: "map", flow: ["Nearby search", "Accurate local presence", "Call, visit or booking"],
@@ -159,7 +159,7 @@ export const seoPageContent: Record<string, SeoPageContent> = {
     ctaTitle: "Help nearby customers take the next step.",
     ctaBody: "Tell us what you do, where you actually operate and what a useful enquiry looks like. We’ll discuss local priorities, scope and pricing.",
   },
-  "b2b-seo-agency-kolkata": {
+  "b2b-saas-seo-agency-pricing": {
     heroNotes: ["Buyer needs", "Expert content", "Sales alignment", "Qualified demand"],
     intro: "Your buyers research long before they send an enquiry. We help Kolkata B2B companies connect their capabilities with the searches, comparisons and practical questions that lead to a qualified sales conversation.",
     visual: "b2b", flow: ["Business requirement", "Evaluation & comparison", "Qualified conversation"],

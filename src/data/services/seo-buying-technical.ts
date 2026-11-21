@@ -2,20 +2,21 @@ import type { SeoBuyingPage } from "./seo-buying-types";
 
 export const technicalBuyingPages: SeoBuyingPage[] = [
   {
-    slug: "technical-seo-agency-kolkata",
+    slug: "technical-seo-audit-pricing",
     name: "Technical SEO Audits",
-    title: "Technical SEO Audits and Implementation in Kolkata",
-    description: "Get a scoped technical SEO audit and implementation quote. Diagnose crawling, rendering, indexing, canonical, and performance issues on priority pages.",
-    heading: ["Technical SEO audits", "and implementation"],
-    intro: "If valuable pages are hard to find in search, pay for a diagnosis your team can act on. Sparklines Studio helps Kolkata businesses inspect crawling, rendering and indexing problems, turn findings into developer-ready work and verify agreed changes. Send a few affected URLs, the platform and what you have already tried so we can discuss the right size of audit.",
+    title: "Technical SEO Audit Pricing and Deliverables",
+    description: "Compare technical SEO audit pricing by site complexity and scope. Get a quote for diagnosis, developer-ready fixes and optional release verification.",
+    heading: ["Technical SEO audit pricing", "and what you get"],
+    intro: "Technical SEO audit pricing depends on the templates and issues we need to investigate. Tell us which pages are missing, duplicating or behaving unexpectedly. We’ll scope a review that gives your developers affected URLs, evidence, priorities and a test for each proposed fix.",
     sections: [
       {
         id: "technical-seo-audit-pricing",
-        title: "What an audit costs and how to compare scope",
+        title: "What affects technical SEO audit pricing?",
         style: "pricing",
         paragraphs: [
           "A technical SEO audit is a defined project. We quote it around the URL inventory, number of distinct templates, access to data and depth of investigation. Checking an indexing pattern on a small brochure site takes different work from tracing rendering and canonical conflicts across a catalogue. Include all versions, subdomains and relevant environments when asking for a quote.",
           "Ask for diagnosis, implementation and release checks to be itemised. Your development team can take the backlog, or we can agree which fixes we can make and what needs a developer. Follow-up testing should have a clear boundary, including which pages and deployments are covered.",
+          "A useful audit item gives your developer a reproducible example. For instance, if two templates disagree about a canonical URL, we record the affected patterns, show the intended destination and specify what to check after the next deployment.",
         ],
       },
       {
@@ -61,16 +62,16 @@ export const technicalBuyingPages: SeoBuyingPage[] = [
       ["What if organic traffic has fallen without a migration?", "Share the affected dates, technologies, pages and any recent demand or tracking changes. We can discuss a diagnostic scope that checks whether a technical cause is supported by the evidence before proposing repairs."],
       ["How will we know the work is complete?", "Agree whether completion means a delivered audit, verified fixes, or both. Search Console follow-up can be scoped separately for changes whose effects take time to observe."],
     ],
-    related: ["website-migration-seo", "post-migration-seo-recovery", "ecommerce-technical-seo-audit"],
-    inquiry: { label: "Request a technical SEO audit quote", prompt: "Send the website, affected templates or URLs, recent changes and who will handle implementation. Include any release deadline." },
+    related: ["website-migration-seo-consultant", "seo-recovery-after-website-migration", "ecommerce-technical-seo-audit-services"],
+    inquiry: { label: "Get a technical audit quote", prompt: "Send your website and one or two affected URLs. Include any upcoming release and tell us who handles code changes." },
   },
   {
-    slug: "website-migration-seo",
+    slug: "website-migration-seo-consultant",
     name: "Website Migration and Redesign SEO",
-    title: "Website Migration and Redesign SEO Consulting",
-    description: "Plan the SEO work for a redesign, domain move, or platform change. Scope URL mapping, staging checks, launch verification, and post-launch monitoring.",
-    heading: ["Website migration", "and redesign SEO"],
-    intro: "If you’re redesigning a site, changing domains or moving platforms, involve SEO before the new URL structure is locked. Sparklines Studio can scope the work with your launch team, from identifying pages you need to preserve to checking traffic and enquiries after launch. Share the existing site, proposed destination and release date to discuss migration support.",
+    title: "Website Migration SEO Consultant for Redesigns and Moves",
+    description: "Hire a website migration SEO consultant to map URLs, review staging and verify your redesign or domain move. Get a quote based on your launch plan.",
+    heading: ["Website migration", "SEO consultant"],
+    intro: "Bring in a website migration SEO consultant before the new URL structure is locked. We identify the pages your enquiries depend on, map old URLs to suitable destinations, and agree what must pass on staging and at launch. Share your proposed go-live date so we can work out where your release team needs support.",
     sections: [
       {
         id: "before-launch",
@@ -104,10 +105,11 @@ export const technicalBuyingPages: SeoBuyingPage[] = [
       },
       {
         id: "migration-seo-pricing",
-        title: "What affects migration SEO pricing?",
+        title: "What does a website migration SEO consultant cost?",
         style: "pricing",
         paragraphs: [
           "A migration is a project quote. Cost depends on the number and variety of URLs, overlap between old and new content, CMS or domain changes, the quality of staging access and the monitoring period. A multilingual release or phased domain consolidation adds coordination and checks. Share the launch window and clarify who owns redirect deployment, analytics, content transfer and rollback decisions.",
+          "Before committing to the move, ask who can change the destination if an important old page has no equivalent on staging. A named decision owner keeps the issue from surfacing for the first time during launch.",
         ],
       },
       {
@@ -125,16 +127,16 @@ export const technicalBuyingPages: SeoBuyingPage[] = [
       ["What should we provide first?", "Send both domains if available, a launch date, staging access or mockups, analytics and Search Console access, and the names of the teams who can make and approve changes."],
       ["Can we redirect all retired pages to one place?", "Review the intent of the old URLs before choosing targets. If an equivalent page exists, map to it directly. For retired pages without a useful replacement, agree the most appropriate disposition and ensure the new navigation and sitemap reflect it."],
     ],
-    related: ["seo-migration-audit", "post-migration-seo-recovery", "shopify-migration-seo"],
-    inquiry: { label: "Discuss your migration launch", prompt: "Send the current site, new platform or domain, URL changes you expect and the launch window. Include a staging link if available." },
+    related: ["seo-migration-audit-service", "seo-recovery-after-website-migration", "wordpress-to-shopify-seo-migration-services"],
+    inquiry: { label: "Discuss your migration launch", prompt: "Send the current site, new platform or domain, and target launch date. A draft map or staging link helps if you have one." },
   },
   {
-    slug: "post-migration-seo-recovery",
+    slug: "seo-recovery-after-website-migration",
     name: "Post-Migration SEO Recovery",
-    title: "Post-Migration SEO Recovery and Traffic Drop Diagnosis",
-    description: "Lost organic traffic after a redesign or migration? Scope a diagnosis of redirects, indexing, page changes, and tracking, with a prioritised repair plan.",
-    heading: ["Post-migration", "SEO recovery"],
-    intro: "If traffic or enquiries fell after a move, start with the launch date, the old and new site addresses and a few pages that lost visibility. Sparklines Studio can scope a diagnostic review to identify which problems your team can fix and how to verify those fixes. A dated baseline helps distinguish a reporting break from a change in discovery or demand.",
+    title: "SEO Recovery After Website Migration or Redesign",
+    description: "Get help with SEO recovery after website migration or redesign. Find out which redirects, content, indexing signals or tracking changes need attention.",
+    heading: ["SEO recovery after", "website migration"],
+    intro: "SEO recovery after website migration starts with three things: your go-live date, the old and new site addresses, and a few pages that lost traffic. We look for evidence of broken redirects, indexing changes, missing content or interrupted tracking. You get a prioritised repair plan your release team can use.",
     sections: [
       {
         id: "first-checks",
@@ -164,11 +166,12 @@ export const technicalBuyingPages: SeoBuyingPage[] = [
       },
       {
         id: "recovery-pricing",
-        title: "How recovery work is quoted",
+        title: "What does SEO recovery after website migration cost?",
         style: "pricing",
         paragraphs: [
           "A post-migration audit is a defined diagnostic project. The quote reflects how much pre-launch data is available, the number of affected domains and templates, and the urgency and depth of the investigation. If you need repairs and monitoring as well, ask for separate responsibilities and estimates so you can decide who will do the work.",
           "We can review a storefront after a move with an emphasis on the affected revenue-driving categories or collections. Bring orders or conversion data by landing page if available and flag stock, pricing or merchandising changes that could change the comparison.",
+          "If Search Console clicks hold steady while analytics visits or form submissions drop, we start by testing measurement and the enquiry path. When impressions also fall in one directory, we trace what changed in that group’s redirects, links and page content.",
         ],
       },
       {
@@ -186,7 +189,7 @@ export const technicalBuyingPages: SeoBuyingPage[] = [
       ["Do we need to revert the redesign?", "The decision belongs with your release owner. We isolate the affected routes and document what verification shows. If the issue is concentrated in a redirect rule, template, or tracking configuration, your team can compare correcting that component with a wider rollback and test the chosen path against the same priority URLs."],
       ["What if we have a Search Console manual action?", "Share whether there is a notice and which URLs it covers when you enquire. A manual action needs a different investigation and scope from post-migration QA."],
     ],
-    related: ["website-migration-seo", "technical-seo-agency-kolkata", "ecommerce-technical-seo-audit"],
-    inquiry: { label: "Request a post-migration diagnosis", prompt: "Send the old and new URLs, go-live date and examples of lost pages. Include the first date you saw a sustained change and mention any measurement changes." },
+    related: ["website-migration-seo-consultant", "technical-seo-audit-pricing", "ecommerce-technical-seo-audit-services"],
+    inquiry: { label: "Get a recovery assessment", prompt: "Send the old and new URLs, your release date and examples of pages that lost traffic or enquiries." },
   },
 ];

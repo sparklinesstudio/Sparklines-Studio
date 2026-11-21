@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {ArrowUpRight,ArrowRight,Asterisk,Check,Plus} from "lucide-react";
 import type {StudioService} from "@/data/services/types";
+import {serviceSalesCopy} from "@/data/services/service-sales-copy";
 import {serviceBySlug,serviceTrail} from "@/data/services/catalog";
 import {serviceDepth,serviceProcess} from "@/data/services/experience";
 import {serviceCaseStudies} from "@/data/services/case-studies";
@@ -16,6 +17,7 @@ import {serviceGraph} from "@/lib/structuredData";
 import {ProductionGallery} from "./ProductionGallery";
 import {FilmMasonry} from "./FilmMasonry";
 import {StudioMotion,AmbientVideo} from "./StudioMotion";
+import {FounderBrief} from "./FounderBrief";
 import {ServiceHero} from "./ServiceHero";
 import {ServicePointerCard} from "./ServicePointerCard";
 import {PaidAdsComparison} from "./PaidAdsComparison";
@@ -27,6 +29,8 @@ import "./service-editorial.css";
 
 export function SupportingServicePage({service}:{service:StudioService}){
  const trail=serviceTrail(service);
+ const copy=serviceSalesCopy[service.slug];
+ const quoteHref=`/contact?service=${service.slug}`;
  const depth=serviceDepth[service.slug];
  const process=serviceProcess[service.family];
  const caseStudy=serviceCaseStudies[service.slug];
@@ -55,13 +59,13 @@ export function SupportingServicePage({service}:{service:StudioService}){
   </div></div></section>}
   <section className="svc-process svc-wrap"><div className="svc-section-heading"><h2>How do we turn<br/><em>the brief into better work?</em></h2><p>Four stages. A clear decision at each one.</p></div><div className="svc-process-grid">{process.map((item,index)=><article key={item.title}><span>0{index+1}<ArrowRight size={22}/></span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div></section>
   <section id="service-scope" className="svc-deliverables"><div className="svc-wrap"><div className="svc-section-heading"><h2>{paidAds?<>What PPC management<br/><em>includes.</em></>:<>A considered scope.<br/><em>Useful from day one.</em></>}</h2><p>{paidAds?"You’ll see who manages the account, which campaigns and creative are included, and how budget and lead quality will be reviewed.":"Your proposal defines the inclusions, review rounds and responsibilities. These are the workstreams that give the project a practical shape."}</p></div><div className="svc-deliverable-grid">{deliverables.map((item,index)=><ServicePointerCard key={item.title}><article><span className="svc-card-index">0{index+1}<Asterisk size={23}/></span><h3>{item.title}</h3><p>{item.body}</p></article></ServicePointerCard>)}</div></div></section>
-  {paidAds ? <SearchCaseStudy serviceSlug={service.slug} /> : <section id="case-study" className="svc-case-study svc-wrap" aria-label="Service case study"><div><span className="svc-small-label">{caseStudy?caseStudy.client:"CASE STUDY / SPACE RESERVED"}</span><h2>{caseStudy?caseStudy.title:<>The next story.<br/><em>With the detail left in.</em></>}</h2><p>{caseStudy?caseStudy.summary:"Reserved for a client story: the starting problem, our role, the work and an approved, evidenced outcome."}</p>{caseStudy?.href&&<Link href={caseStudy.href} className="svc-text-link">Explore the full project <ArrowUpRight size={18}/></Link>}</div><div className="svc-case-sheet"><div className="svc-case-sheet-title"><span>{caseStudy?"PROJECT RECORD":"YOUR FUTURE PROJECT RECORD"}</span><Plus size={28}/></div>{caseStudy?<><div><h3>The challenge</h3><p>{caseStudy.challenge}</p></div><div><h3>The work</h3><p>{caseStudy.approach}</p></div><div><h3>The outcome</h3><p>{caseStudy.outcome}</p></div></>:<><div><h3>01 / The starting point</h3><p>The client’s problem, audience and constraints.</p></div><div><h3>02 / The work</h3><p>Our role, key decisions and finished deliverables.</p></div><div><h3>03 / The evidence</h3><p>Approved examples, dates and context for the result.</p></div><span className="svc-case-status">Awaiting an approved case study</span></>}</div></section>}
+  {paidAds ? <SearchCaseStudy serviceSlug={service.slug} /> : <section id="case-study" className="svc-case-study svc-wrap"><div><span className="svc-small-label">{caseStudy ? caseStudy.client : "ILLUSTRATIVE BRIEF"}</span><h2>{caseStudy ? caseStudy.title : service.example.title}</h2><p>{caseStudy ? caseStudy.summary : service.example.brief}</p>{caseStudy?.href&&<Link href={caseStudy.href} className="svc-text-link">Explore the full project <ArrowUpRight size={18}/></Link>}</div><div className="svc-case-sheet"><div className="svc-case-sheet-title"><span>{caseStudy ? "PROJECT RECORD" : "WHAT THE WORK WOULD COVER"}</span><Plus size={28}/></div>{caseStudy ? <><div><h3>The challenge</h3><p>{caseStudy.challenge}</p></div><div><h3>The work</h3><p>{caseStudy.approach}</p></div><div><h3>The outcome</h3><p>{caseStudy.outcome}</p></div></> : <><div><h3>The proposed work</h3><p>{service.example.plan}</p></div><div><h3>How to check it</h3><p>{service.example.measure}</p></div></>}</div></section>}
   {service.gallery==="production"&&<section id="production-library" className="svc-library"><div className="svc-wrap"><h2>Films with<br/><em>their own point of view.</em></h2><p>Explore the existing food, fashion and property films. Use the library to discuss visual direction, pacing and the formats that suit your own brief.</p></div><div data-editorial-exclude="portfolio-labels"><ProductionGallery/></div></section>}
   {service.gallery==="motion"&&<section className="svc-wrap svc-motion-gallery"><h2>Moving references.<br/><em>A starting conversation.</em></h2><p>Mixed-format studio films for discussing mood and rhythm. Animation-specific style frames and references are agreed separately for the project.</p><div data-editorial-exclude="portfolio-labels"><FilmMasonry/></div></section>}
   <section className="svc-faq svc-wrap"><div><h2>A little clarity.<br/><em>Before we start.</em></h2><p>Practical answers to help you decide whether the approach fits your project.</p></div><div>{service.faqs.map(([question,answer])=><details key={question}><summary>{question}<span className="svc-plus" aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
   <section className="svc-related svc-wrap"><div className="svc-section-heading"><h2>Good work<br/><em>connects the dots.</em></h2><Link href="/services" className="svc-text-link">Explore all studio services <ArrowUpRight size={18}/></Link></div><div className="svc-related-grid">{related.map(item=><Link href={"/"+item.slug} key={item.slug}><h3>{item.name}</h3><ArrowUpRight size={21}/></Link>)}{related.length%2===1&&<Link href="/services"><h3>Find the right combination</h3><ArrowUpRight size={21}/></Link>}</div></section>
   {reading.length>0&&<section className="svc-reading svc-wrap"><h2>Notes behind the work.</h2><div>{reading.map(slug=><Link href={"/blogs/"+slug} key={slug}><span>Studio notes</span><h3>{serviceReading[slug].title}</h3><p>{serviceReading[slug].summary}</p><ArrowRight size={20}/></Link>)}</div></section>}
   {Boolean(service.sources?.length)&&<aside className="svc-sources svc-wrap"><span>Further reference</span>{service.sources!.map(source=><a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<ArrowUpRight size={13}/></a>)}</aside>}
-  <section className="svc-contact"><Asterisk size={65} strokeWidth={1.2}/><h2>Bring the ambition.<br/><em>We’ll shape the brief.</em></h2><p>Tell us what needs to change, what you already have and what a useful result would look like. We can start with the right conversation.</p><Link href="/contact" className="svc-button">Let’s make something worthwhile <ArrowUpRight size={19}/></Link></section>
+  <FounderBrief title={`Plan your ${service.name} project`} note={copy?.brief ?? service.description} href={quoteHref} label="Send your project brief"/>
  </main><BrandFooterBanner/></div></StudioMotion>;
 }
