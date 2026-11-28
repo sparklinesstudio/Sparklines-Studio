@@ -12,6 +12,7 @@ import { serviceMetadata } from "@/lib/serviceMetadata";
 import { HomeFeaturedVideos } from "@/components/studio/VideoGallery";
 import { StudioSticker } from "@/components/studio/StudioSticker";
 import { HomeReveal } from "@/components/studio/HomeReveal";
+import { BehindTheScenes } from "@/components/studio/BehindTheScenes";
 import "@/components/studio/studio.css";
 import "@/components/studio/experience.css";
 
@@ -22,6 +23,7 @@ export default function Home() {
     <MotionMarquee words={["Good stories", "Bold identities", "Films that feel", "A different perspective"]} />
     <InteractiveAbout showEyebrow={false} />
     <HomeFilmMasonry />
+    <BehindTheScenes />
     <HomeFeaturedVideos />
     <FilmCarousel />
     <BrandingFeature showEyebrow={false} />

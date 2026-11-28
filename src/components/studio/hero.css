@@ -1,167 +1,59 @@
-/* A framed, editorial hero with live films and original studio artwork. */
-.reference-hero {
-  position: relative;
-  padding: var(--studio-nav-height, 84px) clamp(28px, 6.5vw, 110px) 72px;
-  background: #073bff;
-  color: #111;
-  overflow: hidden;
-}
-.reference-hero-paper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 760px;
-  min-height: max(760px, calc(100svh - 84px));
-  padding: 274px 24px 160px;
-  background: #f3f3ef;
-  isolation: isolate;
-}
+/* Paper, floating film frames, and the studio's original die-cut stickers. */
+.reference-hero { position: relative; padding: var(--studio-nav-height, 84px) clamp(12px, 3vw, 52px) 0; background: #073bff; color: #171717; overflow: hidden; }
+.reference-hero-paper { position: relative; display: flex; align-items: center; justify-content: center; min-height: 760px; padding: 190px 32px 210px; background: #f3f3ef; isolation: isolate; }
 .reference-hero-content { position: relative; z-index: 3; width: 100%; text-align: center; }
-.studio-experience .reference-hero h1 {
-  font-family: Impact, "Arial Narrow", Arial, sans-serif;
-  font-size: clamp(58px, 7.8vw, 132px);
-  font-weight: 400;
-  line-height: .92;
-  letter-spacing: -.035em;
-  text-transform: uppercase;
-  margin: 0 auto;
-  max-width: 1100px;
-}
+.studio-experience .reference-hero h1 { font-family: Impact, "Arial Narrow", Arial, sans-serif; font-size: clamp(58px, 6.5vw, 112px); font-weight: 400; line-height: .98; letter-spacing: -.035em; text-transform: uppercase; margin: 0 auto; }
 .reference-hero h1 > span { display: block; white-space: nowrap; }
-.studio-experience .reference-hero h1 em {
-  font-family: var(--font-instrument-serif), Georgia, serif;
-  font-size: 1.19em;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: -.055em;
-}
-.reference-discover { display: inline-flex; gap: 9px; align-items: center; margin-top: 30px; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 22px; }
-.reference-discover > span { position: relative; }
-.reference-discover > span::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background: #073bff; transform: rotate(-2deg); transition: transform .25s; }
-.reference-discover > svg { background: #073bff; color: #fff; padding: 2px; width: 21px; height: 21px; transition: transform .25s; }
-.reference-discover:hover > svg { transform: translateY(4px); }
-.reference-discover:hover > span::after { transform: rotate(1deg) scaleX(.8); }
-.reference-video { position: absolute; z-index: 2; display: block; overflow: hidden; width: 190px; height: 220px; border: 10px solid #2860ff; background: #2860ff; box-shadow: 0 12px 25px #073bff12; transition: box-shadow .25s; }
+.studio-experience .reference-hero h1 em { font-family: var(--font-instrument-serif), Georgia, serif; font-size: 1.13em; font-style: normal; font-weight: 400; letter-spacing: -.055em; }
+.studio-experience .reference-hero-description { max-width: 500px; margin: 22px auto 0; font-size: 16px; line-height: 1.6; color: #34362f; }
+.reference-discover { display: inline-flex; gap: 9px; align-items: center; margin-top: 24px; padding-bottom: 6px; border-bottom: 3px solid #073bff; color: #073bff; font-family: var(--font-instrument-serif), Georgia, serif; font-size: 25px; transform: rotate(-1deg); }
+.reference-discover svg { transition: transform .25s; }
+.reference-discover:hover svg { transform: translate(3px, -3px); }
+.reference-video { position: absolute; z-index: 2; display: block; overflow: hidden; width: clamp(90px, 10vw, 160px); aspect-ratio: .88; border: 7px solid #2860ff; background: #2860ff; box-shadow: 0 8px 20px #17254a15; transform: rotate(var(--hero-tilt)); transition: box-shadow .25s; }
 .reference-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.reference-video > span { position: absolute; bottom: 0; right: 0; display: grid; place-items: center; width: 29px; height: 29px; background: #2860ff; color: white; }
+.reference-video > span { position: absolute; bottom: 0; right: 0; display: grid; place-items: center; width: 24px; height: 24px; background: #2860ff; color: white; }
 .reference-video:hover { box-shadow: 0 14px 35px #073bff40; z-index: 4; }
-.reference-video-one { top: 112px; right: 11%; transform: rotate(-3deg); --hero-tilt: -3deg; }
-.reference-video-two { bottom: 143px; left: 5%; width: 155px; height: 190px; border-color: #f45c2a; background: #f45c2a; transform: rotate(7deg); --hero-tilt: 7deg; }
+.reference-video-one { top: 35px; right: 6%; --hero-tilt: -5deg; }
+.reference-video-three { top: 32px; left: 6%; --hero-tilt: 5deg; }
+.reference-video-two { bottom: 165px; left: 5%; border-color: #f45c2a; background: #f45c2a; --hero-tilt: -5deg; }
+.reference-video-four { bottom: 160px; right: 5%; border-color: #f45c2a; background: #f45c2a; --hero-tilt: -10deg; }
 .reference-video-two > span, .reference-video-four > span { background: #f45c2a; }
-.reference-video-three { top: 116px; left: 17%; width: 174px; height: 195px; transform: rotate(5deg); --hero-tilt: 5deg; }
-.reference-video-four { bottom: 136px; right: 10%; width: 174px; height: 195px; border-color: #f45c2a; background: #f45c2a; transform: rotate(-7deg); --hero-tilt: -7deg; }
-.reference-brand-sticker { position: absolute; top: 200px; left: -60px; z-index: 4; width: 180px; height: 180px; transform: rotate(9deg); pointer-events: none; }
-.reference-brand-sticker img { object-fit: contain; }
-.reference-scroll-stamp { position: absolute; z-index: 4; bottom: 150px; right: -66px; display: grid; place-items: center; width: 142px; height: 142px; border-radius: 50%; background: #93a5ff; color: #111; transition: background .25s; }
-.reference-scroll-stamp:hover { background: #f9a76e; }
-.reference-stamp-lettering { position: absolute; inset: 0; width: 100%; height: 100%; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; letter-spacing: .2px; fill: currentColor; }
-.reference-scroll-stamp > .lucide { transform: rotate(-18deg); }
-.reference-capabilities { position: absolute; bottom: 44px; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr 140px 1fr 1fr; align-items: center; gap: 12px; padding: 0 35px; text-align: center; list-style: none; margin: 0; color: #073bff; }
-.reference-capabilities li { font-family: Georgia, serif; font-size: clamp(18px, 2.3vw, 31px); font-weight: 700; letter-spacing: -.05em; white-space: nowrap; }
-.reference-capabilities li:nth-child(3) { grid-column: 4; }
-.reference-capabilities li:nth-child(4) { grid-column: 5; }
-.reference-capabilities li:nth-child(2) { font-family: Impact, "Arial Narrow", sans-serif; font-weight: 400; letter-spacing: .025em; text-transform: uppercase; font-size: clamp(17px, 1.9vw, 27px); }
-.reference-capabilities li:nth-child(3) { font-family: Arial, sans-serif; font-weight: 900; letter-spacing: -.07em; }
+.reference-brand-sticker, .reference-wordmark-sticker { position: absolute; z-index: 4; pointer-events: none; }
+.reference-brand-sticker { bottom: 115px; left: -18px; width: 140px; height: 85px; transform: rotate(-18deg); }
+.reference-wordmark-sticker { top: 165px; right: -28px; width: 140px; height: 100px; transform: rotate(14deg); }
+.reference-brand-sticker img, .reference-wordmark-sticker img { object-fit: contain; }
+.reference-capabilities { position: absolute; bottom: 52px; left: 15%; right: 15%; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; gap: 20px; padding: 0; text-align: center; list-style: none; margin: 0; color: #073bff; }
+.reference-capabilities li { font-family: Georgia, serif; font-size: clamp(18px, 2vw, 29px); font-weight: 700; letter-spacing: -.045em; white-space: nowrap; }
+.reference-capabilities li:nth-child(2) { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 400; letter-spacing: .015em; text-transform: uppercase; font-size: clamp(15px, 1.6vw, 23px); }
 .reference-capabilities li:nth-child(4) { font-style: italic; }
-.reference-spark { position: absolute; z-index: 5; bottom: -62px; left: calc(50% - 75px); width: 145px; transform: rotate(-10deg); pointer-events: none; }
-.reference-spark svg { display: block; width: 100%; height: auto; }
 .motion-enabled .reference-video { animation: reference-video-float 7s ease-in-out infinite; }
 .motion-enabled .reference-video-two { animation-delay: -3s; }
 .motion-enabled .reference-video-three { animation-delay: -1.5s; }
 .motion-enabled .reference-video-four { animation-delay: -4.5s; }
-.motion-enabled .reference-stamp-lettering { animation: reference-stamp-spin 24s linear infinite; }
-.reference-scroll-stamp:hover .reference-stamp-lettering { animation-play-state: paused; }
 .reference-video:hover { animation-play-state: paused; }
-@keyframes reference-video-float { 0%, 100% { transform: translateY(0) rotate(var(--hero-tilt)); } 50% { transform: translateY(-12px) rotate(calc(var(--hero-tilt) + 2deg)); } }
-@keyframes reference-stamp-spin { to { transform: rotate(360deg); } }
-@media (min-width: 1700px) {
-  .reference-hero-paper { min-height: max(900px, calc(100svh - 84px)); }
-  .reference-video-one { width: 230px; height: 264px; top: 130px; }
-  .reference-video-two { width: 185px; height: 220px; bottom: 160px; }
-  .reference-video-three, .reference-video-four { width: 195px; height: 220px; }
-}
+@keyframes reference-video-float { 0%, 100% { transform: translateY(0) rotate(var(--hero-tilt)); } 50% { transform: translateY(-7px) rotate(calc(var(--hero-tilt) + 2deg)); } }
 @media (max-width: 1000px) and (min-width: 701px) {
-  .reference-hero { padding-inline: 50px; }
-  .reference-hero-paper { min-height: 740px; }
-  .studio-experience .reference-hero h1 { font-size: 8vw; }
-  .reference-video-one { width: 163px; height: 180px; right: 9%; top: 130px; }
-  .reference-video-two { width: 130px; height: 158px; left: 4%; bottom: 130px; }
-  .reference-video-three { width: 145px; height: 168px; left: 12%; top: 130px; }
-  .reference-video-four { width: 140px; height: 165px; right: 10%; bottom: 128px; }
-  .reference-brand-sticker { left: -40px; top: 205px; width: 140px; height: 140px; }
-  .reference-scroll-stamp { width: 115px; height: 115px; right: -43px; bottom: 140px; }
-  .reference-scroll-stamp > .lucide { width: 38px; height: 38px; }
-  .reference-capabilities { padding-inline: 20px; gap: 12px; grid-template-columns: 1fr 1fr 90px 1fr 1fr; }
+  .reference-hero-paper { min-height: 700px; }
+  .studio-experience .reference-hero h1 { font-size: 7vw; }
+  .reference-capabilities { left: 7%; right: 7%; }
 }
 @media (max-width: 700px) {
-  .reference-hero {
-    padding: calc(var(--studio-nav-height, 74px) + 10px) 10px 20px;
-  }
-  .reference-hero-paper {
-    min-height: auto;
-    padding: clamp(28px, 7.5vw, 48px) clamp(16px, 4vw, 28px) 22px;
-    gap: 24px;
-  }
-  .studio-experience .reference-hero h1 {
-    font-size: clamp(28px, 8.55vw, 56px);
-    line-height: 1;
-  }
-  .reference-hero h1 > span {
-    white-space: normal;
-  }
-  .studio-experience .reference-hero h1 em {
-    font-size: 1.1em;
-  }
-  .studio-experience .reference-hero .reference-hero-description {
-    max-width: 25rem;
-    margin-top: 14px;
-    padding-inline: 0;
-    font-size: .9375rem;
-    line-height: 1.5;
-  }
-  .reference-hero .reference-hero-content .reference-discover {
-    min-height: 44px;
-    margin-top: 18px;
-    padding: 9px 16px;
-    border-radius: 4px;
-    background: #073bff;
-    color: #fff;
-    font: 600 .875rem/1.25 var(--font-arimo), Arial, sans-serif;
-  }
-  .reference-discover > span::after {
-    display: none;
-  }
-  .reference-discover > svg {
-    background: transparent;
-  }
-
-  .reference-video-one,
-  .reference-video-three,
-  .reference-video-four,
-  .reference-brand-sticker,
-  .reference-scroll-stamp,
-  .reference-capabilities,
-  .reference-spark {
-    display: none;
-  }
-  .reference-video-two {
-    position: relative;
-    inset: auto;
-    width: min(100%, 520px);
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border-width: 5px;
-    border-radius: 4px;
-    transform: none;
-  }
-  .motion-enabled .reference-video-two {
-    animation: none;
-  }
+  .reference-hero { padding-inline: 9px; }
+  .reference-hero-paper { min-height: 460px; padding: 95px 12px 170px; }
+  .studio-experience .reference-hero h1 { font-size: clamp(28px, 8.5vw, 54px); }
+  .studio-experience .reference-hero-description { max-width: 360px; margin-top: 14px; font-size: 13px; line-height: 1.5; }
+  .reference-discover { margin-top: 18px; font-size: 21px; border-bottom-width: 2px; }
+  .reference-video { width: clamp(49px, 15vw, 86px); border-width: 4px; }
+  .reference-video > span { width: 13px; height: 13px; }
+  .reference-video > span svg { width: 10px; height: 10px; }
+  .reference-video-three { top: 25px; left: 3%; }
+  .reference-video-one { top: 25px; right: 4%; }
+  .reference-video-two { bottom: 135px; left: 5%; }
+  .reference-video-four { bottom: 128px; right: 5%; }
+  .reference-brand-sticker { bottom: 110px; left: -5px; width: 65px; height: 41px; }
+  .reference-wordmark-sticker { top: 95px; right: -12px; width: 70px; height: 51px; }
+  .reference-capabilities { bottom: 47px; left: 10%; right: 10%; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
+  .reference-capabilities li { font-size: 18px; }
+  .reference-capabilities li:nth-child(2) { font-size: 15px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .reference-hero * { animation: none !important; transition: none !important; }
-}
-
-.studio-experience .reference-hero-description{max-width:500px;margin:18px auto 0;font-size:13px;line-height:1.6;color:#4c535e;padding-inline:12px}.reference-hero-content .reference-discover{margin-top:16px}
+@media (prefers-reduced-motion: reduce) { .reference-hero * { animation: none !important; transition: none !important; } }

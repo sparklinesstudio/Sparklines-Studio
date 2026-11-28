@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Asterisk, Globe } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Asterisk } from "lucide-react";
 import { homeGalleryFilms, categories } from "@/data/galleryVideos";
 import { studioFilms } from "@/data/studioFilms";
 import { founders, studioSticker } from "@/data/founders";
@@ -15,25 +15,15 @@ import "./films.css";
 import { StudioSticker } from "./StudioSticker";
 import { BrandingSpotlight } from "./StudioHighlights";
 
-function HeroSpark() {
-  return <svg viewBox="0 0 150 190" fill="none" aria-hidden="true">
-    <path d="M49 143C33 148 29 169 19 163L9 155C0 153 1 168 12 176C30 193 49 172 58 162M95 143C113 144 114 160 125 157C137 154 146 163 140 170C130 184 114 176 103 163" stroke="#f45c2a" strokeWidth="18" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M49 143C33 148 29 169 19 163L9 155M95 143C113 144 114 160 125 157C137 154 146 163 140 170" stroke="#151515" strokeWidth="3" strokeLinecap="round"/>
-    <path d="M75 13C98 35 85 47 103 62L110 44C128 70 139 95 127 118C119 139 97 153 76 151C43 153 20 130 21 104C20 85 26 68 38 51L43 77C59 62 45 37 61 28L68 53C78 42 77 27 75 13Z" fill="#ff7a0a" stroke="#f45c2a" strokeWidth="13" strokeLinejoin="round"/>
-    <path d="M75 13C98 35 85 47 103 62L110 44C128 70 139 95 127 118C119 139 97 153 76 151C43 153 20 130 21 104C20 85 26 68 38 51L43 77C59 62 45 37 61 28L68 53C78 42 77 27 75 13Z" fill="#ff9416" stroke="#151515" strokeWidth="3" strokeLinejoin="round"/>
-    <path d="M48 91L57 64L71 82L84 57L94 85L110 75L112 107C109 130 89 141 73 138C52 137 42 117 48 91Z" fill="#ffc32b"/>
-    <ellipse cx="62" cy="106" rx="10" ry="14" stroke="#151515" strokeWidth="3"/><ellipse cx="88" cy="106" rx="10" ry="14" stroke="#151515" strokeWidth="3"/>
-    <ellipse cx="64" cy="107" rx="5" ry="8" fill="#151515"/><ellipse cx="86" cy="107" rx="5" ry="8" fill="#151515"/>
-    <path d="M70 125Q76 131 82 124" stroke="#151515" strokeWidth="3" strokeLinecap="round"/>
-  </svg>;
-}
-
-
 export function StudioHero() {
   return <section className="reference-hero" aria-label="Sparklines Studio video production">
     <div className="reference-hero-paper">
       <a href="#selected-films" className="reference-video reference-video-one" aria-label="Explore our fashion films">
         <AmbientVideo {...studioFilms[3]} />
+        <span><ArrowUpRight size={18} /></span>
+      </a>
+      <a href="#selected-films" className="reference-video reference-video-two" aria-label="Explore our food and hospitality films">
+        <AmbientVideo {...studioFilms[0]} />
         <span><ArrowUpRight size={18} /></span>
       </a>
       <a href="#selected-films" className="reference-video reference-video-three" aria-label="Explore our interiors films">
@@ -44,22 +34,14 @@ export function StudioHero() {
         <AmbientVideo {...studioFilms[5]} />
         <span><ArrowUpRight size={18} /></span>
       </a>
-      <div className="reference-brand-sticker" aria-hidden="true"><Image src="https://res.cloudinary.com/vt5gqi1c/image/upload/e_trim/v1795004332/Generated_Image_November_17_2026_-_6_19PM.png" alt="" fill sizes="(max-width: 700px) 90px, 180px" draggable={false} /></div>
+      <div className="reference-brand-sticker" aria-hidden="true"><Image src="https://res.cloudinary.com/vt5gqi1c/image/upload/e_trim/v1795004335/Generated_Image_November_17_2026_-_6_39PM.png" alt="" fill sizes="(max-width: 700px) 90px, 180px" draggable={false} /></div>
       <div className="reference-hero-content">
         <h1><span>Video Production</span>{" "}<span>Agency <em>Kolkata</em></span></h1>
         <p className="reference-hero-description">Kolkata video production for brand films, product stories and social campaigns. From the first idea to the final frame.</p>
-        <a className="reference-discover" href="#selected-films"><span>Discover our films</span><ArrowDownRight size={18} /></a>
+        <a className="reference-discover" href="#selected-films"><span>Discover our films</span><ArrowUpRight size={18} /></a>
       </div>
-      <a href="#selected-films" className="reference-video reference-video-two" aria-label="Explore our food and hospitality films">
-        <AmbientVideo {...studioFilms[0]} />
-        <span><ArrowUpRight size={18} /></span>
-      </a>
-      <a href="#selected-films" className="reference-scroll-stamp" aria-label="Scroll to explore our films">
-        <svg className="reference-stamp-lettering" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="reference-scroll-ring" d="M80 80m-58 0a58 58 0 1 1 116 0a58 58 0 1 1-116 0" /></defs><text><textPath href="#reference-scroll-ring" textLength="364">THIS IS HOW WE MOVE • THIS IS HOW WE MOVE • </textPath></text></svg>
-        <Globe size={47} strokeWidth={1.4} />
-      </a>
+      <div className="reference-wordmark-sticker" aria-hidden="true"><Image src="https://res.cloudinary.com/vt5gqi1c/image/upload/e_trim/v1795856289/sparklines_studio.png" alt="" fill sizes="(max-width: 700px) 70px, 140px" draggable={false} /></div>
       <ul className="reference-capabilities" aria-label="Studio capabilities"><li>Brand films</li><li>Social stories</li><li>Motion design</li><li>Brand identity</li></ul>
-      <div className="reference-spark"><HeroSpark /></div>
     </div>
   </section>;
 }
