@@ -18,26 +18,24 @@ const clips = [
 export function BehindTheScenes() {
   const { enabled, toggle } = useStudioMotion();
 
-  return <section id="behind-the-scenes" className="bts-section experience-pad" aria-labelledby="bts-heading">
+  return <section id="behind-the-scenes" className="bts-section experience-section experience-pad" aria-labelledby="bts-heading">
     <div className="bts-collage">
       <div className="bts-intro">
-        <span className="bts-eyebrow">The studio, unfiltered / BTS</span>
-        <h2 id="bts-heading">Behind the scenes.<br /><em>Inside the spark.</em></h2>
+        <h2 id="bts-heading"><span>Behind the scenes.</span><em>Inside the spark.</em></h2>
         <p>The people, the process, the in-between. A little look at how we bring a story to life.</p>
-        <button type="button" className="bts-motion-toggle" onClick={toggle} aria-pressed={enabled}>
-          {enabled ? <Pause size={14} /> : <Play size={14} />}
-          {enabled ? "Pause the moments" : "Play the moments"}
+        <button type="button" className="bts-motion-toggle about-reference-link" onClick={toggle} aria-pressed={enabled}>
+          <span>{enabled ? <Pause size={18} /> : <Play size={18} />}</span>
+          <span>{enabled ? "Pause the moments" : "Play the moments"}</span>
         </button>
       </div>
       <ul className="bts-notes" aria-label="Behind our work">
         {["Real people.", "Fresh perspectives.", "Happy accidents.", "A lot of heart."].map(note => <li key={note}><ArrowUpRight size={17} aria-hidden="true" />{note}</li>)}
       </ul>
-      {clips.map(([asset, title], index) => <figure className={`bts-clip bts-clip-${index + 1}`} key={asset}>
+      {clips.map(([asset, title], index) => <figure className={`bts-clip bts-clip-${index + 1}`} key={asset} aria-label={title}>
         <AmbientVideo
           src={`https://res.cloudinary.com/vt5gqi1c/video/upload/f_mp4,vc_auto,q_auto,w_640/${asset}.mov`}
           poster={`https://res.cloudinary.com/vt5gqi1c/video/upload/so_0,f_jpg,q_auto,w_640/${asset}.jpg`}
         />
-        <figcaption><span>{String(index + 1).padStart(2, "0")}</span>{title}</figcaption>
       </figure>)}
     </div>
     <div className="bts-signoff"><span>Made of moments. Made together.</span><span>Kolkata & everywhere <ArrowUpRight size={16} aria-hidden="true" /></span></div>
