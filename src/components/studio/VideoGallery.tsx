@@ -65,7 +65,7 @@ export function HomeFeaturedVideos() {
   const featured = INSTAGRAM_VIDEOS.filter(video => video.src).slice(0, 6);
   return (
     <section className="home-featured-videos experience-section experience-pad" aria-labelledby="home-featured-videos-title">
-      <div className="home-featured-videos-heading"><div><p className="studio-kicker">RESTAURANTS · CAFES · RETAIL</p><h2 id="home-featured-videos-title">A little more <em>appetite.</em></h2></div><Link href="/video-gallery">Explore all {allVideos.length} films <ArrowUpRight size={18} /></Link></div>
+      <div className="home-featured-videos-heading"><div><h2 id="home-featured-videos-title">A little more <em>appetite.</em></h2></div><Link href="/video-gallery">Explore all {allVideos.length} films <ArrowUpRight size={18} /></Link></div>
       <div className="home-featured-videos-grid">{featured.map((video) => <VideoCard key={video.id} video={video} />)}</div>
     </section>
   );
